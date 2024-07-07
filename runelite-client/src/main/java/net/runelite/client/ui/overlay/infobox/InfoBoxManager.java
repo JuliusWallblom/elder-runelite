@@ -77,7 +77,7 @@ public class InfoBoxManager
 
 	private final RuneLiteConfig runeLiteConfig;
 	private final TooltipManager tooltipManager;
-	private final Client client;
+	private final io.Client client;
 	private final EventBus eventBus;
 	private final OverlayManager overlayManager;
 	private final ConfigManager configManager;
@@ -86,7 +86,7 @@ public class InfoBoxManager
 	private InfoBoxManager(
 		final RuneLiteConfig runeLiteConfig,
 		final TooltipManager tooltipManager,
-		final Client client,
+		final io.Client client,
 		final EventBus eventBus,
 		final OverlayManager overlayManager,
 		final ConfigManager configManager)

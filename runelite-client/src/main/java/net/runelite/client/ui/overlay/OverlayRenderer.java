@@ -89,11 +89,12 @@ public class OverlayRenderer extends MouseAdapter
 	private static final Color MOVING_OVERLAY_TARGET_COLOR = Color.RED;
 	private static final Color MOVING_OVERLAY_RESIZING_COLOR = new Color(255, 0, 255, 200);
 
-	private final Client client;
+	private final io.Client client;
 	private final OverlayManager overlayManager;
 	private final RuneLiteConfig runeLiteConfig;
 	private final ClientUI clientUI;
 	private final EventBus eventBus;
+
 	private final ChatMessageManager chatMessageManager;
 
 	// Overlay movement variables
@@ -119,7 +120,7 @@ public class OverlayRenderer extends MouseAdapter
 
 	@Inject
 	private OverlayRenderer(
-		final Client client,
+		final io.Client client,
 		final OverlayManager overlayManager,
 		final RuneLiteConfig runeLiteConfig,
 		final MouseManager mouseManager,
@@ -178,7 +179,7 @@ public class OverlayRenderer extends MouseAdapter
 	@Subscribe
 	protected void onClientTick(ClientTick t)
 	{
-		lastHoveredOverlay = curHoveredOverlay;
+		/*lastHoveredOverlay = curHoveredOverlay;
 
 		final Overlay overlay = curHoveredOverlay;
 		if (overlay == null || client.isMenuOpen())
@@ -208,7 +209,7 @@ public class OverlayRenderer extends MouseAdapter
 				.setTarget(ColorUtil.wrapWithColorTag(overlayMenuEntry.getTarget(), JagexColors.MENU_TARGET))
 				.setType(overlayMenuEntry.getMenuAction())
 				.onClick(MoreObjects.firstNonNull(overlayMenuEntry.callback, e -> eventBus.post(new OverlayMenuClicked(overlayMenuEntry, overlay))));
-		}
+		}*/
 	}
 
 	@Subscribe
@@ -216,7 +217,8 @@ public class OverlayRenderer extends MouseAdapter
 	{
 		curHoveredOverlay = null;
 
-		if (client.getGameState() == GameState.LOGGED_IN)
+		// TODO J
+		/*if (client.getGameState() == GameState.LOGGED_IN)
 		{
 
 			if (shouldInvalidateBounds())
@@ -226,7 +228,7 @@ public class OverlayRenderer extends MouseAdapter
 
 			// Create copy of snap corners because overlays will modify them
 			snapCorners = new OverlayBounds(emptySnapCorners);
-		}
+		}*/
 	}
 
 	public void renderOverlayLayer(Graphics2D graphics, final OverlayLayer layer)
@@ -253,12 +255,13 @@ public class OverlayRenderer extends MouseAdapter
 
 	private void renderOverlays(final Graphics2D graphics, Collection<Overlay> overlays, final OverlayLayer layer)
 	{
-		if (overlays == null
+		// TODO J
+		/*if (overlays == null
 			|| overlays.isEmpty()
 			|| client.getGameState() != GameState.LOGGED_IN)
 		{
 			return;
-		}
+		}*/
 
 		OverlayUtil.setGraphicProperties(graphics);
 
@@ -375,11 +378,12 @@ public class OverlayRenderer extends MouseAdapter
 					graphics.setPaint(paint);
 				}
 
-				if (!client.isMenuOpen() && !client.isWidgetSelected() && bounds.contains(mousePosition))
+				// TODO J
+				/*if (!client.isMenuOpen() && !client.isWidgetSelected() && bounds.contains(mousePosition))
 				{
 					curHoveredOverlay = overlay;
 					overlay.onMouseOver();
-				}
+				}*/
 			}
 		}
 	}
@@ -511,12 +515,13 @@ public class OverlayRenderer extends MouseAdapter
 			dragTargetOverlay = null;
 		}
 
-		final Rectangle canvasRect = new Rectangle(client.getRealDimensions());
+		// TODO J
+		/*final Rectangle canvasRect = new Rectangle(client.getRealDimensions());
 
 		if (!canvasRect.contains(p))
 		{
 			return mouseEvent;
-		}
+		}*/
 
 		if (inOverlayResizingMode)
 		{
@@ -679,6 +684,8 @@ public class OverlayRenderer extends MouseAdapter
 		if (inOverlayDraggingMode && currentManagedOverlay instanceof WidgetOverlay && !dragWarn)
 		{
 			dragWarn = true;
+
+			// TODO J
 			chatMessageManager.queue(QueuedMessage.builder()
 				.type(ChatMessageType.CONSOLE)
 				.runeLiteFormattedMessage("You've repositioned one of the in-game interfaces. Hold " + runeLiteConfig.dragHotkey() +
@@ -694,7 +701,8 @@ public class OverlayRenderer extends MouseAdapter
 
 	private Rectangle clipBounds(OverlayLayer layer)
 	{
-		if (!isResizeable && (layer == OverlayLayer.ABOVE_SCENE || layer == OverlayLayer.UNDER_WIDGETS))
+		// TODO J
+		/*if (!isResizeable && (layer == OverlayLayer.ABOVE_SCENE || layer == OverlayLayer.UNDER_WIDGETS))
 		{
 			return new Rectangle(client.getViewportXOffset(),
 				client.getViewportYOffset(),
@@ -704,7 +712,8 @@ public class OverlayRenderer extends MouseAdapter
 		else
 		{
 			return new Rectangle(0, 0, client.getCanvasWidth(), client.getCanvasHeight());
-		}
+		}*/
+		return null;
 	}
 
 	private void safeRender(Overlay overlay, Graphics2D graphics, Point point)
@@ -784,7 +793,8 @@ public class OverlayRenderer extends MouseAdapter
 
 	private boolean shouldInvalidateBounds()
 	{
-		final Widget chatbox = client.getWidget(ComponentID.CHATBOX_FRAME);
+		// TODO J
+		/*final Widget chatbox = client.getWidget(ComponentID.CHATBOX_FRAME);
 		final boolean resizeableChanged = isResizeable != client.isResized();
 		boolean changed = false;
 
@@ -820,12 +830,14 @@ public class OverlayRenderer extends MouseAdapter
 			changed = true;
 		}
 
-		return changed;
+		return changed;*/
+		return true;
 	}
 
 	private Widget getViewportLayer()
 	{
-		if (client.isResized())
+		// TODO J
+		/*if (client.isResized())
 		{
 			if (client.getVarbitValue(Varbits.SIDE_PANELS) == 1)
 			{
@@ -836,7 +848,8 @@ public class OverlayRenderer extends MouseAdapter
 				return client.getWidget(ComponentID.RESIZABLE_VIEWPORT_RESIZABLE_VIEWPORT_OLD_SCHOOL_BOX);
 			}
 		}
-		return client.getWidget(ComponentID.FIXED_VIEWPORT_FIXED_VIEWPORT);
+		return client.getWidget(ComponentID.FIXED_VIEWPORT_FIXED_VIEWPORT);*/
+		return null;
 	}
 
 	private OverlayBounds buildSnapCorners()
@@ -872,7 +885,8 @@ public class OverlayRenderer extends MouseAdapter
 			viewportBounds.x + chatboxBounds.width - BORDER,
 			bottomLeftPoint.y) : bottomRightPoint;
 
-		final Point canvasTopRightPoint = isResizeable ? new Point(
+		// TODO J
+		/*final Point canvasTopRightPoint = isResizeable ? new Point(
 			(int)client.getRealDimensions().getWidth(),
 			0) : topRightPoint;
 
@@ -883,7 +897,8 @@ public class OverlayRenderer extends MouseAdapter
 			new Rectangle(bottomLeftPoint, SNAP_CORNER_SIZE),
 			new Rectangle(bottomRightPoint, SNAP_CORNER_SIZE),
 			new Rectangle(rightChatboxPoint, SNAP_CORNER_SIZE),
-			new Rectangle(canvasTopRightPoint, SNAP_CORNER_SIZE));
+			new Rectangle(canvasTopRightPoint, SNAP_CORNER_SIZE));*/
+		return null;
 	}
 
 	/**
@@ -902,8 +917,10 @@ public class OverlayRenderer extends MouseAdapter
 		if (parentBounds == null || parentBounds.isEmpty())
 		{
 			// If no bounds are set, use the full client bounds
-			Dimension dim = client.getRealDimensions();
-			parentBounds = new Rectangle(0, 0, dim.width, dim.height);
+
+			// TODO J
+			/*Dimension dim = client.getRealDimensions();
+			parentBounds = new Rectangle(0, 0, dim.width, dim.height);*/
 		}
 
 		// Constrain overlay position to be within the parent bounds

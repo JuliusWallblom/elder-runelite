@@ -43,6 +43,8 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
+
+import io.RuneLiteApplet;
 import lombok.AllArgsConstructor;
 import net.runelite.api.Client;
 import net.runelite.api.hooks.Callbacks;
@@ -157,9 +159,9 @@ public class RuneLiteModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	Client provideClient(@Nullable Applet applet)
+	io.Client provideClient(@Nullable Applet applet)
 	{
-		return applet instanceof Client ? (Client) applet : null;
+		return RuneLiteApplet.getClient();
 	}
 
 	@Provides

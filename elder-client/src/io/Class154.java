@@ -18,7 +18,7 @@ abstract class Class154 {
 				try {
 					if (i != -5)
 						method1017(-93);
-					if ((++Class_o.anInt7225 ^ 0xffffffff) < -1501) {
+					if ((++GameEngine.anInt7225 ^ 0xffffffff) < -1501) {
 						if (Class65.aClass6_864 != null) {
 							Class65.aClass6_864.method72(false);
 							Class65.aClass6_864 = null;
@@ -29,7 +29,7 @@ abstract class Class154 {
 							else
 								Class172.anInt2432 = Class40_Sub1.anInt3767;
 							Class129.anInt1808++;
-							Class_o.anInt7225 = 0;
+							GameEngine.anInt7225 = 0;
 							Class228.anInt3137 = 1;
 						} else {
 							Class246_Sub31.anInt5034 = -5;
@@ -92,7 +92,7 @@ abstract class Class154 {
 						Class246_Sub31.anInt5034 = -4;
 					} else {
 						Class228.anInt3137 = 1;
-						Class_o.anInt7225 = 0;
+						GameEngine.anInt7225 = 0;
 						Class129.anInt1808++;
 						if ((Class71.anInt925 ^ 0xffffffff) != (Class172.anInt2432 ^ 0xffffffff))
 							Class172.anInt2432 = Class71.anInt925;

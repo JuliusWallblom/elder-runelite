@@ -41,10 +41,10 @@ import net.runelite.client.eventbus.Subscribe;
 @Slf4j
 public class KeyManager
 {
-	private final Client client;
+	private final io.Client client;
 
 	@Inject
-	private KeyManager(@Nullable final Client client, final EventBus eventBus)
+	private KeyManager(@Nullable final io.Client client, final EventBus eventBus)
 	{
 		this.client = client;
 		eventBus.register(this);
@@ -152,12 +152,13 @@ public class KeyManager
 			return true;
 		}
 
-		final GameState gameState = client.getGameState();
+		// TODO J
+		/*final GameState gameState = client.getGameState();
 
 		if (gameState == GameState.LOGIN_SCREEN || gameState == GameState.LOGIN_SCREEN_AUTHENTICATOR)
 		{
 			return keyListener.isEnabledOnLoginScreen();
-		}
+		}*/
 
 		return true;
 	}

@@ -40,7 +40,7 @@ public class ClientThread
 	private final ConcurrentLinkedQueue<BooleanSupplier> invokesAtTickEnd = new ConcurrentLinkedQueue<>();
 
 	@Inject
-	private Client client;
+	private io.Client client;
 
 	public void invoke(Runnable r)
 	{

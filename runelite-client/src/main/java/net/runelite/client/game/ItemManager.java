@@ -80,7 +80,7 @@ public class ItemManager
 		private final Color outlineColor;
 	}
 
-	private final Client client;
+	private final io.Client client;
 	private final ClientThread clientThread;
 	private final ItemClient itemClient;
 	private final RuneLiteConfig runeLiteConfig;
@@ -182,7 +182,7 @@ public class ItemManager
 		build();
 
 	@Inject
-	public ItemManager(Client client, ScheduledExecutorService scheduledExecutorService, ClientThread clientThread,
+	public ItemManager(io.Client client, ScheduledExecutorService scheduledExecutorService, ClientThread clientThread,
 		ItemClient itemClient, RuneLiteConfig runeLiteConfig)
 	{
 		this.client = client;
@@ -388,7 +388,7 @@ public class ItemManager
 	@Nonnull
 	public ItemComposition getItemComposition(int itemId)
 	{
-		return client.getItemDefinition(itemId);
+		return /* // TODO J client.getItemDefinition(itemId);*/null;
 	}
 
 	/**
@@ -420,7 +420,9 @@ public class ItemManager
 	private AsyncBufferedImage loadImage(int itemId, int quantity, boolean stackable)
 	{
 		AsyncBufferedImage img = new AsyncBufferedImage(clientThread, Constants.ITEM_SPRITE_WIDTH, Constants.ITEM_SPRITE_HEIGHT, BufferedImage.TYPE_INT_ARGB);
-		clientThread.invoke(() ->
+
+		// TODO J
+		/*clientThread.invoke(() ->
 		{
 			if (client.getGameState().ordinal() < GameState.LOGIN_SCREEN.ordinal())
 			{
@@ -435,7 +437,7 @@ public class ItemManager
 			sprite.toBufferedImage(img);
 			img.loaded();
 			return true;
-		});
+		});*/
 		return img;
 	}
 
@@ -487,7 +489,7 @@ public class ItemManager
 	 */
 	private BufferedImage loadItemOutline(final int itemId, final int itemQuantity, final Color outlineColor)
 	{
-		final SpritePixels itemSprite = client.createItemSprite(itemId, itemQuantity, 1, 0, 0, false, CLIENT_DEFAULT_ZOOM);
+		final SpritePixels itemSprite = /* TODO J client.createItemSprite(itemId, itemQuantity, 1, 0, 0, false, CLIENT_DEFAULT_ZOOM); */null;
 		return itemSprite.toBufferedOutline(outlineColor);
 	}
 

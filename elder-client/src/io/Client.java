@@ -17,15 +17,7 @@ import io.cache.Revision;
 import jagex3.jagmisc.jagmisc;
 
 @SuppressWarnings("serial")
-public final class Client extends Class_o {
-
-	public void supplyApplet(Applet applet) {
-		try {
-			Client.sign_link.anApplet733 = applet;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+public final class Client extends GameEngine {
 
 	// Unidentified OSRS variables related to OSRS CS2 opcodes.
 	static boolean field652 = false;
@@ -421,6 +413,13 @@ public final class Client extends Class_o {
 		return class235.hidden;
 	}
 
+	public static Thread currentThread;
+
+	@Override
+	public boolean isClientThread() {
+		return Thread.currentThread() == currentThread;
+	}
+
 	final void method2938(byte i) {
 		try {
 			anInt7247++;
@@ -793,54 +792,68 @@ public final class Client extends Class_o {
 		}
 	}
 
+	public void supplyApplet(Applet applet) {
+		try {
+			Client.sign_link.anApplet733 = applet;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public final void init() {
 		try {
+			ClientParams.setWorld("1");
+			ClientParams.setParams();
+			final Signlink signlink = new Signlink(this, 32, GameConstants.NAME, io.Constants.MAX_INDEX_COUNT);
+			RuneLiteApplet.elderApplet = this;
+			GameEngine.providesignlink(signlink);
 			f_cb++;
-			Class58.anInt816 = Integer.parseInt((String) AppletLoader.aProperties1.get("worldid"));
-			Class260_Sub2.aClass205_4297 = (Class173.method1142(Integer.parseInt((String) AppletLoader.aProperties1.get("modewhere")),
+			Class58.anInt816 = Integer.parseInt((String) ClientParams.params.get("worldid"));
+			Class260_Sub2.aClass205_4297 = (Class173.method1142(Integer.parseInt((String) ClientParams.params.get("modewhere")),
 					true));
 			if (!Class59_Sub1_Sub3.method2642(Class260_Sub2.aClass205_4297, (byte) -112)
 					&& Class208.aClass205_2930 != Class260_Sub2.aClass205_4297)
 				Class260_Sub2.aClass205_4297 = Class208.aClass205_2930;
-			Class259.aClass97_3707 = (Class157.method1038(0, Integer.parseInt((String) AppletLoader.aProperties1.get("modewhat"))));
+			Class259.aClass97_3707 = (Class157.method1038(0, Integer.parseInt((String) ClientParams.params.get("modewhat"))));
 			if (Class259.aClass97_3707 != Class37.aClass97_544 && Class259.aClass97_3707 != Class189.aClass97_2666
 					&& (Class259.aClass97_3707 != SubIncomingPacket.aClass97_7088))
 				Class259.aClass97_3707 = SubIncomingPacket.aClass97_7088;
 			try {
-				Preferences.language_code = Integer.parseInt((String) AppletLoader.aProperties1.get("lang"));
+				Preferences.language_code = Integer.parseInt((String) ClientParams.params.get("lang"));
 			} catch (Exception exception) {
 				Preferences.language_code = 0;
 			}
-			String string = (String) AppletLoader.aProperties1.get("objecttag");
+			String string = (String) ClientParams.params.get("objecttag");
 			if (string == null || !string.equals("1"))
 				Class88.aBool1151 = false;
 			else
 				Class88.aBool1151 = true;
-			String string_42_ = (String) AppletLoader.aProperties1.get("js");
+			String string_42_ = (String) ClientParams.params.get("js");
 			if (string_42_ != null && string_42_.equals("1"))
 				Class106_Sub2.aBool5333 = true;
 			else
 				Class106_Sub2.aBool5333 = false;
-			String string_43_ = (String) AppletLoader.aProperties1.get("advert");
+			String string_43_ = (String) ClientParams.params.get("advert");
 			if (string_43_ != null && string_43_.equals("1"))
 				Class166.aBool2357 = true;
 			else
 				Class166.aBool2357 = false;
-			String string_44_ = (String) AppletLoader.aProperties1.get("game");
+			String string_44_ = (String) ClientParams.params.get("game");
 			if (string_44_ == null || !string_44_.equals("1"))
 				Class59_Sub4_Sub3.aClass101_6943 = Class246_Sub28_Sub16.aClass101_6394;
 			else
 				Class59_Sub4_Sub3.aClass101_6943 = Class40_Sub6.aClass101_5092;
 			try {
-				Class109_Sub4.anInt4573 = Integer.parseInt((String) AppletLoader.aProperties1.get("affid"));
+				Class109_Sub4.anInt4573 = Integer.parseInt((String) ClientParams.params.get("affid"));
 			} catch (Exception exception) {
 				Class109_Sub4.anInt4573 = 0;
 			}
-			Class59_Sub2.aString4546 = (String) AppletLoader.aProperties1.get("quiturl");
-			Class246_Sub5.aString3891 = (String) AppletLoader.aProperties1.get("settings");
+			Class59_Sub2.aString4546 = (String) ClientParams.params.get("quiturl");
+			Class246_Sub5.aString3891 = (String) ClientParams.params.get("settings");
 			if (Class246_Sub5.aString3891 == null)
 				Class246_Sub5.aString3891 = "";
-			String string_45_ = (String) AppletLoader.aProperties1.get("country");
+			String string_45_ = (String) ClientParams.params.get("country");
 			if (string_45_ != null) {
 				try {
 					Class122.anInt1680 = Integer.parseInt(string_45_);
@@ -848,11 +861,11 @@ public final class Client extends Class_o {
 					Class122.anInt1680 = 0;
 				}
 			}
-			StructType.anInt6859 = Integer.parseInt((String) AppletLoader.aProperties1.get("colourid"));
+			StructType.anInt6859 = Integer.parseInt((String) ClientParams.params.get("colourid"));
 			if (StructType.anInt6859 < 0
 					|| ((Class59_Sub3_Sub2.f_cb.length ^ 0xffffffff) >= (StructType.anInt6859 ^ 0xffffffff)))
 				StructType.anInt6859 = 0;
-			if (Integer.parseInt((String) AppletLoader.aProperties1.get("sitesettings_member")) == 1)
+			if (Integer.parseInt((String) ClientParams.params.get("sitesettings_member")) == 1)
 				Class246_Sub23.aBool4817 = AbstractModel.aBool1431 = true;
 			Client.instance = this;
 			if (Class246_Sub28_Sub16.aClass101_6394 == Class59_Sub4_Sub3.aClass101_6943) {
@@ -862,11 +875,10 @@ public final class Client extends Class_o {
 				Class83.anInt1090 = 480;
 				Class196.anInt2757 = 640;
 			}
-			this.method2947(592, Class259.aClass97_3707.method616(false) + 32, Class83.anInt1090, Class196.anInt2757,
+			this.startThread(592, Class259.aClass97_3707.method616(false) + 32, Class83.anInt1090, Class196.anInt2757,
 					(byte) -107);
-		} catch (RuntimeException runtimeexception) {
-			runtimeexception.printStackTrace();
-			throw Class193.method1272(runtimeexception, "client.init(" + ')');
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -3217,5 +3229,13 @@ public final class Client extends Class_o {
 		 * return 10000;
 		 * }
 		 */return 10000;
+	}
+
+	public int getBuildID() {
+		return 592;
+	}
+
+	public String getLauncherDisplayName() {
+		return "ELDER LAUNCHER";
 	}
 }

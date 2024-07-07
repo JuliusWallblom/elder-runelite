@@ -52,7 +52,7 @@ public class MenuManager
 	private static final int IDX_LOWER = 4;
 	private static final int IDX_UPPER = 8;
 
-	private final Client client;
+	private final io.Client client;
 
 	//Maps the indexes that are being used to the menu option.
 	private final Map<Integer, String> playerMenuIndexMap = new HashMap<>();
@@ -60,7 +60,7 @@ public class MenuManager
 	private final Multimap<Integer, WidgetMenuOption> managedMenuOptions = LinkedHashMultimap.create();
 
 	@Inject
-	private MenuManager(Client client, EventBus eventBus)
+	private MenuManager(io.Client client, EventBus eventBus)
 	{
 		this.client = client;
 		eventBus.register(this);
@@ -106,7 +106,8 @@ public class MenuManager
 	@Subscribe
 	public void onMenuEntryAdded(MenuEntryAdded event)
 	{
-		if (client.isWidgetSelected() || event.getType() != MenuAction.CC_OP.getId())
+		// TODO J
+		/*if (client.isWidgetSelected() || event.getType() != MenuAction.CC_OP.getId())
 		{
 			return;
 		}
@@ -138,7 +139,7 @@ public class MenuManager
 				.setType(MenuAction.RUNELITE)
 				.setParam1(widgetId)
 				.onClick(currentMenu.callback);
-		}
+		}*/
 	}
 
 	public void addPlayerMenuItem(String menuText)
@@ -194,17 +195,19 @@ public class MenuManager
 
 	private void addPlayerMenuItem(int playerOptionIndex, String menuText)
 	{
-		client.getPlayerOptions()[playerOptionIndex] = menuText;
+		// TODO J
+		/*client.getPlayerOptions()[playerOptionIndex] = menuText;
 		client.getPlayerOptionsPriorities()[playerOptionIndex] = true;
 		client.getPlayerMenuTypes()[playerOptionIndex] = MenuAction.RUNELITE_PLAYER.getId();
 
-		playerMenuIndexMap.put(playerOptionIndex, menuText);
+		playerMenuIndexMap.put(playerOptionIndex, menuText);*/
 	}
 
 	private void removePlayerMenuItem(int playerOptionIndex)
 	{
-		client.getPlayerOptions()[playerOptionIndex] = null;
-		playerMenuIndexMap.remove(playerOptionIndex);
+		// TODO J
+		/*client.getPlayerOptions()[playerOptionIndex] = null;
+		playerMenuIndexMap.remove(playerOptionIndex);*/
 	}
 
 	/**
@@ -212,7 +215,8 @@ public class MenuManager
 	 */
 	private int findEmptyPlayerMenuIndex()
 	{
-		int index = IDX_LOWER;
+		// TODO J
+		/*int index = IDX_LOWER;
 
 		String[] playerOptions = client.getPlayerOptions();
 		while (index < IDX_UPPER && playerOptions[index] != null)
@@ -220,6 +224,7 @@ public class MenuManager
 			index++;
 		}
 
-		return index;
+		return index;*/
+		return 0;
 	}
 }

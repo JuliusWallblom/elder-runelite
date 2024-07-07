@@ -8,7 +8,7 @@ abstract class Class248 {
 	static int anInt3485;
 	static int anInt3486;
 	static boolean aBool3487;
-	static Class_o aClass_o3488 = null;
+	static GameEngine gameEngine = null;
 	static char[] aCharArray3489;
 
 	abstract Class246_Sub1_Sub8 method1582(int i, Class246_Sub1_Sub8 class246_sub1_sub8);
@@ -303,7 +303,7 @@ abstract class Class248 {
 								Varc.method2615((byte) 103);
 							else {
 								SequenceType.method848(-117);
-								Class_o.method2950((byte) -86);
+								GameEngine.method2950((byte) -86);
 								Class246_Sub7_Sub1.method2564(true);
 								for (int i_25_ = Varbit.aClass95_6658.method608(true,
 										i ^ ~0x3071); i_25_ != -1; i_25_ = Varbit.aClass95_6658.method608(false,

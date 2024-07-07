@@ -94,12 +94,13 @@ public class Hooks implements Callbacks
 	private static final GameTick GAME_TICK = new GameTick();
 	private static final BeforeRender BEFORE_RENDER = new BeforeRender();
 
-	private final Client client;
+	private final io.Client client;
 	private final OverlayRenderer renderer;
 	private final EventBus eventBus;
 	private final DeferredEventBus deferredEventBus;
 	private final Scheduler scheduler;
 	private final InfoBoxManager infoBoxManager;
+
 	private final ChatMessageManager chatMessageManager;
 	private final MouseManager mouseManager;
 	private final KeyManager keyManager;
@@ -159,7 +160,7 @@ public class Hooks implements Callbacks
 
 	@Inject
 	private Hooks(
-		Client client,
+		io.Client client,
 		OverlayRenderer renderer,
 		EventBus eventBus,
 		DeferredEventBus deferredEventBus,
@@ -219,8 +220,9 @@ public class Hooks implements Callbacks
 
 			eventBus.post(GAME_TICK);
 
-			int tick = client.getTickCount();
-			client.setTickCount(tick + 1);
+			// TODO J
+			/*int tick = client.getTickCount();
+			client.setTickCount(tick + 1);*/
 		}
 
 		clientThread.invoke();
@@ -275,7 +277,8 @@ public class Hooks implements Callbacks
 	 */
 	private void checkWorldMap()
 	{
-		Widget widget = client.getWidget(ComponentID.WORLD_MAP_MAPVIEW);
+		// TODO J
+		/*Widget widget = client.getWidget(ComponentID.WORLD_MAP_MAPVIEW);
 
 		if (widget != null)
 		{
@@ -293,7 +296,7 @@ public class Hooks implements Callbacks
 		{
 			log.debug("World map was closed, reinitializing");
 			worldMap.initializeWorldMap(worldMap.getWorldMapData());
-		}
+		}*/
 	}
 
 	@Override
@@ -386,15 +389,18 @@ public class Hooks implements Callbacks
 		// Draw clientUI overlays
 		clientUi.paintOverlays(graphics2d);
 
-		if (client.isGpu())
+		// TODO J
+		/*if (client.isGpu())
 		{
 			// processDrawComplete gets called on GPU by the gpu plugin at the end of its
 			// drawing cycle, which is later on.
 			return;
-		}
+		}*/
 
 		// Stretch the game image if the user has that enabled
-		Image image = mainBufferProvider.getImage();
+
+		// TODO J
+		/*Image image = mainBufferProvider.getImage();
 		final Image finalImage;
 		if (client.isStretchedEnabled())
 		{
@@ -463,7 +469,7 @@ public class Hooks implements Callbacks
 
 		// finalImage is backed by the client buffer which will change soon. make a copy
 		// so that callbacks can safely use it later from threads.
-		drawManager.processDrawComplete(() -> screenshot(finalImage));
+		drawManager.processDrawComplete(() -> screenshot(finalImage));*/
 	}
 
 	private Image screenshot(Image src)
@@ -485,7 +491,8 @@ public class Hooks implements Callbacks
 	@Override
 	public void drawScene()
 	{
-		MainBufferProvider bufferProvider = (MainBufferProvider) client.getBufferProvider();
+		// TODO J
+		MainBufferProvider bufferProvider = /*(MainBufferProvider) client.getBufferProvider()*/null;
 		Graphics2D graphics2d = getGraphics(bufferProvider);
 
 		try
@@ -501,7 +508,8 @@ public class Hooks implements Callbacks
 	@Override
 	public void drawAboveOverheads()
 	{
-		MainBufferProvider bufferProvider = (MainBufferProvider) client.getBufferProvider();
+		// TODO J
+		MainBufferProvider bufferProvider = /*(MainBufferProvider) client.getBufferProvider()*/null;
 		Graphics2D graphics2d = getGraphics(bufferProvider);
 
 		try
@@ -523,7 +531,8 @@ public class Hooks implements Callbacks
 	@Override
 	public void drawInterface(int interfaceId, List<WidgetItem> widgetItems)
 	{
-		MainBufferProvider bufferProvider = (MainBufferProvider) client.getBufferProvider();
+		// TODO J
+		MainBufferProvider bufferProvider = /*(MainBufferProvider) client.getBufferProvider()*/null;
 		Graphics2D graphics2d = getGraphics(bufferProvider);
 
 		try
@@ -539,7 +548,8 @@ public class Hooks implements Callbacks
 	@Override
 	public void drawLayer(Widget layer, List<WidgetItem> widgetItems)
 	{
-		MainBufferProvider bufferProvider = (MainBufferProvider) client.getBufferProvider();
+		// TODO J
+		MainBufferProvider bufferProvider = /*(MainBufferProvider) client.getBufferProvider()*/null;
 		Graphics2D graphics2d = getGraphics(bufferProvider);
 
 		try
@@ -560,7 +570,8 @@ public class Hooks implements Callbacks
 			return;
 		}
 
-		final int[] intStack = client.getIntStack();
+		// TODO J
+		/*final int[] intStack = client.getIntStack();
 		final int intStackSize = client.getIntStackSize();
 
 		final int statId = intStack[intStackSize - 2];
@@ -571,7 +582,7 @@ public class Hooks implements Callbacks
 			skill,
 			xp
 		);
-		eventBus.post(fakeXpDrop);
+		eventBus.post(fakeXpDrop);*/
 	}
 
 	public void registerRenderableDrawListener(RenderableDrawListener listener)

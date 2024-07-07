@@ -61,7 +61,7 @@ public class InfoBoxOverlay extends OverlayPanel
 
 	private final InfoBoxManager infoboxManager;
 	private final TooltipManager tooltipManager;
-	private final Client client;
+	private final io.Client client;
 	private final RuneLiteConfig config;
 	private final EventBus eventBus;
 	private final String name;
@@ -75,7 +75,7 @@ public class InfoBoxOverlay extends OverlayPanel
 	InfoBoxOverlay(
 		InfoBoxManager infoboxManager,
 		TooltipManager tooltipManager,
-		Client client,
+		io.Client client,
 		RuneLiteConfig config,
 		EventBus eventBus,
 		String name,
@@ -107,7 +107,8 @@ public class InfoBoxOverlay extends OverlayPanel
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		final boolean menuOpen = client.isMenuOpen();
+		// TODO J
+		final boolean menuOpen = /*client.isMenuOpen()*/false;
 		if (!menuOpen)
 		{
 			hoveredComponent = null;
@@ -156,7 +157,10 @@ public class InfoBoxOverlay extends OverlayPanel
 		final Dimension dimension = super.render(graphics);
 
 		// Handle tooltips
-		final Point mouse = new Point(client.getMouseCanvasPosition().getX(), client.getMouseCanvasPosition().getY());
+
+		// TODO J
+		//final Point mouse = new Point(client.getMouseCanvasPosition().getX(), client.getMouseCanvasPosition().getY());
+		final Point mouse = new Point(0, 0);
 
 		for (final LayoutableRenderableEntity child : panelComponent.getChildren())
 		{

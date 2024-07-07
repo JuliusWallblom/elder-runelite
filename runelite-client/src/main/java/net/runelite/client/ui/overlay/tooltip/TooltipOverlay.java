@@ -47,13 +47,13 @@ public class TooltipOverlay extends Overlay
 	private static final int UNDER_OFFSET = 24;
 	private static final int PADDING = 2;
 	private final TooltipManager tooltipManager;
-	private final Client client;
+	private final io.Client client;
 	private final RuneLiteConfig runeLiteConfig;
 
 	private int prevWidth, prevHeight;
 
 	@Inject
-	private TooltipOverlay(Client client, TooltipManager tooltipManager, final RuneLiteConfig runeLiteConfig)
+	private TooltipOverlay(io.Client client, TooltipManager tooltipManager, final RuneLiteConfig runeLiteConfig)
 	{
 		this.client = client;
 		this.tooltipManager = tooltipManager;
@@ -88,7 +88,8 @@ public class TooltipOverlay extends Overlay
 
 	private Dimension renderTooltips(Graphics2D graphics, List<Tooltip> tooltips)
 	{
-		final int canvasWidth = client.getCanvasWidth();
+		// TODO J
+		/*final int canvasWidth = client.getCanvasWidth();
 		final int canvasHeight = client.getCanvasHeight();
 		final net.runelite.api.Point mouseCanvasPosition = client.getMouseCanvasPosition();
 
@@ -129,6 +130,7 @@ public class TooltipOverlay extends Overlay
 
 		prevWidth = width;
 		prevHeight = height;
+		return null;*/
 		return null;
 	}
 }

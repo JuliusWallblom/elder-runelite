@@ -61,14 +61,14 @@ public class ChatMessageManager
 	private static final Set<Integer> TUTORIAL_ISLAND_REGIONS = ImmutableSet.of(12336, 12335, 12592, 12080, 12079, 12436);
 
 	private final Multimap<ChatMessageType, ChatColor> colorCache = HashMultimap.create();
-	private final Client client;
+	private final io.Client client;
 	private final ChatColorConfig chatColorConfig;
 	private final ClientThread clientThread;
 	private final Queue<QueuedMessage> queuedMessages = new ConcurrentLinkedQueue<>();
 
 	@Inject
 	private ChatMessageManager(
-		Client client,
+		io.Client client,
 		ChatColorConfig chatColorConfig,
 		ClientThread clientThread,
 		EventBus eventBus)
@@ -85,7 +85,7 @@ public class ChatMessageManager
 		if (event.getGroup().equals("textrecolor"))
 		{
 			loadColors();
-			clientThread.invokeLater(client::refreshChat);
+			//clientThread.invokeLater(client::refreshChat);
 		}
 	}
 
@@ -93,13 +93,13 @@ public class ChatMessageManager
 	public void onProfileChanged(ProfileChanged profileChanged)
 	{
 		loadColors();
-		clientThread.invokeLater(client::refreshChat);
+		//clientThread.invokeLater(client::refreshChat);
 	}
 
 	@VisibleForTesting
 	void colorChatMessage()
 	{
-		final int[] intStack = client.getIntStack();
+		/*final int[] intStack = client.getIntStack();
 		final String[] stringStack = client.getStringStack();
 		final int size = client.getStringStackSize();
 		final int isize = client.getIntStackSize();
@@ -201,7 +201,7 @@ public class ChatMessageManager
 			break;
 		}
 
-		stringStack[size - 2] = prefix + message;
+		stringStack[size - 2] = prefix + message;*/
 	}
 
 	@Subscribe
@@ -225,7 +225,7 @@ public class ChatMessageManager
 				return;
 		}
 
-		boolean isChatboxTransparent = client.isResized() && client.getVarbitValue(Varbits.TRANSPARENT_CHATBOX) == 1;
+		/*boolean isChatboxTransparent = client.isResized() && client.getVarbitValue(Varbits.TRANSPARENT_CHATBOX) == 1;
 		Color usernameColor = isChatboxTransparent ? chatColorConfig.transparentPrivateUsernames() : chatColorConfig.opaquePrivateUsernames();
 		if (usernameColor == null)
 		{
@@ -244,7 +244,7 @@ public class ChatMessageManager
 		{
 			fromToUsername = ColorUtil.colorTag(usernameColor);
 		}
-		stringStack[stringStackSize - 1] = fromToUsername;
+		stringStack[stringStackSize - 1] = fromToUsername;*/
 	}
 
 	private static Color getDefaultColor(ChatMessageType type, boolean transparent)
@@ -814,7 +814,7 @@ public class ChatMessageManager
 	private void add(QueuedMessage message)
 	{
 		// Do not send message if the player is on tutorial island
-		final Player player = client.getLocalPlayer();
+		/*final Player player = client.getLocalPlayer();
 		if (player != null && TUTORIAL_ISLAND_REGIONS.contains(player.getWorldLocation().getRegionID()))
 		{
 			return;
@@ -833,7 +833,7 @@ public class ChatMessageManager
 		if (message.getTimestamp() != 0)
 		{
 			line.setTimestamp(message.getTimestamp());
-		}
+		}*/
 	}
 
 	/**
@@ -850,7 +850,7 @@ public class ChatMessageManager
 	@VisibleForTesting
 	String formatRuneLiteMessage(String runeLiteFormatMessage, ChatMessageType type, boolean pmbox)
 	{
-		final boolean transparentChatbox = client.getVarbitValue(Varbits.TRANSPARENT_CHATBOX) != 0;
+		/*final boolean transparentChatbox = client.getVarbitValue(Varbits.TRANSPARENT_CHATBOX) != 0;
 		final boolean transparent = client.isResized() && transparentChatbox;
 		final Collection<ChatColor> chatColors = colorCache.get(type);
 		for (ChatColor chatColor : chatColors)
@@ -895,6 +895,7 @@ public class ChatMessageManager
 			}
 		}
 
-		return runeLiteFormatMessage;
+		return runeLiteFormatMessage;*/
+		return "bush did 9/11";
 	}
 }

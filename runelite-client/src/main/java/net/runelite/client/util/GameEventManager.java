@@ -57,11 +57,11 @@ import net.runelite.client.eventbus.EventBus;
 public class GameEventManager
 {
 	private final EventBus eventBus = new EventBus();
-	private final Client client;
+	private final io.Client client;
 	private final ClientThread clientThread;
 
 	@Inject
-	private GameEventManager(Client client, ClientThread clientThread)
+	private GameEventManager(io.Client client, ClientThread clientThread)
 	{
 		this.client = client;
 		this.clientThread = clientThread;
@@ -74,7 +74,8 @@ public class GameEventManager
 	 */
 	private void forEachTile(Consumer<Tile> consumer)
 	{
-		final Scene scene = client.getScene();
+		// TODO J
+		/*final Scene scene = client.getScene();
 		final Tile[][][] tiles = scene.getTiles();
 
 		for (int z = 0; z < Constants.MAX_Z; ++z)
@@ -98,7 +99,7 @@ public class GameEventManager
 					}
 				}
 			}
-		}
+		}*/
 	}
 
 	/**
@@ -108,7 +109,7 @@ public class GameEventManager
 	 */
 	public void simulateGameEvents(Object subscriber)
 	{
-		if (client.getGameState() != GameState.LOGGED_IN)
+		/*if (client.getGameState() != GameState.LOGGED_IN)
 		{
 			return;
 		}
@@ -201,6 +202,6 @@ public class GameEventManager
 			});
 
 			eventBus.unregister(subscriber);
-		});
+		});*/
 	}
 }

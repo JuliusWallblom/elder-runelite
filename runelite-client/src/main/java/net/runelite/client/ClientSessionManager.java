@@ -44,7 +44,7 @@ import net.runelite.client.util.RunnableExceptionLogger;
 public class ClientSessionManager
 {
 	private final ScheduledExecutorService executorService;
-	private final Client client;
+	private final io.Client client;
 	private final SessionClient sessionClient;
 
 	private ScheduledFuture<?> scheduledFuture;
@@ -52,7 +52,7 @@ public class ClientSessionManager
 
 	@Inject
 	ClientSessionManager(ScheduledExecutorService executorService,
-		@Nullable Client client,
+		@Nullable io.Client client,
 		SessionClient sessionClient)
 	{
 		this.executorService = executorService;
@@ -119,11 +119,13 @@ public class ClientSessionManager
 		}
 
 		boolean loggedIn = false;
-		if (client != null)
+
+		// TODO J
+		/*if (client != null)
 		{
 			GameState gameState = client.getGameState();
 			loggedIn = gameState.getState() >= GameState.LOADING.getState();
-		}
+		}*/
 
 		try
 		{

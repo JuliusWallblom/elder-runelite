@@ -484,7 +484,7 @@ public class LoginScreen {
 			Class128_Sub1.method2331(1);
 		else {
 			Class246_Sub31.anInt5034 = -3;
-			Class_o.anInt7225 = 0;
+			GameEngine.anInt7225 = 0;
 			Class228.anInt3137 = 1;
 			Class129.anInt1808 = 0;
 			Buffer stream = new Buffer(128);

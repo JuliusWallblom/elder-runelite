@@ -52,7 +52,7 @@ final class Class114 implements Interface7 {
 			((Class130_Sub8) class130_sub8).aString5608 = string;
 			((Class130_Sub8) class130_sub8).anInt5610 = i_3_;
 			((Class130_Sub8) class130_sub8).anInt5620 = i_5_;
-			Class_o.aClass68_7208.method438(-120, class130_sub8);
+			GameEngine.aClass68_7208.method438(-120, class130_sub8);
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, ("ko.B(" + i + ',' + i_1_ + ',' + i_2_ + ',' + i_3_ + ',' + bool + ',' + i_4_ + ',' + i_5_ + ',' + (string != null ? "{...}" : "null") + ')'));
 		}

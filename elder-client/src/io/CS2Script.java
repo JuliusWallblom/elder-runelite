@@ -1581,7 +1581,7 @@ final class CS2Script extends NodeSub {
 				int_stack[++int_stack_size - 1] = -1; // L: 3672
 				int_stack[++int_stack_size - 1] = -1; // L: 3673
 			} else { // L: 3666
-				Class_o.method2944(0, ((Widget) Class104.f_vb).screen_width, (byte) -21, 0, false,
+				GameEngine.method2944(0, ((Widget) Class104.f_vb).screen_width, (byte) -21, 0, false,
 						((Widget) Class104.f_vb).screen_height);
 				int_stack[++int_stack_size - 1] = Class179.anInt2512; // L: 3668
 				int_stack[++int_stack_size - 1] = Class59_Sub1_Sub2.anInt6133; // L: 3669

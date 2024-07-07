@@ -103,7 +103,7 @@ final class Class246_Sub28_Sub31 extends TextureOperation {
 				else if ((i ^ 0xffffffff) == -1002)
 					ScriptExecutor.method993(Class112.aClass169_1587, i_3_, i_2_, -1);
 				else if ((i ^ 0xffffffff) == -1007)
-					ScriptExecutor.method993(Class_o.aClass169_7223, i_3_, i_2_, -1);
+					ScriptExecutor.method993(GameEngine.aClass169_7223, i_3_, i_2_, -1);
 			} else
 				ScriptExecutor.method993(Class139.aClass169_1984, i_3_, i_2_, -1);
 			if (bool == true)

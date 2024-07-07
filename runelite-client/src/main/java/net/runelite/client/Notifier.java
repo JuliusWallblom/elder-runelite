@@ -108,10 +108,11 @@ public class Notifier
 	private static final long CLIP_MTIME_UNLOADED = -2;
 	private static final long CLIP_MTIME_BUILTIN = -1;
 
-	private final Client client;
+	private final io.Client client;
 	private final RuneLiteConfig runeLiteConfig;
 	private final ClientUI clientUI;
 	private final ScheduledExecutorService executorService;
+
 	private final ChatMessageManager chatMessageManager;
 	private final EventBus eventBus;
 	private final String appName;
@@ -127,7 +128,7 @@ public class Notifier
 	@Inject
 	private Notifier(
 		final ClientUI clientUI,
-		final Client client,
+		final io.Client client,
 		final RuneLiteConfig runeliteConfig,
 		final ScheduledExecutorService executorService,
 		final ChatMessageManager chatMessageManager,
@@ -228,7 +229,8 @@ public class Notifier
 				executorService.submit(() -> playCustomSound(n));
 		}
 
-		if (notification.isGameMessage() && client.getGameState() == GameState.LOGGED_IN)
+		// TODO J
+		/*if (notification.isGameMessage() && client.getGameState() == GameState.LOGGED_IN)
 		{
 			final String formattedMessage = new ChatMessageBuilder()
 				.append(ChatColorType.HIGHLIGHT)
@@ -248,12 +250,13 @@ public class Notifier
 			flashColor = notification.getFlashColor();
 			flashStart = Instant.now();
 			mouseLastPressedMillis = client.getMouseLastPressedMillis();
-		}
+		}*/
 	}
 
 	private String buildTitle()
 	{
-		Player player = client.getLocalPlayer();
+		// TODO J
+		/*Player player = client.getLocalPlayer();
 		if (player == null)
 		{
 			return appName;
@@ -265,13 +268,14 @@ public class Notifier
 			return appName;
 		}
 
-		return appName + " - " + name;
+		return appName + " - " + name;*/
+		return appName;
 	}
 
 	public void processFlash(final Graphics2D graphics)
 	{
 		if (flashStart == null || flashNotification == null || flashColor == null
-			|| client.getGameState() != GameState.LOGGED_IN
+			/* TODO J || client.getGameState() != GameState.LOGGED_IN*/
 			|| flashNotification == FlashNotification.DISABLED)
 		{
 			flashStart = null;
@@ -292,8 +296,9 @@ public class Notifier
 					return;
 				case SOLID_UNTIL_CANCELLED:
 				case FLASH_UNTIL_CANCELLED:
+					// TODO J
 					// Any interaction with the client since the notification started will cancel it after the minimum duration
-					if ((client.getMouseIdleTicks() < MINIMUM_FLASH_DURATION_TICKS
+					/*if ((client.getMouseIdleTicks() < MINIMUM_FLASH_DURATION_TICKS
 						|| client.getKeyboardIdleTicks() < MINIMUM_FLASH_DURATION_TICKS
 						|| client.getMouseLastPressedMillis() > mouseLastPressedMillis) && clientUI.isFocused())
 					{
@@ -301,12 +306,13 @@ public class Notifier
 						flashNotification = null;
 						flashColor = null;
 						return;
-					}
+					}*/
 					break;
 			}
 		}
 
-		if (client.getGameCycle() % 40 >= 20
+		// TODO J
+		/*if (client.getGameCycle() % 40 >= 20
 			// For solid colour, fall through every time.
 			&& (flashNotification == FlashNotification.FLASH_TWO_SECONDS
 			|| flashNotification == FlashNotification.FLASH_UNTIL_CANCELLED))
@@ -317,7 +323,7 @@ public class Notifier
 		final Color color = graphics.getColor();
 		graphics.setColor(flashColor);
 		graphics.fill(new Rectangle(client.getCanvas().getSize()));
-		graphics.setColor(color);
+		graphics.setColor(color);*/
 	}
 
 	private void sendNotification(

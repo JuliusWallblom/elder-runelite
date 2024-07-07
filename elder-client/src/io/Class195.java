@@ -143,7 +143,7 @@ public final class Class195 {
 
 	Class195(byte[] is, int i) {
 		try {
-			((Class195) this).anInt2736 = Class_o.method2945((byte) 54, is.length, is);
+			((Class195) this).anInt2736 = GameEngine.method2945((byte) 54, is.length, is);
 			if (((Class195) this).anInt2736 != i)
 				throw new RuntimeException();
 			method1275(is, 1);

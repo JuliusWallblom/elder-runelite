@@ -56,7 +56,10 @@ import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 import javax.annotation.Nonnull;
 import javax.swing.SwingUtilities;
+
+import io.GameConstants;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.RuntimeConfig;
@@ -137,17 +140,17 @@ public class ClientLoader implements Supplier<Applet>
 				StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE);
 				@SuppressWarnings("PMD.UnusedLocalVariable") FileLock flock = lockfile.lock())
 			{
-				SplashScreen.stage(.05, null, "Downloading Old School RuneScape");
+				SplashScreen.stage(.05, null, "Attaching " + GameConstants.NAME);
 				try
 				{
-					updateVanilla(config);
+					//updateVanilla(config);
 				}
-				catch (IOException ex)
+				catch (Exception ex)
 				{
 					// try again with the fallback config and gamepack
 					if (javConfigUrl.equals(RuneLiteProperties.getJavConfig()) && !config.isFallback())
 					{
-						log.warn("Unable to download game client, attempting to use fallback config", ex);
+						log.warn("Unable to attach game client, attempting to use fallback config", ex);
 						config = downloadFallbackConfig();
 						updateVanilla(config);
 					}
@@ -170,7 +173,7 @@ public class ClientLoader implements Supplier<Applet>
 				classLoader = createJarClassLoader(jarFile);
 			}
 
-			SplashScreen.stage(.465, "Starting", "Starting Old School RuneScape");
+			SplashScreen.stage(.465, "Starting", "Starting " + GameConstants.NAME);
 
 			Applet rs = loadClient(config, classLoader);
 
@@ -182,8 +185,8 @@ public class ClientLoader implements Supplier<Applet>
 		{
 			return e;
 		}
-		catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException
-			| VerificationException | SecurityException e)
+		catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException |
+               SecurityException | VerificationException e)
 		{
 			log.error("Error loading RS!", e);
 
@@ -569,10 +572,9 @@ public class ClientLoader implements Supplier<Applet>
 
 	private Applet loadClient(RSConfig config, ClassLoader classLoader) throws ClassNotFoundException, IllegalAccessException, InstantiationException
 	{
-		/*String initialClass = config.getInitialClass();
-		Class<?> clientClass = classLoader.loadClass(initialClass);
+		return RuneLite.elderApplet;
 
-		Applet rs = (Applet) clientClass.newInstance();
+		/*Applet rs = (Applet) RuneLite.elderApplet;
 		rs.setStub(new RSAppletStub(config, runtimeConfigLoader));
 
 		if (rs instanceof Client)
@@ -581,8 +583,6 @@ public class ClientLoader implements Supplier<Applet>
 		}
 
 		return rs;*/
-
-		return RuneLite.elderApplet;
 	}
 
 	private static Certificate[] loadCertificateChain(String name)

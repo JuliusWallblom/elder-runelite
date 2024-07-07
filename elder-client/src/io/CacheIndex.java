@@ -318,7 +318,7 @@ public final class CacheIndex {
 			try {
 				is_27_ = Class130_Sub8.method2349(is_26_, false);
 			} catch (RuntimeException runtimeexception) {
-				throw Class193.method1272(runtimeexception, ("T3 - " + (is != null) + "," + i + "," + is_26_.length + "," + Class_o.method2945((byte) 37, is_26_.length, is_26_) + "," + Class_o.method2945((byte) -95, is_26_.length - 2, is_26_) + "," + ((Class195) aClass195_151).anIntArray2730[i] + "," + ((Class195) aClass195_151).anInt2736));
+				throw Class193.method1272(runtimeexception, ("T3 - " + (is != null) + "," + i + "," + is_26_.length + "," + GameEngine.method2945((byte) 37, is_26_.length, is_26_) + "," + GameEngine.method2945((byte) -95, is_26_.length - 2, is_26_) + "," + ((Class195) aClass195_151).anIntArray2730[i] + "," + ((Class195) aClass195_151).anInt2736));
 			}
 			if (aBool135)
 				anObjectArray147[i] = null;

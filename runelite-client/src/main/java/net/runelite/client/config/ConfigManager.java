@@ -112,7 +112,7 @@ public class ConfigManager
 	private final String configProfileName;
 	private final EventBus eventBus;
 	@Nullable
-	private final Client client;
+	private final io.Client client;
 	private final Gson gson;
 	@Nonnull
 	private final ConfigClient configClient;
@@ -138,7 +138,7 @@ public class ConfigManager
 		@Nullable @Named("profile") String profile,
 		ScheduledExecutorService scheduledExecutorService,
 		EventBus eventBus,
-		@Nullable Client client,
+		@Nullable io.Client client,
 		Gson gson,
 		@Nonnull ConfigClient configClient,
 		ProfileManager profileManager,
@@ -938,7 +938,8 @@ public class ConfigManager
 				return;
 			}
 
-			String displayName = null;
+			// TODO J
+			/*String displayName = null;
 			Player p = client.getLocalPlayer();
 			if (p == null)
 			{
@@ -960,7 +961,7 @@ public class ConfigManager
 			this.rsProfileKey = rsProfileKey;
 
 			log.debug("RS profile changed to {}", rsProfileKey);
-			eventBus.post(new RuneScapeProfileChanged());
+			eventBus.post(new RuneScapeProfileChanged());*/
 		}
 		setConfiguration(groupName, rsProfileKey, key, value);
 	}
@@ -1557,7 +1558,9 @@ public class ConfigManager
 		}
 
 		List<RuneScapeProfile> profiles = getRSProfiles();
-		RuneScapeProfile prof = findRSProfile(profiles, client.getAccountHash(), RuneScapeProfileType.getCurrent(client), null, false);
+
+		// TODO J
+		/*RuneScapeProfile prof = findRSProfile(profiles, client.getAccountHash(), RuneScapeProfileType.getCurrent(client), null, false);
 
 		String key = prof == null ? null : prof.getKey();
 		if (Objects.equals(key, rsProfileKey))
@@ -1567,7 +1570,7 @@ public class ConfigManager
 		rsProfileKey = key;
 
 		log.debug("RS profile changed to {}", key);
-		eventBus.post(new RuneScapeProfileChanged());
+		eventBus.post(new RuneScapeProfileChanged());*/
 	}
 
 	@Subscribe
@@ -1585,11 +1588,12 @@ public class ConfigManager
 	@Subscribe
 	private void onPlayerChanged(PlayerChanged ev)
 	{
-		if (ev.getPlayer() == client.getLocalPlayer())
+		// TODO J
+		/*if (ev.getPlayer() == client.getLocalPlayer())
 		{
 			String name = ev.getPlayer().getName();
 			setRSProfileConfiguration(RSPROFILE_GROUP, RSPROFILE_DISPLAY_NAME, name);
-		}
+		}*/
 	}
 
 	@Subscribe

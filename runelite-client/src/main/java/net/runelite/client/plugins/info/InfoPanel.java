@@ -72,7 +72,7 @@ public class InfoPanel extends PluginPanel
 
 	@Inject
 	@Nullable
-	private Client client;
+	private io.Client client;
 
 	@Inject
 	private EventBus eventBus;
@@ -134,7 +134,7 @@ public class InfoPanel extends PluginPanel
 		String engineVer = "Unknown";
 		if (client != null)
 		{
-			engineVer = String.format("Rev %d", client.getRevision());
+			engineVer = String.format("Rev %d", client.getBuildID());
 		}
 
 		revision.setText(htmlLabel("Oldschool revision: ", engineVer));

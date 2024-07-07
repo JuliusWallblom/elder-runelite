@@ -67,13 +67,13 @@ public class WorldMapOverlay extends Overlay
 	private static final Splitter TOOLTIP_SPLITTER = Splitter.on("<br>").trimResults().omitEmptyStrings();
 
 	private final WorldMapPointManager worldMapPointManager;
-	private final Client client;
+	private final io.Client client;
 
 	private WorldMapPoint hoveredPoint;
 
 	@Inject
 	private WorldMapOverlay(
-		Client client,
+		io.Client client,
 		WorldMapPointManager worldMapPointManager)
 	{
 		this.client = client;
@@ -87,7 +87,8 @@ public class WorldMapOverlay extends Overlay
 	@Override
 	public Dimension render(Graphics2D graphics)
 	{
-		final List<WorldMapPoint> points = worldMapPointManager.getWorldMapPoints();
+		// TODO J
+		/*final List<WorldMapPoint> points = worldMapPointManager.getWorldMapPoints();
 
 		if (points.isEmpty())
 		{
@@ -239,6 +240,7 @@ public class WorldMapOverlay extends Overlay
 			drawTooltip(graphics, tooltipPoint);
 		}
 
+		return null;*/
 		return null;
 	}
 
@@ -250,7 +252,8 @@ public class WorldMapOverlay extends Overlay
 	 */
 	public Point mapWorldPointToGraphicsPoint(WorldPoint worldPoint)
 	{
-		WorldMap worldMap = client.getWorldMap();
+		// TODO J
+		/*WorldMap worldMap = client.getWorldMap();
 
 		if (!worldMap.getWorldMapData().surfaceContainsPosition(worldPoint.getX(), worldPoint.getY()))
 		{
@@ -287,6 +290,7 @@ public class WorldMapOverlay extends Overlay
 
 			return new Point(xGraphDiff, yGraphDiff);
 		}
+		return null;*/
 		return null;
 	}
 
@@ -299,7 +303,8 @@ public class WorldMapOverlay extends Overlay
 	 */
 	private Shape getWorldMapClipArea(Rectangle baseRectangle)
 	{
-		final Widget overview = client.getWidget(ComponentID.WORLD_MAP_OVERVIEW_MAP);
+		// TODO J
+		/*final Widget overview = client.getWidget(ComponentID.WORLD_MAP_OVERVIEW_MAP);
 		final Widget surfaceSelector = client.getWidget(ComponentID.WORLD_MAP_SURFACE_SELECTOR);
 
 		Area clipArea = new Area(baseRectangle);
@@ -319,7 +324,8 @@ public class WorldMapOverlay extends Overlay
 
 		// The sun g2d implementation is much more efficient at applying clips which are subclasses of rectangle2d,
 		// so use that as the clip shape if possible
-		return subtracted ? clipArea : baseRectangle;
+		return subtracted ? clipArea : baseRectangle;*/
+		return null;
 	}
 
 	private void drawTooltip(Graphics2D graphics, WorldMapPoint worldPoint)
@@ -340,7 +346,8 @@ public class WorldMapOverlay extends Overlay
 
 		drawPoint = new Point(drawPoint.getX() + TOOLTIP_OFFSET_WIDTH, drawPoint.getY() + TOOLTIP_OFFSET_HEIGHT);
 
-		final Rectangle bounds = new Rectangle(0, 0, client.getCanvasWidth(), client.getCanvasHeight());
+		// TODO J
+		/*final Rectangle bounds = new Rectangle(0, 0, client.getCanvasWidth(), client.getCanvasHeight());
 		final Shape mapArea = getWorldMapClipArea(bounds);
 		graphics.setClip(mapArea);
 		graphics.setColor(JagexColors.TOOLTIP_BACKGROUND);
@@ -359,7 +366,7 @@ public class WorldMapOverlay extends Overlay
 		for (int i = 0; i < rows.size(); i++)
 		{
 			graphics.drawString(rows.get(i), drawPoint.getX(), drawPoint.getY() + TOOLTIP_TEXT_OFFSET_HEIGHT + (i + 1) * height);
-		}
+		}*/
 	}
 
 	private Point clipToRectangle(Point drawPoint, Rectangle mapDisplayRectangle)

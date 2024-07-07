@@ -130,8 +130,9 @@ public class DevToolsPlugin extends Plugin
 	@Inject
 	private ConfigManager configManager;
 
-	@Inject
-	private ChatMessageManager chatMessageManager;
+	// TODO J
+	//@Inject
+	//private ChatMessageManager chatMessageManager;
 
 	@Inject
 	private DevToolsConfig config;
@@ -523,10 +524,12 @@ public class DevToolsPlugin extends Plugin
 					configManager.setConfiguration(group, key, value);
 					message = String.format("Set configuration %s.%s to %s (was: %s)", group, key, value, current);
 				}
-				chatMessageManager.queue(QueuedMessage.builder()
+
+				// TODO J
+				/*chatMessageManager.queue(QueuedMessage.builder()
 					.type(ChatMessageType.GAMEMESSAGE)
 					.runeLiteFormattedMessage(new ChatMessageBuilder().append(message).build())
-					.build());
+					.build());*/
 				break;
 			}
 			case "getconf":
@@ -534,10 +537,12 @@ public class DevToolsPlugin extends Plugin
 				String group = args[0], key = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 				String value = configManager.getConfiguration(group, key);
 				final String message = String.format("%s.%s = %s", group, key, value);
-				chatMessageManager.queue(QueuedMessage.builder()
+
+				// TODO J
+				/*chatMessageManager.queue(QueuedMessage.builder()
 					.type(ChatMessageType.GAMEMESSAGE)
 					.runeLiteFormattedMessage(new ChatMessageBuilder().append(message).build())
-					.build());
+					.build());*/
 				break;
 			}
 			case "modicons":
@@ -553,10 +558,12 @@ public class DevToolsPlugin extends Plugin
 						builder.append(", ");
 					}
 				}
-				chatMessageManager.queue(QueuedMessage.builder()
+
+				// TODO J
+				/*chatMessageManager.queue(QueuedMessage.builder()
 					.type(ChatMessageType.GAMEMESSAGE)
 					.runeLiteFormattedMessage(builder.build())
-					.build());
+					.build());*/
 				break;
 			}
 		}

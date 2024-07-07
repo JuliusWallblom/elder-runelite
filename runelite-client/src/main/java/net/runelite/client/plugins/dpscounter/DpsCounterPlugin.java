@@ -124,7 +124,7 @@ public class DpsCounterPlugin extends Plugin
 	);
 
 	@Inject
-	private Client client;
+	private io.Client client;
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -177,7 +177,7 @@ public class DpsCounterPlugin extends Plugin
 	@Subscribe
 	public void onHitsplatApplied(HitsplatApplied hitsplatApplied)
 	{
-		Player player = client.getLocalPlayer();
+		Player player = null;
 		Actor actor = hitsplatApplied.getActor();
 		if (!(actor instanceof NPC))
 		{

@@ -809,10 +809,11 @@ public class ClientUI
 			return true;
 		}
 
-		if (config.warningOnExit() == WarningOnExit.LOGGED_IN && client instanceof Client)
+		// TODO J
+		/*if (config.warningOnExit() == WarningOnExit.LOGGED_IN && client instanceof io.Client)
 		{
-			return ((Client) client).getGameState() != GameState.LOGIN_SCREEN;
-		}
+			return ((io.Client) client).getGameState() != GameState.LOGIN_SCREEN;
+		}*/
 
 		return false;
 	}
