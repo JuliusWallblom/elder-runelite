@@ -4916,12 +4916,12 @@ public final class Client extends GameEngine implements RSClient {
 
 	@Override
 	public IntPredicate getAnimationInterpolationFilter() {
-		return null;
+		return value -> Settings.force_tweening;
 	}
 
 	@Override
 	public void setAnimationInterpolationFilter(IntPredicate filter) {
-
+		Settings.force_tweening = !Settings.force_tweening;
 	}
 
 	@Override
