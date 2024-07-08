@@ -1,7 +1,6 @@
 package io;
 
 import io.cache.Cache;
-import io.cache.IndexConstants;
 import io.cache.Revision;
 
 final class Class59_Sub1_Sub2 extends Class59_Sub1 implements Class_f {
@@ -307,7 +306,7 @@ final class Class59_Sub1_Sub2 extends Class59_Sub1 implements Class_f {
 				MapRegion.aClass191_3663.method1260(i_20_, 8);
 				Class179.aClass228_2518.method1458(i_20_, 1);
 				Class195.aClass177_2745.method1160(i_20_, false);
-				Class_o.method2954(i_20_, (byte) -94);
+				GameEngine.method2954(i_20_, (byte) -94);
 				Class246_Sub1_Sub15_Sub2.method2897((byte) -3, i_20_);
 				Class102.method639(1, i_20_);
 				Class59_Sub3_Sub1.method2442(i ^ i, i_20_);

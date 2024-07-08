@@ -123,7 +123,7 @@ final class Class91 {
 			Class246_Sub37_Sub1.f_vb = 0;
 			Class134.anInt1847 = 0;
 			Class21_Sub3.anInt4726 = 0;
-			Class_o.anInt7207 = 0;
+			GameEngine.anInt7207 = 0;
 			HDModel.anInt4600 = 0;
 			FloorDefinition.anInt2915 = 0;
 			Class260_Sub2.anInt4227 = 0;
@@ -135,7 +135,7 @@ final class Class91 {
 			Class106_Sub2.anInt5334 = 0;
 			Class246_Sub1_Sub15_Sub2.anInt7080 = 0;
 			TextureOperation.anInt4937 = 0;
-			Class_o.anInt7218 = 0;
+			GameEngine.anInt7218 = 0;
 			KeyHandler.anInt5537 = 0;
 			Class246_Sub19_Sub2.anInt6806 = 0;
 			Class251.anInt3545 = 0;
@@ -275,12 +275,12 @@ final class Class91 {
 			Class246_Sub1_Sub16.anInt6686 = 0;
 			ScriptEvent.anInt4967 = 0;
 			Class246_Sub28_Sub33.anInt6960 = 0;
-			Class_o.anInt7203 = 0;
+			GameEngine.anInt7203 = 0;
 			Class59_Sub3_Sub2.anInt5877 = 0;
 			IncomingPacket.anInt184 = 0;
 			Class109.anInt1547 = 0;
 			Class260_Sub2.f_jc = 0;
-			Class_o.anInt7199 = 0;
+			GameEngine.anInt7199 = 0;
 			Class134.anInt1851 = 0;
 			EnumType.anInt2556 = 0;
 			Font.anInt1616 = 0;
@@ -395,7 +395,7 @@ final class Class91 {
 			Class246_Sub7_Sub1.anInt6086 = 0;
 			Class211.anInt2961 = 0;
 			Class205.anInt2888 = 0;
-			Class_o.anInt7204 = 0;
+			GameEngine.anInt7204 = 0;
 			Class_a.anInt1174 = 0;
 			Class166.anInt2348 = 0;
 			Class179.anInt2513 = 0;
@@ -453,7 +453,7 @@ final class Class91 {
 			Class160.anInt2261 = 0;
 			Class_c_Sub1.anInt5390 = 0;
 			Class59_Sub3_Sub3.anInt6264 = 0;
-			Class_o.anInt7187 = 0;
+			GameEngine.anInt7187 = 0;
 			ParamLoader.anInt2314 = 0;
 			Class260_Sub2.anInt4211 = 0;
 			Class246_Sub1_Sub3.anInt5706 = 0;
@@ -574,7 +574,7 @@ final class Class91 {
 			SequenceType.anInt1728 = 0;
 			Texture.anInt6557 = 0;
 			Class246_Sub23.anInt4818 = 0;
-			Class_o.anInt7220 = 0;
+			GameEngine.anInt7220 = 0;
 			SequenceLoader.anInt6742 = 0;
 			Class260_Sub2.anInt4206 = 0;
 			Class260_Sub2.anInt4302 = 0;
@@ -662,7 +662,7 @@ final class Class91 {
 			Class246_Sub28_Sub24.anInt6679 = 0;
 			Class246_Sub37_Sub1.anInt5947 = 0;
 			Class_l_Sub2.anInt5480 = 0;
-			Class_o.anInt7212 = 0;
+			GameEngine.anInt7212 = 0;
 			Class_l_Sub2.anInt5464 = 0;
 			CollisionMap.anInt2827 = 0;
 			Class242.anInt3423 = 0;
@@ -707,7 +707,7 @@ final class Class91 {
 			Class246_Sub5.anInt3883 = 0;
 			Entity.anInt6469 = 0;
 			SubScript.anInt1166 = 0;
-			Class_o.anInt7191 = 0;
+			GameEngine.anInt7191 = 0;
 			Class246_Sub28_Sub32.anInt6934 = 0;
 			Buffer.anInt5641 = 0;
 			Class15.anInt232 = 0;
@@ -775,7 +775,7 @@ final class Class91 {
 			FontMetric.anInt954 = 0;
 			Class95.anInt1238 = 0;
 			Class246_Sub1_Sub15_Sub2.anInt7079 = 0;
-			Class_o.anInt7213 = 0;
+			GameEngine.anInt7213 = 0;
 			Class249.anInt3504 = 0;
 			Class256.anInt3681 = 0;
 			Class191.anInt2684 = 0;
@@ -877,7 +877,7 @@ final class Class91 {
 			Class_ds.anInt6721 = 0;
 			Class59_Sub3_Sub3.anInt6270 = 0;
 			Buffer.anInt5624 = 0;
-			Class_o.anInt7214 = 0;
+			GameEngine.anInt7214 = 0;
 			Class206.anInt2894 = 0;
 			Class133.anInt1836 = 0;
 			OverlayLoader.anInt2473 = 0;
@@ -903,7 +903,7 @@ final class Class91 {
 			Class246_Sub1_Sub10.anInt6214 = 0;
 			Class149.anInt2187 = 0;
 			Material.anInt3357 = 0;
-			Class_o.anInt7209 = 0;
+			GameEngine.anInt7209 = 0;
 			Class107.anInt1506 = 0;
 			Class128_Sub1.anInt5559 = 0;
 			Class246_Sub2.anInt3803 = 0;
@@ -914,7 +914,7 @@ final class Class91 {
 			Buffer.anInt5623 = 0;
 			TransformList.anInt4891 = 0;
 			Class246_Sub7.anInt3970 = 0;
-			Class_o.anInt7194 = 0;
+			GameEngine.anInt7194 = 0;
 			Class51.anInt725 = 0;
 			Class_l_Sub2.anInt5451 = 0;
 			Class260_Sub2.anInt4228 = 0;
@@ -944,7 +944,7 @@ final class Class91 {
 			Class_c_Sub1.anInt5379 = 0;
 			Class211.anInt2965 = 0;
 			FontMetric.anInt956 = 0;
-			Class_o.anInt7197 = 0;
+			GameEngine.anInt7197 = 0;
 			Class246_Sub38.anInt5436 = 0;
 			Class260_Sub2.anInt4197 = 0;
 			InputStream_Sub1.anInt4827 = 0;
@@ -1051,7 +1051,7 @@ final class Class91 {
 			Class59_Sub2_Sub3.anInt6621 = 0;
 			Class187_Sub1.anInt4873 = 0;
 			Class59_Sub3_Sub1.anInt5744 = 0;
-			Class_o.anInt7216 = 0;
+			GameEngine.anInt7216 = 0;
 			Class6.anInt90 = 0;
 			Class188.anInt2661 = 0;
 			ScriptExecutor.anInt2117 = 0;
@@ -1102,7 +1102,7 @@ final class Class91 {
 			Filestore.anInt2061 = 0;
 			Class40_Sub7.anInt5176 = 0;
 			Class59_Sub1_Sub2.anInt6118 = 0;
-			Class_o.anInt7196 = 0;
+			GameEngine.anInt7196 = 0;
 			Class194_Sub2.anInt4951 = 0;
 			HDModel.f_hc = 0;
 			Class214.anInt2995 = 0;
@@ -1132,7 +1132,7 @@ final class Class91 {
 			NpcType.f_gb = 0;
 			Class134.anInt1863 = 0;
 			MouseHandler.anInt4447 = 0;
-			Class_o.anInt7210 = 0;
+			GameEngine.anInt7210 = 0;
 			Class40_Sub3.anInt4068 = 0;
 			Class46.anInt667 = 0;
 			Class84.anInt1098 = 0;
@@ -1150,7 +1150,7 @@ final class Class91 {
 			Class12.anInt172 = 0;
 			Class246_Sub28_Sub16.anInt6397 = 0;
 			Class246_Sub17.anInt4644 = 0;
-			Class_o.anInt7195 = 0;
+			GameEngine.anInt7195 = 0;
 			Class177.anInt2489 = 0;
 			Class15.anInt230 = 0;
 			AbstractModel.anInt1437 = 0;
@@ -1170,7 +1170,7 @@ final class Class91 {
 			Filestore.anInt2048 = 0;
 			AbstractModel.anInt1436 = 0;
 			Class34.anInt453 = 0;
-			Class_o.anInt7206 = 0;
+			GameEngine.anInt7206 = 0;
 			Class246_Sub4.anInt3866 = 0;
 			Class260_Sub2.anInt4213 = 0;
 			Class260_Sub2.anInt4222 = 0;
@@ -1346,7 +1346,7 @@ final class Class91 {
 			Class250.anInt3527 = 0;
 			Class246_Sub1_Sub3.anInt5700 = 0;
 			Class187.anInt2640 = 0;
-			Class_o.anInt7193 = 0;
+			GameEngine.anInt7193 = 0;
 			Class14.anInt210 = 0;
 			Class166.anInt2351 = 0;
 			Class259_Sub3_Sub1.anInt6898 = 0;
@@ -1447,7 +1447,7 @@ final class Class91 {
 			CollisionMap.anInt2831 = 0;
 			MapFunctions.anInt2326 = 0;
 			Buffer.anInt5663 = 0;
-			Class_o.anInt7211 = 0;
+			GameEngine.anInt7211 = 0;
 			Class250.anInt3530 = 0;
 			Class69.anInt908 = 0;
 			Class260_Sub2.f_oc = 0;
@@ -1606,7 +1606,7 @@ final class Class91 {
 			Buffer.anInt5627 = 0;
 			Client.anInt7246 = 0;
 			Class180.anInt2525 = 0;
-			Class_o.anInt7200 = 0;
+			GameEngine.anInt7200 = 0;
 			Class40_Sub8.anInt5194 = 0;
 			Class246_Sub13.anInt4424 = 0;
 			Class100.anInt1296 = 0;
@@ -1765,7 +1765,7 @@ final class Class91 {
 			Buffer.anInt5640 = 0;
 			Player.anInt7114 = 0;
 			Class154_Sub1.anInt4797 = 0;
-			Class_o.anInt7222 = 0;
+			GameEngine.anInt7222 = 0;
 			Class260_Sub2.anInt4285 = 0;
 			Class60.anInt836 = 0;
 			Class246_Sub28_Sub2.anInt5804 = 0;
@@ -1792,7 +1792,7 @@ final class Class91 {
 			Class59_Sub1_Sub3.anInt6332 = 0;
 			Class260_Sub2.f_fc = 0;
 			Player.f_ad = 0;
-			Class_o.anInt7188 = 0;
+			GameEngine.anInt7188 = 0;
 			Stream_Sub2.anInt6183 = 0;
 			Class59_Sub3_Sub2.anInt5882 = 0;
 			Buffer.f_wb = 0;
@@ -1849,7 +1849,7 @@ final class Class91 {
 			Class59_Sub2_Sub2.anInt6012 = 0;
 			Class246_Sub28_Sub19.anInt6535 = 0;
 			Entity.anInt6430 = 0;
-			Class_o.anInt7202 = 0;
+			GameEngine.anInt7202 = 0;
 			Class134.anInt1860 = 0;
 			Class246_Sub38.anInt5430 = 0;
 			Buffer.anInt5634 = 0;
@@ -1944,11 +1944,11 @@ final class Class91 {
 			Class246_Sub28_Sub3.anInt5895 = 0;
 			Class260_Sub2.f_bd = 0;
 			Class187_Sub2.anInt5417 = 0;
-			Class_o.anInt7217 = 0;
+			GameEngine.anInt7217 = 0;
 			OverlayLoader.anInt2472 = 0;
 			Class125.anInt1760 = 0;
 			CacheIndex.anInt139 = 0;
-			Class_o.anInt7192 = 0;
+			GameEngine.anInt7192 = 0;
 			Class246_Sub1_Sub3.anInt5704 = 0;
 			Class24.anInt336 = 0;
 			Class109.anInt1550 = 0;
@@ -2160,7 +2160,7 @@ final class Class91 {
 			Class59_Sub1_Sub2.anInt6112 = 0;
 			Class6.anInt80 = 0;
 			Class203.anInt2874 = 0;
-			Class_o.anInt7221 = 0;
+			GameEngine.anInt7221 = 0;
 			Class260_Sub2.anInt4254 = 0;
 			Class246_Sub13.anInt4425 = 0;
 			Class154_Sub1.anInt4801 = 0;
@@ -2218,7 +2218,7 @@ final class Class91 {
 			ContextMenus.anInt6575 = 0;
 			Widget.anInt3196 = 0;
 			Class59_Sub1_Sub1.anInt5993 = 0;
-			Class_o.anInt7205 = 0;
+			GameEngine.anInt7205 = 0;
 			MapRegion.anInt3669 = 0;
 			Class133.anInt1840 = 0;
 			Class3.anInt30 = 0;
@@ -2358,7 +2358,7 @@ final class Class91 {
 			SubScript.anInt1162 = 0;
 			Class123.anInt1701 = 0;
 			Stream_Sub1.anInt5861 = 0;
-			Class_o.anInt7186 = 0;
+			GameEngine.anInt7186 = 0;
 			Class59_Sub3_Sub3.anInt6263 = 0;
 			Class36.anInt510 = 0;
 			Class260_Sub2.anInt4298 = 0;
@@ -2447,7 +2447,7 @@ final class Class91 {
 			Class59_Sub3_Sub4.anInt6972 = 0;
 			Renderer.anInt578 = 0;
 			HDModel.f_dc = 0;
-			Class_o.anInt7215 = 0;
+			GameEngine.anInt7215 = 0;
 			Class59_Sub2_Sub1.anInt5768 = 0;
 			CollisionMap.anInt2842 = 0;
 			Class14.anInt191 = 0;
@@ -2597,7 +2597,7 @@ final class Class91 {
 			Class166.anInt2359 = 0;
 			Class260_Sub2.anInt4279 = 0;
 			TextureOperation.anInt4941 = 0;
-			Class_o.anInt7198 = 0;
+			GameEngine.anInt7198 = 0;
 			Class129.anInt1800 = 0;
 			MapRegion.anInt3644 = 0;
 			Class136.anInt1941 = 0;
@@ -2632,7 +2632,7 @@ final class Class91 {
 			Class246_Sub37_Sub1.f_cb = 0;
 			Class260_Sub2.anInt4194 = 0;
 			Class6.anInt71 = 0;
-			Class_o.anInt7201 = 0;
+			GameEngine.anInt7201 = 0;
 			SceneGraph.anInt3717 = 0;
 			Model.anInt1349 = 0;
 			TransformList.anInt4887 = 0;
@@ -2685,7 +2685,7 @@ final class Class91 {
 			Class246_Sub28_Sub34.anInt7005 = 0;
 			Class21_Sub1.anInt3899 = 0;
 			ClickMaskNode.anInt4904 = 0;
-			Class_o.anInt7189 = 0;
+			GameEngine.anInt7189 = 0;
 			ContextMenus.anInt6578 = 0;
 			Class246_Sub1_Sub4_Sub1.anInt7067 = 0;
 			Class260_Sub2.anInt4231 = 0;
@@ -2760,7 +2760,7 @@ final class Class91 {
 			Class154_Sub1.anInt4776 = 0;
 			Class255_Sub1.anInt5572 = 0;
 			Class168.anInt2396 = 0;
-			Class_o.anInt7219 = 0;
+			GameEngine.anInt7219 = 0;
 			Class59_Sub3_Sub4.anInt6995 = 0;
 			Class247.anInt3475 = 0;
 			Class246_Sub38.anInt5432 = 0;
@@ -2808,7 +2808,7 @@ final class Class91 {
 				VarcLoader.aClass_r_Sub2Array1002[i_3_] = null;
 			Class12.aClass166_180.method1102(-73);
 			ScriptEvent.aClass166_4968.method1102(-74);
-			Class_o.aClass68_7208.method443(117);
+			GameEngine.aClass68_7208.method443(117);
 			Class251.aClass85_3551.method543(0);
 			InvTypeLoader.aClass166_846 = new Class166();
 			Client.anInt3969 = 0;

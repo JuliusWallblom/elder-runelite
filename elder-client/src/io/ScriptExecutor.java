@@ -1,10 +1,8 @@
 package io;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
 import io.cache.Cache;
 import io.cache.IndexConstants;
@@ -5234,7 +5232,7 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 6203) {
-				Class_o.method2944(0, ((Widget) Class104.f_vb).screen_width, (byte) -21, 0, false,
+				GameEngine.method2944(0, ((Widget) Class104.f_vb).screen_width, (byte) -21, 0, false,
 						((Widget) Class104.f_vb).screen_height);
 				CS2Script.int_stack[CS2Script.int_stack_size++] = Class179.anInt2512;
 				CS2Script.int_stack[CS2Script.int_stack_size++] = Class59_Sub1_Sub2.anInt6133;

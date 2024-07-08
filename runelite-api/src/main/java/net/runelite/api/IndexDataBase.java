@@ -41,5 +41,15 @@ public interface IndexDataBase
 	 */
 	int[] getFileIds(int archiveId);
 
+	int getGroupCount();
+
+	byte[] getConfigData(int archiveId, int fileId);
+
+	int[][] getFileIds();
+
 	byte[] loadData(int archiveID, int fileID);
+
+	int getGroupFileCount(int groupId);
+
+	int[] getFileCounts();
 }

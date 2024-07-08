@@ -24,11 +24,27 @@
  */
 package net.runelite.api;
 
+import java.util.Map;
+
 /**
  * Stores the clients persisting preferences.
  */
 public interface Preferences
 {
+	/**
+	 * Is hide roofs?
+	 *
+	 * @return true if hiding roofs
+	 */
+	boolean isHidingRoofs();
+
+	/**
+	 * Set hide roofs
+	 *
+	 * @param hidden
+	 */
+	void setHidingRoofs(boolean hidden);
+
 	/**
 	 * Gets the remembered login username.
 	 *
@@ -71,4 +87,121 @@ public interface Preferences
 	 * Gets if the login name should be replaced with asterisks
 	 */
 	boolean getHideUsername();
+
+	/**
+	 * Set login name replacement with asterisks
+	 *
+	 * @param hide
+	 */
+	void setHideUsername(boolean hide);
+
+	/**
+	 * Is title music disabled?
+	 *
+	 * @return true if title music is disabled
+	 */
+	boolean isTitleMusicDisabled();
+
+	/**
+	 * Set title music disabled
+	 *
+	 * @param disabled
+	 */
+	void setTitleMusicDisabled(boolean disabled);
+
+	/**
+	 * Is displaying fps?
+	 *
+	 * @return true if displaying fps
+	 */
+	boolean isDisplayFps();
+
+	/**
+	 * Set display fps
+	 *
+	 * @param displayFps
+	 */
+	void setDisplayFps(boolean displayFps);
+
+	/**
+	 * Get screen brightness
+	 *
+	 * @return the screen brightness
+	 */
+	double getBrightness();
+
+	/**
+	 * Set screen brightness
+	 *
+	 * @param brightness
+	 */
+	void setBrightness(double brightness);
+
+	/**
+	 * Get music volume
+	 *
+	 * @return the music volume
+	 */
+	int getMusicVolume();
+
+	/**
+	 * Set music volume
+	 *
+	 * @param volume
+	 */
+	void setMusicVolume(int volume);
+
+	/**
+	 * Get eula
+	 *
+	 * @return the eula
+	 */
+	int getEula();
+
+	/**
+	 * Set eula
+	 *
+	 * @param eula
+	 */
+	void setEula(int eula);
+
+	/**
+	 * Set window mode
+	 *
+	 * @param mode
+	 */
+	void setWindowMode(int mode);
+
+	/**
+	 * Get window mode
+	 *
+	 * @return the window mode
+	 */
+	int getWindowMode();
+
+	/**
+	 * Get draw distance
+	 *
+	 * @return the draw distance
+	 */
+	int getDrawDistance();
+
+	/**
+	 * Set draw distance
+	 *
+	 * @param drawDistance
+	 */
+	void setDrawDistance(int drawDistance);
+
+	/**
+	 * Get parameters
+	 *
+	 * @return parameters
+	 */
+	Map<String, Integer> getParameters();
+
+	/**
+	 * Save preferences after changing
+	 */
+	void savePreferences();
 }

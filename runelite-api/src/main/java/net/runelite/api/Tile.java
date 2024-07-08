@@ -41,6 +41,13 @@ public interface Tile
 	DecorativeObject getDecorativeObject();
 
 	/**
+	 * Sets the object on the decorative layer of the tile.
+	 *
+	 * @param decorativeObject the decorative object
+	 */
+	void setDecorativeObject(DecorativeObject decorativeObject);
+
+	/**
 	 * Gets all game objects on the tile.
 	 *
 	 * @return the game objects
@@ -74,6 +81,13 @@ public interface Tile
 	 * @return the wall object
 	 */
 	WallObject getWallObject();
+
+	/**
+	 * Sets the object on the wall layer of the tile.
+	 *
+	 * @param wallObject the ground object
+	 */
+	void setWallObject(WallObject wallObject);
 
 	/**
 	 * Gets the scene paint of the tile.

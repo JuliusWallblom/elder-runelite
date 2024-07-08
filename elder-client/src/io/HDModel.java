@@ -1295,7 +1295,7 @@ final class HDModel extends AbstractModel {
 					+ ((((Class_c_Sub1) class_c_sub1).aFloat5367 * ((Class_c_Sub1) class_c_sub1_219_).aFloat5382)
 							+ (((Class_c_Sub1) class_c_sub1_219_).aFloat5364
 									* ((Class_c_Sub1) class_c_sub1).aFloat5388)));
-			Class_o.aFloat7226 = ((((Class_c_Sub1) class_c_sub1).aFloat5382
+			GameEngine.aFloat7226 = ((((Class_c_Sub1) class_c_sub1).aFloat5382
 					* ((Class_c_Sub1) class_c_sub1_219_).aFloat5387)
 					+ (((Class_c_Sub1) class_c_sub1).aFloat5387 * ((Class_c_Sub1) class_c_sub1_219_).aFloat5372)
 					+ (((Class_c_Sub1) class_c_sub1).aFloat5378 * ((Class_c_Sub1) class_c_sub1_219_).aFloat5388));
@@ -1374,7 +1374,7 @@ final class HDModel extends AbstractModel {
 						+ (f_231_ * Class246_Sub43.aFloat5603 + Canvas_Sub1.aFloat6894 * f_230_) + f_221_);
 				float f_234_ = (f_230_ * Cursors.aFloat2244 + Class59_Sub4_Sub2.aFloat6845 * f_231_
 						+ f_232_ * RenderSequenceLoader.aFloat1453 + f_220_);
-				float f_235_ = f + (f_230_ * Class_o.aFloat7226 + ContextMenus.aFloat6586 * f_231_
+				float f_235_ = f + (f_230_ * GameEngine.aFloat7226 + ContextMenus.aFloat6586 * f_231_
 						+ Renderer.aFloat579 * f_232_);
 				if (f_233_ >= (float) ((Class260_Sub2) aClass260_Sub2_4636).f_cf) {
 					float f_236_ = ((float) ((Class260_Sub2) aClass260_Sub2_4636).f_vf
@@ -1404,7 +1404,7 @@ final class HDModel extends AbstractModel {
 					float f_239_ = (float) verticesX[i_238_];
 					float f_240_ = (float) verticesY[i_238_];
 					float f_241_ = (float) verticesZ[i_238_];
-					float f_242_ = f + (f_240_ * Class_o.aFloat7226 + ContextMenus.aFloat6586 * f_239_
+					float f_242_ = f + (f_240_ * GameEngine.aFloat7226 + ContextMenus.aFloat6586 * f_239_
 							+ Renderer.aFloat579 * f_241_);
 					float f_243_ = f_221_ + (Class63_Sub1.aFloat4718 * f_241_
 							+ (f_240_ * Canvas_Sub1.aFloat6894 + f_239_ * Class246_Sub43.aFloat5603));
@@ -2009,7 +2009,7 @@ final class HDModel extends AbstractModel {
 							float f_353_ = ((float) ((verticesZ[((Class_j) class_j).anInt1482])
 									+ (verticesZ[((Class_j) class_j).anInt1480])
 									- -(verticesZ[(((Class_j) class_j).anInt1472)])) * 0.3333333F);
-							float f_354_ = (Class128_Sub1.aFloat5561 + (f_352_ * Class_o.aFloat7226
+							float f_354_ = (Class128_Sub1.aFloat5561 + (f_352_ * GameEngine.aFloat7226
 									+ (ContextMenus.aFloat6586 * f_351_) + Renderer.aFloat579 * f_353_));
 							float f_355_ = (f_353_ * RenderSequenceLoader.aFloat1453
 									+ (Class59_Sub4_Sub2.aFloat6845 * f_351_ + f_352_ * Cursors.aFloat2244)
@@ -2075,7 +2075,7 @@ final class HDModel extends AbstractModel {
 				}
 				if (!(f_362_ >= ((Class260_Sub2) aClass260_Sub2_4636).aFloat4389)
 						&& !(f_361_ <= (float) (((Class260_Sub2) aClass260_Sub2_4636).f_cf))) {
-					Class_o.aFloat7226 = ((((Class_c_Sub1) class_c_sub1).aFloat5372
+					GameEngine.aFloat7226 = ((((Class_c_Sub1) class_c_sub1).aFloat5372
 							* ((Class_c_Sub1) class_c_sub1_359_).aFloat5387)
 							+ (((Class_c_Sub1) class_c_sub1_359_).aFloat5382 * ((Class_c_Sub1) class_c_sub1).aFloat5387)
 							+ (((Class_c_Sub1) class_c_sub1).aFloat5388
@@ -2087,8 +2087,8 @@ final class HDModel extends AbstractModel {
 											* (((Class_c_Sub1) class_c_sub1_359_).aFloat5385))
 											+ ((((Class_c_Sub1) class_c_sub1_359_).aFloat5393)
 													* (((Class_c_Sub1) class_c_sub1).aFloat5372)))));
-					float f_363_ = (Class128_Sub1.aFloat5561 + (float) f_lb * Class_o.aFloat7226);
-					float f_364_ = (Class_o.aFloat7226 * (float) aShort4614 + Class128_Sub1.aFloat5561);
+					float f_363_ = (Class128_Sub1.aFloat5561 + (float) f_lb * GameEngine.aFloat7226);
+					float f_364_ = (GameEngine.aFloat7226 * (float) aShort4614 + Class128_Sub1.aFloat5561);
 					float f_365_;
 					float f_366_;
 					if (f_364_ < f_363_) {
@@ -2176,7 +2176,7 @@ final class HDModel extends AbstractModel {
 								int i_371_ = aShort4638 + aShort4622 >> 1;
 								int i_372_ = f_eb - -aShort4590 >> 1;
 								int i_373_ = (int) (Renderer.aFloat579 * (float) i_372_ + (((float) f_lb
-										* Class_o.aFloat7226)
+										* GameEngine.aFloat7226)
 										+ (((float) i_371_ * (ContextMenus.aFloat6586)) + (Class128_Sub1.aFloat5561))));
 								int i_374_ = (int) (((float) i_371_ * Class59_Sub4_Sub2.aFloat6845) + Class55.aFloat783
 										+ (Cursors.aFloat2244 * (float) f_lb)
@@ -2186,7 +2186,7 @@ final class HDModel extends AbstractModel {
 												+ (Canvas_Sub1.aFloat6894 * (float) f_lb)));
 								int i_376_ = (int) ((float) i_372_ * Renderer.aFloat579
 										+ (((float) i_371_ * (ContextMenus.aFloat6586)) + Class128_Sub1.aFloat5561
-												+ ((float) aShort4614 * Class_o.aFloat7226)));
+												+ ((float) aShort4614 * GameEngine.aFloat7226)));
 								int i_377_ = (int) (Class55.aFloat783 + (Class59_Sub4_Sub2.aFloat6845 * (float) i_371_)
 										+ (Cursors.aFloat2244 * (float) aShort4614)
 										+ ((float) i_372_ * RenderSequenceLoader.aFloat1453));
@@ -3267,14 +3267,14 @@ final class HDModel extends AbstractModel {
 							+ (((Class_c_Sub1) class_c_sub1).aFloat5387 * ((Class_c_Sub1) class_c_sub1_604_).aFloat5385)
 							+ (((Class_c_Sub1) class_c_sub1_604_).aFloat5362 * ((Class_c_Sub1) class_c_sub1).aFloat5388)
 							+ ((Class_c_Sub1) class_c_sub1).aFloat5393);
-					Class_o.aFloat7226 = ((((Class_c_Sub1) class_c_sub1_604_).aFloat5378
+					GameEngine.aFloat7226 = ((((Class_c_Sub1) class_c_sub1_604_).aFloat5378
 							* ((Class_c_Sub1) class_c_sub1).aFloat5388)
 							+ ((((Class_c_Sub1) class_c_sub1_604_).aFloat5382
 									* ((Class_c_Sub1) class_c_sub1).aFloat5387)
 									+ (((Class_c_Sub1) class_c_sub1).aFloat5372
 											* (((Class_c_Sub1) class_c_sub1_604_).aFloat5387))));
-					float f_608_ = (Class_o.aFloat7226 * (float) f_lb + Class128_Sub1.aFloat5561);
-					float f_609_ = (Class_o.aFloat7226 * (float) aShort4614 + Class128_Sub1.aFloat5561);
+					float f_608_ = (GameEngine.aFloat7226 * (float) f_lb + Class128_Sub1.aFloat5561);
+					float f_609_ = (GameEngine.aFloat7226 * (float) aShort4614 + Class128_Sub1.aFloat5561);
 					float f_610_;
 					float f_611_;
 					if (f_608_ > f_609_) {
@@ -3365,7 +3365,7 @@ final class HDModel extends AbstractModel {
 								int i_618_ = aShort4590 + f_eb >> 1;
 								int i_619_ = (int) (Renderer.aFloat579 * (float) i_618_
 										+ ((ContextMenus.aFloat6586) * (float) i_617_ + Class128_Sub1.aFloat5561
-												+ (Class_o.aFloat7226 * (float) f_lb)));
+												+ (GameEngine.aFloat7226 * (float) f_lb)));
 								int i_620_ = (int) ((RenderSequenceLoader.aFloat1453 * (float) i_618_)
 										+ ((Cursors.aFloat2244 * (float) f_lb) + (Class55.aFloat783
 												+ ((float) i_617_ * (Class59_Sub4_Sub2.aFloat6845)))));
@@ -3383,7 +3383,7 @@ final class HDModel extends AbstractModel {
 								}
 								int i_622_ = (int) ((float) i_618_ * Renderer.aFloat579
 										+ (Class128_Sub1.aFloat5561 + ((ContextMenus.aFloat6586) * (float) i_617_)
-												+ (Class_o.aFloat7226 * (float) aShort4614)));
+												+ (GameEngine.aFloat7226 * (float) aShort4614)));
 								int i_623_ = (int) (((float) i_618_ * RenderSequenceLoader.aFloat1453)
 										+ ((Cursors.aFloat2244 * (float) aShort4614) + (Class55.aFloat783
 												+ ((float) i_617_ * (Class59_Sub4_Sub2.aFloat6845)))));
@@ -4211,19 +4211,19 @@ final class HDModel extends AbstractModel {
 								float f_758_ = ((float) (((Model) class103).f_fb[i_739_]) / 256.0F);
 								if (i_749_ == 1) {
 									float f_759_ = ((float) (((Model) class103).texTriangleZ[i_739_]) / 1024.0F);
-									Class_o.method2941((((Model) class103).verticesZ[i_750_]), f_758_, i_754_,
+									GameEngine.method2941((((Model) class103).verticesZ[i_750_]), f_758_, i_754_,
 											8, (((Model) class103).verticesY[i_750_]), fs_756_,
 											(((Model) class103).verticesX[i_750_]), i_753_, f_759_, i_757_,
 											i_755_);
 									f_741_ = Class246_Sub1_Sub15.aFloat6601;
 									f = VarcType.aFloat3098;
-									Class_o.method2941((((Model) class103).verticesZ[i_751_]), f_758_, i_754_,
+									GameEngine.method2941((((Model) class103).verticesZ[i_751_]), f_758_, i_754_,
 											8, (((Model) class103).verticesY[i_751_]), fs_756_,
 											(((Model) class103).verticesX[i_751_]), i_753_, f_759_, i_757_,
 											i_755_);
 									f_742_ = VarcType.aFloat3098;
 									f_743_ = Class246_Sub1_Sub15.aFloat6601;
-									Class_o.method2941((((Model) class103).verticesZ[i_752_]), f_758_, i_754_,
+									GameEngine.method2941((((Model) class103).verticesZ[i_752_]), f_758_, i_754_,
 											8, (((Model) class103).verticesY[i_752_]), fs_756_,
 											(((Model) class103).verticesX[i_752_]), i_753_, f_759_, i_757_,
 											i_755_);

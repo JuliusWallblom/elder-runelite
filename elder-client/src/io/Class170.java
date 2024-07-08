@@ -130,7 +130,7 @@ final class Class170 {
 				Class149.method1004(-100);
 				ScriptEvent.aClass166_4968.method1102(-103);
 				Class12.aClass166_180.method1102(-87);
-				Class_o.aClass68_7208.method443(i ^ 0xb);
+				GameEngine.aClass68_7208.method443(i ^ 0xb);
 				if (i == 104)
 					Class4.method54(i ^ 0x60);
 			}

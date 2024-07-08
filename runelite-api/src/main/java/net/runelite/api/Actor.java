@@ -81,6 +81,7 @@ public interface Actor extends Renderable
 	 * @return the actor, null if no interaction is occurring
 	 */
 	Actor getInteracting();
+	int getRSInteracting();
 
 	/**
 	 * Gets the health of the actor in {@link #getHealthScale()} units.
@@ -462,6 +463,12 @@ public interface Actor extends Renderable
 	 * @param overheadText the overhead text
 	 */
 	void setOverheadText(String overheadText);
+
+	/**
+	 * Used by the "Tick Counter Plugin
+	 */
+	int getActionFrame();
+	int getActionFrameCycle();
 
 	/**
 	 * Get the number of cycles/client ticks remaining before the overhead text is timed out

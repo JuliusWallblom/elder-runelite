@@ -1,7 +1,5 @@
 package io;
 
-import java.util.Arrays;
-
 import io.cache.Cache;
 import io.cache.IndexConstants;
 import io.cache.Revision;
@@ -261,9 +259,9 @@ final class Texture extends NodeSub {
 					if ((-1 + Class246_Sub28_Sub24.anInt6681 ^ 0xffffffff) < (i_10_ ^ 0xffffffff))
 						i_10_ = Class246_Sub28_Sub24.anInt6681 - 1;
 					if (!Client.current_renderer.method2052(Buffer.anInt5656, i - 12))
-						Class_o.method2948(i_10_);
+						GameEngine.method2948(i_10_);
 					else
-						Class_o.method2948(0);
+						GameEngine.method2948(0);
 					for (int i_11_ = 0; (i_11_ ^ 0xffffffff) > -5; i_11_++) {
 						for (int i_12_ = 0; ((i_12_ ^ 0xffffffff) > (Class38_Sub1_Sub1.anInt6770
 								^ 0xffffffff)); i_12_++) {

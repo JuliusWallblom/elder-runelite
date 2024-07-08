@@ -63,10 +63,6 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.SwingUtilities;
 
-import io.AppletLoader;
-import io.Class_o;
-import io.GameConstants;
-import io.Signlink;
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -172,14 +168,6 @@ public class RuneLite
 
 	public static void main(String[] args) throws Exception
 	{
-		System.setProperty("java.net.preferIPv4Stack", "true");
-		System.setProperty("java.net.preferIPv6Addresses", "false");
-		AppletLoader.setParams();
-		final Signlink signlink = new Signlink(null, 32, GameConstants.NAME, io.Constants.MAX_INDEX_COUNT);
-		Class_o.providesignlink(signlink);
-		io.Client c =  new io.Client();
-		c.supplyApplet(c);
-		elderApplet = c;
 		Locale.setDefault(Locale.ENGLISH);
 
 		final OptionParser parser = new OptionParser(false);

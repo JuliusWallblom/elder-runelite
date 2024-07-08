@@ -56,7 +56,7 @@ final class Class230 {
 					if (!bool)
 						Class246_Sub28_Sub6.method2553(25861);
 					Class257.method1667(0);
-					Class_o.method2944(i_2_, i_1_, (byte) -21, i, true, i_3_);
+					GameEngine.method2944(i_2_, i_1_, (byte) -21, i, true, i_3_);
 					i_1_ = Class179.anInt2512;
 					i_3_ = Class59_Sub1_Sub2.anInt6133;
 					i_2_ = Class_g.anInt6482;
@@ -169,7 +169,7 @@ final class Class230 {
 							Class246_Sub34.method2199((byte) 56, 256, i_2_, i_1_, i_3_, 256, i);
 							Class169.method1121(i_3_, i_1_, i, i_2_, (byte) -106);
 						}
-						Class_o.method2939();
+						GameEngine.method2939();
 						Class246_Sub16.aInt92 = i_8_;
 						Class246_Sub28_Sub8.anInt6077 = i_9_;
 						Class259_Sub1.anInt4509 = i_10_;

@@ -137,6 +137,7 @@ public interface ItemComposition extends ParamHolder
 	 * Returns whether or not the item can be sold on the grand exchange.
 	 */
 	boolean isTradeable();
+	void setTradeable(boolean yes);
 
 	/**
 	 * Gets an array of possible right-click menu actions the item
@@ -145,6 +146,8 @@ public interface ItemComposition extends ParamHolder
 	 * @return the inventory menu actions
 	 */
 	String[] getInventoryActions();
+
+	String[] getGroundActions();
 
 	/**
 	 * Gets the menu action index of the shift-click action.
@@ -281,8 +284,20 @@ public interface ItemComposition extends ParamHolder
 	int getAmbient();
 
 	/**
+	 * Set the ambient light value
+	 * @param ambient
+	 */
+	void setAmbient(int ambient);
+
+	/**
 	 * Get the contrast light value
 	 * @return
 	 */
 	int getContrast();
+
+	/**
+	 * Set the contrast light value
+	 * @param contrast
+	 */
+	void setContrast(int contrast);
 }

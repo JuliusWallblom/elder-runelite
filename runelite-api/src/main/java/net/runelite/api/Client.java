@@ -51,6 +51,10 @@ import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.dbtable.DBRowConfig;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
+import net.runelite.api.packets.PacketBufferNode;
+import net.runelite.api.packets.PacketWriter;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.ItemQuantityMode;
 import net.runelite.api.widgets.Widget;
@@ -135,6 +139,13 @@ public interface Client extends OAuthApi, GameEngine
 	GameState getGameState();
 
 	/**
+	 * Gets the current game state as an int
+	 *
+	 * @return the game state
+	 */
+	int getRSGameState();
+
+	/**
 	 * Sets the current game state
 	 *
 	 * @param gameState
@@ -147,6 +158,18 @@ public interface Client extends OAuthApi, GameEngine
 	 * This will call {@link System#exit} when it is done
 	 */
 	void stopNow();
+
+	/**
+	 * Gets the login screen world select state.
+	 *
+	 * @return the world select state
+	 */
+	boolean isWorldSelectOpen();
+
+	/**
+	 * Sets the login screen world select state.
+	 */
+	void setWorldSelectOpen(boolean open);
 
 	/**
 	 * Gets the display name of the active account when launched from the Jagex launcher.
@@ -369,6 +392,7 @@ public interface Client extends OAuthApi, GameEngine
 	 * @return the logged in player
 	 */
 	Player getLocalPlayer();
+	int getLocalPlayerIndex();
 
 	/**
 	 * Get the local player's follower, such as a pet
@@ -613,6 +637,11 @@ public interface Client extends OAuthApi, GameEngine
 	MenuEntry[] getMenuEntries();
 
 	/**
+	 * @return amount of menu entries the client has (same as client.getMenuEntries().size())
+	 */
+	int getMenuOptionCount();
+
+	/**
 	 * Sets the array of open menu entries.
 	 * <p>
 	 * This method should typically be used in the context of the {@link net.runelite.api.events.MenuOpened}
@@ -621,6 +650,12 @@ public interface Client extends OAuthApi, GameEngine
 	 * @param entries new array of open menu entries
 	 */
 	void setMenuEntries(MenuEntry[] entries);
+
+	/**
+	 * Set the amount of menu entries the client has.
+	 * If you decrement this count, it's the same as removing the last one
+	 */
+	void setMenuOptionCount(int count);
 
 	/**
 	 * Checks whether a right-click menu is currently open.
@@ -962,6 +997,13 @@ public interface Client extends OAuthApi, GameEngine
 	NodeCache getStructCompositionCache();
 
 	/**
+	 * Gets an array of all world areas
+	 *
+	 * @return the world areas
+	 */
+	MapElementConfig[] getMapElementConfigs();
+
+	/**
 	 * Gets a entry out of a DBTable Row
 	 */
 	Object[] getDBTableField(int rowID, int column, int tupleIndex);
@@ -1159,6 +1201,15 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	void playSoundEffect(int id, int volume);
 
+	void setMouseIdleTicks(int cycles);
+
+	void setKeyboardIdleTicks(int cycles);
+
+	/**
+	 * Returns an array of booleans relating to keys pressed.
+	 */
+	boolean[] getPressedKeys();
+
 	/**
 	 * Gets the clients graphic buffer provider.
 	 *
@@ -1179,6 +1230,24 @@ public interface Client extends OAuthApi, GameEngine
 	 * the UNIX epoch.
 	 */
 	long getMouseLastPressedMillis();
+
+	/**
+	 * Sets the time at which the last mouse press occurred in milliseconds since
+	 * the UNIX epoch.
+	 */
+	void setMouseLastPressedMillis(long time);
+
+	/**
+	 * Gets the time at which the second-to-last mouse press occurred in milliseconds since
+	 * the UNIX epoch.
+	 */
+	long getClientMouseLastPressedMillis();
+
+	/**
+	 * Sets the time at which the second-to-last mouse press occurred in milliseconds since
+	 * the UNIX epoch.
+	 */
+	void setClientMouseLastPressedMillis(long time);
 
 	/**
 	 * Gets the amount of client ticks since the last keyboard press occurred.
@@ -1622,6 +1691,32 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	void setCompass(SpritePixels spritePixels);
 
+	boolean loadWorlds();
+
+	void processDialog(int widgetUid, int menuIndex);
+
+	void setWindowedMode(int mode);
+
+	int getWindowedMode();
+
+	boolean isFocused();
+
+	void setFocused(boolean focused);
+
+	void setClickCrossX(int x);
+
+	void setClickCrossY(int y);
+
+	void setLoginIndex(int index);
+
+	String getPassword();
+
+	void setDraggedWidget(Widget widget);
+
+	boolean isMembersWorld();
+
+	void setShowMouseCross(boolean show);
+
 	/**
 	 * Returns widget sprite cache, to be used with {@link Client#getSpriteOverrides()}
 	 *
@@ -1747,6 +1842,30 @@ public interface Client extends OAuthApi, GameEngine
 	int getOculusOrbFocalPointY();
 
 	/**
+	 * Gets local Z coord where the camera is pointing when the Oculus orb is active
+	 */
+	@Deprecated
+	int getOculusOrbFocalPointZ();
+
+	/**
+	 * Sets local X coord where the camera is pointing when the Oculus orb is active
+	 */
+	@Deprecated
+	void setOculusOrbFocalPointX(int xPos);
+
+	/**
+	 * Sets local Y coord where the camera is pointing when the Oculus orb is active
+	 */
+	@Deprecated
+	void setOculusOrbFocalPointY(int yPos);
+
+	/**
+	 * Sets local Z coord where the camera is pointing when the Oculus orb is active
+	 */
+	@Deprecated
+	void setOculusOrbFocalPointZ(int zPos);
+
+	/**
 	 * Opens in-game world hopper interface
 	 */
 	void openWorldHopper();
@@ -1820,6 +1939,54 @@ public interface Client extends OAuthApi, GameEngine
 	NodeCache getAnimationCache();
 
 	/**
+	 * Gets a Frames object. File Ids for animations frames are grouped together into a Frames object. getFrames will get the group of frames that the frameId belongs to.
+	 */
+	Frames getFrames(int frameId);
+
+	SequenceDefinition getSequenceDefinition(int id);
+
+	/**
+	 * various archives you might want to use for reading data from cache
+	 */
+	IndexDataBase getSequenceDefinition_skeletonsArchive();
+
+	IndexDataBase getSequenceDefinition_archive();
+
+	IndexDataBase getSequenceDefinition_animationsArchive();
+
+	IndexDataBase getNpcDefinition_archive();
+
+	IndexDataBase getObjectDefinition_modelsArchive();
+
+	IndexDataBase getObjectDefinition_archive();
+
+	IndexDataBase getItemDefinition_archive();
+
+	IndexDataBase getKitDefinition_archive();
+
+	IndexDataBase getKitDefinition_modelsArchive();
+
+	IndexDataBase getSpotAnimationDefinition_archive();
+
+	IndexDataBase getSpotAnimationDefinition_modelArchive();
+
+	/**
+	 * Used to send packets to the server.
+	 * @return the client's PacketWriter.
+	 */
+	PacketWriter getPacketWriter();
+
+	/**
+	 * Used to prepare a packet which can then be queued to the PacketWriter.
+	 * @param packet the type of packet
+	 * @param isaac client's isaaccipher
+	 * @return the prepared packet.
+	 */
+	PacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
+
+	PacketBufferNode preparePacket(ClientPacket packet);
+
+	/**
 	 * Returns the array of cross sprites that appear and animate when left-clicking
 	 */
 	SpritePixels[] getCrossSprites();
@@ -1834,6 +2001,11 @@ public interface Client extends OAuthApi, GameEngine
 	void draw2010Menu(int alpha);
 
 	/**
+	 * Get client pixels. Each integer represents an ARGB colored pixel.
+	 */
+	int[] getGraphicsPixels();
+
+	/**
 	 * Draws a menu in the OSRS interface style.
 	 *
 	 * @param alpha background transparency of the menu
@@ -1841,6 +2013,58 @@ public interface Client extends OAuthApi, GameEngine
 	void drawOriginalMenu(int alpha);
 
 	void resetHealthBarCaches();
+
+	boolean getRenderSelf();
+
+	void setRenderSelf(boolean enabled);
+
+	void setSelectedSpellName(String name);
+
+	boolean getSpellSelected();
+
+	/**
+	 * Sets if a widget is in target mode
+	 */
+	void setSpellSelected(boolean selected);
+
+	String getSelectedSpellActionName();
+
+	void setSelectedSpellActionName(String action);
+
+	int getSelectedSpellFlags();
+
+	void setSelectedSpellFlags(int var0);
+
+	int getSelectedSpellItemId();
+
+	void setSelectedSpellItemId(int itemId);
+
+	int getSelectedSpellWidget();
+
+	int getSelectedSpellChildIndex();
+
+	void setSelectedSpellWidget(int widgetID);
+
+	void setSelectedSpellChildIndex(int index);
+
+	/**
+	 * Scales values from pixels onto canvas
+	 *
+	 * @param canvas       the array we're writing to
+	 * @param pixels       pixels to draw
+	 * @param color        should be 0
+	 * @param pixelX       x index
+	 * @param pixelY       y index
+	 * @param canvasIdx    index in canvas (canvas[canvasIdx])
+	 * @param canvasOffset x offset
+	 * @param newWidth     new width
+	 * @param newHeight    new height
+	 * @param pixelWidth   pretty much horizontal scale
+	 * @param pixelHeight  pretty much vertical scale
+	 * @param oldWidth     old width
+	 * @see net.runelite.client.util.ImageUtil#resizeSprite(Client, SpritePixels, int, int)
+	 */
+	void scaleSprite(int[] canvas, int[] pixels, int color, int pixelX, int pixelY, int canvasIdx, int canvasOffset, int newWidth, int newHeight, int pixelWidth, int pixelHeight, int oldWidth);
 
 	/**
 	 * Returns the max item index + 1 from cache
@@ -1886,6 +2110,10 @@ public interface Client extends OAuthApi, GameEngine
 	 * @see KeyCode
 	 */
 	boolean isKeyPressed(@MagicConstant(valuesFromClass = KeyCode.class) int keycode);
+
+	int getFollowerIndex();
+
+	int isItemSelected();
 
 	/**
 	 * Get the list of message ids for the recently received cross-world messages. The upper 32 bits of the

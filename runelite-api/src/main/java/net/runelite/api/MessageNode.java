@@ -104,6 +104,11 @@ public interface MessageNode extends Node
 	void setRuneLiteFormatMessage(String runeLiteFormatMessage);
 
 	/**
+	 * Returns yes if the message is from a friend
+	 */
+	boolean isFromFriend();
+
+	/**
 	 * Get the timestamp for the message, in seconds from the unix epoch.
 	 *
 	 * @return

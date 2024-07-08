@@ -57,6 +57,7 @@ import java.util.jar.JarInputStream;
 import javax.annotation.Nonnull;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.client.RuneLite;
 import net.runelite.client.RuneLiteProperties;
 import net.runelite.client.RuntimeConfig;
@@ -569,8 +570,7 @@ public class ClientLoader implements Supplier<Applet>
 
 	private Applet loadClient(RSConfig config, ClassLoader classLoader) throws ClassNotFoundException, IllegalAccessException, InstantiationException
 	{
-		/*String initialClass = config.getInitialClass();
-		Class<?> clientClass = classLoader.loadClass(initialClass);
+		Class<?> clientClass = io.Client.class;
 
 		Applet rs = (Applet) clientClass.newInstance();
 		rs.setStub(new RSAppletStub(config, runtimeConfigLoader));
@@ -580,9 +580,7 @@ public class ClientLoader implements Supplier<Applet>
 			log.info("client-patch {}", ((Client) rs).getBuildID());
 		}
 
-		return rs;*/
-
-		return RuneLite.elderApplet;
+		return rs;
 	}
 
 	private static Certificate[] loadCertificateChain(String name)

@@ -19,7 +19,10 @@ import java.awt.event.WindowListener;
 import java.lang.reflect.Method;
 import java.net.URL;
 
-public abstract class Class_o extends Applet implements Runnable, FocusListener, WindowListener {
+public abstract class GameEngine extends Applet implements Runnable, FocusListener, WindowListener {
+
+	public abstract boolean isClientThread();
+
 	private boolean aBool7185 = false;
 	static int anInt7186;
 	static int anInt7187;
@@ -129,7 +132,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 	public final void start() {
 		try {
 			anInt7201++;
-			if (Class248.aClass_o3488 == this && !Class249.aBool3522)
+			if (Class248.gameEngine == this && !Class249.aBool3522)
 				Class94.aLong1232 = 0L;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "o.start(" + ')');
@@ -204,7 +207,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 		do {
 			try {
 				anInt7218++;
-				if (Class248.aClass_o3488 == this && !Class249.aBool3522) {
+				if (Class248.gameEngine == this && !Class249.aBool3522) {
 					Class246_Sub28_Sub8.aBool6060 = true;
 					if (!Class246_Sub28_Sub24.aBool6676 || (-Class46.aLong663 + TimeUtility.time() <= 1000L))
 						break;
@@ -220,6 +223,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 		} while (false);
 	}
 
+	@Override
 	public final String getParameter(String string) {
 		try {
 			anInt7198++;
@@ -237,7 +241,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 	public final void stop() {
 		try {
 			anInt7220++;
-			if (this == Class248.aClass_o3488 && !Class249.aBool3522)
+			if (this == Class248.gameEngine && !Class249.aBool3522)
 				Class94.aLong1232 = TimeUtility.time() - -4000L;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "o.stop(" + ')');
@@ -331,7 +335,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 				}
 				aBool7190 = false;
 			}
-			Class182 class182 = Client.sign_link.method349(Class248.aClass_o3488.getClass(), bool);
+			Class182 class182 = Client.sign_link.method349(Class248.gameEngine.getClass(), bool);
 			while ((class182.anInt2539 ^ 0xffffffff) == -1)
 				Class247.method1580(100L, -5184);
 			if (bool != false)
@@ -371,7 +375,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 			anInt7194++;
 			if (!aBool7190) {
 				try {
-					Class182 class182 = Client.sign_link.method356((byte) 72, Class248.aClass_o3488.getClass());
+					Class182 class182 = Client.sign_link.method356((byte) 72, Class248.gameEngine.getClass());
 					while ((class182.anInt2539 ^ 0xffffffff) == -1)
 						Class247.method1580(100L, -5184);
 					if (class182.anObject2535 != null)
@@ -391,7 +395,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 	public final void destroy() {
 		try {
 			anInt7210++;
-			if (Class248.aClass_o3488 == this && !Class249.aBool3522) {
+			if (Class248.gameEngine == this && !Class249.aBool3522) {
 				Class94.aLong1232 = TimeUtility.time();
 				Class247.method1580(5000L, -5184);
 				Class211_Sub1.aClass52_5348 = null;
@@ -490,11 +494,11 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 
 	abstract void method2946(boolean bool);
 
-	final void method2947(int i, int i_32_, int i_33_, int i_34_, byte i_35_) {
+	final void startThread(int i, int i_32_, int i_33_, int i_34_, byte i_35_) {
 		try {
 			anInt7195++;
 			try {
-				if (Class248.aClass_o3488 != null) {
+				if (Class248.gameEngine != null) {
 					Class246_Sub38.anInt5449++;
 					if ((Class246_Sub38.anInt5449 ^ 0xffffffff) <= -4)
 						method2937(126, "alreadyloaded");
@@ -503,7 +507,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 				} else {
 					Class100_Sub1.anInt5075 = 0;
 					Class125.anInt1768 = 0;
-					Class248.aClass_o3488 = this;
+					Class248.gameEngine = this;
 					Class8.anInt101 = Client.client_height = i_33_;
 					Class6.anInt77 = i;
 					if (i_35_ > -30)
@@ -640,7 +644,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 				Class125.anInt1768 = 0;
 				Class6.anInt77 = i;
 				Class8.anInt101 = Client.client_height = i_43_;
-				Class248.aClass_o3488 = this;
+				Class248.gameEngine = this;
 				Client.frame = new Frame();
 				Client.frame.setTitle(GameConstants.NAME);
 				Client.frame.setResizable(true);
@@ -696,6 +700,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 		}
 	}
 
+	@Override
 	public final URL getDocumentBase() {
 		try {
 			anInt7219++;
@@ -740,6 +745,7 @@ public abstract class Class_o extends Applet implements Runnable, FocusListener,
 		}
 	}
 
+	@Override
 	public final URL getCodeBase() {
 		try {
 			anInt7202++;

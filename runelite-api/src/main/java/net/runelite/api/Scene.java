@@ -119,6 +119,8 @@ public interface Scene extends Renderable
 	 */
 	int getBaseX();
 
+	void setBaseX(int x);
+
 	/**
 	 * Returns the y-axis base coordinate.
 	 * <p>
@@ -128,6 +130,10 @@ public interface Scene extends Renderable
 	 * @return the base y-axis coordinate
 	 */
 	int getBaseY();
+
+	void setBaseY(int y);
+
+	void setViewportWalking(boolean enabled);
 
 	/**
 	 * Check if this scene is an instance

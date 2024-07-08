@@ -111,8 +111,8 @@ final class Class75 {
 
 	static final void method476(int i, int i_6_, int i_7_, int i_8_, int i_9_, int i_10_, int i_11_) {
 		try {
-			for (Class130_Sub8 class130_sub8 = (Class130_Sub8) Class_o.aClass68_7208
-					.method445(62); class130_sub8 != null; class130_sub8 = (Class130_Sub8) Class_o.aClass68_7208
+			for (Class130_Sub8 class130_sub8 = (Class130_Sub8) GameEngine.aClass68_7208
+					.method445(62); class130_sub8 != null; class130_sub8 = (Class130_Sub8) GameEngine.aClass68_7208
 							.method442((byte) -119)) {
 				if ((Client.cycle ^ 0xffffffff) <= (((Class130_Sub8) class130_sub8).anInt5611 ^ 0xffffffff))
 					class130_sub8.method886(1024);
