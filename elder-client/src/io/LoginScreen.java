@@ -503,13 +503,13 @@ public class LoginScreen {
 		}
 	}
 
-	public static boolean logged_in = true;
+	public static boolean loggedIn = true;
 
 	static final void prepare(boolean welcome_screen_raised) {
 		try {
 			Class259_Sub3_Sub1.anInt6899++;
 			if (welcome_screen_raised) {
-				logged_in = !welcome_screen_raised;
+				loggedIn = !welcome_screen_raised;
 				if ((Widget.root_interface ^ 0xffffffff) != 0) {
 					Widget.reset_widget(Widget.root_interface);
 				}
@@ -574,15 +574,15 @@ public class LoginScreen {
 				Class246_Sub30.method2156(true);
 			ParamType.method815((byte) -36);
 			if (Class246_Sub16.aInt92 == 0 || (Class259_Sub1.anInt4509 ^ 0xffffffff) == -1)
-				Class99.method622((byte) 78, 10);
+				Class99.updateGameState((byte) 78, 10);
 			else {
 				Stream_Sub1.method2475(-12319);
-				Class99.method622((byte) -125, 28);
+				Class99.updateGameState((byte) -125, 28);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	static int login_response = 0;
+	static int loginResponse = 0;
 }

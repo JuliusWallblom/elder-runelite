@@ -24,9 +24,9 @@ final class Class170 {
 				if (Client.current_renderer.method2052(Buffer.anInt5656, 123))
 					Class40_Sub6.anInt5103 = 0;
 				if (!bool)
-					Class99.method622((byte) -120, 25);
+					Class99.updateGameState((byte) -120, 25);
 				else
-					Class99.method622((byte) 37, 28);
+					Class99.updateGameState((byte) 37, 28);
 				Class_w.method2650(true, Class250.aClass67_3531.get(Preferences.language_code), FontCache.regular_font, 13);
 				int i_3_ = Client.base_x;
 				Client.base_x = 8 * (-(Class38_Sub1_Sub1.anInt6770 >> 4) + IdentityKitLoader.anInt1206);

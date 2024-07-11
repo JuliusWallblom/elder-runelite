@@ -2991,10 +2991,10 @@ final class Class91 {
 			Class59_Sub3_Sub2.method2486(527);
 			Material.method1533(22050, ((Renderer) (Client.current_renderer)).aBool570, bool, 2);
 			WidgetParent.aClass123_5522 = Class259_Sub2_Sub1.method2845(0, 2, Client.sign_link, 22050,
-					Tile.aCanvas2155);
+					GameEngine.canvas);
 			WidgetParent.aClass123_5522.method836(Class200.aClass246_Sub37_Sub1_2850, (byte) -15);
 			Class246_Sub28_Sub26.aClass123_6716 = Class259_Sub2_Sub1.method2845(1, 2, Client.sign_link, 2048,
-					Tile.aCanvas2155);
+					GameEngine.canvas);
 			Class246_Sub28_Sub26.aClass123_6716.method836(Canvas_Sub1.aClass246_Sub37_Sub2_6889, (byte) -15);
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "il.A(" + bool + ')');

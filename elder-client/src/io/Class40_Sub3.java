@@ -187,14 +187,14 @@ final class Class40_Sub3 extends Class40 {
 			Class200.aClass246_Sub37_Sub1_2850 = new Class246_Sub37_Sub1();
 			Class200.aClass246_Sub37_Sub1_2850.method2528(-25296, 128, 9);
 			WidgetParent.aClass123_5522 = Class259_Sub2_Sub1.method2845(0, 2, Client.sign_link, 22050,
-					Tile.aCanvas2155);
+					GameEngine.canvas);
 			WidgetParent.aClass123_5522.method836(Class200.aClass246_Sub37_Sub1_2850, (byte) -15);
 			Class250.method1604(Cache.get_index(Revision.PRE_EOC_634, "sound_effects"),
 					Class200.aClass246_Sub37_Sub1_2850,
 					Cache.client_cache.get(IndexConstants.PRE_EOC_634_MIDI_INSTRUMENTS_INDEX),
 					Cache.client_cache.get(IndexConstants.PRE_EOC_634_EMPTY_15_INDEX), (byte) -115);
 			Class246_Sub28_Sub26.aClass123_6716 = Class259_Sub2_Sub1.method2845(1, 2, Client.sign_link, 2048,
-					Tile.aCanvas2155);
+					GameEngine.canvas);
 			Canvas_Sub1.aClass246_Sub37_Sub2_6889 = new Class246_Sub37_Sub2();
 			Class246_Sub28_Sub26.aClass123_6716.method836(Canvas_Sub1.aClass246_Sub37_Sub2_6889, (byte) -15);
 			Class148.aClass250_2178 = new Class250(22050, MapFunction.anInt2024);

@@ -231,7 +231,7 @@ public class RuneLite
 		RuneLiteAPI.CLIENT = okHttpClient;
 
 		SplashScreen.init();
-		SplashScreen.stage(0, "Retrieving client", "");
+		SplashScreen.stage(0, "Initializing client", "");
 
 		try
 		{

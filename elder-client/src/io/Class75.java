@@ -54,14 +54,14 @@ final class Class75 {
 				Class216.aClass232_3009.method1485(i - 143);
 				Material.aClass102_3360.method633(true);
 				if (Player.f_rd != null)
-					Player.f_rd.method494(Tile.aCanvas2155, 0);
+					Player.f_rd.method494(GameEngine.canvas, 0);
 				Client.instance.method2940((byte) -83);
-				Tile.aCanvas2155.setBackground(Color.black);
+				GameEngine.canvas.setBackground(Color.black);
 				CS2Script.anInt5674 = -1;
-				Class216.aClass232_3009 = TextureLoader.method471((byte) 47, Tile.aCanvas2155);
-				Material.aClass102_3360 = AbstractModel.method673(-53, true, Tile.aCanvas2155);
+				Class216.aClass232_3009 = TextureLoader.method471((byte) 47, GameEngine.canvas);
+				Material.aClass102_3360 = AbstractModel.method673(-53, true, GameEngine.canvas);
 				if (Player.f_rd != null)
-					Player.f_rd.method490((byte) 98, Tile.aCanvas2155);
+					Player.f_rd.method490((byte) 98, GameEngine.canvas);
 				if (i == 56)
 					break;
 				method473((byte) -121);

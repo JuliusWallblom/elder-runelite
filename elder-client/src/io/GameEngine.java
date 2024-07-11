@@ -4,24 +4,37 @@ package io;
  * Visit http://jode.sourceforge.net/
  */
 import jagex3.jagmisc.jagmisc;
+import net.runelite.api.hooks.DrawCallbacks;
+import net.runelite.rs.api.RSGameEngine;
 
 import java.applet.Applet;
 import java.applet.AppletContext;
-import java.awt.Container;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.lang.reflect.Method;
 import java.net.URL;
 
-public abstract class GameEngine extends Applet implements Runnable, FocusListener, WindowListener {
+public abstract class GameEngine extends Applet implements Runnable, FocusListener, WindowListener, RSGameEngine {
 
-	public abstract boolean isClientThread();
+	static GameEngine gameEngine = null;
+	static int threadCount;
+	static long stopTimeMs = 0L;
+	static Class110 clock;
+	static int gameCyclesToDo;
+	static long[] graphicsTickTimes = new long[32];
+	static volatile boolean fullRedraw;
+	static Canvas canvas;
+	private Thread thread;
+
+	@Override
+	public Thread getClientThread() {
+		return thread;
+	}
+
+	@Override
+	public boolean isClientThread() {
+		return thread == Thread.currentThread();
+	}
 
 	private boolean aBool7185 = false;
 	static int anInt7186;
@@ -70,24 +83,18 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	public static boolean aBool7230;
 	public static boolean aBool7231;
 
-	private final void method2936(int i) {
+	private void clientTick() {
 		try {
 			anInt7204++;
-			if (i != 8101)
-				aClass68_7208 = null;
 			long l = TimeUtility.time();
-			long l_1_ = Class75.aLongArray987[Class246_Sub1_Sub3.anInt5710];
 			Class75.aLongArray987[Class246_Sub1_Sub3.anInt5710] = l;
-			if ((l_1_ ^ 0xffffffffffffffffL) != -1L && (l_1_ ^ 0xffffffffffffffffL) > (l ^ 0xffffffffffffffffL)) {
-				/* empty */
-			}
 			Class246_Sub1_Sub3.anInt5710 = 1 + Class246_Sub1_Sub3.anInt5710 & 0x1f;
 			synchronized (this) {
 				Filestore.aBool2049 = Class104.aBool1425;
 			}
-			method2938((byte) 57);
-		} catch (RuntimeException runtimeexception) {
-			throw Class193.method1272(runtimeexception, "o.R(" + i + ')');
+			processGameLoop((byte) 57);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -95,45 +102,43 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		try {
 			Class104.aBool1425 = true;
 			anInt7187++;
-			Class246_Sub28_Sub8.aBool6060 = true;
+			fullRedraw = true;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception,
 					"o.focusGained(" + (focusevent != null ? "{...}" : "null") + ')');
 		}
 	}
 
-	final void method2937(int i, String string) {
+	final void error(String string) {
 		try {
 			anInt7211++;
 			if (!aBool7185) {
 				aBool7185 = true;
-				if (i > 125) {
-					System.out.println("error_game_" + string);
-					try {
-						Class80.method521(Client.sign_link.anApplet733, "loggedout", 84);
-					} catch (Throwable throwable) {
-						/* empty */
-					}
-					try {
-						getAppletContext().showDocument(new URL(getCodeBase(), ("error_game_" + string + ".ws")),
-								"_top");
-					} catch (Exception exception) {
-						/* empty */
-					}
+				System.out.println("error_game_" + string);
+				try {
+					Class80.method521(Client.sign_link.anApplet733, "loggedout", 84);
+				} catch (Throwable throwable) {
+					/* empty */
+				}
+				try {
+					getAppletContext().showDocument(new URL(getCodeBase(), ("error_game_" + string + ".ws")),
+							"_top");
+				} catch (Exception exception) {
+					/* empty */
 				}
 			}
-		} catch (RuntimeException runtimeexception) {
-			throw Class193.method1272(runtimeexception, ("o.A(" + i + ',' + (string != null ? "{...}" : "null") + ')'));
+		} catch (Exception e) {
+			 e.printStackTrace();
 		}
 	}
 
-	abstract void method2938(byte i);
+	abstract void processGameLoop(byte i);
 
 	public final void start() {
 		try {
 			anInt7201++;
-			if (Class248.gameEngine == this && !Class249.aBool3522)
-				Class94.aLong1232 = 0L;
+			if (gameEngine == this && !Class249.aBool3522)
+				stopTimeMs = 0L;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "o.start(" + ')');
 		}
@@ -165,9 +170,9 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 
 	final synchronized void method2940(byte i) {
 		try {
-			if (Tile.aCanvas2155 != null) {
-				Tile.aCanvas2155.removeFocusListener(this);
-				Tile.aCanvas2155.getParent().remove(Tile.aCanvas2155);
+			if (canvas != null) {
+				canvas.removeFocusListener(this);
+				canvas.getParent().remove(canvas);
 			}
 			anInt7217++;
 			Container container;
@@ -178,24 +183,24 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 			else
 				container = Client.frame;
 			container.setLayout(null);
-			Tile.aCanvas2155 = new Canvas_Sub1(this);
-			container.add(Tile.aCanvas2155);
-			Tile.aCanvas2155.setSize(Client.client_width, Client.client_height);
-			Tile.aCanvas2155.setVisible(true);
+			canvas = new Canvas_Sub1(this);
+			container.add(canvas);
+			canvas.setSize(Client.client_width, Client.client_height);
+			canvas.setVisible(true);
 			if (container != Client.frame)
-				Tile.aCanvas2155.setLocation(Class125.anInt1768, Class100_Sub1.anInt5075);
+				canvas.setLocation(Class125.anInt1768, Class100_Sub1.anInt5075);
 			else {
 				Insets insets = Client.frame.getInsets();
-				Tile.aCanvas2155.setLocation((Class125.anInt1768 + insets.left),
+				canvas.setLocation((Class125.anInt1768 + insets.left),
 						(insets.top + Class100_Sub1.anInt5075));
 			}
-			Tile.aCanvas2155.addFocusListener(this);
-			Tile.aCanvas2155.requestFocus();
+			canvas.addFocusListener(this);
+			canvas.requestFocus();
 			Class104.aBool1425 = true;
 			if (i >= -32)
 				Clan.clanMembers = null;
 			Filestore.aBool2049 = true;
-			Class246_Sub28_Sub8.aBool6060 = true;
+			fullRedraw = true;
 			Class246_Sub1_Sub6.aBool5963 = false;
 			Class46.aLong663 = TimeUtility.time();
 		} catch (RuntimeException runtimeexception) {
@@ -207,8 +212,8 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		do {
 			try {
 				anInt7218++;
-				if (Class248.gameEngine == this && !Class249.aBool3522) {
-					Class246_Sub28_Sub8.aBool6060 = true;
+				if (gameEngine == this && !Class249.aBool3522) {
+					fullRedraw = true;
 					if (!Class246_Sub28_Sub24.aBool6676 || (-Class46.aLong663 + TimeUtility.time() <= 1000L))
 						break;
 					Rectangle rectangle = graphics.getClipBounds();
@@ -241,8 +246,8 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	public final void stop() {
 		try {
 			anInt7220++;
-			if (this == Class248.gameEngine && !Class249.aBool3522)
-				Class94.aLong1232 = TimeUtility.time() - -4000L;
+			if (this == gameEngine && !Class249.aBool3522)
+				stopTimeMs = TimeUtility.time() - -4000L;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "o.stop(" + ')');
 		}
@@ -335,15 +340,15 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 				}
 				aBool7190 = false;
 			}
-			Class182 class182 = Client.sign_link.method349(Class248.gameEngine.getClass(), bool);
+			Class182 class182 = Client.sign_link.method349(gameEngine.getClass(), bool);
 			while ((class182.anInt2539 ^ 0xffffffff) == -1)
 				Class247.method1580(100L, -5184);
 			if (bool != false)
 				aFloat7226 = -0.70711446F;
-			if (Tile.aCanvas2155 != null) {
+			if (canvas != null) {
 				try {
-					Tile.aCanvas2155.removeFocusListener(this);
-					Tile.aCanvas2155.getParent().remove(Tile.aCanvas2155);
+					canvas.removeFocusListener(this);
+					canvas.getParent().remove(canvas);
 				} catch (Exception exception) {
 					/* empty */
 				}
@@ -375,14 +380,14 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 			anInt7194++;
 			if (!aBool7190) {
 				try {
-					Class182 class182 = Client.sign_link.method356((byte) 72, Class248.gameEngine.getClass());
+					Class182 class182 = Client.sign_link.method356((byte) 72, gameEngine.getClass());
 					while ((class182.anInt2539 ^ 0xffffffff) == -1)
 						Class247.method1580(100L, -5184);
 					if (class182.anObject2535 != null)
 						throw (Throwable) class182.anObject2535;
 					jagmisc.init();
 					aBool7190 = true;
-					Stream_Sub1.aClass110_5862 = Class246_Sub28_Sub28.method2813(-109);
+					clock = Class246_Sub28_Sub28.method2813(-109);
 				} catch (Throwable throwable) {
 					/* empty */
 				}
@@ -395,8 +400,8 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	public final void destroy() {
 		try {
 			anInt7210++;
-			if (Class248.gameEngine == this && !Class249.aBool3522) {
-				Class94.aLong1232 = TimeUtility.time();
+			if (gameEngine == this && !Class249.aBool3522) {
+				stopTimeMs = TimeUtility.time();
 				Class247.method1580(5000L, -5184);
 				Class211_Sub1.aClass52_5348 = null;
 				method2942(false, false);
@@ -498,30 +503,32 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		try {
 			anInt7195++;
 			try {
-				if (Class248.gameEngine != null) {
-					Class246_Sub38.anInt5449++;
-					if ((Class246_Sub38.anInt5449 ^ 0xffffffff) <= -4)
-						method2937(126, "alreadyloaded");
-					else
-						getAppletContext().showDocument(getDocumentBase(), "_self");
-				} else {
-					Class100_Sub1.anInt5075 = 0;
-					Class125.anInt1768 = 0;
-					Class248.gameEngine = this;
-					Class8.anInt101 = Client.client_height = i_33_;
-					Class6.anInt77 = i;
-					if (i_35_ > -30)
-						destroy();
-					Class246_Sub28_Sub35.anInt7014 = Client.client_width = i_34_;
-					if (Client.sign_link == null)
-						Class211_Sub1.aClass52_5348 = Client.sign_link = new Signlink(this, i_32_, null, 0);
-					Class182 class182 = Client.sign_link.method354(127, 1, this);
-					while ((class182.anInt2539 ^ 0xffffffff) == -1)
-						Class247.method1580(10L, -5184);
+				if (gameEngine != null) {
+					++threadCount;
+					if (threadCount >= 3) {
+						error("alreadyloaded");
+						return;
+					}
+
+					getAppletContext().showDocument(getDocumentBase(), "_self");
+					return;
 				}
+				Class100_Sub1.anInt5075 = 0;
+				Class125.anInt1768 = 0;
+				gameEngine = this;
+				Class8.anInt101 = Client.client_height = i_33_;
+				Class6.anInt77 = i;
+				if (i_35_ > -30)
+					destroy();
+				Class246_Sub28_Sub35.anInt7014 = Client.client_width = i_34_;
+				if (Client.sign_link == null)
+					Class211_Sub1.aClass52_5348 = Client.sign_link = new Signlink(this, i_32_, null, 0);
+				Class182 class182 = Client.sign_link.method354(127, 1, this);
+				while ((class182.anInt2539 ^ 0xffffffff) == -1)
+					Class247.method1580(10L, -5184);
 			} catch (Throwable throwable) {
 				Class194_Sub1.method1883(throwable, null, -82);
-				method2937(126, "crash");
+				error("crash");
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception,
@@ -548,6 +555,49 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		}
 	}
 
+	public static void sleep(long wait) {
+		if (wait > 0L) {
+			if (0L == wait % 10L) {
+
+				try {
+					Thread.sleep(1L);
+				} catch (InterruptedException exception) {
+					exception.printStackTrace();
+				}
+			} else {
+				try {
+					Thread.sleep(wait);
+				} catch (InterruptedException exception) {
+					exception.printStackTrace();
+				}
+			}
+
+		}
+	}
+
+	private static int viewportColor;
+
+	EventQueue eventQueue;
+
+	public final void post(Object var1) {
+		if (!Client.instance.isGpu()) {
+			if (eventQueue != null) {
+				for (int var2 = 0; var2 < 50 && eventQueue.peekEvent() != null; ++var2) {
+					sleep(1L);
+				}
+
+				if (var1 != null) {
+					eventQueue.postEvent(new ActionEvent(var1, 1001, "dummy"));
+				}
+
+			}
+		}
+		DrawCallbacks drawCallbacks = Client.instance.getDrawCallbacks();
+		if (drawCallbacks != null) {
+			drawCallbacks.draw(viewportColor);
+		}
+	}
+
 	abstract void method2949(int i);
 
 	public final void run() {
@@ -555,19 +605,21 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 			anInt7214++;
 			do {
 				try {
+					thread = Thread.currentThread();
+					thread.setName("Client");
 					if (Signlink.aString747 != null) {
 						String string = Signlink.aString747.toLowerCase();
 						if ((string.indexOf("sun") ^ 0xffffffff) == 0 && string.indexOf("apple") == -1) {
 							if (string.indexOf("ibm") != -1
 									&& (Signlink.aString731 == null || Signlink.aString731.equals("1.4.2"))) {
-								method2937(127, "wrongjava");
+								error("wrongjava");
 								break;
 							}
 						} else {
 							String string_38_ = Signlink.aString731;
 							if (string_38_.equals("1.1") || string_38_.startsWith("1.1.") || string_38_.equals("1.2")
 									|| string_38_.startsWith("1.2.")) {
-								method2937(126, "wrongjava");
+								error("wrongjava");
 								break;
 							}
 						}
@@ -598,19 +650,21 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 					Class246_Sub13.method1994(27616);
 					method2940((byte) -97);
 					method2949(-22158);
-					Stream_Sub1.aClass110_5862 = Class246_Sub28_Sub28.method2813(-67);
+					clock = Class246_Sub28_Sub28.method2813(-67);
 					method2943((byte) 47);
-					while (Class94.aLong1232 == 0L || ((TimeUtility.time() ^ 0xffffffffffffffffL) > (Class94.aLong1232
+					while (stopTimeMs == 0L || ((TimeUtility.time() ^ 0xffffffffffffffffL) > (stopTimeMs
 							^ 0xffffffffffffffffL))) {
-						Class234.anInt3194 = Stream_Sub1.aClass110_5862.method767(true, Class133.anInt1842);
-						for (int i = 0; ((Class234.anInt3194 ^ 0xffffffff) < (i ^ 0xffffffff)); i++)
-							method2936(8101);
-						method2957(161363937);
-						Class252.method1616(Client.sign_link, 93, Tile.aCanvas2155);
+						gameCyclesToDo = clock.method767(true, Class133.anInt1842);
+						for (int cycles = 0; ((gameCyclesToDo ^ 0xffffffff) < (cycles ^ 0xffffffff)); cycles++) {
+							clientTick();
+						}
+						graphicsTick(161363937);
+						post(canvas);
+						Class252.method1616(Client.sign_link, 93, canvas);
 					}
 				} catch (Throwable throwable) {
 					Class194_Sub1.method1883(throwable, method2953((byte) -76), 68);
-					method2937(127, "crash");
+					error("crash");
 				}
 			} while (false);
 			method2942(false, true);
@@ -644,7 +698,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 				Class125.anInt1768 = 0;
 				Class6.anInt77 = i;
 				Class8.anInt101 = Client.client_height = i_43_;
-				Class248.gameEngine = this;
+				gameEngine = this;
 				Client.frame = new Frame();
 				Client.frame.setTitle(GameConstants.NAME);
 				Client.frame.setResizable(true);
@@ -786,13 +840,13 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		}
 	}
 
-	private final void method2957(int i) {
+	private final void graphicsTick(int i) {
 		try {
 			if (i == 161363937) {
 				anInt7222++;
 				long l = TimeUtility.time();
-				long l_49_ = Class190.aLongArray2675[Class246_Sub38.anInt5450];
-				Class190.aLongArray2675[Class246_Sub38.anInt5450] = l;
+				long l_49_ = graphicsTickTimes[Class246_Sub38.anInt5450];
+				graphicsTickTimes[Class246_Sub38.anInt5450] = l;
 				if ((l_49_ ^ 0xffffffffffffffffL) != -1L && (l ^ 0xffffffffffffffffL) < (l_49_ ^ 0xffffffffffffffffL)) {
 					int i_50_ = (int) (-l_49_ + l);
 					Class246_Sub28_Sub18.anInt6517 = (32000 - -(i_50_ >> 1)) / i_50_;
@@ -801,16 +855,16 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 				do {
 					if (Class246_Sub43.anInt5599++ > 50) {
 						Class246_Sub43.anInt5599 -= 50;
-						Class246_Sub28_Sub8.aBool6060 = true;
-						Tile.aCanvas2155.setSize((Client.client_width), Client.client_height);
-						Tile.aCanvas2155.setVisible(true);
+						fullRedraw = true;
+						canvas.setSize((Client.client_width), Client.client_height);
+						canvas.setVisible(true);
 						if (Client.frame == null || Class38_Sub1.aFrame5114 != null) {
-							Tile.aCanvas2155.setLocation((Class125.anInt1768), (Class100_Sub1.anInt5075));
+							canvas.setLocation((Class125.anInt1768), (Class100_Sub1.anInt5075));
 							if (!Client.f_ob)
 								break;
 						}
 						Insets insets = Client.frame.getInsets();
-						Tile.aCanvas2155.setLocation(Class125.anInt1768 + insets.left,
+						canvas.setLocation(Class125.anInt1768 + insets.left,
 								insets.top - -Class100_Sub1.anInt5075);
 					}
 				} while (false);

@@ -3,6 +3,7 @@ package io;
 import io.cache.Cache;
 import io.cache.IndexConstants;
 import io.cache.Revision;
+import net.runelite.api.GameState;
 
 final class Class99 {
 	static int anInt1280;
@@ -21,73 +22,121 @@ final class Class99 {
 	static IncomingPacket SEND_URL_PACKET;
 	static int anInt1294 = 0;
 
-	static final void method622(byte i, int i_0_) {
+	static void updateGameState(byte i, int state) {
+		if (state == 28) {
+			state = 10;
+		}
 		try {
 			anInt1289++;
-			if (i_0_ != VarcType.anInt3103) {
-				if (VarcType.anInt3103 == 0)
+
+			// Only proceed if the game state is changing
+			if (state != Client.gameState) {
+
+				// Handle state-specific actions
+				if (Client.gameState == 0) {
 					Class246_Sub28_Sub22.method2724(false);
-				if (i_0_ == 40)
+				}
+				if (state == 40) {
 					Class128_Sub1.method2331(1);
-				if ((i_0_ ^ 0xffffffff) != -41 && IdentityKitLoader.aClass6_1208 != null) {
+				}
+
+				// Clean up IdentityKitLoader if necessary
+				if (state != 40 && IdentityKitLoader.aClass6_1208 != null) {
 					IdentityKitLoader.aClass6_1208.method72(false);
 					IdentityKitLoader.aClass6_1208 = null;
 				}
-				if (VarcType.anInt3103 == 25 || VarcType.anInt3103 == 28) {
-					((CacheIndex) Cache.get_index(Revision.PRE_EOC_634, "config")).anInt126 = 2;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_ENUM_INDEX)).anInt126 = 2;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_LOC_INDEX)).anInt126 = 2;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_NPC_INDEX)).anInt126 = 2;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_OBJ_INDEX)).anInt126 = 2;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_SEQ_INDEX)).anInt126 = 2;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_SPOT_INDEX)).anInt126 = 2;
+
+				// Adjust cache index priorities based on game states
+				boolean previousStateWas25Or28 = (Client.gameState == 25 || Client.gameState == 28);
+				boolean newStateIs25Or28 = (state == 25 || state == 28);
+
+				if (previousStateWas25Or28) {
+					setCacheIndexPriority(2);
 				}
-				if (i_0_ == 25 || i_0_ == 28) {
-					Class148.anInt2184 = 0;
-					Class246_Sub30_Sub1.anInt5756 = 1;
-					PlayerComposition.anInt379 = 0;
-					Class246_Sub28_Sub8.anInt6072 = 0;
-					MapRegion.anInt3665 = 1;
-					Class246_Sub4.method1809(4095, true);
-					((CacheIndex) Cache.get_index(Revision.PRE_EOC_634, "config")).anInt126 = 1;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_ENUM_INDEX)).anInt126 = 1;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_LOC_INDEX)).anInt126 = 1;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_NPC_INDEX)).anInt126 = 1;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_OBJ_INDEX)).anInt126 = 1;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_SEQ_INDEX)).anInt126 = 1;
-					((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_SPOT_INDEX)).anInt126 = 1;
+				if (newStateIs25Or28) {
+					resetGameValues();
+					setCacheIndexPriority(1);
 				}
-				if (i_0_ == 25 || i_0_ == 10)
+
+				// Handle state-specific initialization
+				if (state == 25 || state == 10) {
 					Class188.method1231((byte) 62);
-				if ((i_0_ ^ 0xffffffff) != -6) {
+				}
+
+				if (state != 5) {
 					Class40_Sub8.method2214(64);
 				} else {
 					MapScenes.method1642();
 				}
-				boolean bool = ((i_0_ ^ 0xffffffff) == -6 || (i_0_ ^ 0xffffffff) == -11 || i_0_ == 28);
-				boolean bool_1_ = (VarcType.anInt3103 == 5 || VarcType.anInt3103 == 10 || VarcType.anInt3103 == 28);
-				if (bool == !bool_1_) {
-					if (bool) {
-						Class36.anInt512 = Class236.anInt3307;
-						if (((Renderer) Client.current_renderer).anInt587 == 0)
-							Class59_Sub5.method2281(2, (byte) 35);
-						else
-							Class231.method1481((((Renderer) (Client.current_renderer)).anInt587), Cache.get_index(Revision.PRE_EOC_634, "music"), 2, 0, (byte) -57, false, Class236.anInt3307);
-						MapFunction.aClass242_2036.method1552(false, (byte) 87);
+
+				// Handle music and rendering changes based on specific states
+				boolean newStateIsGame = (state == 5 || state == 10 || state == 28);
+				boolean previousStateWasGame = (Client.gameState == 5 || Client.gameState == 10 || Client.gameState == 28);
+
+				if (newStateIsGame != previousStateWasGame) {
+					if (newStateIsGame) {
+						startGameMusic();
 					} else {
-						Class59_Sub5.method2281(2, (byte) 35);
-						MapFunction.aClass242_2036.method1552(true, (byte) 18);
+						stopGameMusic();
 					}
 				}
-				int i_2_ = -35 % ((-63 - i) / 52);
-				if ((i_0_ ^ 0xffffffff) == -26 || i_0_ == 28 || (i_0_ ^ 0xffffffff) == -41)
+
+				// Handle sprite loader reset for certain states
+				if (state == 25 || state == 28 || state == 40) {
 					Client.sprite_loader.method1722();
-				VarcType.anInt3103 = i_0_;
+				}
+				System.out.println("setting gamestate: " + state);
+				// Update the game state
+				if (state == 5 || state == 28 || state == 1000) {
+					Client.gameState = state;
+				} else {
+					Client.instance.setGameState(GameState.of(state));
+				}
 			}
-		} catch (RuntimeException runtimeexception) {
-			throw Class193.method1272(runtimeexception, "ji.E(" + i + ',' + i_0_ + ')');
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
+
+	private static void setCacheIndexPriority(int priority) {
+		((CacheIndex) Cache.get_index(Revision.PRE_EOC_634, "config")).anInt126 = priority;
+		((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_ENUM_INDEX)).anInt126 = priority;
+		((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_LOC_INDEX)).anInt126 = priority;
+		((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_NPC_INDEX)).anInt126 = priority;
+		((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_OBJ_INDEX)).anInt126 = priority;
+		((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_SEQ_INDEX)).anInt126 = priority;
+		((CacheIndex) Cache.client_cache.get(IndexConstants.PRE_EOC_634_CONFIG_SPOT_INDEX)).anInt126 = priority;
+	}
+
+	private static void resetGameValues() {
+		Class148.anInt2184 = 0;
+		Class246_Sub30_Sub1.anInt5756 = 1;
+		PlayerComposition.anInt379 = 0;
+		Class246_Sub28_Sub8.anInt6072 = 0;
+		MapRegion.anInt3665 = 1;
+		Class246_Sub4.method1809(4095, true);
+	}
+
+	private static void startGameMusic() {
+		Class36.anInt512 = Class236.anInt3307;
+		if (((Renderer) Client.current_renderer).anInt587 == 0) {
+			Class59_Sub5.method2281(2, (byte) 35);
+		} else {
+			Class231.method1481(
+					((Renderer) Client.current_renderer).anInt587,
+					Cache.get_index(Revision.PRE_EOC_634, "music"),
+					2, 0, (byte) -57, false,
+					Class236.anInt3307
+			);
+		}
+		MapFunction.aClass242_2036.method1552(false, (byte) 87);
+	}
+
+	private static void stopGameMusic() {
+		Class59_Sub5.method2281(2, (byte) 35);
+		MapFunction.aClass242_2036.method1552(true, (byte) 18);
+	}
+
 
 	final int method623(byte[] is, int i, byte[] is_3_, int i_4_, int i_5_, int i_6_) {
 		try {

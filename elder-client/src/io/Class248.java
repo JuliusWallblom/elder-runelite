@@ -8,7 +8,6 @@ abstract class Class248 {
 	static int anInt3485;
 	static int anInt3486;
 	static boolean aBool3487;
-	static GameEngine gameEngine = null;
 	static char[] aCharArray3489;
 
 	abstract Class246_Sub1_Sub8 method1582(int i, Class246_Sub1_Sub8 class246_sub1_sub8);
@@ -80,7 +79,7 @@ abstract class Class248 {
 						if (!Class109.method760(false))
 							break;
 					}
-					if (VarcType.anInt3103 == 30) {
+					if (Client.gameState == 30) {
 						Class174.method1147(RenderAnimation.aClass201_1888.method1327(2), Class130_Sub1.stream, -125);
 						if (Class_j.aClass246_Sub39_1488 == null) {
 							if (Class40_Sub9.aLong5507 <= TimeUtility.time())
@@ -293,7 +292,7 @@ abstract class Class248 {
 						else
 							Class15.aBool231 = false;
 						Class137.method928(false);
-						if (VarcType.anInt3103 == 30) {
+						if (Client.gameState == 30) {
 							InputStream_Sub1.method2101(-12388);
 							Class246_Sub37_Sub1.method2508(127);
 							Class_l_Sub2.method2300((byte) 124);

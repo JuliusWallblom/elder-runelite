@@ -3,10 +3,13 @@ package io;
 /* Class260 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
+import net.runelite.api.hooks.DrawCallbacks;
+import net.runelite.rs.api.RSScene;
+
 import java.awt.Canvas;
 import java.awt.Rectangle;
 
-public abstract class SceneGraph {
+public abstract class SceneGraph implements RSScene {
 	static int anInt3710;
 	static int anInt3711;
 	static int anInt3712;

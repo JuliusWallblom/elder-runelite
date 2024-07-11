@@ -25,11 +25,6 @@
  */
 package net.runelite.client.plugins.playerindicators;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import net.runelite.api.FriendsChatRank;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
@@ -38,6 +33,11 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.OverlayUtil;
 import net.runelite.client.util.Text;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 @Singleton
 public class PlayerIndicatorsOverlay extends Overlay

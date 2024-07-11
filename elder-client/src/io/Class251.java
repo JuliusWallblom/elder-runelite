@@ -155,7 +155,7 @@ public final class Class251 {
 		}
 	}
 
-	public final LocType list(int loc_id, int i_2_, Revision revision) {
+	public LocType list(int loc_id, int i_2_, Revision revision) {
 		try {
 			LocType loc_type;
 			if (revision == Revision.OSRS) {
@@ -216,7 +216,7 @@ public final class Class251 {
 		}
 	}
 
-	public final LocType list(int loc_id, int i_2_) {
+	public LocType list(int loc_id, int i_2_) {
 		return list(loc_id, i_2_, Revision.OSRS);
 	}
 
@@ -225,7 +225,7 @@ public final class Class251 {
 			if (i_3_ != 0) {
 				if (bool) {
 					Client.sprite_loader = SceneGraph.method1682((Class246_Sub37_Sub1.textureLoader), 0,
-							Tile.aCanvas2155, 0, (byte) 90, Client.sign_link);
+							GameEngine.canvas, 0, (byte) 90, Client.sign_link);
 					Client.sprite_loader.p(0);
 					FontMetric class73 = Class129.method878(6, 0, Class36.f_ib,
 							Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX));
@@ -238,7 +238,7 @@ public final class Class251 {
 				}
 				try {
 					Client.sprite_loader = SceneGraph.method1682((Class246_Sub37_Sub1.textureLoader),
-							(((Renderer) (Client.current_renderer)).anInt588 * 2), Tile.aCanvas2155,
+							(((Renderer) (Client.current_renderer)).anInt588 * 2), GameEngine.canvas,
 							i_3_, (byte) -30, Client.sign_link);
 					if (Client.sprite_loader.method1741()) {
 						boolean bool_4_ = true;
@@ -256,12 +256,12 @@ public final class Class251 {
 					}
 				} catch (Throwable throwable) {
 					Client.sprite_loader = SceneGraph.method1682((Class246_Sub37_Sub1.textureLoader), 0,
-							Tile.aCanvas2155, 0, (byte) 109, Client.sign_link);
+							GameEngine.canvas, 0, (byte) 109, Client.sign_link);
 					i_3_ = 0;
 				}
 			} else
 				Client.sprite_loader = SceneGraph.method1682((Class246_Sub37_Sub1.textureLoader),
-						2 * ((Renderer) (Client.current_renderer)).anInt588, Tile.aCanvas2155, i_3_,
+						2 * ((Renderer) (Client.current_renderer)).anInt588, GameEngine.canvas, i_3_,
 						(byte) 62, Client.sign_link);
 			anInt3540++;
 			if (i != -27345)

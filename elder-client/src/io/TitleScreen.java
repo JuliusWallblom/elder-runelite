@@ -64,11 +64,6 @@ public class TitleScreen {
 	 */
 	static int loading_percentage = 10;
 
-	/*
-	 * The current loading phase.
-	 */
-	static int loading_phase = 0;
-
 	public final static void start() {
 		int i = 23396;
 		try {
@@ -80,7 +75,7 @@ public class TitleScreen {
 					}
 				}
 			}
-			if (loading_phase == 0) {
+			if (Client.loadingPhase == 0) {
 				Runtime runtime = Runtime.getRuntime();
 				int allocated_memory = (int) ((runtime.totalMemory() + -runtime.freeMemory()) / 1024L);
 				long time = TimeUtility.time();
@@ -96,17 +91,17 @@ public class TitleScreen {
 					loading_percentage = 5;
 				} else {
 					loading_message = ALLOCATED_MEMORY_MS.get(Preferences.language_code);
-					loading_phase = 10;
+					Client.loadingPhase = 10;
 					loading_percentage = 5;
 				}
-			} else if (loading_phase == 10) {
+			} else if (Client.loadingPhase == 10) {
 				for (int i_131_ = 0; (i_131_ ^ 0xffffffff) > -5; i_131_++)
 					Class95.aClass199Array1235[i_131_] = Class256.method1664((byte) -118, Class152.anInt2205,
 							Class38_Sub1_Sub1.anInt6770);
 				loading_message = CREATED_GAMEWORLD_MS.get(Preferences.language_code);
 				loading_percentage = 10;
-				loading_phase = 20;
-			} else if (loading_phase == 20) {
+				Client.loadingPhase = 20;
+			} else if (Client.loadingPhase == 20) {
 				if (Class194_Sub1.aClass142_4140 == null)
 					Class194_Sub1.aClass142_4140 = new Filestore(MapFunction.aClass242_2036,
 							Class106_Sub2.aClass241_5339);
@@ -120,9 +115,9 @@ public class TitleScreen {
 					}
 					loading_message = CONNECTED_TO_UPDATE_SERVER_MS.get(Preferences.language_code);
 					loading_percentage = 15;
-					loading_phase = 30;
+					Client.loadingPhase = 30;
 				}
-			} else if (loading_phase == 30) {
+			} else if (Client.loadingPhase == 30) {
 				int i_132_ = 0;
 				for (int i_133_ = 0; i_133_ < Constants.MAX_INDEX_COUNT; i_133_++) {
 					i_132_ += (Class59_Sub1_Sub2.aClass154_Sub1Array6127[i_133_].method2095(-1398) * Cache.f_ab[i_133_]
@@ -137,9 +132,9 @@ public class TitleScreen {
 					loading_percentage = 20;
 					Class246_Sub28_Sub11.method2583((byte) 80, Cache.get_index(Revision.PRE_EOC_634, "sprites"));
 					Clan.method2907(Cache.get_index(Revision.PRE_EOC_550, "sprites"), 14564);
-					loading_phase = 40;
+					Client.loadingPhase = 40;
 				}
-			} else if ((loading_phase ^ 0xffffffff) == -41) {
+			} else if ((Client.loadingPhase ^ 0xffffffff) == -41) {
 				if (!Cache.client_cache.get(IndexConstants.PRE_EOC_634_DEFAULTS_INDEX).method103(0)) {
 					loading_message = (Class24.aClass67_342.get(Preferences.language_code)
 							+ Cache.client_cache.get(IndexConstants.PRE_EOC_634_DEFAULTS_INDEX).method99(false) + "%");
@@ -150,14 +145,14 @@ public class TitleScreen {
 							(byte) 40);
 					loading_message = Class232.aClass67_3177.get(Preferences.language_code);
 					loading_percentage = 25;
-					loading_phase = 50;
+					Client.loadingPhase = 50;
 				}
-			} else if ((loading_phase ^ 0xffffffff) == -51) {
+			} else if ((Client.loadingPhase ^ 0xffffffff) == -51) {
 				Class40_Sub3.method1864((byte) 6);
 				loading_message = Class169.aClass67_2409.get(Preferences.language_code);
 				loading_percentage = 30;
-				loading_phase = 60;
-			} else if (loading_phase == 60) {
+				Client.loadingPhase = 60;
+			} else if (Client.loadingPhase == 60) {
 				int current_progress = MapRegion.method1649((byte) -88,
 						Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX),
 						Cache.get_index(Revision.PRE_EOC_634, "sprites"));
@@ -186,12 +181,12 @@ public class TitleScreen {
 							loading_percentage = 35;
 						} else {
 							loading_message = TitleScreen.loaded_core_fonts_ms.get(Preferences.language_code);
-							loading_phase = 70;
+							Client.loadingPhase = 70;
 							loading_percentage = 35;
 						}
 					}
 				}
-			} else if ((loading_phase ^ 0xffffffff) == -71) {
+			} else if ((Client.loadingPhase ^ 0xffffffff) == -71) {
 				int i_136_ = Class246_Sub28_Sub7.preload_title_screen(Cache.get_index(Revision.OSRS, "sprites"),
 						Cache.get_index(Revision.CUSTOM_PRE_EOC_550, "sprites"), -125);
 				int i_137_ = Class221.method1434(i ^ ~0x5b02);
@@ -201,10 +196,10 @@ public class TitleScreen {
 					loading_percentage = 40;
 				} else {
 					loading_message = Class200.aClass67_2851.get(Preferences.language_code);
-					loading_phase = 80;
+					Client.loadingPhase = 80;
 					loading_percentage = 40;
 				}
-			} else if (loading_phase == 80) {
+			} else if (Client.loadingPhase == 80) {
 				if (!Cache.client_cache.get(IndexConstants.PRE_EOC_634_MATERIALS_INDEX).method103(i ^ 0x5b64)) {
 					loading_message = (TitleScreen.loading_textures_ms.get(Preferences.language_code)
 							+ Cache.client_cache.get(IndexConstants.PRE_EOC_634_MATERIALS_INDEX).method99(false) + "%");
@@ -222,63 +217,63 @@ public class TitleScreen {
 								Cache.get_index(Revision.OSRS, "textures"), Cache.get_index(Revision.OSRS, "sprites"));
 						loading_message = Class188_Sub1.aClass67_3912.get(Preferences.language_code);
 						loading_percentage = 45;
-						loading_phase = 1000; // was 90
+						Client.loadingPhase = 1000; // was 90
 					}
 				}
 
 			} else if (i == 23396) {
 				/* Native Library Loading from Index 30 */
-				if (loading_phase == 1000) {
+				if (Client.loadingPhase == 1000) {
 					NativeLibraryManager.setOSAndArch();
 					loading_message = "Loaded native registry.";
 					loading_percentage = 45;
-					loading_phase = 1001;
-				} else if (loading_phase == 1001) {
+					Client.loadingPhase = 1001;
+				} else if (Client.loadingPhase == 1001) {
 					int percent = NativeLibraryManager.writeNativeLibrary("jaggl");
 					if (percent >= 0 && percent < 100) {
 						loading_message = "Loading library JAGGL";
 					} else {
 						loading_message = "Loaded JAGGL.";
-						loading_phase = 1002;
+						Client.loadingPhase = 1002;
 					}
 
-				} else if (loading_phase == 1002) {
+				} else if (Client.loadingPhase == 1002) {
 					int percent = NativeLibraryManager.writeNativeLibrary("sw3d");
 					if (percent >= 0 && percent < 100) {
 						loading_message = "Loading library SW3D";
 					} else {
 						loading_message = "Loaded SW3D.";
-						loading_phase = 1003;
+						Client.loadingPhase = 1003;
 					}
 
-				} else if (loading_phase == 1003) {
+				} else if (Client.loadingPhase == 1003) {
 					int percent = NativeLibraryManager.writeNativeLibrary("jaclib");
 					if (percent >= 0 && percent < 100) {
 						loading_message = "Loading library JACLIB";
 					} else {
 						loading_message = "Loaded JACLIB.";
-						loading_phase = 1004;
+						Client.loadingPhase = 1004;
 					}
 					if (percent == 100)
 						NativeLibraryLoader.loadNative("jaclib");
 
-				} else if (loading_phase == 1004) {
+				} else if (Client.loadingPhase == 1004) {
 					int percent = NativeLibraryManager.writeNativeLibrary("jagmisc");
 					if (percent >= 0 && percent < 100) {
 						loading_message = "Loading library JAGMISC";
 					} else {
 						loading_message = "Loaded JAGMISC.";
-						loading_phase = 90;
+						Client.loadingPhase = 90;
 					}
 					if (percent == 100)
 						NativeLibraryLoader.loadNative("jagmisc");
 
 					/* END */
-				} else if (loading_phase == 90) {
+				} else if (Client.loadingPhase == 90) {
 					loading_message = Class133.aClass67_1841.get(Preferences.language_code);
 					loading_percentage = 50;
-					loading_phase = 95;
-				} else if (loading_phase == 95) {
+					Client.loadingPhase = 95;
+				} else if (Client.loadingPhase == 95) {
 					if (((Renderer) Client.current_renderer).safe_mode) {
 						((Renderer) Client.current_renderer).anInt590 = 0;
 						((Renderer) Client.current_renderer).frame_mode = 1;
@@ -291,17 +286,17 @@ public class TitleScreen {
 					Class251.method1611(-27345, false, (((Renderer) (Client.current_renderer)).anInt598));
 					loading_message = Class_ss.aClass67_7057.get(Preferences.language_code);
 					loading_percentage = 55;
-					loading_phase = 100;
-				} else if (loading_phase == 100) {
+					Client.loadingPhase = 100;
+				} else if (Client.loadingPhase == 100) {
 
 					// Fonts game
 					Class19.method189(Client.sprite_loader, Cache.get_index(Settings.gamefonts, "sprites"), 73,
 							Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX));
 					loading_message = opened_title_screen_ms.get(Preferences.language_code);
 					loading_percentage = 60;
-					Class99.method622((byte) 32, 5);
-					loading_phase = 110;
-				} else if (loading_phase == 110) {
+					Class99.updateGameState((byte) 32, 5);
+					Client.loadingPhase = 110;
+				} else if (Client.loadingPhase == 110) {
 					Cache.get_index(Revision.OSRS, "config").method103(i - 23396);
 					Cache.get_index(Revision.PRE_EOC_550, "config").method103(i - 23396);
 					Cache.get_index(Revision.PRE_EOC_634, "config").method103(i - 23396);
@@ -484,9 +479,9 @@ public class TitleScreen {
 								(Class246_Sub37_Sub1.textureLoader), (byte) -62);
 						Tile.method998(Cache.get_index(Revision.OSRS, "models"),
 								(Class246_Sub37_Sub1.textureLoader), (byte) -62);
-						loading_phase = 120;
+						Client.loadingPhase = 120;
 					}
-				} else if (loading_phase == 120) {
+				} else if (Client.loadingPhase == 120) {
 					int current = Class259_Sub2.preload_sprites(Cache.get_index(Revision.PRE_EOC_634, "sprites"));
 					int expected_progress = Class63_Sub1.method2073(-41);
 					if (current < expected_progress) {
@@ -514,12 +509,12 @@ public class TitleScreen {
 										Cache.get_index(Revision.OSRS, "sprites"), false, (Client.sprite_loader));
 								Class176.method1158(Class243.aClass_lArray3448, 10);
 								loading_message = Class219.aClass67_3038.get(Preferences.language_code);
-								loading_phase = 130;
+								Client.loadingPhase = 130;
 								loading_percentage = 70;
 							}
 						}
 					}
-				} else if (loading_phase == 130) {
+				} else if (Client.loadingPhase == 130) {
 					if (!Cache.client_cache.get(IndexConstants.PRE_EOC_634_BINARY_INDEX).methodIdk2(0, "", "huffman")) {
 						loading_message = Class34.aClass67_450.get(Preferences.language_code) + "0%";
 						loading_percentage = 75;
@@ -529,9 +524,9 @@ public class TitleScreen {
 						Class246_Sub28_Sub15.method2648((byte) -47, class99);
 						loading_message = Class130_Sub1.aClass67_3733.get(Preferences.language_code);
 						loading_percentage = 75;
-						loading_phase = 140;
+						Client.loadingPhase = 140;
 					}
-				} else if ((loading_phase ^ 0xffffffff) == -141) {
+				} else if ((Client.loadingPhase ^ 0xffffffff) == -141) {
 					if (!Cache.get_index(Revision.OSRS, "widgets").method103(0)) {
 						loading_message = (LOADING_OSRS_INTERFACES_MS.get(Preferences.language_code)
 								+ Cache.get_index(Revision.OSRS, "widgets").method99(false) + "%");
@@ -561,14 +556,14 @@ public class TitleScreen {
 										loading_percentage = 80;
 									} else {
 										loading_message = Class213.aClass67_2979.get(Preferences.language_code);
-										loading_phase = 150;
+										Client.loadingPhase = 150;
 										loading_percentage = 80;
 									}
 								}
 							}
 						}
 					}
-				} else if ((loading_phase ^ 0xffffffff) == -151) {
+				} else if ((Client.loadingPhase ^ 0xffffffff) == -151) {
 					if (!Cache.get_index(Revision.OSRS, "cs2").method103(0)) {
 						loading_message = (LOADING_OSRS_INTERFACE_SCRIPTS_MS.get(Preferences.language_code)
 								+ Cache.get_index(Revision.OSRS, "cs2").method99(false) + "%");
@@ -585,12 +580,12 @@ public class TitleScreen {
 								loading_percentage = 82;
 							} else {
 								loading_message = Class223.aClass67_3075.get(Preferences.language_code);
-								loading_phase = 160;
+								Client.loadingPhase = 160;
 								loading_percentage = 82;
 							}
 						}
 					}
-				} else if ((loading_phase ^ 0xffffffff) == -161) {
+				} else if ((Client.loadingPhase ^ 0xffffffff) == -161) {
 					if (!Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX).method103(i ^ 0x5b64)) {
 						loading_message = (Class220.aClass67_3059.get(Preferences.language_code)
 								+ Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX).method99(false)
@@ -598,10 +593,10 @@ public class TitleScreen {
 						loading_percentage = 85;
 					} else {
 						loading_message = Class220.aClass67_3059_2.get(Preferences.language_code);
-						loading_phase = 170;
+						Client.loadingPhase = 170;
 						loading_percentage = 85;
 					}
-				} else if (loading_phase == 170) {
+				} else if (Client.loadingPhase == 170) {
 					if (!Cache.client_cache.get(IndexConstants.PRE_EOC_634_WORLD_MAP_INDEX).method90(-1, "details")) {
 						loading_message = (Class246_Sub1_Sub16.aClass67_6692.get(Preferences.language_code)
 								+ Cache.client_cache.get(IndexConstants.PRE_EOC_634_WORLD_MAP_INDEX)
@@ -613,26 +608,26 @@ public class TitleScreen {
 								Class82.underlay_loader, ContextMenus.overlay_loader, Class143.aClass251_2067,
 								Client.map_functions, Client.map_scenes, Varbit.aClass95_6658);
 						loading_message = MapFunction.aClass67_2010.get(Preferences.language_code);
-						loading_phase = 180;
+						Client.loadingPhase = 180;
 						loading_percentage = 89;
 					}
-				} else if ((loading_phase ^ 0xffffffff) == -181) {
+				} else if ((Client.loadingPhase ^ 0xffffffff) == -181) {
 					int i_141_ = Class246_Sub13.load_worlds(3);
 					if (i_141_ == -1) {
 						loading_message = Class246_Sub28_Sub25.aClass67_6703.get(Preferences.language_code);
 						loading_percentage = 90;
 					} else if ((i_141_ ^ 0xffffffff) == -8 || (i_141_ ^ 0xffffffff) == -10) {
-						Client.instance.method2937(127, "worldlistfull");
-						Class99.method622((byte) 67, 1000);
+						Client.instance.error("worldlistfull");
+						Class99.updateGameState((byte) 67, 1000);
 					} else if (!Class194_Sub1.aBool4139) {
-						Client.instance.method2937(127, "worldlistio_" + i_141_);
-						Class99.method622((byte) -117, 1000);
+						Client.instance.error("worldlistio_" + i_141_);
+						Class99.updateGameState((byte) -117, 1000);
 					} else {
 						loading_message = Class59_Sub1_Sub2.aClass67_6128.get(Preferences.language_code);
-						loading_phase = 190;
+						Client.loadingPhase = 190;
 						loading_percentage = 90;
 					}
-				} else if (loading_phase == 190) {
+				} else if (Client.loadingPhase == 190) {
 					Filestore.aClass94Array1739 = new String[((Class180) (Class246_Sub18.aClass180_4678)).anInt2526];
 					Filestore.aClass94Array1739_osrs = new String[680];
 					Filestore.aClass94Array1739_550 = new String[((Class180) (Class246_Sub18.aClass180_4678)).anInt2526];
@@ -685,8 +680,8 @@ public class TitleScreen {
 					Class100.setWindowedMode((((Renderer) (Client.current_renderer)).frame_mode), -1, -1, false, false);
 					loading_message = Class35.aClass67_468.get(Preferences.language_code);
 					loading_percentage = 95;
-					loading_phase = 200;
-				} else if (loading_phase == 200) {
+					Client.loadingPhase = 200;
+				} else if (Client.loadingPhase == 200) {
 					LoginScreen.prepare(true);
 				}
 			}

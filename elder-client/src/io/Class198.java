@@ -83,7 +83,7 @@ final class Class198 {
 		int i_11_ = fontmetrics.getMaxAscent();
 		int i_12_ = fontmetrics.getMaxAscent() + fontmetrics.getMaxDescent();
 		int i_13_ = fontmetrics.getHeight();
-		Image image = Tile.aCanvas2155.createImage(i_9_, i_12_);
+		Image image = GameEngine.canvas.createImage(i_9_, i_12_);
 		Graphics graphics = image.getGraphics();
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, i_9_, i_12_);

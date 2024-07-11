@@ -37,7 +37,7 @@ final class Class246_Sub32 extends Node {
 			}
 			Class38.method266(-121);
 			Class130_Sub3.anInt4417 = 1;
-			Class99.method622((byte) -123, i);
+			Class99.updateGameState((byte) -123, i);
 			for (int i_2_ = 0; i_2_ < 100; i_2_++)
 				Class246_Sub39.aBoolArray5488[i_2_] = true;
 			Class_a.method576((byte) 66);

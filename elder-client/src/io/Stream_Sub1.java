@@ -12,7 +12,6 @@ final class Stream_Sub1 extends Buffer {
 	static int anInt5859;
 	static int anInt5860;
 	static int anInt5861;
-	static Class110 aClass110_5862;
 	static int anInt5863;
 	private int anInt5864;
 	static int anInt5865;
@@ -136,7 +135,7 @@ final class Stream_Sub1 extends Buffer {
 		try {
 			if (bool != false)
 				Widget.redraw_widget(null);
-			aClass110_5862 = null;
+			GameEngine.clock = null;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "cw.SB(" + bool + ')');
 		}
@@ -146,7 +145,7 @@ final class Stream_Sub1 extends Buffer {
 		try {
 			anInt5851++;
 			if (i != -938442011)
-				aClass110_5862 = null;
+				GameEngine.clock = null;
 			aClass42_5853 = new ISAAC(is);
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "cw.WB(" + (is != null ? "{...}" : "null") + ',' + i + ')');
@@ -189,7 +188,7 @@ final class Stream_Sub1 extends Buffer {
 			int i_19_ = 0;
 			anInt5864 += i_16_;
 			if (i >= -46)
-				aClass110_5862 = null;
+				GameEngine.clock = null;
 			for (/**/; i_18_ < i_16_; i_18_ = 8) {
 				i_19_ += (((Buffer) this).buffer[i_17_++] & Class9.anIntArray107[i_18_]) << -i_18_ + i_16_;
 				i_16_ -= i_18_;

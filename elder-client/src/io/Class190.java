@@ -1,7 +1,6 @@
 package io;
 
 final class Class190 {
-	static long[] aLongArray2675 = new long[32];
 	static int anInt2676;
 	static int anInt2677;
 
@@ -10,7 +9,7 @@ final class Class190 {
 			try {
 				anInt2677++;
 				if (bool_0_ != false)
-					aLongArray2675 = null;
+					GameEngine.graphicsTickTimes = null;
 				if (bool) {
 					Class246_Sub18.anInt4681++;
 					Class246_Sub1_Sub14.method2711((byte) -24);
@@ -29,8 +28,8 @@ final class Class190 {
 	public static void method1245(byte i) {
 		try {
 			if (i != -116)
-				aLongArray2675 = null;
-			aLongArray2675 = null;
+				GameEngine.graphicsTickTimes = null;
+			GameEngine.graphicsTickTimes = null;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "rm.A(" + i + ')');
 		}

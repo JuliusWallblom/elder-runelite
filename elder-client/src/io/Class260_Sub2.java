@@ -16,6 +16,9 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import io.cache.Revision;
+import net.runelite.api.*;
+import net.runelite.api.Tile;
+import net.runelite.rs.api.*;
 
 final class Class260_Sub2 extends SceneGraph {
 	static int anInt4184;
@@ -3965,5 +3968,435 @@ final class Class260_Sub2 extends SceneGraph {
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, ("fd.HE(" + i + ',' + i_263_ + ',' + i_264_ + ')'));
 		}
+	}
+
+	@Override
+	public RSGameObject[] getObjects() {
+		return new RSGameObject[0];
+	}
+
+	@Override
+	public RSTile[][][] getTiles() {
+		return new RSTile[0][][];
+	}
+
+	@Override
+	public Tile[][][] getExtendedTiles() {
+		return new Tile[0][][];
+	}
+
+	@Override
+	public byte[][][] getExtendedTileSettings() {
+		return new byte[0][][];
+	}
+
+	@Override
+	public int getDrawDistance() {
+		return 0;
+	}
+
+	@Override
+	public void setDrawDistance(int drawDistance) {
+
+	}
+
+	@Override
+	public int[][] getTileShape2D() {
+		return new int[0][];
+	}
+
+	@Override
+	public int[][] getTileRotation2D() {
+		return new int[0][];
+	}
+
+	@Override
+	public void draw(RSProjection projection, Tile tile, boolean var2) {
+
+	}
+
+	@Override
+	public int[][][] getTileHeights() {
+		return new int[0][][];
+	}
+
+	@Override
+	public void drawTile(int[] pixels, int pixelOffset, int width, int z, int x, int y) {
+
+	}
+
+	@Override
+	public void updateOccluders() {
+
+	}
+
+	@Override
+	public int getMaxX() {
+		return 0;
+	}
+
+	@Override
+	public int getMaxY() {
+		return 0;
+	}
+
+	@Override
+	public int getMaxZ() {
+		return 0;
+	}
+
+	@Override
+	public int getMinLevel() {
+		return 0;
+	}
+
+	@Override
+	public void setMinLevel(int lvl) {
+
+	}
+
+	@Override
+	public void removeTile(Tile tile) {
+
+	}
+
+	@Override
+	public void newGroundItemPile(int plane, int x, int y, int hash, RSRenderable var5, long var6, RSRenderable var7, RSRenderable var8) {
+
+	}
+
+	@Override
+	public boolean newGameObject(int plane, int startX, int startY, int var4, int var5, int centerX, int centerY, int height, RSRenderable entity, int orientation, boolean tmp, long tag, int flags) {
+		return false;
+	}
+
+	@Override
+	public void removeGameObject(GameObject gameObject) {
+
+	}
+
+	@Override
+	public void generateHouses() {
+
+	}
+
+	@Override
+	public void setRoofRemovalMode(int flags) {
+
+	}
+
+	@Override
+	public void removeGameObject(int plane, int x, int y) {
+
+	}
+
+	@Override
+	public void removeWallObject(WallObject wallObject) {
+
+	}
+
+	@Override
+	public void removeWallObject(int plane, int x, int y) {
+
+	}
+
+	@Override
+	public void removeDecorativeObject(DecorativeObject decorativeObject) {
+
+	}
+
+	@Override
+	public void removeDecorativeObject(int plane, int x, int y) {
+
+	}
+
+	@Override
+	public void removeGroundObject(GroundObject groundObject) {
+
+	}
+
+	@Override
+	public void removeGroundObject(int plane, int x, int y) {
+
+	}
+
+	@Override
+	public short[][][] getUnderlayIds() {
+		return new short[0][][];
+	}
+
+	@Override
+	public void setUnderlayIds(short[][][] underlayIds) {
+
+	}
+
+	@Override
+	public short[][][] getOverlayIds() {
+		return new short[0][][];
+	}
+
+	@Override
+	public void setOverlayIds(short[][][] overlayIds) {
+
+	}
+
+	@Override
+	public byte[][][] getTileShapes() {
+		return new byte[0][][];
+	}
+
+	@Override
+	public void setTileShapes(byte[][][] tileShapes) {
+
+	}
+
+	@Override
+	public int getBaseX() {
+		return 0;
+	}
+
+	@Override
+	public void setBaseX(int x) {
+
+	}
+
+	@Override
+	public int getBaseY() {
+		return 0;
+	}
+
+	@Override
+	public void setBaseY(int y) {
+
+	}
+
+	@Override
+	public void setViewportWalking(boolean viewportWalking) {
+
+	}
+
+	@Override
+	public boolean isInstance() {
+		return false;
+	}
+
+	@Override
+	public int[][][] getInstanceTemplateChunks() {
+		return new int[0][][];
+	}
+
+	@Override
+	public void menuOpen(int selectedPlane, int screenX, int screenY, boolean viewportWalking) {
+
+	}
+
+	@Override
+	public boolean drawEntity(int level, int x, int y, int z, int radius, Renderable renderable, int orientation, long var8, boolean drawFrontTilesFirst) {
+		return false;
+	}
+
+	@Override
+	public int getWorldViewId() {
+		return 0;
+	}
+
+	@Override
+	public int getCycle() {
+		return 0;
+	}
+
+	@Override
+	public void setCycle(int cycle) {
+
+	}
+
+	@Override
+	public void visibilityMap(int var1, int var2) {
+
+	}
+
+	@Override
+	public boolean setRenderArea(int var1, int var2) {
+		return false;
+	}
+
+	@Override
+	public int getCameraX2() {
+		return 0;
+	}
+
+	@Override
+	public void setCameraX2(int cameraX2) {
+
+	}
+
+	@Override
+	public int getCameraY2() {
+		return 0;
+	}
+
+	@Override
+	public void setCameraY2(int cameraY2) {
+
+	}
+
+	@Override
+	public int getCameraZ2() {
+		return 0;
+	}
+
+	@Override
+	public void setCameraZ2(int cameraZ2) {
+
+	}
+
+	@Override
+	public int getScreenCenterX() {
+		return 0;
+	}
+
+	@Override
+	public void setScreenCenterX(int screenCenterX) {
+
+	}
+
+	@Override
+	public int getScreenCenterZ() {
+		return 0;
+	}
+
+	@Override
+	public void setScreenCenterZ(int screenCenterZ) {
+
+	}
+
+	@Override
+	public void setScenePlane(int scenePlane) {
+
+	}
+
+	@Override
+	public int getScenePlane() {
+		return 0;
+	}
+
+	@Override
+	public void setMinTileX(int i) {
+
+	}
+
+	@Override
+	public void setMinTileZ(int i) {
+
+	}
+
+	@Override
+	public void setMaxTileX(int i) {
+
+	}
+
+	@Override
+	public void setMaxTileZ(int i) {
+
+	}
+
+	@Override
+	public int getTileUpdateCount() {
+		return 0;
+	}
+
+	@Override
+	public void setTileUpdateCount(int tileUpdateCount) {
+
+	}
+
+	@Override
+	public int getMouseX2() {
+		return 0;
+	}
+
+	@Override
+	public int getMouseY2() {
+		return 0;
+	}
+
+	@Override
+	public void setMouseCanvasHoverPositionX(int x) {
+
+	}
+
+	@Override
+	public void setMouseCanvasHoverPositionY(int y) {
+
+	}
+
+	@Override
+	public RSNodeDeque getTilesDeque() {
+		return null;
+	}
+
+	@Override
+	public boolean isCheckClick() {
+		return false;
+	}
+
+	@Override
+	public void setCheckClick(boolean checkClick) {
+
+	}
+
+	@Override
+	public int getOffsetOccluder() {
+		return 0;
+	}
+
+	@Override
+	public void setOffsetOccluder(int offset) {
+
+	}
+
+	@Override
+	public RSIntProjection newIntProjection(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw) {
+		return null;
+	}
+
+	@Override
+	public void setTargetTile(int targetX, int targetY) {
+
+	}
+
+	@Override
+	public void hoverTile(int x, int y, int plane) {
+
+	}
+
+	@Override
+	public net.runelite.api.Model getModel() {
+		return null;
+	}
+
+	@Override
+	public int getModelHeight() {
+		return 0;
+	}
+
+	@Override
+	public void setModelHeight(int modelHeight) {
+
+	}
+
+	@Override
+	public net.runelite.api.Node getNext() {
+		return null;
+	}
+
+	@Override
+	public net.runelite.api.Node getPrevious() {
+		return null;
+	}
+
+	@Override
+	public long getHash() {
+		return 0;
 	}
 }

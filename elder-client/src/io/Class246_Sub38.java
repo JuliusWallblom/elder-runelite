@@ -21,7 +21,6 @@ final class Class246_Sub38 extends Node {
 	static float[] aFloatArray5446 = new float[4];
 	static int anInt5447;
 	static HashMap aClass54_5448;
-	static int anInt5449;
 	static int anInt5450;
 
 	final void method2289(int[] is, int i, int i_0_, int i_1_) {
@@ -126,6 +125,6 @@ final class Class246_Sub38 extends Node {
 	static {
 		aClass13_5444 = new IncomingPacket(94, 0);
 		aClass54_5448 = new HashMap(8);
-		anInt5449 = 0;
+		GameEngine.threadCount = 0;
 	}
 }

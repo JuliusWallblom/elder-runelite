@@ -14,13 +14,13 @@ final class Class187_Sub1 extends Class187 implements Interface1 {
 	static final void method2109(byte i) {
 		try {
 			anInt4873++;
-			Stream_Sub1.aClass110_5862.method762((byte) 68);
+			GameEngine.clock.method762((byte) 68);
 			for (int i_0_ = 0; i_0_ < 32; i_0_++)
-				Class190.aLongArray2675[i_0_] = 0L;
+				GameEngine.graphicsTickTimes[i_0_] = 0L;
 			for (int i_1_ = 0; i_1_ < 32; i_1_++)
 				Class75.aLongArray987[i_1_] = 0L;
 			int i_2_ = 49 / ((70 - i) / 37);
-			Class234.anInt3194 = 0;
+			GameEngine.gameCyclesToDo = 0;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "mq.A(" + i + ')');
 		}

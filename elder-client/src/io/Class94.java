@@ -3,7 +3,6 @@ package io;
 final class Class94 {
 	static int anInt1230;
 	static OutgoingPacket aClass201_1231 = new OutgoingPacket(22, 4);
-	static long aLong1232 = 0L;
 	static int anInt1233;
 	static int[] anIntArray1234 = new int[1];
 

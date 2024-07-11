@@ -10,7 +10,6 @@ final class Class246_Sub28_Sub8 extends TextureOperation {
 	private int anInt6057;
 	private int anInt6058;
 	static int anInt6059;
-	static volatile boolean aBool6060;
 	private int anInt6061;
 	private int anInt6062 = 1024;
 	private int anInt6063;
@@ -497,7 +496,7 @@ final class Class246_Sub28_Sub8 extends TextureOperation {
 	}
 
 	static {
-		aBool6060 = true;
+		GameEngine.fullRedraw = true;
 		aBoolArray6074 = new boolean[8];
 		OBJECT_CLICK_1_PACKET = new OutgoingPacket(77, 7);
 	}

@@ -24,15 +24,10 @@
  */
 package net.runelite.client.plugins.statusbars;
 
-import javax.inject.Inject;
 import com.google.inject.Provides;
 import lombok.AccessLevel;
 import lombok.Getter;
-import net.runelite.api.Actor;
-import net.runelite.api.Client;
-import net.runelite.api.NPC;
-import net.runelite.api.Player;
-import net.runelite.api.Varbits;
+import net.runelite.api.*;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -44,6 +39,8 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.itemstats.ItemStatPlugin;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.apache.commons.lang3.ArrayUtils;
+
+import javax.inject.Inject;
 
 @PluginDescriptor(
 	name = "Status Bars",

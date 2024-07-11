@@ -83,7 +83,7 @@ final class Class_w extends TextureOperation {
 	static final void method2651(int i) {
 		try {
 			anInt6375++;
-			Class99.method622((byte) 56, 25);
+			Class99.updateGameState((byte) 56, 25);
 			Class246_Sub28_Sub3.method2494(2048);
 			System.gc();
 			int i_7_ = 82 / ((10 - i) / 47);

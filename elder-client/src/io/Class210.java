@@ -1,7 +1,6 @@
 package io;
 
 import io.cache.Cache;
-import io.cache.IndexConstants;
 import io.cache.Revision;
 
 public abstract class Class210 {
@@ -58,11 +57,11 @@ public abstract class Class210 {
 					} else {
 						boolean var5 = true;
 						if (~Client.local_player.anInt7141 != 0 && ~var2.anInt7141 != 0) {
-							int var6 = ~Client.local_player.f_qd < ~var2.f_qd ? Client.local_player.f_qd : var2.f_qd;
+							int var6 = ~Client.local_player.combatLevel < ~var2.combatLevel ? Client.local_player.combatLevel : var2.combatLevel;
 							int var7 = ~var2.anInt7141 < ~Client.local_player.anInt7141 ? Client.local_player.anInt7141
 									: var2.anInt7141;
 							var8 = 10 * var6 / 100 + 5 + var7;
-							int var9 = -var2.f_qd + Client.local_player.f_qd;
+							int var9 = -var2.combatLevel + Client.local_player.combatLevel;
 							if (~var9 > -1) {
 								var9 = -var9;
 							}
@@ -75,16 +74,16 @@ public abstract class Class210 {
 						String var11 = Class40_Sub6.aClass101_5092 != Class59_Sub4_Sub3.aClass101_6943
 								? Class38_Sub1.aClass67_5105.get(Preferences.language_code)
 								: NodeSub.aClass67_3748.get(Preferences.language_code);
-						if (~var2.f_qd <= ~var2.f_bd) {
+						if (~var2.combatLevel <= ~var2.f_bd) {
 							var4 = var2.get_name(33, true)
-									+ (var5 ? ClickMaskNode.method2122(Client.local_player.f_qd, true, var2.f_qd)
+									+ (var5 ? ClickMaskNode.method2122(Client.local_player.combatLevel, true, var2.combatLevel)
 											: "<col=ffffff>")
-									+ " (" + var11 + var2.f_qd + ")";
+									+ " (" + var11 + var2.combatLevel + ")";
 						} else {
 							var4 = var2.get_name(-124, true)
-									+ (var5 ? ClickMaskNode.method2122(Client.local_player.f_qd, true, var2.f_qd)
+									+ (var5 ? ClickMaskNode.method2122(Client.local_player.combatLevel, true, var2.combatLevel)
 											: "<col=ffffff>")
-									+ " (" + var11 + var2.f_qd + "+" + (-var2.f_qd + var2.f_bd) + ")";
+									+ " (" + var11 + var2.combatLevel + "+" + (-var2.combatLevel + var2.f_bd) + ")";
 						}
 					}
 
@@ -99,7 +98,7 @@ public abstract class Class210 {
 									if (Class59_Sub4_Sub3.aClass101_6943 == Class246_Sub28_Sub16.aClass101_6394
 											&& Class191.aStringArray2682[var12].equalsIgnoreCase(
 													Class246_Sub11.aClass67_4107.get(Preferences.language_code))) {
-										if (~var2.f_qd < ~Client.local_player.f_qd) {
+										if (~var2.combatLevel < ~Client.local_player.combatLevel) {
 											var13 = 2000;
 										}
 

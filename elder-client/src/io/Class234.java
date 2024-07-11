@@ -9,7 +9,6 @@ final class Class234 {
 	static int[] anIntArray3191 = { 1, 2, 4, 8 };
 	static int anInt3192;
 	static byte[] movementTypes = new byte[2048];
-	static int anInt3194;
 
 	public static void method1495(int i) {
 		try {

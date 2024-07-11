@@ -138,7 +138,7 @@ final class Class246_Sub34 extends Node {
 									? NodeSub.aClass67_3748.get(Preferences.language_code)
 									: Class38_Sub1.aClass67_5105.get(Preferences.language_code));
 							string = (string
-									+ (ClickMaskNode.method2122(((Player) Client.local_player).f_qd, !bool_11_,
+									+ (ClickMaskNode.method2122(((Player) Client.local_player).combatLevel, !bool_11_,
 											((NpcType) class253).combatLevel))
 									+ " (" + string_12_ + ((NpcType) class253).combatLevel + ")");
 						}
@@ -183,7 +183,7 @@ final class Class246_Sub34 extends Node {
 												Class246_Sub11.aClass67_4107.get(Preferences.language_code)))) {
 											short i_15_ = 0;
 											if ((((NpcType) class253).combatLevel
-													^ 0xffffffff) < (((Player) (Client.local_player)).f_qd
+													^ 0xffffffff) < (((Player) (Client.local_player)).combatLevel
 															^ 0xffffffff))
 												i_15_ = (short) 2000;
 											short i_16_ = 0;

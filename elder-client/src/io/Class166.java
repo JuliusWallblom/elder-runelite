@@ -517,8 +517,8 @@ final class Class166 {
 	static final void method1110(boolean bool) {
 		try {
 			anInt2355++;
-			if (bool == true && (LoginScreen.login_response ^ 0xffffffff) == -6)
-				LoginScreen.login_response = 6;
+			if (bool == true && (LoginScreen.loginResponse ^ 0xffffffff) == -6)
+				LoginScreen.loginResponse = 6;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "pk.E(" + bool + ')');
 		}

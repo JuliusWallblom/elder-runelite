@@ -6,7 +6,6 @@ package io;
 import java.awt.Insets;
 
 import io.cache.Cache;
-import io.cache.IndexConstants;
 import io.cache.Revision;
 
 abstract class Class21 {
@@ -72,15 +71,15 @@ abstract class Class21 {
 						/* empty */
 					}
 				}
-				Tile.aCanvas2155.setSize(Client.client_width, Client.client_height);
+				GameEngine.canvas.setSize(Client.client_width, Client.client_height);
 				if (Client.sprite_loader != null)
-					Client.sprite_loader.method1713(Tile.aCanvas2155);
+					Client.sprite_loader.method1713(GameEngine.canvas);
 				if (container == Client.frame) {
 					Insets insets = Client.frame.getInsets();
-					Tile.aCanvas2155.setLocation(Class125.anInt1768 + insets.left,
+					GameEngine.canvas.setLocation(Class125.anInt1768 + insets.left,
 							insets.top - -Class100_Sub1.anInt5075);
 				} else
-					Tile.aCanvas2155.setLocation(Class125.anInt1768, Class100_Sub1.anInt5075);
+					GameEngine.canvas.setLocation(Class125.anInt1768, Class100_Sub1.anInt5075);
 				if ((Widget.root_interface ^ 0xffffffff) != 0)
 					Class177.method1165((byte) -34, true, 634);
 				Class246_Sub28_Sub30.method2834((byte) 0);

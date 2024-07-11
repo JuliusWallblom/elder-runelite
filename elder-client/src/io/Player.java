@@ -1,8 +1,17 @@
 package io;
 
 import io.cache.Revision;
+import net.runelite.api.*;
+import net.runelite.api.Point;
+import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldArea;
+import net.runelite.api.coords.WorldPoint;
+import net.runelite.rs.api.*;
 
-public final class Player extends Entity {
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+public final class Player extends Entity implements RSPlayer {
 	private byte f_vc;
 	static int f_wc;
 	static int anInt7114;
@@ -50,7 +59,7 @@ public final class Player extends Entity {
 	static int f_nd;
 	static int f_od;
 	static int f_pd;
-	int f_qd;
+	int combatLevel;
 	static Class78 f_rd;
 	static IncomingPacket RUNSCRIPT_IN;
 	int f_td;
@@ -130,7 +139,7 @@ public final class Player extends Entity {
 					((Player) this).aString7140 = stream.readString((byte) -40);
 				else
 					((Player) this).aString7140 = ((Player) this).username;
-				((Player) this).f_qd = stream.readUnsignedByte();
+				((Player) this).combatLevel = stream.readUnsignedByte();
 				if (!bool_1_) {
 					((Player) this).f_fd = 0;
 					((Player) this).f_bd = stream.readUnsignedByte();
@@ -139,7 +148,7 @@ public final class Player extends Entity {
 						((Player) this).anInt7141 = -1;
 				} else {
 					((Player) this).f_fd = stream.readUnsignedShort();
-					((Player) this).f_bd = ((Player) this).f_qd;
+					((Player) this).f_bd = ((Player) this).combatLevel;
 					((Player) this).anInt7141 = -1;
 				}
 				int i_12_ = ((Player) this).f_dd;
@@ -834,12 +843,542 @@ public final class Player extends Entity {
 		((Player) this).f_td = -1;
 		((Player) this).anInt7132 = -1;
 		((Player) this).f_dd = 0;
-		((Player) this).f_qd = 0;
+		((Player) this).combatLevel = 0;
 		((Player) this).f_wd = 255;
 	}
 
 	static {
 		aClass67_7125 = new MultilingualString("Self", "Mich", "Moi", "Eu");
 		RUNSCRIPT_IN = new IncomingPacket(27, -2);
+	}
+
+	@Override
+	public RSUsername getRsName() {
+		return null;
+	}
+
+	@Override
+	public int getId() {
+		return 0;
+	}
+
+	@Override
+	public int getPlayerId() {
+		return 0;
+	}
+
+	@Override
+	public RSPlayerComposition getPlayerComposition() {
+		return null;
+	}
+
+	@Override
+	public Polygon[] getPolygons() {
+		return new Polygon[0];
+	}
+
+	@Override
+	public WorldView getWorldView() {
+		return null;
+	}
+
+	@Override
+	public int getCombatLevel() {
+		return combatLevel;
+	}
+
+	@Override
+	public String getName() {
+		return username;
+	}
+
+	@Override
+	public boolean isInteracting() {
+		return false;
+	}
+
+	@Override
+	public Actor getInteracting() {
+		return null;
+	}
+
+	@Override
+	public int getTotalLevel() {
+		return 0;
+	}
+
+	@Override
+	public int getTeam() {
+		return 0;
+	}
+
+	@Override
+	public boolean isFriendsChatMember() {
+		return false;
+	}
+
+	@Override
+	public boolean isClanMember() {
+		return false;
+	}
+
+	@Override
+	public HeadIcon getOverheadIcon() {
+		return null;
+	}
+
+	@Override
+	public SkullIcon getSkullIcon() {
+		return null;
+	}
+
+	@Override
+	public boolean isFriend() {
+		return false;
+	}
+
+	@Override
+	public boolean isFriended() {
+		return false;
+	}
+
+	@Override
+	public int getRsOverheadIcon() {
+		return 0;
+	}
+
+	@Override
+	public int getRsSkullIcon() {
+		return 0;
+	}
+
+	@Override
+	public int getRSSkillLevel() {
+		return 0;
+	}
+
+	@Override
+	public int getRSInteracting() {
+		return 0;
+	}
+
+	@Override
+	public int getHealthRatio() {
+		return 0;
+	}
+
+	@Override
+	public int getHealthScale() {
+		return 0;
+	}
+
+	@Override
+	public WorldPoint getWorldLocation() {
+		return null;
+	}
+
+	@Override
+	public LocalPoint getLocalLocation() {
+		return null;
+	}
+
+	@Override
+	public String getOverheadText() {
+		return "";
+	}
+
+	@Override
+	public void setOverheadText(String overheadText) {
+
+	}
+
+	@Override
+	public int getX() {
+		return 0;
+	}
+
+	@Override
+	public int getY() {
+		return 0;
+	}
+
+	@Override
+	public int[] getPathX() {
+		return new int[0];
+	}
+
+	@Override
+	public int[] getPathY() {
+		return new int[0];
+	}
+
+	@Override
+	public int getRSAnimation() {
+		return 0;
+	}
+
+	@Override
+	public void setAnimation(int animation) {
+
+	}
+
+	@Override
+	public int getAnimationFrame() {
+		return 0;
+	}
+
+	@Override
+	public int getActionFrame() {
+		return 0;
+	}
+
+	@Override
+	public void setAnimationFrame(int frame) {
+
+	}
+
+	@Override
+	public void setActionFrame(int frame) {
+
+	}
+
+	@Override
+	public int getActionFrameCycle() {
+		return 0;
+	}
+
+	@Override
+	public RSIterableNodeHashTable getSpotAnims() {
+		return null;
+	}
+
+	@Override
+	public boolean hasSpotAnim(int spotAnimId) {
+		return false;
+	}
+
+	@Override
+	public void createSpotAnim(int id, int spotAnimId, int height, int delay) {
+
+	}
+
+	@Override
+	public void removeSpotAnim(int id) {
+
+	}
+
+	@Override
+	public void clearSpotAnims() {
+
+	}
+
+	@Override
+	public int getGraphic() {
+		return 0;
+	}
+
+	@Override
+	public void setGraphic(int graphic) {
+
+	}
+
+	@Override
+	public int getGraphicHeight() {
+		return 0;
+	}
+
+	@Override
+	public void setGraphicHeight(int height) {
+
+	}
+
+	@Override
+	public int getSpotAnimFrame() {
+		return 0;
+	}
+
+	@Override
+	public void setSpotAnimFrame(int spotAnimFrame) {
+
+	}
+
+	@Override
+	public Polygon getCanvasTilePoly() {
+		return null;
+	}
+
+	@Override
+	public Point getCanvasTextLocation(Graphics2D graphics, String text, int zOffset) {
+		return null;
+	}
+
+	@Override
+	public Point getCanvasImageLocation(BufferedImage image, int zOffset) {
+		return null;
+	}
+
+	@Override
+	public Point getCanvasSpriteLocation(SpritePixels sprite, int zOffset) {
+		return null;
+	}
+
+	@Override
+	public Point getMinimapLocation() {
+		return null;
+	}
+
+	@Override
+	public RSActorSpotAnim newActorSpotAnim(int id, int height, int delay, int frame) {
+		return null;
+	}
+
+	@Override
+	public int getGraphicsCount() {
+		return 0;
+	}
+
+	@Override
+	public void setGraphicsCount(int count) {
+
+	}
+
+	@Override
+	public int getIdlePoseAnimation() {
+		return 0;
+	}
+
+	@Override
+	public void setIdlePoseAnimation(int animation) {
+
+	}
+
+	@Override
+	public int getPoseAnimation() {
+		return 0;
+	}
+
+	@Override
+	public void setPoseAnimation(int animation) {
+
+	}
+
+	@Override
+	public int getPoseAnimationFrame() {
+		return 0;
+	}
+
+	@Override
+	public void setPoseAnimationFrame(int frame) {
+
+	}
+
+	@Override
+	public int getPoseFrame() {
+		return 0;
+	}
+
+	@Override
+	public void setPoseFrame(int frame) {
+
+	}
+
+	@Override
+	public int getPoseFrameCycle() {
+		return 0;
+	}
+
+	@Override
+	public int getLogicalHeight() {
+		return 0;
+	}
+
+	@Override
+	public Shape getConvexHull() {
+		return null;
+	}
+
+	@Override
+	public WorldArea getWorldArea() {
+		return null;
+	}
+
+	@Override
+	public int getOrientation() {
+		return 0;
+	}
+
+	@Override
+	public int getCurrentOrientation() {
+		return 0;
+	}
+
+	@Override
+	public int getAnimation() {
+		return 0;
+	}
+
+	@Override
+	public RSIterableNodeDeque getHealthBars() {
+		return null;
+	}
+
+	@Override
+	public int[] getHitsplatValues() {
+		return new int[0];
+	}
+
+	@Override
+	public int[] getHitsplatTypes() {
+		return new int[0];
+	}
+
+	@Override
+	public int[] getHitsplatCycles() {
+		return new int[0];
+	}
+
+	@Override
+	public int getIdleRotateLeft() {
+		return 0;
+	}
+
+	@Override
+	public void setIdleRotateLeft(int id) {
+
+	}
+
+	@Override
+	public int getIdleRotateRight() {
+		return 0;
+	}
+
+	@Override
+	public void setIdleRotateRight(int id) {
+
+	}
+
+	@Override
+	public int getWalkAnimation() {
+		return 0;
+	}
+
+	@Override
+	public void setWalkAnimation(int id) {
+
+	}
+
+	@Override
+	public int getWalkRotate180() {
+		return 0;
+	}
+
+	@Override
+	public void setWalkRotate180(int id) {
+
+	}
+
+	@Override
+	public int getWalkRotateLeft() {
+		return 0;
+	}
+
+	@Override
+	public void setWalkRotateLeft(int id) {
+
+	}
+
+	@Override
+	public int getWalkRotateRight() {
+		return 0;
+	}
+
+	@Override
+	public void setWalkRotateRight(int id) {
+
+	}
+
+	@Override
+	public int getRunAnimation() {
+		return 0;
+	}
+
+	@Override
+	public void setRunAnimation(int id) {
+
+	}
+
+	@Override
+	public void setDead(boolean dead) {
+
+	}
+
+	@Override
+	public int getPathLength() {
+		return 0;
+	}
+
+	@Override
+	public int getOverheadCycle() {
+		return 0;
+	}
+
+	@Override
+	public void setOverheadCycle(int cycle) {
+
+	}
+
+	@Override
+	public boolean isDead() {
+		return false;
+	}
+
+	@Override
+	public int getModelHeight() {
+		return 0;
+	}
+
+	@Override
+	public void setModelHeight(int modelHeight) {
+
+	}
+
+	@Override
+	public RSModel getModel() {
+		return null;
+	}
+
+	@Override
+	public RSNode getNext() {
+		return null;
+	}
+
+	@Override
+	public void setNext(RSNode var1) {
+
+	}
+
+	@Override
+	public RSNode getPrevious() {
+		return null;
+	}
+
+	@Override
+	public void setPrevious(RSNode var1) {
+
+	}
+
+	@Override
+	public long getHash() {
+		return 0;
+	}
+
+	@Override
+	public void unlink() {
+
+	}
+
+	@Override
+	public void onUnlink() {
+
 	}
 }

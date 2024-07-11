@@ -23,6 +23,7 @@ import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.dbtable.DBRowConfig;
+import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.packets.ClientPacket;
@@ -30,7 +31,6 @@ import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.mapping.Implements;
 import net.runelite.rs.api.*;
 
 @SuppressWarnings("serial")
@@ -62,6 +62,12 @@ public final class Client extends GameEngine implements RSClient {
 	static int gameZoom = 600;
 	static int gamePos = 3;
 	public static boolean f_ob;
+
+	/*
+	 * The current loading phase.
+	 */
+	static int loadingPhase = 0;
+	static int gameState = 0;
 
 	public static void handleGameZoomScroll(int rotation) {
 		Client.gameZoom += rotation * 85;
@@ -136,26 +142,26 @@ public final class Client extends GameEngine implements RSClient {
 							Class220.anInt3058 = 3000;
 						if (((Class242) MapFunction.aClass242_2036).anInt3434 >= 2
 								&& (((Class242) MapFunction.aClass242_2036).anInt3436 ^ 0xffffffff) == -7) {
-							this.method2937(126, "js5connect_outofdate");
-							VarcType.anInt3103 = 1000;
+							this.error("js5connect_outofdate");
+							setGameState(GameState.UNKNOWN);
 							break;
 						}
 						if ((((Class242) MapFunction.aClass242_2036).anInt3434 ^ 0xffffffff) <= -5
 								&& (((Class242) MapFunction.aClass242_2036).anInt3436 ^ 0xffffffff) == 0) {
-							this.method2937(127, "js5crc");
-							VarcType.anInt3103 = 1000;
+							this.error("js5crc");
+							setGameState(GameState.UNKNOWN);
 							break;
 						}
 						if ((((Class242) MapFunction.aClass242_2036).anInt3434 ^ 0xffffffff) <= -5
-								&& (VarcType.anInt3103 == 0 || (VarcType.anInt3103 ^ 0xffffffff) == -6)) {
+								&& (gameState == 0 || (gameState ^ 0xffffffff) == -6)) {
 							if ((((Class242) MapFunction.aClass242_2036).anInt3436 == 7)
 									|| ((((Class242) MapFunction.aClass242_2036).anInt3436) ^ 0xffffffff) == -10)
-								this.method2937(i - 2874, "js5connect_full");
+								this.error("js5connect_full");
 							else if (((((Class242) MapFunction.aClass242_2036).anInt3436) ^ 0xffffffff) >= -1)
-								this.method2937(126, "js5io");
+								this.error("js5io");
 							else
-								this.method2937(i - 2873, "js5connect");
-							VarcType.anInt3103 = 1000;
+								this.error("js5connect");
+							setGameState(GameState.UNKNOWN);
 							break;
 						}
 					}
@@ -188,7 +194,7 @@ public final class Client extends GameEngine implements RSClient {
 								Class177.aLong2495 = TimeUtility.time();
 							}
 							if (Class44.anInt642 == 3) {
-								if ((VarcType.anInt3103 ^ 0xffffffff) != -1 && (VarcType.anInt3103 ^ 0xffffffff) != -6
+								if ((gameState ^ 0xffffffff) != -1 && (gameState ^ 0xffffffff) != -6
 										&& Class130.aClass6_1817.method67(i - 2997) <= 0) {
 									if ((-Class177.aLong2495 + TimeUtility.time()) > 30000L) {
 										method2974(-59, 1001);
@@ -205,8 +211,8 @@ public final class Client extends GameEngine implements RSClient {
 							}
 							if (Class44.anInt642 != 4)
 								break;
-							boolean bool = ((VarcType.anInt3103 ^ 0xffffffff) == -6
-									|| (VarcType.anInt3103 ^ 0xffffffff) == -11 || VarcType.anInt3103 == 28);
+							boolean bool = ((gameState ^ 0xffffffff) == -6
+									|| (gameState ^ 0xffffffff) == -11 || gameState == 28);
 							MapFunction.aClass242_2036.method1550(i ^ 0xbb8, (Class130.aClass6_1817), !bool);
 							Class14.aClass182_218 = null;
 							Class44.anInt642 = 0;
@@ -243,7 +249,7 @@ public final class Client extends GameEngine implements RSClient {
 						Class65.aClass6_864 = null;
 					}
 					if (Player.f_rd != null)
-						Player.f_rd.method494(Tile.aCanvas2155, 0);
+						Player.f_rd.method494(GameEngine.canvas, 0);
 					Player.f_rd = null;
 					Class59_Sub3_Sub2.method2486(527);
 					MapFunction.aClass242_2036.method1563(228742352);
@@ -263,14 +269,15 @@ public final class Client extends GameEngine implements RSClient {
 	private final void method2965(int i) {
 		do {
 			try {
+				callbacks.frame();
 				anInt7244++;
-				if ((VarcType.anInt3103 ^ 0xffffffff) != -1001) {
+				if ((gameState ^ 0xffffffff) != -1001) {
 					long l = (Class246_Sub1_Sub10.method2603(-124) / 1000000L + -Class246_Sub1_Sub10.f_bb);
 					Class246_Sub1_Sub10.f_bb = Class246_Sub1_Sub10.method2603(-118) / 1000000L;
 					boolean bool = Class100_Sub1.method2175((byte) 124);
 					if (bool && Class_w.aBool6383 && WidgetParent.aClass123_5522 != null)
 						WidgetParent.aClass123_5522.method830(2000);
-					if ((VarcType.anInt3103 ^ 0xffffffff) == -31 || VarcType.anInt3103 == 10) {
+					if ((gameState ^ 0xffffffff) == -31 || gameState == 10) {
 						if (Class130_Sub8.aLong5616 == 0L || ((TimeUtility.time()
 								^ 0xffffffffffffffffL) >= (Class130_Sub8.aLong5616 ^ 0xffffffffffffffffL))) {
 							if (!Client.sprite_loader.method1699() && Class246_Sub1_Sub6.aBool5963)
@@ -304,12 +311,12 @@ public final class Client extends GameEngine implements RSClient {
 						}
 					}
 					if (Class38_Sub1.aFrame5114 != null && !Filestore.aBool2049
-							&& ((VarcType.anInt3103 ^ 0xffffffff) == -31 || (VarcType.anInt3103 ^ 0xffffffff) == -11))
+							&& ((gameState ^ 0xffffffff) == -31 || (gameState ^ 0xffffffff) == -11))
 						Class100.setWindowedMode((((Renderer) (Client.current_renderer)).frame_mode), -1, -1, false,
 								false);
 					boolean bool_4_ = false;
-					if (Class246_Sub28_Sub8.aBool6060) {
-						Class246_Sub28_Sub8.aBool6060 = false;
+					if (GameEngine.fullRedraw) {
+						GameEngine.fullRedraw = false;
 						bool_4_ = true;
 					}
 					if (bool_4_)
@@ -317,10 +324,10 @@ public final class Client extends GameEngine implements RSClient {
 					if ((Client.sprite_loader != null && Client.sprite_loader.method1699())
 							|| Client.get_frame_mode((byte) -123) != 1)
 						Class205.method1341(-11712);
-					if (VarcType.anInt3103 != 0) {
-						if (VarcType.anInt3103 != 5) {
-							if ((VarcType.anInt3103 ^ 0xffffffff) != -11) {
-								if ((VarcType.anInt3103 ^ 0xffffffff) == -26 || VarcType.anInt3103 == 28) {
+					if (gameState != 0) {
+						if (gameState != 5) {
+							if ((gameState ^ 0xffffffff) != -11) {
+								if ((gameState ^ 0xffffffff) == -26 || gameState == 28) {
 									if (PlayerComposition.anInt379 == 1) {
 										if (Class246_Sub28_Sub8.anInt6072 > Class246_Sub30_Sub1.anInt5756)
 											Class246_Sub30_Sub1.anInt5756 = (Class246_Sub28_Sub8.anInt6072);
@@ -343,9 +350,9 @@ public final class Client extends GameEngine implements RSClient {
 										Class_w.method2650(true,
 												(Class250.aClass67_3531.get(Preferences.language_code)),
 												FontCache.regular_font, 13);
-								} else if (VarcType.anInt3103 == 30)
+								} else if (gameState == 30)
 									Class20.method192(l, -38);
-								else if ((VarcType.anInt3103 ^ 0xffffffff) == -41)
+								else if ((gameState ^ 0xffffffff) == -41)
 									Class_w.method2650(true,
 											((MapRegion.aClass67_3647.get(Preferences.language_code)) + "<br>"
 													+ (Class109_Sub4.aClass67_4568.get(Preferences.language_code))),
@@ -376,11 +383,11 @@ public final class Client extends GameEngine implements RSClient {
 						}
 					}
 					if (Class241.method1547(-64))
-						Class245.method1572(Client.sprite_loader, 8);
-					if ((VarcType.anInt3103 != 30 && (VarcType.anInt3103 ^ 0xffffffff) != -11)
+						Class245.drawConsole(Client.sprite_loader, 8);
+					if ((gameState != 30 && (gameState ^ 0xffffffff) != -11)
 							|| (Class210_Sub2.anInt5022 ^ 0xffffffff) != -1 || Client.get_frame_mode((byte) -123) != 1
 							|| bool_4_ || !Signlink.aString731.equals("1.1")) {
-						if ((VarcType.anInt3103 ^ 0xffffffff) != -1) {
+						if ((gameState ^ 0xffffffff) != -1) {
 							Client.sprite_loader.method1688();
 							for (int i_8_ = 0; ((i_8_ ^ 0xffffffff) > (SequenceType.anInt1738 ^ 0xffffffff)); i_8_++)
 								Class246_Sub28_Sub24.aBoolArray6673[i_8_] = false;
@@ -394,6 +401,7 @@ public final class Client extends GameEngine implements RSClient {
 							}
 						}
 						Client.sprite_loader.method1731(Class203.aRectangleArray2878, i_9_);
+						callbacks.drawAboveOverheads();
 					}
 					if (((((Renderer) Client.current_renderer).anInt584) ^ 0xffffffff) != -1) {
 						if ((((Renderer) Client.current_renderer).anInt584 ^ 0xffffffff) != -2) {
@@ -407,7 +415,7 @@ public final class Client extends GameEngine implements RSClient {
 						Class247.method1580(15L, -5184);
 					if (Class4.aBool52)
 						Class104.method669(-2);
-					if (!(((Renderer) Client.current_renderer).safe_mode) || VarcType.anInt3103 != 10
+					if (!(((Renderer) Client.current_renderer).safe_mode) || gameState != 10
 							|| Widget.root_interface == -1)
 						break;
 					((Renderer) Client.current_renderer).safe_mode = false;
@@ -430,15 +438,9 @@ public final class Client extends GameEngine implements RSClient {
 		return class235.hidden;
 	}
 
-	public static Thread currentThread;
-
-	@Override
-	public boolean isClientThread() {
-		return Thread.currentThread() == currentThread;
-	}
-
-	final void method2938(byte i) {
+	void processGameLoop(byte i) {
 		try {
+			callbacks.tick();
 			anInt7247++;
 			try {
 				if (i == 57)
@@ -625,7 +627,7 @@ public final class Client extends GameEngine implements RSClient {
 				}
 				if (i != -4645)
 					method2980();
-				if (LoginScreen.login_response == 0 && (ObjType.anInt2815 ^ 0xffffffff) == -1) {
+				if (LoginScreen.loginResponse == 0 && (ObjType.anInt2815 ^ 0xffffffff) == -1) {
 					if (Class130_Sub3.anInt4417 != 2)
 						Class246_Sub30.method2156(true);
 					else
@@ -712,7 +714,7 @@ public final class Client extends GameEngine implements RSClient {
 	private final void method2970(int i) {
 		try {
 			f_eb++;
-			if (VarcType.anInt3103 != 1000) {
+			if (gameState != 1000) {
 				Client.cycle++;
 				if ((Client.cycle % 1000 ^ 0xffffffff) == -2) {
 					GregorianCalendar gregoriancalendar = new GregorianCalendar();
@@ -728,7 +730,7 @@ public final class Client extends GameEngine implements RSClient {
 					Class246_Sub28_Sub11.anInt6167 = 0;
 				}
 				if ((Client.cycle % 25) == 0) {
-					if (!LoginScreen.logged_in) {
+					if (!LoginScreen.loggedIn) {
 						LoginScreen.draw_current_state();
 					}
 				}
@@ -774,19 +776,20 @@ public final class Client extends GameEngine implements RSClient {
 				}
 				if (Class241.method1547(-103))
 					Class246_Sub28_Sub18.method2688((byte) 122);
-				if ((VarcType.anInt3103 ^ 0xffffffff) != -1) {
-					if ((VarcType.anInt3103 ^ 0xffffffff) == -6) {
+				if ((gameState ^ 0xffffffff) != -1) {
+					if ((gameState ^ 0xffffffff) == -6) {
 						TitleScreen.start();
 						Class187_Sub1.method2109((byte) 107);
-					} else if ((VarcType.anInt3103 ^ 0xffffffff) == -26 || (VarcType.anInt3103 ^ 0xffffffff) == -29)
+					} else if ((gameState ^ 0xffffffff) == -26 || (gameState ^ 0xffffffff) == -29) {
 						Texture.method2695((byte) 125);
+					}
 				} else {
 					TitleScreen.start();
 					Class187_Sub1.method2109((byte) 127);
 				}
-				if ((VarcType.anInt3103 ^ 0xffffffff) != -11) {
-					if (VarcType.anInt3103 != 30) {
-						if (VarcType.anInt3103 == 40) {
+				if ((gameState ^ 0xffffffff) != -11) {
+					if (gameState != 30) {
+						if (gameState == 40) {
 							Class246_Sub28_Sub35.login(i + 117);
 							if ((Class246_Sub31.anInt5034 ^ 0xffffffff) != 2
 									&& ((Class246_Sub31.anInt5034 ^ 0xffffffff) != -3)
@@ -1495,7 +1498,7 @@ public final class Client extends GameEngine implements RSClient {
 										&& (((WidgetParent) class246_sub40).type) == 0
 										&& !ContextMenus.context_menu_open && bool && !RenderSequenceLoader.aBool1452)
 									Class109_Sub1_Sub1.method2756(105);
-								Class_cs.method2921(i_57_, i_56_, i_59_, ((WidgetParent) class246_sub40).anInt5517,
+								Class_cs.drawWidget(i_57_, i_56_, i_59_, ((WidgetParent) class246_sub40).anInt5517,
 										29474, i_58_, i_55_, i_60_, i_53_, i_52_, widget);
 							}
 						}
@@ -2135,11 +2138,11 @@ public final class Client extends GameEngine implements RSClient {
 				Class160.aShortArray2270 = ObjType.aShortArray2759;
 			}
 			Class230.anInt3165 = Class172.anInt2432;
-			Class216.aClass232_3009 = TextureLoader.method471((byte) 16, Tile.aCanvas2155);
-			Material.aClass102_3360 = AbstractModel.method673(-54, true, Tile.aCanvas2155);
+			Class216.aClass232_3009 = TextureLoader.method471((byte) 16, GameEngine.canvas);
+			Material.aClass102_3360 = AbstractModel.method673(-54, true, GameEngine.canvas);
 			Player.f_rd = Class178.method1167(true);
 			if (Player.f_rd != null)
-				Player.f_rd.method490((byte) 93, Tile.aCanvas2155);
+				Player.f_rd.method490((byte) 93, GameEngine.canvas);
 			Class246_Sub28_Sub6.anInt6045 = Signlink.anInt740;
 			try {
 				if (Client.sign_link.aClass192_743 != null) {
@@ -2583,10 +2586,10 @@ public final class Client extends GameEngine implements RSClient {
 						}
 						if (command_input.equalsIgnoreCase("clientdrop")) {
 							Class252.printConsoleMessage(124, "Dropped client connection");
-							if (VarcType.anInt3103 == 30)
+							if (gameState == 30)
 								Varc.method2615((byte) 111);
 							else {
-								if ((VarcType.anInt3103 ^ 0xffffffff) == -26)
+								if ((gameState ^ 0xffffffff) == -26)
 									Class59_Sub3_Sub1.aBool5746 = true;
 								break;
 							}
@@ -2903,7 +2906,7 @@ public final class Client extends GameEngine implements RSClient {
 									Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX));
 							TitleScreen.loading_message = TitleScreen.opened_title_screen_ms
 									.get(Preferences.language_code);
-							Class99.method622((byte) -125, 25);
+							Class99.updateGameState((byte) -125, 25);
 							Client.current_renderer.save_preferences(Client.sign_link);
 							break;
 						}
@@ -2916,7 +2919,7 @@ public final class Client extends GameEngine implements RSClient {
 									Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX));
 							TitleScreen.loading_message = TitleScreen.opened_title_screen_ms
 									.get(Preferences.language_code);
-							Class99.method622((byte) -125, 25);
+							Class99.updateGameState((byte) -125, 25);
 							Client.current_renderer.save_preferences(Client.sign_link);
 							break;
 						}
@@ -2929,7 +2932,7 @@ public final class Client extends GameEngine implements RSClient {
 									Cache.client_cache.get(IndexConstants.PRE_EOC_634_FONT_METRICS_INDEX));
 							TitleScreen.loading_message = TitleScreen.opened_title_screen_ms
 									.get(Preferences.language_code);
-							Class99.method622((byte) -125, 25);
+							Class99.updateGameState((byte) -125, 25);
 							Client.current_renderer.save_preferences(Client.sign_link);
 							break;
 						}
@@ -3155,7 +3158,7 @@ public final class Client extends GameEngine implements RSClient {
 									("Active streams: " + Canvas_Sub1.aClass246_Sub37_Sub2_6889.method2625()));
 							break;
 						}
-						if ((VarcType.anInt3103 ^ 0xffffffff) == -31) {
+						if ((gameState ^ 0xffffffff) == -31) {
 							Class15.anInt233++;
 							Class243.writePacket(-101, StructLoader.aClass201_810);
 							Class130_Sub1.stream.writeByte(255, 2 + command_input.length());
@@ -3168,7 +3171,7 @@ public final class Client extends GameEngine implements RSClient {
 							break;
 						}
 
-						if (VarcType.anInt3103 != 30)
+						if (gameState != 30)
 							Class252.printConsoleMessage(123,
 									("Unrecogonised commmand when not logged in: " + command_input));
 					} catch (Exception exception) {
@@ -3227,7 +3230,7 @@ public final class Client extends GameEngine implements RSClient {
 		Widget.reset_widget(162);
 		Widget.reset_widget(161);
 		Widget.reset_widget(548);
-		Class99.method622((byte) -125, 25);
+		Class99.updateGameState((byte) -125, 25);
 	}
 
 	static int method7714() {
@@ -3250,19 +3253,25 @@ public final class Client extends GameEngine implements RSClient {
 
 	// RuneLite
 
+	public DrawCallbacks drawCallbacks;
+	@javax.inject.Inject
+	private Callbacks callbacks;
+	private int tickCount;
+	private boolean gpu = false;
+
 	@Override
 	public Callbacks getCallbacks() {
-		return null;
+		return callbacks;
 	}
 
 	@Override
 	public DrawCallbacks getDrawCallbacks() {
-		return null;
+		return drawCallbacks;
 	}
 
 	@Override
 	public void setDrawCallbacks(DrawCallbacks drawCallbacks) {
-
+		this.drawCallbacks = drawCallbacks;
 	}
 
 	@Override
@@ -3297,7 +3306,7 @@ public final class Client extends GameEngine implements RSClient {
 
 	@Override
 	public GameState getGameState() {
-		return null;
+		return GameState.of(gameState);
 	}
 
 	public String getLauncherDisplayName() {
@@ -3581,12 +3590,17 @@ public final class Client extends GameEngine implements RSClient {
 
 	@Override
 	public int getRSGameState() {
-		return 0;
+		return gameState;
 	}
 
 	@Override
-	public void setGameState(GameState gameState) {
-
+	public void setGameState(GameState state) {
+		gameState = state.getState();
+		GameStateChanged event = new GameStateChanged();
+		event.setGameState(state);
+		if (callbacks != null) {
+			callbacks.post(event);
+		}
 	}
 
 	@Override
@@ -3595,8 +3609,8 @@ public final class Client extends GameEngine implements RSClient {
 	}
 
 	@Override
-	public void setRSGameState(int gameState) {
-
+	public void setRSGameState(int state) {
+		gameState = state;
 	}
 
 	@Override
@@ -3641,7 +3655,7 @@ public final class Client extends GameEngine implements RSClient {
 
 	@Override
 	public RSPlayer getLocalPlayer() {
-		return null;
+		return local_player;
 	}
 
 	@Override
@@ -3656,7 +3670,7 @@ public final class Client extends GameEngine implements RSClient {
 
 	@Override
 	public ItemComposition getItemDefinition(int id) {
-		return null;
+		return Objects.requireNonNull(MapRegion.aClass191_3663.list(22883, id));
 	}
 
 	@Override
@@ -4531,7 +4545,10 @@ public final class Client extends GameEngine implements RSClient {
 
 	@Override
 	public void changeMemoryMode(boolean lowMemory) {
-
+		Settings.ground_decorations = !lowMemory;
+		Client.current_renderer.save_preferences(Client.sign_link);
+		RuntimeException_Sub2.aBool7148 = false;
+		Entity.method2663(true);
 	}
 
 	@Override
@@ -5106,12 +5123,12 @@ public final class Client extends GameEngine implements RSClient {
 
 	@Override
 	public void setSkyboxColor(int skyboxColor) {
-
+		Settings.fog_color = skyboxColor;
 	}
 
 	@Override
 	public int getSkyboxColor() {
-		return 0;
+		return Settings.fog_color;
 	}
 
 	@Override
@@ -6552,11 +6569,6 @@ public final class Client extends GameEngine implements RSClient {
 	@Override
 	public Thread getClientThread() {
 		return null;
-	}
-
-	@Override
-	public void post(Object canvas) {
-
 	}
 
 	@Override

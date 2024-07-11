@@ -142,7 +142,7 @@ abstract class Class59_Sub2 extends Class59 {
 						i_38_ = class246_sub30.method2160(-89);
 						i_39_ = class246_sub30.method2161((byte) -66);
 					}
-					Class_cs.method2921(0, 0, Client.client_width, Widget.root_interface, 29474, 0, 0,
+					Class_cs.drawWidget(0, 0, Client.client_width, Widget.root_interface, 29474, 0, 0,
 							Client.client_height, i_39_, i_38_, null);
 					if (Class246_Sub11.aClass235_4106 == null)
 						break;

@@ -163,7 +163,7 @@ final class KeyHandler extends Class232 implements KeyListener, FocusListener {
 			if (i > -97)
 				keyPressed(null);
 			int key_code = keyevent.getKeyCode();
-			if (released == 0 && !LoginScreen.logged_in) {
+			if (released == 0 && !LoginScreen.loggedIn) {
 				LoginScreen.handle_key_input(keyevent);
 			}
 			if (key_code == 0)

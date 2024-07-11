@@ -1,5 +1,7 @@
 package io;
 
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -249,6 +251,17 @@ final class ScriptExecutor {
 				if (opcode == 410) {
 					boolean bool_25_ = CS2Script.int_stack[--CS2Script.int_stack_size] != 0;
 					((Player) Client.local_player).appearance.method213(bool_25_, 15366);
+					return;
+				}
+				if (opcode == 411) {
+					System.out.println("411 wants to do something");
+					CS2Script.int_stack_size -= 2;
+					int i_265_ = CS2Script.int_stack[CS2Script.int_stack_size];
+					int i_266_ = CS2Script.int_stack[CS2Script.int_stack_size + 1];
+					/*if ((Class132.aPlayer_1907.aClass154_10536) != null) {
+						Class132.aPlayer_1907.aClass154_10536.method1227((byte) 42, i_265_, i_266_, Exception_Sub1.aClass255_112);
+						return;
+					}*/
 					return;
 				}
 			} else if (opcode >= 1000 && opcode < 1100 || opcode >= 2000 && opcode < 2100) {
@@ -518,12 +531,14 @@ final class ScriptExecutor {
 						Widget.update_layer(class235, -1, false);
 					return;
 				}
-				if (opcode == 1121) {
-					CS2Script.int_stack_size -= 2;
-					class235.f_md = (short) CS2Script.int_stack[CS2Script.int_stack_size];
-					class235.anInt3217 = (short) CS2Script.int_stack[CS2Script.int_stack_size + 1];
-					Widget.redraw_widget(class235);
-					return;
+				if (revision != 634) {
+					if (opcode == 1121) {
+						CS2Script.int_stack_size -= 2;
+						class235.f_md = (short) CS2Script.int_stack[CS2Script.int_stack_size];
+						class235.anInt3217 = (short) CS2Script.int_stack[CS2Script.int_stack_size + 1];
+						Widget.redraw_widget(class235);
+						return;
+					}
 				}
 				if (opcode == 1122) {
 					class235.sprite_tiling = ~CS2Script.int_stack[--CS2Script.int_stack_size] == -2;
@@ -576,6 +591,19 @@ final class ScriptExecutor {
 						class235.method1499(string, i_36_, 16);
 					else {
 						class235.method1505((byte) 114, i_36_);
+						return;
+					}
+					return;
+				}
+				if (opcode == 1129 || opcode == 1130) {
+					int i_278_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+					if ((class235.type == 5 || opcode != 1129) && (class235.type == 4 || opcode != 1130)) {
+						/*if (class235.anInt806 != i_278_) {
+							class235.anInt806 = i_278_;
+							Class251.method1916(-9343, class235);
+						}
+						if (class46.anInt704 == -1) Class188.method1415(class46.anInt830, 117);*/
+						System.out.println(opcode + " wants to do something with a widget I think");
 						return;
 					}
 					return;
@@ -1031,6 +1059,11 @@ final class ScriptExecutor {
 							CS2Script.int_stack[CS2Script.int_stack_size++] = class235.sprite_angle;
 							return;
 						}
+						if (opcode == 2614) {
+							CS2Script.int_stack[CS2Script.int_stack_size++] = /*(class46.anInt770 == 1 ? class46.anInt753 : -1)*/0;
+							System.out.println("2614 wants a new int");
+							return;
+						}
 					}
 				} else if (opcode < 1800) {
 					Widget class235 = bool ? Widget.static_active_component1 : Widget.static_active_component2;
@@ -1191,6 +1224,11 @@ final class ScriptExecutor {
 							CS2Script.int_stack[CS2Script.int_stack_size++] = class235.sprite_angle;
 							return;
 						}
+						if (opcode == 2614) {
+							CS2Script.int_stack[CS2Script.int_stack_size++] = /*(class46.anInt770 == 1 ? class46.anInt753 : -1)*/0;
+							System.out.println("2614 wants a new int");
+							return;
+						}
 					}
 				} else if (opcode < 2800) {
 					if (opcode == 2700) {
@@ -1281,7 +1319,7 @@ final class ScriptExecutor {
 						return;
 					}
 				} else if (opcode < 3200) {
-					if (opcode == ScriptOpcodes.MES) {
+					if (opcode == 3100) {
 						String string = CS2Script.string_stack[--CS2Script.string_stack_size];
 						Client.add_game_message((byte) -99, string);
 						return;
@@ -1390,6 +1428,14 @@ final class ScriptExecutor {
 							MultilingualString.method437(i_74_, i_73_, string, "", "", true);
 							return;
 						}
+						if (opcode == 3115) {
+							CS2Script.int_stack_size -= 11;
+							System.out.println("3115 wants to do something");
+							/*Class221[] class221s = Class158.method1248(20);
+							Class341[] class341s = Class62.method596(20000);
+							Class272.method2051(int_stack[int_stack_size + 9], int_stack[int_stack_size + 5], class221s[int_stack[int_stack_size]], (class341s[int_stack[int_stack_size + 1]]), int_stack[int_stack_size + 7], int_stack[int_stack_size + 6], int_stack[int_stack_size + 4], (byte) 111, int_stack[int_stack_size + 10], int_stack[int_stack_size + 2], int_stack[int_stack_size + 3], int_stack[int_stack_size + 8]);*/
+							return;
+						}
 					}
 				} else if (opcode < 3300) {
 					if (opcode == 3200) {
@@ -1440,15 +1486,25 @@ final class ScriptExecutor {
 									CS2Script.int_stack[CS2Script.int_stack_size + 3]);
 							return;
 						}
-						if (revision == 634) {
-							if (opcode == 3207) {
-								CS2Script.int_stack_size -= 4;
-								Tile.method994(CS2Script.int_stack[CS2Script.int_stack_size + 1],
-										CS2Script.int_stack[CS2Script.int_stack_size + 2], true,
-										CS2Script.int_stack[CS2Script.int_stack_size],
-										CS2Script.int_stack[CS2Script.int_stack_size + 3]);
-								return;
-							}
+						if (opcode == 3207) {
+							CS2Script.int_stack_size -= 4;
+							Tile.method994(CS2Script.int_stack[CS2Script.int_stack_size + 1],
+									CS2Script.int_stack[CS2Script.int_stack_size + 2], true,
+									CS2Script.int_stack[CS2Script.int_stack_size],
+									CS2Script.int_stack[CS2Script.int_stack_size + 3]);
+							return;
+						}
+						if (opcode == 3208) {
+							CS2Script.int_stack_size -= 5;
+							System.out.println("3208 wants to do something");
+							//Class348_Sub20.method2947(true, int_stack[int_stack_size + 3], int_stack[int_stack_size], int_stack[int_stack_size + 1], int_stack[int_stack_size + 2], int_stack[int_stack_size + 4]);
+							return;
+						}
+						if (opcode == 3209) {
+							CS2Script.int_stack_size -= 5;
+							System.out.println("3209 wants to do something");
+							//Class279.method2090(int_stack[int_stack_size + 1], int_stack[int_stack_size + 4], false, (byte) -35, int_stack[int_stack_size + 3], int_stack[int_stack_size + 2], int_stack[int_stack_size]);
+							return;
 						}
 					}
 				} else if (opcode < 3400) {
@@ -1600,7 +1656,7 @@ final class ScriptExecutor {
 						return;
 					}
 					if (opcode == 3326) {
-						CS2Script.int_stack[CS2Script.int_stack_size++] = ((Player) Client.local_player).f_qd;
+						CS2Script.int_stack[CS2Script.int_stack_size++] = ((Player) Client.local_player).combatLevel;
 						return;
 					}
 					if (opcode == 3327) {
@@ -1718,6 +1774,16 @@ final class ScriptExecutor {
 						}
 						if (opcode == 3347) {
 							CS2Script.int_stack[CS2Script.int_stack_size++] = /* Class271_Sub7.current_cursor */0;
+							return;
+						}
+						if (opcode == 3349) {
+							CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class132.aPlayer_1907.aClass264_10217.method2019((byte) -31) >> 3*/0;
+							return;
+						}
+						if (opcode == 3351) {
+							CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class258_Sub4.aClass373_8552.method3595(-83) ? 1 : */0;
+							CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class258_Sub4.aClass373_8552.method3588(-121) ? 1 : */0;
+							CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class258_Sub4.aClass373_8552.method3590((byte) 125) ? 1 : */0;
 							return;
 						}
 					}
@@ -2269,6 +2335,15 @@ final class ScriptExecutor {
 						CS2Script.int_stack[CS2Script.int_stack_size++] = (int) (l * l_183_ / l_182_);
 						return;
 					}
+					if (opcode == 4019) {
+						CS2Script.int_stack_size -= 2;
+						int i_426_ = CS2Script.int_stack[CS2Script.int_stack_size];
+						int i_427_ = CS2Script.int_stack[CS2Script.int_stack_size + 1];
+						if (i_426_ > 700 || i_427_ > 700) CS2Script.int_stack[CS2Script.int_stack_size++] = 256;
+						double d = ((Math.random() * (double) (i_427_ + i_426_) - (double) i_426_ + 800.0) / 100.0);
+						CS2Script.int_stack[CS2Script.int_stack_size++] = (int) (Math.pow(2.0, d) + 0.5);
+						return;
+					}
 				} else if (opcode < 4200) {
 					if (opcode == 4100) {
 						String string = CS2Script.string_stack[--CS2Script.string_stack_size];
@@ -2607,6 +2682,11 @@ final class ScriptExecutor {
 						return;
 					}
 					if (revision == 634) {
+						if (opcode == 4213) {
+							int i_471_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+							CS2Script.int_stack[CS2Script.int_stack_size++] = /*Exception_Sub1.aClass255_112.method1940(-115, i_471_).anInt2802*/0;
+							return;
+						}
 						if (opcode == 4214) {
 							String string = CS2Script.string_stack[--CS2Script.string_stack_size];
 							CS2Script.int_stack_size -= 3;
@@ -2708,27 +2788,31 @@ final class ScriptExecutor {
 	}
 
 	private static final void method983(int i, int revision) {
-		Widget class235 = Widget.get_widget(i, revision);
-		if (class235 != null) {
-			int i_237_ = i >>> 16;
-			Widget[] class235s;
-			class235s = Widget.get_some_widgets(revision)[i_237_];
-			if (class235s == null) {
-				Widget[] class235s_238_;
-				class235s_238_ = Widget.get_some_widgets(revision)[i_237_];
-				int i_239_ = class235s_238_.length;
-				class235s = Widget.get_some_widgets(revision)[i_237_] = new Widget[i_239_];
-				Class117.method807(class235s_238_, 0, class235s, 0, class235s_238_.length);
+		try {
+			Widget class235 = Widget.get_widget(i, revision);
+			if (class235 != null) {
+				int i_237_ = i >>> 16;
+				Widget[] class235s;
+				class235s = Widget.get_some_widgets(revision)[i_237_];
+				if (class235s == null) {
+					Widget[] class235s_238_;
+					class235s_238_ = Widget.get_some_widgets(revision)[i_237_];
+					int i_239_ = class235s_238_.length;
+					class235s = Widget.get_some_widgets(revision)[i_237_] = new Widget[i_239_];
+					Class117.method807(class235s_238_, 0, class235s, 0, class235s_238_.length);
+				}
+				int i_240_;
+				for (i_240_ = 0; i_240_ < class235s.length; i_240_++) {
+					if (class235s[i_240_] == class235)
+						break;
+				}
+				if (i_240_ < class235s.length) {
+					Class117.method807(class235s, i_240_ + 1, class235s, i_240_, class235s.length - i_240_ - 1);
+					class235s[class235s.length - 1] = class235;
+				}
 			}
-			int i_240_;
-			for (i_240_ = 0; i_240_ < class235s.length; i_240_++) {
-				if (class235s[i_240_] == class235)
-					break;
-			}
-			if (i_240_ < class235s.length) {
-				Class117.method807(class235s, i_240_ + 1, class235s, i_240_, class235s.length - i_240_ - 1);
-				class235s[class235s.length - 1] = class235;
-			}
+		} catch (Exception e) {
+			;
 		}
 	}
 
@@ -3244,6 +3328,9 @@ final class ScriptExecutor {
 					}
 
 					if (revision != 1 && revision < 200) {
+						if (widget_id == 541) {
+							System.out.println("widget 541 calls opcode " + opcode + " and script " + scriptid);
+						}
 						int return_code = CS2Script.decode(opcode, script, bool, revision);
 						switch (return_code) {
 
@@ -3366,7 +3453,7 @@ final class ScriptExecutor {
 					return;
 				}
 			}
-			if (opcode == 5008 || opcode == 5021 || opcode == 5022) {
+			if (opcode == 5008) {
 				String string = CS2Script.string_stack[--CS2Script.string_stack_size];
 				method985(string, opcode);
 				return;
@@ -3708,7 +3795,7 @@ final class ScriptExecutor {
 				Class22.anInt324 = 0;
 				return;
 			}
-			if (revision != 634) {
+			/*if (revision != 634) {
 				if (opcode == 5074) {
 					anInt2115++;
 					Class243.writePacket(-104, Class246_Sub1_Sub14.PUBLIC_QUICK_CHAT_PACKET);
@@ -3721,7 +3808,7 @@ final class ScriptExecutor {
 					Class130_Sub1.stream.method2408(-1591647264, ((Buffer) Class130_Sub1.stream).position - i_327_);
 					return;
 				}
-			}
+			}*/
 		} else if (opcode < 5200) {
 			if (opcode == 5100) {
 				if (Class216.aClass232_3009.method1488(-92, 86))
@@ -4330,6 +4417,28 @@ final class ScriptExecutor {
 					}
 					return;
 				}
+				if (opcode == 5432) {
+					String string = "";
+					/*if (Class348_Sub40_Sub27.aClipboard9357 != null) {
+						Transferable transferable = Class348_Sub40_Sub27.aClipboard9357.getContents(null);
+						if (transferable != null) {
+							try {
+								string = (String) (transferable.getTransferData(DataFlavor.stringFlavor));
+								if (string == null) string = "";
+							} catch (Exception exception) {
+								/* empty */
+							/*}
+						}
+					}*/
+					CS2Script.string_stack[CS2Script.string_stack_size++] = string;
+					System.out.println("this opcode wants a string");
+					return;
+				}
+				if (opcode == 5433) {
+					int something = CS2Script.int_stack[--CS2Script.int_stack_size];
+					System.out.println("something: " + something);
+					return;
+				}
 			}
 		} else if (opcode < 5600) {
 			if (opcode == 5500) {
@@ -4433,13 +4542,50 @@ final class ScriptExecutor {
 				Class246_Sub28_Sub8.method2559(true);
 				return;
 			}
+			if (opcode == 5514) {
+				int something2 = CS2Script.int_stack[--CS2Script.int_stack_size];
+				System.out.println("something2: " + something2);
+				return;
+			}
+			if (opcode == 5516) {
+				CS2Script.int_stack[CS2Script.int_stack_size++] = 1;
+				System.out.println("5516 wants an int");
+				return;
+			}
+			if (opcode == 5517) {
+				int i_139_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+				if (i_139_ == -1) {
+					int i_140_ = i_139_ >> 14 & 0x3fff;
+					int i_141_ = i_139_ & 0x3fff;
+					i_140_ -= Client.base_x;
+					if (i_140_ < 0) i_140_ = 0;
+					else if (i_140_ >= Class38_Sub1_Sub1.anInt6770) i_140_ = Class38_Sub1_Sub1.anInt6770;
+					i_141_ -= Client.base_y;
+					if (i_141_ < 0) i_141_ = 0;
+					else if (i_141_ >= Class152.anInt2205) i_141_ = Class152.anInt2205;
+					//Class9.anInt167 = (i_140_ << 9) + 256;
+					//Class318_Sub1_Sub5_Sub2.anInt10163 = (i_141_ << 9) + 256;
+					System.out.println("5517 wants some new map variables");
+				} else {
+					//Class9.anInt167 = -1;
+					//Class318_Sub1_Sub5_Sub2.anInt10163 = -1;
+					System.out.println("5517 wants some new map variables 2");
+					return;
+				}
+				return;
+			}
+			if (opcode == 5547) {
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class348_Sub40_Sub21.anInt9282 == 1 ? 1 : 0*/1;
+				System.out.println("5547 wants a new int");
+				return;
+			}
 		} else if (opcode < 5700) {
 			if (opcode == 5600) {
 				CS2Script.string_stack_size -= 2;
 				String string = CS2Script.string_stack[CS2Script.string_stack_size];
 				String string_403_ = CS2Script.string_stack[CS2Script.string_stack_size + 1];
 				int i_404_ = CS2Script.int_stack[--CS2Script.int_stack_size];
-				if (VarcType.anInt3103 == 10 && (Class228.anInt3137 == 0 && LoginScreen.login_response == 0
+				if (Client.gameState == 10 && (Class228.anInt3137 == 0 && LoginScreen.loginResponse == 0
 						&& ObjType.anInt2815 == 0 && Class24.anInt349 == 0)) {
 					LoginScreen.request_login(string, string_403_, i_404_);
 					return;
@@ -4451,25 +4597,27 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 5602) {
-				if (LoginScreen.login_response == 0)
+				if (LoginScreen.loginResponse == 0)
 					Class246_Sub31.anInt5034 = -2;
 				return;
 			}
-			if (opcode == 5603) {
-				CS2Script.int_stack_size -= 4;
-				if (VarcType.anInt3103 == 10 && (Class228.anInt3137 == 0 && LoginScreen.login_response == 0
-						&& ObjType.anInt2815 == 0 && Class24.anInt349 == 0)) {
-					Class211_Sub1.method2266(CS2Script.int_stack[CS2Script.int_stack_size + 1],
-							CS2Script.int_stack[CS2Script.int_stack_size],
-							CS2Script.int_stack[CS2Script.int_stack_size + 2], 4,
-							CS2Script.int_stack[CS2Script.int_stack_size + 3]);
+			if (revision != 634) {
+				if (opcode == 5603) {
+					CS2Script.int_stack_size -= 4;
+					if (Client.gameState == 10 && (Class228.anInt3137 == 0 && LoginScreen.loginResponse == 0
+							&& ObjType.anInt2815 == 0 && Class24.anInt349 == 0)) {
+						Class211_Sub1.method2266(CS2Script.int_stack[CS2Script.int_stack_size + 1],
+								CS2Script.int_stack[CS2Script.int_stack_size],
+								CS2Script.int_stack[CS2Script.int_stack_size + 2], 4,
+								CS2Script.int_stack[CS2Script.int_stack_size + 3]);
+						return;
+					}
 					return;
 				}
-				return;
 			}
 			if (opcode == 5604) {
 				CS2Script.string_stack_size--;
-				if (VarcType.anInt3103 == 10 && (Class228.anInt3137 == 0 && LoginScreen.login_response == 0
+				if (Client.gameState == 10 && (Class228.anInt3137 == 0 && LoginScreen.loginResponse == 0
 						&& ObjType.anInt2815 == 0 && Class24.anInt349 == 0)) {
 					Class21_Sub4.method2131(
 							(Class246_Sub28_Sub6.method2554(1, CS2Script.string_stack[CS2Script.string_stack_size])),
@@ -4481,8 +4629,11 @@ final class ScriptExecutor {
 			if (opcode == 5605) {
 				if (revision == 634) {
 					CS2Script.string_stack_size -= 2;
+					CS2Script.int_stack_size -= 2;
 					String test = CS2Script.string_stack[CS2Script.string_stack_size];
 					String test1 = CS2Script.string_stack[CS2Script.string_stack_size + 1];
+					System.out.println("test in 5605: " + test);
+					System.out.println("test1 in 5605: " + test1);
 					/*
 					 * if (client.client_state == 3 && (Class146.loginStep == 0 &&
 					 * Class221.anInt2863 == 0)) {
@@ -4494,7 +4645,7 @@ final class ScriptExecutor {
 				} else {
 					CS2Script.string_stack_size -= 3;
 					CS2Script.int_stack_size -= 7;
-					if (VarcType.anInt3103 == 10 && (Class228.anInt3137 == 0 && LoginScreen.login_response == 0
+					if (Client.gameState == 10 && (Class228.anInt3137 == 0 && LoginScreen.loginResponse == 0
 							&& ObjType.anInt2815 == 0 && Class24.anInt349 == 0)) {
 						Class96.method614(2, CS2Script.int_stack[CS2Script.int_stack_size + 1],
 								CS2Script.int_stack[CS2Script.int_stack_size + 5] == 1,
@@ -4529,13 +4680,15 @@ final class ScriptExecutor {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = RuntimeException_Sub2.anInt7154;
 				return;
 			}
-			if (opcode == 5610) {
-				for (int i_405_ = 0; i_405_ < 5; i_405_++)
-					CS2Script.string_stack[CS2Script.string_stack_size++] = (Varbit.aStringArray1533.length > i_405_
-							? Class190.method1246(true, (Varbit.aStringArray1533[i_405_]))
-							: "");
-				Varbit.aStringArray1533 = null;
-				return;
+			if (revision != 634) {
+				if (opcode == 5610) {
+					for (int i_405_ = 0; i_405_ < 5; i_405_++)
+						CS2Script.string_stack[CS2Script.string_stack_size++] = (Varbit.aStringArray1533.length > i_405_
+								? Class190.method1246(true, (Varbit.aStringArray1533[i_405_]))
+								: "");
+					Varbit.aStringArray1533 = null;
+					return;
+				}
 			}
 			if (opcode == 5611) {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = Class160.anInt2271;
@@ -4544,6 +4697,7 @@ final class ScriptExecutor {
 			if (revision == 634) {
 				if (opcode == 5612) {
 					int i_379_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+					System.out.println("i_379_ in 5612: " + i_379_);
 					/*
 					 * if (client.client_state == 7 && (Class146.loginStep == 0 &&
 					 * Class221.anInt2863 == 0)) { if (Class195.aClass109_2487 != null) {
@@ -4555,12 +4709,15 @@ final class ScriptExecutor {
 				}
 				if (opcode == 5613) {
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /* Class121_Sub21_Sub1.anInt8213 */0;
+					System.out.println("5613 wants an int");
 					return;
 				}
 				if (opcode == 5615) {
 					CS2Script.string_stack_size -= 2;
 					String string = CS2Script.string_stack[CS2Script.string_stack_size];
 					String string_380_ = CS2Script.string_stack[CS2Script.string_stack_size + 1];
+					System.out.println("string in 5615: " + string);
+					System.out.println("string_380_ in 5615: " + string_380_);
 					/*
 					 * if (client.client_state == 3 && (Class146.loginStep == 0 &&
 					 * Class221.anInt2863 == 0)) { if (Class195.aClass109_2487 != null) {
@@ -4576,39 +4733,45 @@ final class ScriptExecutor {
 				}
 				if (opcode == 5617) {
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /* Class121_Sub49_Sub20.anInt8507 */0;
+					System.out.println("5617 wants an int");
 					return;
 				}
-				if (opcode == 5618) {
-					int i_381_ = CS2Script.int_stack[--CS2Script.int_stack_size];
-					// Class121_Sub49_Sub6.method3043(i_381_, false, -1934);
-					return;
+				if (revision == 634) {
+					if (opcode == 5618) {
+						CS2Script.int_stack_size--;
+						return;
+					}
+					if (opcode == 5619) {
+						CS2Script.int_stack_size--;
+						return;
+					}
+				} else {
+					if (opcode == 5618) {
+						int i_381_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+						// Class121_Sub49_Sub6.method3043(i_381_, false, -1934);
+						return;
+					}
+					if (opcode == 5619) {
+						int i_382_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+						// Class121_Sub49_Sub6.method3043(i_382_, true, -1934);
+						return;
+					}
 				}
-				if (opcode == 5619) {
-					int i_382_ = CS2Script.int_stack[--CS2Script.int_stack_size];
-					// Class121_Sub49_Sub6.method3043(i_382_, true, -1934);
-					return;
-				}
-				if (opcode == 5620) {
-					/*
-					 * Class11_Sub1.method2912(-31847); if (Class314_Sub2.aString6636 != "" &&
-					 * Class314_Sub2.aString6636 != "") {
-					 * CS2Script.int_stack[CS2Script.int_stack_size++] = 1; } else {
-					 * CS2Script.int_stack[CS2Script.int_stack_size++] = 0; return; }
-					 */
-					CS2Script.int_stack[CS2Script.int_stack_size++] = 0;
-					return;
+				if (revision == 634) {
+					if (opcode == 5620) {
+						/*
+						 * Class11_Sub1.method2912(-31847); if (Class314_Sub2.aString6636 != "" &&
+						 * Class314_Sub2.aString6636 != "") {
+						 * CS2Script.int_stack[CS2Script.int_stack_size++] = 1; } else {
+						 * CS2Script.int_stack[CS2Script.int_stack_size++] = 0; return; }
+						 */
+						CS2Script.int_stack[CS2Script.int_stack_size++] = 0;
+						return;
+					}
 				}
 				if (opcode == 5621) {
 					CS2Script.string_stack_size -= 2;
-					String test = CS2Script.string_stack[CS2Script.string_stack_size];
-					String test1 = CS2Script.string_stack[CS2Script.string_stack_size + 1];
-					/*
-					 * if (client.client_state == 3 && (Class146.loginStep == 0 &&
-					 * Class221.anInt2863 == 0)) {
-					 * OutgoingPacket.method1619(Class121_Sub16_Sub15.method3449(12544,
-					 * CS2Script.string_stack[CS2Script.string_stack_size]), 19995,
-					 * CS2Script.string_stack[CS2Script.string_stack_size + 1], true); return; }
-					 */
+					CS2Script.int_stack_size -= 2;
 					return;
 				}
 				if (opcode == 5622) {
@@ -4628,7 +4791,8 @@ final class ScriptExecutor {
 					return;
 				}
 				if (opcode == 5623) {
-					if (/* Class169.ss_key != null */false) {
+					System.out.println("5623 wants a new boolean");
+					if (/* Class169.ss_key != null */true) {
 						CS2Script.int_stack[CS2Script.int_stack_size++] = 1;
 					} else {
 						CS2Script.int_stack[CS2Script.int_stack_size++] = 0;
@@ -4637,6 +4801,7 @@ final class ScriptExecutor {
 					return;
 				}
 				if (opcode == 5624) {
+					System.out.println("5624 wants 2 new ints, possibly map related");
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																		 * (int) (RuntimeException_Sub1.user_flow >> 32)
 																		 */0;
@@ -4644,6 +4809,17 @@ final class ScriptExecutor {
 																		 * (int) (RuntimeException_Sub1.user_flow &
 																		 * 0xffffL)
 																		 */0;
+					return;
+				}
+				if (opcode == 5625) {
+					System.out.println("5625 wants a new boolean");
+					CS2Script.int_stack[CS2Script.int_stack_size++] = 1;
+					return;
+				}
+				if (opcode == 5626) {
+					System.out.println("5626 wants to set a new boolean and then do something");
+					//Class330.aBoolean4127 = true;
+					//Class286_Sub8.method2172(84);
 					return;
 				}
 			}
@@ -4682,12 +4858,14 @@ final class ScriptExecutor {
 				RuntimeException_Sub2.aBool7148 = false;
 				return;
 			}
-			if (opcode == 6006) {
-				((Renderer) Client.current_renderer).aBool586 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
-				Client.sprite_loader.method1678(!((Renderer) Client.current_renderer).aBool586);
-				Client.current_renderer.save_preferences(Client.sign_link);
-				RuntimeException_Sub2.aBool7148 = false;
-				return;
+			if (revision != 634) {
+				if (opcode == 6006) {
+					((Renderer) Client.current_renderer).aBool586 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
+					Client.sprite_loader.method1678(!((Renderer) Client.current_renderer).aBool586);
+					Client.current_renderer.save_preferences(Client.sign_link);
+					RuntimeException_Sub2.aBool7148 = false;
+					return;
+				}
 			}
 			if (opcode == 6007) {
 				((Renderer) Client.current_renderer).anInt580 = CS2Script.int_stack[--CS2Script.int_stack_size];
@@ -4701,12 +4879,14 @@ final class ScriptExecutor {
 				RuntimeException_Sub2.aBool7148 = false;
 				return;
 			}
-			if (opcode == 6009) {
-				((Renderer) Client.current_renderer).aBool573 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
-				Entity.method2663(true);
-				Client.current_renderer.save_preferences(Client.sign_link);
-				RuntimeException_Sub2.aBool7148 = false;
-				return;
+			if (revision != 634) {
+				if (opcode == 6009) {
+					((Renderer) Client.current_renderer).aBool573 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
+					Entity.method2663(true);
+					Client.current_renderer.save_preferences(Client.sign_link);
+					RuntimeException_Sub2.aBool7148 = false;
+					return;
+				}
 			}
 			if (opcode == 6010) {
 				((Renderer) Client.current_renderer).aBool601 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
@@ -4909,6 +5089,7 @@ final class ScriptExecutor {
 			if (revision == 634) {
 				if (opcode == 6036) {
 					int i_397_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+					System.out.println("6036 wants to do something new with i_397_: " + i_397_);
 					if (i_397_ < 0 || i_397_ > 2) {
 						i_397_ = 0;
 					}
@@ -4920,6 +5101,7 @@ final class ScriptExecutor {
 				}
 				if (opcode == 6037) {
 					int i_398_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+					System.out.println("6037 wants to do something new with i_398_: " + i_398_);
 					if (i_398_ < 0) {
 						i_398_ = 0;
 					}
@@ -4935,6 +5117,7 @@ final class ScriptExecutor {
 				}
 				if (opcode == 6038) {
 					int i_399_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+					System.out.println("6038 wants to do something new with i_399_: " + i_399_);
 					if (i_399_ < 0) {
 						i_399_ = 0;
 					}
@@ -4957,6 +5140,7 @@ final class ScriptExecutor {
 				}
 				if (opcode == 6039) {
 					int i_400_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+					System.out.println("6039 wants to do something new with i_400_: " + i_400_);
 					if (i_400_ > 255 || i_400_ < 0) {
 						i_400_ = 0;
 					}
@@ -4966,6 +5150,11 @@ final class ScriptExecutor {
 					 * Class346.preferences.store_preferences(-2, Class131_Sub2.signlink);
 					 * Class146.aBool1940 = false; }
 					 */
+					return;
+				}
+				if (opcode == 6040) {
+					int i_401_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+					System.out.println("6040 wants to do something new with i_401_: " + i_401_);
 					return;
 				}
 			}
@@ -4989,10 +5178,12 @@ final class ScriptExecutor {
 						: 0;
 				return;
 			}
-			if (opcode == 6106) {
-				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool586) ? 1
-						: 0;
-				return;
+			if (revision != 634) {
+				if (opcode == 6106) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool586) ? 1
+							: 0;
+					return;
+				}
 			}
 			if (opcode == 6107) {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).anInt580);
@@ -5003,10 +5194,12 @@ final class ScriptExecutor {
 						: 0;
 				return;
 			}
-			if (opcode == 6109) {
-				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool573) ? 1
-						: 0;
-				return;
+			if (revision != 634) {
+				if (opcode == 6109) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool573) ? 1
+							: 0;
+					return;
+				}
 			}
 			if (opcode == 6110) {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool601) ? 1
@@ -5054,9 +5247,11 @@ final class ScriptExecutor {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).anInt603);
 				return;
 			}
-			if (opcode == 6121) {
-				CS2Script.int_stack[CS2Script.int_stack_size++] = Client.sprite_loader.method1700() ? 1 : 0;
-				return;
+			if (revision != 634) {
+				if (opcode == 6121) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = Client.sprite_loader.method1700() ? 1 : 0;
+					return;
+				}
 			}
 			if (opcode == 6123) {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = Texture.method2699(8458);
@@ -5070,9 +5265,11 @@ final class ScriptExecutor {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).anInt581);
 				return;
 			}
-			if (opcode == 6126) {
-				CS2Script.int_stack[CS2Script.int_stack_size++] = Client.sprite_loader.method1693() ? 1 : 0;
-				return;
+			if (revision != 634) {
+				if (opcode == 6126) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = Client.sprite_loader.method1693() ? 1 : 0;
+					return;
+				}
 			}
 			if (opcode == 6127) {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool596) ? 1
@@ -5105,9 +5302,11 @@ final class ScriptExecutor {
 						: 0;
 				return;
 			}
-			if (opcode == 6134) {
-				CS2Script.int_stack[CS2Script.int_stack_size++] = Client.method2969(Class40_Sub2.anInt4047, (byte) -48);
-				return;
+			if (revision != 634) {
+				if (opcode == 6134) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = Client.method2969(Class40_Sub2.anInt4047, (byte) -48);
+					return;
+				}
 			}
 			if (opcode == 6135) {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).anInt584);
@@ -5118,18 +5317,21 @@ final class ScriptExecutor {
 						: 0;
 				return;
 			}
-			if (opcode == 6137) {
-				boolean bool_420_ = true;
-				try {
-					bool_420_ = jagmisc.getTotalPhysicalMemory() > 268435456L;
-				} catch (Throwable throwable) {
-					/* empty */
+			if (revision != 634) {
+				if (opcode == 6137) {
+					boolean bool_420_ = true;
+					try {
+						bool_420_ = jagmisc.getTotalPhysicalMemory() > 268435456L;
+					} catch (Throwable throwable) {
+						/* empty */
+					}
+					CS2Script.int_stack[CS2Script.int_stack_size++] = bool_420_ ? 1 : 0;
+					return;
 				}
-				CS2Script.int_stack[CS2Script.int_stack_size++] = bool_420_ ? 1 : 0;
-				return;
 			}
 			if (revision == 634) {
 				if (opcode == 6138) {
+					System.out.println("6138 wants a new int");
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																		 * Class271_Sub7.method2897(200,
 																		 * Class131_Sub8_Sub1.anInt7990, 93)
@@ -5137,31 +5339,16 @@ final class ScriptExecutor {
 					return;
 				}
 				if (opcode == 6139) {
+					System.out.println("6139 wants a new int");
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																		 * Class346.preferences.method3525(true,
 																		 * Class131_Sub8_Sub1.anInt7990)
 																		 */0;
 					return;
 				}
-				if (opcode == 6140) {
-					int i_402_ = 0;
-					/*
-					 * if (Class260.method1425(Class131_Sub8_Sub1.anInt7990, (byte) -21) &&
-					 * Class196.anInt2494 < 96) { i_402_ = 1; }
-					 */
-					CS2Script.int_stack[CS2Script.int_stack_size++] = i_402_;
-					return;
-				}
-				if (opcode == 6141) {
-					if (/* Class196.anInt2494 < 96 */false) {
-						CS2Script.int_stack[CS2Script.int_stack_size++] = 0;
-					} else {
-						CS2Script.int_stack[CS2Script.int_stack_size++] = 2;
-						return;
-					}
-					return;
-				}
+
 				if (opcode == 6142) {
+					System.out.println("6142 wants a new int");
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																		 * (((GamePreferences)
 																		 * Class346.preferences).anInt7718)
@@ -5169,6 +5356,7 @@ final class ScriptExecutor {
 					return;
 				}
 				if (opcode == 6143) {
+					System.out.println("6143 wants a new int");
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																		 * (((GamePreferences)
 																		 * Class346.preferences).anInt7686)
@@ -5176,14 +5364,31 @@ final class ScriptExecutor {
 					return;
 				}
 				if (opcode == 6144) {
+					System.out.println("6144 wants a new int");
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /* Class121_Sub16_Sub15_Sub2.aBool9607 ? 1 : 0 */0;
 					return;
 				}
 				if (opcode == 6145) {
+					System.out.println("6145 wants a new int");
 					CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																		 * (((GamePreferences)
 																		 * Class346.preferences).anInt7687)
 																		 */0;
+					return;
+				}
+				if (opcode == 6146) {
+					System.out.println("6146 wants a new int");
+					CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub3_7222.method1727(-32350);*/0;
+					return;
+				}
+				if (opcode == 6147) {
+					System.out.println("6147 wants a new int");
+					CS2Script.int_stack[CS2Script.int_stack_size++] = /*(Class348_Sub40_Sub20.aClass348_Sub4_9264.anInt6609 < 512 || Class348_Sub23_Sub2.aBoolean9038 || Class139.aBoolean1952) ? 1 : 0;*/0;
+					return;
+				}
+				if (opcode == 6148) {
+					System.out.println("6148 wants a new int");
+					CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class304.aBoolean3847 ? 1 : 0;*/1;
 					return;
 				}
 			}
@@ -5302,7 +5507,7 @@ final class ScriptExecutor {
 			}
 		} else if (opcode < 6600) {
 			if (opcode == 6500) {
-				if (VarcType.anInt3103 != 10 || Class228.anInt3137 != 0 || LoginScreen.login_response != 0
+				if (Client.gameState != 10 || Class228.anInt3137 != 0 || LoginScreen.loginResponse != 0
 						|| ObjType.anInt2815 != 0)
 					CS2Script.int_stack[CS2Script.int_stack_size++] = 1;
 				else {
@@ -5359,8 +5564,8 @@ final class ScriptExecutor {
 			}
 			if (opcode == 6503) {
 				int i_426_ = CS2Script.int_stack[--CS2Script.int_stack_size];
-				if (VarcType.anInt3103 != (revision == 550 ? 10 : 7) || Class228.anInt3137 != 0
-						|| LoginScreen.login_response != 0
+				if (Client.gameState != (revision == 550 ? 10 : 7) || Class228.anInt3137 != 0
+						|| LoginScreen.loginResponse != 0
 						|| ObjType.anInt2815 != 0)
 					CS2Script.int_stack[CS2Script.int_stack_size++] = 0;
 				else {
@@ -5369,14 +5574,16 @@ final class ScriptExecutor {
 				}
 				return;
 			}
-			if (opcode == 6504) {
-				((Renderer) Client.current_renderer).anInt569 = CS2Script.int_stack[--CS2Script.int_stack_size];
-				Client.current_renderer.save_preferences(Client.sign_link);
-				return;
-			}
-			if (opcode == 6505) {
-				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).anInt569);
-				return;
+			if (revision != 634) {
+				if (opcode == 6504) {
+					((Renderer) Client.current_renderer).anInt569 = CS2Script.int_stack[--CS2Script.int_stack_size];
+					Client.current_renderer.save_preferences(Client.sign_link);
+					return;
+				}
+				if (opcode == 6505) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).anInt569);
+					return;
+				}
 			}
 			if (opcode == 6506) {
 				int i_427_ = CS2Script.int_stack[--CS2Script.int_stack_size];
@@ -5414,30 +5621,41 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 6509) {
-				if (VarcType.anInt3103 == 10) {
+				if (Client.gameState == 10) {
 					Class5.aBool60 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
 					return;
 				}
 				return;
 			}
-			if (opcode == 6518) {
-				CS2Script.int_stack[++CS2Script.int_stack_size - 1] = Client.field652 ? 1 : 0;
-				return;
+			if (revision != 634) {
+				if (opcode == 6518) {
+					CS2Script.int_stack[++CS2Script.int_stack_size - 1] = Client.field652 ? 1 : 0;
+					return;
+				}
+				if (opcode == 6519) {
+					CS2Script.int_stack[++CS2Script.int_stack_size - 1] = Client.client_type & 3;
+					return;
+				}
 			}
-			if (opcode == 6519) {
-				CS2Script.int_stack[++CS2Script.int_stack_size - 1] = Client.client_type & 3;
-				return;
+			if (revision == 634) {
+				if (opcode == 6510) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class251.anInt3234*/0;
+					System.out.println("6510 wants a new int");
+					return;
+				}
 			}
 		} else if (opcode < 6700) {
-			if (opcode == 6600) {
-				((Renderer) Client.current_renderer).aBool605 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
-				Client.current_renderer.save_preferences(Client.sign_link);
-				return;
-			}
-			if (opcode == 6601) {
-				CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool605) ? 1
-						: 0;
-				return;
+			if (revision != 634) {
+				if (opcode == 6600) {
+					((Renderer) Client.current_renderer).aBool605 = CS2Script.int_stack[--CS2Script.int_stack_size] == 1;
+					Client.current_renderer.save_preferences(Client.sign_link);
+					return;
+				}
+				if (opcode == 6601) {
+					CS2Script.int_stack[CS2Script.int_stack_size++] = (((Renderer) Client.current_renderer).aBool605) ? 1
+							: 0;
+					return;
+				}
 			}
 		} else if (opcode < 6800 && Class259.aClass97_3707 == Class37.aClass97_544) {
 			if (opcode == 6700) {
@@ -5724,6 +5942,7 @@ final class ScriptExecutor {
 			}
 		} else if (opcode < 7100) {
 			if (opcode == 7000) {
+				System.out.println("7000 wants 2 new ints");
 				// int i_462_ = Class346.preferences.method3526(-9917);
 				CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																	 * ((Class121_Sub48_Sub1)
@@ -5739,6 +5958,7 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 7001) {
+				System.out.println("7001 wants to do something");
 				/*
 				 * Class346.preferences.method3531(true); Class334_Sub4_Sub1.method3247(16912);
 				 * Class346.preferences.store_preferences(-2, Class131_Sub2.signlink);
@@ -5747,6 +5967,7 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 7002) {
+				System.out.println("7002 wants to do something");
 				/*
 				 * Class346.preferences.method3536(1); Class334_Sub4_Sub1.method3247(16912);
 				 * Class346.preferences.store_preferences(-2, Class131_Sub2.signlink);
@@ -5755,6 +5976,7 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 7003) {
+				System.out.println("7003 wants to do something");
 				/*
 				 * Class346.preferences.method3524(1496); Class334_Sub4_Sub1.method3247(16912);
 				 * Class346.preferences.store_preferences(-2, Class131_Sub2.signlink);
@@ -5763,6 +5985,7 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 7004) {
+				System.out.println("7004 wants to do something");
 				/*
 				 * Class346.preferences.method3535((byte) 47);
 				 * Class334_Sub4_Sub1.method3247(16912);
@@ -5772,6 +5995,7 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 7005) {
+				System.out.println("7005 wants to do something");
 				/*
 				 * ((GamePreferences) Class346.preferences).anInt7720 = 0;
 				 * Class346.preferences.store_preferences(-2, Class131_Sub2.signlink);
@@ -5780,6 +6004,7 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 7006) {
+				System.out.println("7006 wants to do something");
 				/*
 				 * if ((((Class121_Sub48_Sub1) Class346.preferences).anInt9475) == 2) {
 				 * ((Class121_Sub48_Sub1) Class346.preferences).aBool9477 = true; } else { if
@@ -5792,19 +6017,130 @@ final class ScriptExecutor {
 				return;
 			}
 			if (opcode == 7007) {
+				System.out.println("7007 wants a new int");
 				CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																	 * (((GamePreferences)
 																	 * Class346.preferences).anInt7720)
 																	 */0;
 				return;
 			}
-			if (opcode == 7008) {
-				if (/* Class131_Sub8_Sub1.anInt7990 == 0 && Class196.anInt2494 < 96 */false) {
-					CS2Script.int_stack[CS2Script.int_stack_size++] = 2;
-				} else {
-					CS2Script.int_stack[CS2Script.int_stack_size++] = 4;
+			if (revision != 634) {
+				if (opcode == 7008) {
+					if (/* Class131_Sub8_Sub1.anInt7990 == 0 && Class196.anInt2494 < 96 */false) {
+						CS2Script.int_stack[CS2Script.int_stack_size++] = 2;
+					} else {
+						CS2Script.int_stack[CS2Script.int_stack_size++] = 4;
+						return;
+					}
 					return;
 				}
+			}
+		} else if (opcode < 7200) {
+			if (opcode == 7100) {
+				System.out.println("7100 wants to do something");
+				CS2Script.int_stack_size -= 2;
+				int i_222_ = CS2Script.int_stack[CS2Script.int_stack_size];
+				int i_223_ = CS2Script.int_stack[CS2Script.int_stack_size + 1];
+				if (i_222_ != -1) {
+					if (i_223_ > 255) i_223_ = 255;
+					else if (i_223_ < 0) i_223_ = 0;
+					//Class55_Sub1.method524(i_223_, false, i_222_, -122);
+				}
+				return;
+			}
+			if (opcode == 7101) {
+				int i_224_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+				//if (i_224_ != -1) Class64_Sub3.method690((byte) 17, i_224_);
+				System.out.println("7101 wants to do something");
+				return;
+			}
+			if (opcode == 7102) {
+				int i_225_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+				//if (i_225_ != -1) Class143.method1189(-1, i_225_);
+				System.out.println("7102 wants to do something");
+				return;
+			}
+			if (opcode == 7103) {
+				System.out.println("7103 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class348_Sub40_Sub31.method3131((byte) 50, "jagtheora") ? 1 : 0*/0;
+				return;
+			}
+		} else if (opcode < 7300) {
+			if (opcode == 7201) {
+				System.out.println("7201 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub4_7220.method1736(123) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7202) {
+				System.out.println("7202 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub21_7270.method1809(117) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7203) {
+				System.out.println("7203 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub7_7238.method1747(111) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7204) {
+				System.out.println("7204 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub18_7259.method1801(125) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7205) {
+				System.out.println("7205 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*(Class316.aClass348_Sub51_3959.aClass239_Sub20_7216.method1806(108) && Class348_Sub8.aHa6654.method3699()) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7206) {
+				System.out.println("7206 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub15_7224.method1786(93) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7207) {
+				System.out.println("7207 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub6_7226.method1744(103) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7208) {
+				System.out.println("7208 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*(Class316.aClass348_Sub51_3959.aClass239_Sub12_7243.method1774(120) && Class348_Sub8.aHa6654.method3627()) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7209) {
+				System.out.println("7209 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub9_7256.method1757(115) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7210) {
+				System.out.println("7210 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub24_7235.method1824(124) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7211) {
+				System.out.println("7211 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub23_7231.method1817(108) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7212) {
+				System.out.println("7212 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub16_7247.method1790(94) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7213) {
+				System.out.println("7213 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub3_7222.method1729(91) ? 1 : */0;
+				return;
+			}
+			if (opcode == 7214) {
+				System.out.println("7214 wants a new int");
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub25_7251.method1831(95) ? 1 : */0;
+				return;
+			}
+		} else if (opcode < 7400) {
+			if (opcode >= 7301 && opcode <= 7314) {
+				System.out.println("an opcode in the 7300s wants an int");
+				int i_238_ = CS2Script.int_stack[--CS2Script.int_stack_size];
+				CS2Script.int_stack[CS2Script.int_stack_size++] = /*Class316.aClass348_Sub51_3959.aClass239_Sub3_7222.method1714(3, i_238_)*/0;
 				return;
 			}
 		}

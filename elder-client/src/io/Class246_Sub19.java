@@ -42,7 +42,7 @@ abstract class Class246_Sub19 extends Node {
 			try {
 				anInt4709++;
 				try {
-					Graphics graphics = Tile.aCanvas2155.getGraphics();
+					Graphics graphics = GameEngine.canvas.getGraphics();
 					if (Class214.aFont2992 == null)
 						Class214.aFont2992 = new Font("Helvetica", 1, 13);
 					if (bool) {
@@ -57,7 +57,7 @@ abstract class Class246_Sub19 extends Node {
 						color = new Color(255, 255, 255);
 					try {
 						if (Class246_Sub28_Sub22.anImage6633 == null)
-							Class246_Sub28_Sub22.anImage6633 = Tile.aCanvas2155.createImage(304, 34);
+							Class246_Sub28_Sub22.anImage6633 = GameEngine.canvas.createImage(304, 34);
 						Graphics graphics_8_ = Class246_Sub28_Sub22.anImage6633.getGraphics();
 						graphics_8_.setColor(color_5_);
 						graphics_8_.drawRect(0, 0, 303, 33);
@@ -95,7 +95,7 @@ abstract class Class246_Sub19 extends Node {
 							(Client.client_width / 2 - Class246_Sub28_Sub9.aString6139.length() * 6 / 2),
 							-26 + Client.client_height / 2);
 				} catch (Exception exception) {
-					Tile.aCanvas2155.repaint();
+					GameEngine.canvas.repaint();
 				}
 				break;
 			} catch (RuntimeException runtimeexception) {

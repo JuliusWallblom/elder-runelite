@@ -25,14 +25,12 @@
  */
 package net.runelite.client.plugins.statusbars;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Point;
-import java.util.function.Supplier;
 import lombok.RequiredArgsConstructor;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.components.TextComponent;
+
+import java.awt.*;
+import java.util.function.Supplier;
 
 @RequiredArgsConstructor
 class BarRenderer

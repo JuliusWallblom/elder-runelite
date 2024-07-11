@@ -163,7 +163,7 @@ final class Class230 {
 								(((Class59_Sub3) Client.local_player).y) >> 7,
 								!((Renderer) (Client.current_renderer)).aBool576);
 						IterableNodeHashTable.method545((byte) -109);
-						if ((VarcType.anInt3103 ^ 0xffffffff) == -31) {
+						if ((Client.gameState ^ 0xffffffff) == -31) {
 							Class75.method476(i_3_, 256, 125, 256, i_2_, i_1_, i);
 							Class210.method1382(i_1_, 256, 10, i_2_, 256, i, i_3_);
 							Class246_Sub34.method2199((byte) 56, 256, i_2_, i_1_, i_3_, 256, i);
@@ -184,9 +184,8 @@ final class Class230 {
 								FontCache.regular_font, 13);
 					}
 				}
-			} catch (RuntimeException runtimeexception) {
-				throw Class193.method1272(runtimeexception,
-						("un.D(" + i + ',' + i_0_ + ',' + i_1_ + ',' + bool + ',' + i_2_ + ',' + i_3_ + ')'));
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			break;
 		} while (false);

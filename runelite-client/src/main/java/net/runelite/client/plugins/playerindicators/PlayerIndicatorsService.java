@@ -24,26 +24,19 @@
  */
 package net.runelite.client.plugins.playerindicators;
 
-import java.awt.Color;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import lombok.Value;
-import net.runelite.api.Client;
-import net.runelite.api.FriendsChatManager;
-import net.runelite.api.FriendsChatMember;
-import net.runelite.api.FriendsChatRank;
-import static net.runelite.api.FriendsChatRank.UNRANKED;
-import net.runelite.api.Player;
-import net.runelite.api.Varbits;
-import net.runelite.api.clan.ClanChannel;
-import net.runelite.api.clan.ClanChannelMember;
-import net.runelite.api.clan.ClanRank;
-import net.runelite.api.clan.ClanSettings;
-import net.runelite.api.clan.ClanTitle;
+import net.runelite.api.*;
+import net.runelite.api.clan.*;
 import net.runelite.client.party.PartyService;
 import net.runelite.client.util.Text;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import java.awt.*;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
+
+import static net.runelite.api.FriendsChatRank.UNRANKED;
 
 @Singleton
 class PlayerIndicatorsService

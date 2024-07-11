@@ -42,14 +42,14 @@ final class Camera {
 							}
 							Client.sign_link.method352(
 									new Point(((Class60) class60).anInt827, ((Class60) class60).anInt826),
-									Tile.aCanvas2155, class10.method126(), class10.get_pixels(), class10.method127(),
+									GameEngine.canvas, class10.method126(), class10.get_pixels(), class10.method127(),
 									-23853);
 							CS2Script.anInt5674 = i;
 						}
 					} while (false);
 					if (i != -1 || (CS2Script.anInt5674 ^ 0xffffffff) == 0)
 						break;
-					Client.sign_link.method352(new Point(), Tile.aCanvas2155, -1, null, -1, -23853);
+					Client.sign_link.method352(new Point(), GameEngine.canvas, -1, null, -1, -23853);
 					CS2Script.anInt5674 = -1;
 				}
 			} catch (RuntimeException runtimeexception) {

@@ -275,11 +275,11 @@ abstract class Entity extends Class59_Sub3 {
 			try {
 				anInt6416++;
 				if (bool == true) {
-					if (VarcType.anInt3103 == 10)
-						Class99.method622((byte) -119, 28);
-					if ((VarcType.anInt3103 ^ 0xffffffff) != -31)
+					if (Client.gameState == 10)
+						Class99.updateGameState((byte) -119, 28);
+					if ((Client.gameState ^ 0xffffffff) != -31)
 						break;
-					Class99.method622((byte) -125, 25);
+					Class99.updateGameState((byte) -125, 25);
 				}
 			} catch (RuntimeException runtimeexception) {
 				throw Class193.method1272(runtimeexception, "r.WA(" + bool + ')');

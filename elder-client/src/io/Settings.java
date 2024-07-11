@@ -26,5 +26,5 @@ public class Settings {
 	public static boolean tap_to_drop;
 	public static boolean show_mouse_over_text;
 	public static boolean render_self;
-	public static int draw_distance = 30;
+	public static int draw_distance = 0;
 }

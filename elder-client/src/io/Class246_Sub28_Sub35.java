@@ -8,9 +8,8 @@ import java.net.Socket;
 import java.net.URL;
 
 import io.cache.Cache;
-import io.cache.IndexConstants;
 import io.cache.Revision;
-import io.osrs_chat.Message;
+import net.runelite.api.GameState;
 
 final class Class246_Sub28_Sub35 extends TextureOperation {
 	static int anInt7010;
@@ -88,7 +87,7 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 	static final void login(int i) {
 		try {
 			anInt7017++;
-			if ((LoginScreen.login_response ^ 0xffffffff) != -1 && LoginScreen.login_response != 5) {
+			if ((LoginScreen.loginResponse ^ 0xffffffff) != -1 && LoginScreen.loginResponse != 5) {
 				try {
 					if (++Class59_Sub3_Sub2.f_bb > 2000) {
 						if (Class65.aClass6_864 != null) {
@@ -96,11 +95,11 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 							Class65.aClass6_864 = null;
 						}
 						if ((Class114.anInt1598 ^ 0xffffffff) <= -2) {
-							LoginScreen.login_response = 0;
+							LoginScreen.loginResponse = 0;
 							Class246_Sub31.anInt5034 = -5;
 							return;
 						}
-						LoginScreen.login_response = 1;
+						LoginScreen.loginResponse = 1;
 						Class114.anInt1598++;
 						if (Class172.anInt2433 == Class230.anInt3165)
 							Class230.anInt3165 = Class246_Sub28_Sub7.anInt6047;
@@ -108,11 +107,11 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 							Class230.anInt3165 = Class172.anInt2433;
 						Class59_Sub3_Sub2.f_bb = 0;
 					}
-					if (LoginScreen.login_response == 1) {
+					if (LoginScreen.loginResponse == 1) {
 						Class17.aClass182_242 = Client.sign_link.method364(0, (Class174.aString2449), (Class230.anInt3165));
-						LoginScreen.login_response = 2;
+						LoginScreen.loginResponse = 2;
 					}
-					if ((LoginScreen.login_response ^ 0xffffffff) == -3) {
+					if ((LoginScreen.loginResponse ^ 0xffffffff) == -3) {
 						if ((Class17.aClass182_242.anInt2539 ^ 0xffffffff) == -3)
 							throw new IOException();
 						if (Class17.aClass182_242.anInt2539 != 1)
@@ -129,16 +128,16 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 						int i_3_ = Class65.aClass6_864.method73(87);
 						Class179.method1170((byte) 123);
 						if ((i_3_ ^ 0xffffffff) != -1) {
-							LoginScreen.login_response = 0;
+							LoginScreen.loginResponse = 0;
 							Class246_Sub31.anInt5034 = i_3_;
 							Class65.aClass6_864.method72(false);
 							Class65.aClass6_864 = null;
 							return;
 						}
-						LoginScreen.login_response = 3;
+						LoginScreen.loginResponse = 3;
 						return;
 					}
-					if (LoginScreen.login_response == 3) {
+					if (LoginScreen.loginResponse == 3) {
 						if ((Class65.aClass6_864.method67(3) ^ 0xffffffff) > -9)
 							return;
 						Class65.aClass6_864.method65(0, (byte) 113, 8, (((Class78.packetStream)).buffer));
@@ -159,7 +158,7 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 						stream.writeString(75, LoginScreen.password);
 						stream.method2385(Class246_Sub28_Sub4.RSA_EXPONENT, (byte) -107, Class169.RSA_MODULUS);
 						(Class130_Sub1.stream).position = 0;
-						if (VarcType.anInt3103 != 40)
+						if (Client.gameState != 40)
 							Class130_Sub1.stream.writeByte(255, (((Class48) Class246_Sub1_Sub10.aClass48_6215).anInt689));
 						else
 							Class130_Sub1.stream.writeByte(255, (((Class48) Class246_Sub1_Sub10.aClass48_6217).anInt689));
@@ -200,10 +199,10 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 						for (int i_6_ = 0; i_6_ < 4; i_6_++)
 							is[i_6_] += 50;
 						Class78.packetStream.method2480(is, -938442011);
-						LoginScreen.login_response = 4;
+						LoginScreen.loginResponse = 4;
 						return;
 					}
-					if (LoginScreen.login_response == 4) {
+					if (LoginScreen.loginResponse == 4) {
 						if (Class65.aClass6_864.method67(3) < 1)
 							return;
 						int response = Class65.aClass6_864.method73(5);
@@ -243,23 +242,23 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 							LoginScreen.login_screen_state = 1;
 						}
 						if ((response ^ 0xffffffff) == -22)
-							LoginScreen.login_response = 7;
+							LoginScreen.loginResponse = 7;
 						else if (response == 29)
-							LoginScreen.login_response = 11;
+							LoginScreen.loginResponse = 11;
 						else if (response != 1) {
 							if (response != 2) {
 								if ((response ^ 0xffffffff) == -16) {
 									Class130_Sub1_Sub1.anInt7046 = -2;
-									LoginScreen.login_response = 12;
+									LoginScreen.loginResponse = 12;
 								} else {
 									if ((response ^ 0xffffffff) == -24 && ((Class114.anInt1598 ^ 0xffffffff) > -2)) {
 										Class59_Sub3_Sub2.f_bb = 0;
-										LoginScreen.login_response = 1;
+										LoginScreen.loginResponse = 1;
 										Class114.anInt1598++;
 										Class65.aClass6_864.method72(false);
 										Class65.aClass6_864 = null;
 									} else {
-										LoginScreen.login_response = 0;
+										LoginScreen.loginResponse = 0;
 										Class246_Sub31.anInt5034 = response;
 										Class65.aClass6_864.method72(false);
 										Class65.aClass6_864 = null;
@@ -268,39 +267,39 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 									return;
 								}
 							} else
-								LoginScreen.login_response = 8;
+								LoginScreen.loginResponse = 8;
 						} else {
-							LoginScreen.login_response = 5;
+							LoginScreen.loginResponse = 5;
 							Class246_Sub31.anInt5034 = response;
 							return;
 						}
 					}
-					if ((LoginScreen.login_response ^ 0xffffffff) == -7) {
+					if ((LoginScreen.loginResponse ^ 0xffffffff) == -7) {
 						(Class130_Sub1.stream).position = 0;
 						Class130_Sub1.stream.method2474((((Class48) Class246_Sub1_Sub10.aClass48_6216).anInt689), 13127);
 						Class65.aClass6_864.method76((Class130_Sub1.stream).position, 0, ((Class130_Sub1.stream).buffer), 127);
-						LoginScreen.login_response = 4;
-					} else if (LoginScreen.login_response == 7) {
+						LoginScreen.loginResponse = 4;
+					} else if (LoginScreen.loginResponse == 7) {
 						if (Class65.aClass6_864.method67(3) >= 1) {
 							Class95.anInt1252 = 60 * (Class65.aClass6_864.method73(53) + 3);
 							Class246_Sub31.anInt5034 = 21;
-							LoginScreen.login_response = 0;
+							LoginScreen.loginResponse = 0;
 							Class65.aClass6_864.method72(false);
 							Class65.aClass6_864 = null;
 						}
 					} else {
 						int i_8_ = 14 % ((i - 53) / 58);
-						if ((LoginScreen.login_response ^ 0xffffffff) == -12) {
+						if ((LoginScreen.loginResponse ^ 0xffffffff) == -12) {
 							if ((Class65.aClass6_864.method67(3) ^ 0xffffffff) <= -2) {
 								Class160.anInt2271 = Class65.aClass6_864.method73(52);
-								LoginScreen.login_response = 0;
+								LoginScreen.loginResponse = 0;
 								Class246_Sub31.anInt5034 = 29;
 								Class65.aClass6_864.method72(false);
 								Class65.aClass6_864 = null;
 							}
 						} else {
-							if ((LoginScreen.login_response ^ 0xffffffff) == -9) {
-								LoginScreen.logged_in = true;
+							if ((LoginScreen.loginResponse ^ 0xffffffff) == -9) {
+								LoginScreen.loggedIn = true;
 								if ((Class65.aClass6_864.method67(3) ^ 0xffffffff) > -14)
 									return;
 								Class65.aClass6_864.method65(0, (byte) 113, 13, ((Class78.packetStream).buffer));
@@ -345,9 +344,9 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 										/* empty */
 									}
 								}
-								LoginScreen.login_response = 10;
+								LoginScreen.loginResponse = 10;
 							}
-							if ((LoginScreen.login_response ^ 0xffffffff) == -11) {
+							if ((LoginScreen.loginResponse ^ 0xffffffff) == -11) {
 								if (Class78.packetStream.method2482(-6742)) {
 									if (Class65.aClass6_864.method67(3) < 1)
 										return;
@@ -355,14 +354,14 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 								}
 								IdentityKitType.INCOMING_PACKET = (Stream_Sub2.method2592(105)[Class78.packetStream.method2481(1941438248)]);
 								Class130_Sub1_Sub1.anInt7046 = Class78.packetStream.readUnsignedShort();
-								LoginScreen.login_response = 9;
+								LoginScreen.loginResponse = 9;
 							}
-							if (LoginScreen.login_response == 9) {
+							if (LoginScreen.loginResponse == 9) {
 								if (Class65.aClass6_864.method67(3) >= Class130_Sub1_Sub1.anInt7046) {
 									Class65.aClass6_864.method65(0, (byte) 113, Class130_Sub1_Sub1.anInt7046, ((Class78.packetStream).buffer));
 									(Class78.packetStream).position = 0;
 									int i_9_ = Class130_Sub1_Sub1.anInt7046;
-									LoginScreen.login_response = 0;
+									LoginScreen.loginResponse = 0;
 									Class246_Sub31.anInt5034 = 2;
 									Class91.method577(126);
 									Class219.method1419(-95, (Class78.packetStream));
@@ -372,7 +371,7 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 										throw new RuntimeException("lswp pos:" + (((Class78.packetStream)).position) + " psize:" + i_9_);
 									IdentityKitType.INCOMING_PACKET = null;
 								}
-							} else if ((LoginScreen.login_response ^ 0xffffffff) == -13) {
+							} else if ((LoginScreen.loginResponse ^ 0xffffffff) == -13) {
 								if ((Class130_Sub1_Sub1.anInt7046 ^ 0xffffffff) == 1) {
 									if (Class65.aClass6_864.method67(3) < 2)
 										return;
@@ -384,7 +383,7 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 									Class65.aClass6_864.method65(0, (byte) 113, Class130_Sub1_Sub1.anInt7046, ((Class78.packetStream).buffer));
 									(Class78.packetStream).position = 0;
 									int i_10_ = Class130_Sub1_Sub1.anInt7046;
-									LoginScreen.login_response = 0;
+									LoginScreen.loginResponse = 0;
 									Class246_Sub31.anInt5034 = 15;
 									Class246_Sub32.method2164(30);
 									Class219.method1419(-90, (Class78.packetStream));
@@ -402,13 +401,13 @@ final class Class246_Sub28_Sub35 extends TextureOperation {
 					}
 					if ((Class114.anInt1598 ^ 0xffffffff) <= -2) {
 						Class246_Sub31.anInt5034 = -4;
-						LoginScreen.login_response = 0;
+						LoginScreen.loginResponse = 0;
 					} else {
 						if ((Class172.anInt2433 ^ 0xffffffff) != (Class230.anInt3165 ^ 0xffffffff))
 							Class230.anInt3165 = Class172.anInt2433;
 						else
 							Class230.anInt3165 = Class246_Sub28_Sub7.anInt6047;
-						LoginScreen.login_response = 1;
+						LoginScreen.loginResponse = 1;
 						Class114.anInt1598++;
 						Class59_Sub3_Sub2.f_bb = 0;
 					}

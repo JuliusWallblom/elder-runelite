@@ -151,7 +151,7 @@ final class Class191 {
 		}
 	}
 
-	final ObjType list(int i, int obj_id) {
+	ObjType list(int i, int obj_id) {
 		try {
 			Revision revision = Settings.data;
 			ObjType obj_type;
@@ -201,8 +201,6 @@ final class Class191 {
 					Class246_Sub1_Sub9.aClass67_6178.get(((Class191) this).anInt2692), null, null });
 			((ObjType) obj_type).ops = (new String[] { null, null, null, null,
 					Class259_Sub3_Sub1.aClass67_6900.get(((Class191) this).anInt2692) });
-			if (i != 22883)
-				anInt2689 = -127;
 			if (data != null)
 				obj_type.decode(new Buffer(data), revision);
 			obj_type.method1299(i ^ ~0x5901);
@@ -488,10 +486,10 @@ final class Class191 {
 		try {
 			do {
 				if (Client.sprite_loader.method1732()) {
-					Client.sprite_loader.method1704(Tile.aCanvas2155);
+					Client.sprite_loader.method1704(GameEngine.canvas);
 					Class75.method473((byte) 56);
-					Client.sprite_loader.method1690(Tile.aCanvas2155);
-					Client.sprite_loader.method1691(Tile.aCanvas2155);
+					Client.sprite_loader.method1690(GameEngine.canvas);
+					Client.sprite_loader.method1691(GameEngine.canvas);
 					if (!Client.f_ob)
 						break;
 				}

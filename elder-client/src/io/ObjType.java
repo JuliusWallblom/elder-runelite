@@ -2,8 +2,12 @@ package io;
 
 import io.cache.CacheType;
 import io.cache.Revision;
+import net.runelite.api.IterableHashTable;
+import net.runelite.rs.api.RSItemComposition;
+import net.runelite.rs.api.RSIterableNodeHashTable;
+import net.runelite.rs.api.RSModel;
 
-public final class ObjType extends CacheType {
+public final class ObjType extends CacheType implements RSItemComposition {
 
 	Revision revision;
 
@@ -1106,5 +1110,275 @@ public final class ObjType extends CacheType {
 		NPC_CLICK_1_PACKET_NEW = new OutgoingPacket(13, 3);
 		anInt2818 = 0;
 		anInt2815 = 0;
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+
+	@Override
+	public String getMembersName() {
+		return this.name + "(members)";
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public int getId() {
+		return this.id;
+	}
+
+	@Override
+	public int getNote() {
+		return this.note;
+	}
+
+	@Override
+	public int getLinkedNoteId() {
+		return this.note;
+	}
+
+	@Override
+	public int getPlaceholderId() {
+		return this.placeholderLink;
+	}
+
+	@Override
+	public int getPlaceholderTemplateId() {
+		return this.placeholderTemplate;
+	}
+
+	@Override
+	public int getPrice() {
+		return 0;
+	}
+
+	@Override
+	public int getHaPrice() {
+		return 0;
+	}
+
+	@Override
+	public boolean isMembers() {
+		return this.members;
+	}
+
+	@Override
+	public boolean isStackable() {
+		return this.stackability == 1;
+	}
+
+	@Override
+	public boolean isTradeable() {
+		return this.isTradeable;
+	}
+
+	@Override
+	public void setTradeable(boolean yes) {
+		this.isTradeable = yes;
+	}
+
+	@Override
+	public int getIsStackable() {
+		return this.stackability;
+	}
+
+	@Override
+	public int getMaleModel() {
+		return this.maleModel0;
+	}
+
+	@Override
+	public String[] getInventoryActions() {
+		return this.ops;
+	}
+
+	@Override
+	public String[] getGroundActions() {
+		return this.options;
+	}
+
+	@Override
+	public int getShiftClickActionIndex() {
+		return this.shiftClickIndex;
+	}
+
+	@Override
+	public void setShiftClickActionIndex(int shiftClickActionIndex) {
+		this.shiftClickIndex = shiftClickActionIndex;
+	}
+
+	@Override
+	public RSModel getModel(int quantity) {
+		return null;
+	}
+
+	@Override
+	public int getInventoryModel() {
+		return this.inventoryModel;
+	}
+
+	@Override
+	public void setInventoryModel(int model) {
+		this.inventoryModel = model;
+	}
+
+	@Override
+	public short[] getColorToReplaceWith() {
+		return this.colorReplace;
+	}
+
+	@Override
+	public void setColorToReplaceWith(short[] color) {
+		this.colorReplace = color;
+	}
+
+	@Override
+	public short[] getColorToReplace() {
+		return this.colorFind;
+	}
+
+	@Override
+	public void setColorToReplace(short[] color) {
+		this.colorFind = color;
+	}
+
+	@Override
+	public short[] getTextureToReplaceWith() {
+		return this.textureReplace;
+	}
+
+	@Override
+	public void setTextureToReplaceWith(short[] texture) {
+		this.textureReplace = texture;
+	}
+
+	@Override
+	public short[] getTextureToReplace() {
+		return this.textureFind;
+	}
+
+	@Override
+	public void setTextureToReplace(short[] texture) {
+		this.textureFind = texture;
+	}
+
+	@Override
+	public int getModelZoom() {
+		return this.zoom2d;
+	}
+
+	@Override
+	public void setModelZoom(int zoom) {
+		this.zoom2d = zoom;
+	}
+
+	@Override
+	public int getOffsetX() {
+		return this.offsetX2d;
+	}
+
+	@Override
+	public void setOffsetX(int offsetX) {
+		this.offsetX2d = offsetX;
+	}
+
+	@Override
+	public int getOffsetY() {
+		return this.offsetY2d;
+	}
+
+	@Override
+	public void setOffsetY(int offsetY) {
+		this.offsetY2d = offsetY;
+	}
+
+	@Override
+	public RSIterableNodeHashTable getParams() {
+		return null;
+	}
+
+	@Override
+	public int getIntValue(int paramID) {
+		return 0;
+	}
+
+	@Override
+	public void setValue(int paramID, int value) {
+
+	}
+
+	@Override
+	public String getStringValue(int paramID) {
+		return "";
+	}
+
+	@Override
+	public void setValue(int paramID, String value) {
+
+	}
+
+	@Override
+	public void setParams(IterableHashTable params) {
+
+	}
+
+	@Override
+	public void setParams(RSIterableNodeHashTable params) {
+
+	}
+
+	@Override
+	public int getXan2d() {
+		return this.xan2d;
+	}
+
+	@Override
+	public int getYan2d() {
+		return this.yan2d;
+	}
+
+	@Override
+	public int getZan2d() {
+		return this.zan2d;
+	}
+
+	@Override
+	public void setXan2d(int angle) {
+		this.xan2d = angle;
+	}
+
+	@Override
+	public void setYan2d(int angle) {
+		this.yan2d = angle;
+	}
+
+	@Override
+	public void setZan2d(int angle) {
+		this.zan2d = angle;
+	}
+
+	@Override
+	public int getAmbient() {
+		return this.ambient;
+	}
+
+	@Override
+	public void setAmbient(int ambient) {
+		this.ambient = ambient;
+	}
+
+	@Override
+	public int getContrast() {
+		return this.contrast;
+	}
+
+	@Override
+	public void setContrast(int contrast) {
+		this.contrast = contrast;
 	}
 }

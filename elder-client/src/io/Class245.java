@@ -9,11 +9,11 @@ final class Class245 {
 	static Class106 aClass106_3462;
 	static IncomingPacket aClass13_3463;
 
-	static final void method1572(SceneGraph class260, int i) {
+	static final void drawConsole(SceneGraph class260, int i) {
 		try {
 			anInt3459++;
 			if (i != 8)
-				method1572(null, 3);
+				drawConsole(null, 3);
 			class260.OA(0, 0, Client.client_width, 350);
 			class260.O(0, 0, Client.client_width, 350, Class_q_Sub1.anInt6670 << 24 | 0x332277, 1);
 			int i_0_ = 350 / Class97.anInt1264;

@@ -1,7 +1,6 @@
 package io;
 
 import io.cache.Cache;
-import io.cache.Revision;
 
 final class Class246_Sub1_Sub14 extends NodeSub {
 	static OutgoingPacket PUBLIC_QUICK_CHAT_PACKET;
@@ -93,7 +92,7 @@ final class Class246_Sub1_Sub14 extends NodeSub {
 					}
 					if (i == -24)
 						break;
-					LoginScreen.login_response = 91;
+					LoginScreen.loginResponse = 91;
 				}
 			} catch (RuntimeException runtimeexception) {
 				throw Class193.method1272(runtimeexception, "mb.A(" + i + ')');

@@ -282,6 +282,8 @@ public final class SequenceType {
 	public static int translate_duplicates_645(int id) {
 		switch (id) {
 
+			case 11970:
+				return 1658;
 			case 11973:
 				return 808;
 			case 11975:
@@ -315,6 +317,8 @@ public final class SequenceType {
 	public static int translate_duplicates_550(int id) {
 		switch (id) {
 
+			case 11970:
+				return 1658;
 			case 11973:
 				return 808;
 			case 11975:

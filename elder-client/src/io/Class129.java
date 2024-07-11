@@ -2,7 +2,6 @@ package io;
 
 import io.cache.Cache;
 import io.cache.IndexConstants;
-import io.cache.Revision;
 
 final class Class129 {
 	static int anInt1800;
@@ -219,12 +218,12 @@ final class Class129 {
 			Class176.method1158(Class243.aClass_lArray3448, 10);
 			Class246_Sub23.method2099((byte) 107);
 			Class205.method1341(-11712);
-			if ((VarcType.anInt3103 ^ 0xffffffff) != -11) {
-				if ((VarcType.anInt3103 ^ 0xffffffff) != -31) {
-					if ((VarcType.anInt3103 ^ 0xffffffff) == -6)
+			if ((Client.gameState ^ 0xffffffff) != -11) {
+				if ((Client.gameState ^ 0xffffffff) != -31) {
+					if ((Client.gameState ^ 0xffffffff) == -6)
 						MapScenes.method1642();
 				} else
-					Class99.method622((byte) -119, 25);
+					Class99.updateGameState((byte) -119, 25);
 			} else
 				LoginScreen.prepare(false);
 		} catch (RuntimeException runtimeexception) {

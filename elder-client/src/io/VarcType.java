@@ -12,7 +12,6 @@ final class VarcType {
 	static int anInt3100;
 	static int[] anIntArray3101;
 	static int[] anIntArray3102;
-	static int anInt3103 = 0;
 	static int[] anIntArray3104;
 	int anInt3105 = 1;
 	static String[] aStringArray3106;

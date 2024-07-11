@@ -3,6 +3,8 @@ package io;
 import io.cache.Revision;
 
 final class NpcType {
+	public int height = -1;
+	public int[] stats = {1, 1, 1, 1, 1, 1};
 	private byte[] aByteArray3568;
 	boolean drawMinimapDot;
 	private short[] retextureToReplace;
@@ -595,6 +597,29 @@ final class NpcType {
 					int[] aditionalModels = new int[additionalModelLen];
 					for (int l1 = 0; l1 < additionalModelLen; l1++)
 						aditionalModels[l1] = stream.readUnsignedShort();
+				}else if (opcode == 74)
+				{
+					stats[0] = stream.readUnsignedShort();
+				}
+				else if (opcode == 75)
+				{
+					stats[1] = stream.readUnsignedShort();
+				}
+				else if (opcode == 76)
+				{
+					stats[2] = stream.readUnsignedShort();
+				}
+				else if (opcode == 77)
+				{
+					stats[3] = stream.readUnsignedShort();
+				}
+				else if (opcode == 78)
+				{
+					stats[4] = stream.readUnsignedShort();
+				}
+				else if (opcode == 79)
+				{
+					stats[5] = stream.readUnsignedShort();
 
 				} else if (opcode == 93)
 					drawMinimapDot = false;
@@ -640,6 +665,10 @@ final class NpcType {
 					clickable = false;
 				} else if (opcode == 111) {
 					boolean is_pet = true;
+				}
+				else if (opcode == 124)
+				{
+					height = stream.readUnsignedShort();
 				} else if (opcode == 249) {
 					int i_81_ = stream.readUnsignedByte();
 					if (aClass85_3599 == null) {

@@ -25,23 +25,8 @@
  */
 package net.runelite.client.plugins.statusbars;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.util.EnumMap;
-import java.util.Map;
-import javax.inject.Inject;
-import net.runelite.api.Client;
-import net.runelite.api.Experience;
-import net.runelite.api.MenuEntry;
 import net.runelite.api.Point;
-import net.runelite.api.Prayer;
-import net.runelite.api.Skill;
-import net.runelite.api.SpriteID;
-import net.runelite.api.VarPlayer;
-import net.runelite.api.Varbits;
+import net.runelite.api.*;
 import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.game.AlternateSprites;
@@ -55,6 +40,12 @@ import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.util.ImageUtil;
+
+import javax.inject.Inject;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.EnumMap;
+import java.util.Map;
 
 class StatusBarsOverlay extends Overlay
 {

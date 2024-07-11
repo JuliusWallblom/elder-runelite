@@ -392,7 +392,7 @@ final class MouseHandler extends Class102 implements MouseListener, MouseMotionL
 		do {
 			try {
 				anInt4471++;
-				if (!LoginScreen.logged_in) {
+				if (!LoginScreen.loggedIn) {
 					LoginScreen.handle_hovers(mouseevent.getX(), mouseevent.getY());
 					LoginScreen.update_hovers();
 				}
@@ -425,7 +425,7 @@ final class MouseHandler extends Class102 implements MouseListener, MouseMotionL
 			try {
 				anInt4454++;
 				int id = method2002(mouseevent, 16);
-				if (!LoginScreen.logged_in) {
+				if (!LoginScreen.loggedIn) {
 					LoginScreen.handle_click_input(mouseevent.getX(), mouseevent.getY());
 				}
 				if (id == 1)

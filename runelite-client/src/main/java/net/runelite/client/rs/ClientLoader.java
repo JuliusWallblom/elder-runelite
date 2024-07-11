@@ -56,6 +56,8 @@ import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 import javax.annotation.Nonnull;
 import javax.swing.SwingUtilities;
+
+import io.GameConstants;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.client.RuneLite;
@@ -127,7 +129,7 @@ public class ClientLoader implements Supplier<Applet>
 
 		try
 		{
-			SplashScreen.stage(0, null, "Fetching applet viewer config");
+			/*SplashScreen.stage(0, null, "Fetching applet viewer config");
 			RSConfig config = downloadConfig();
 
 			SplashScreen.stage(.05, null, "Waiting for other clients to start");
@@ -167,13 +169,13 @@ public class ClientLoader implements Supplier<Applet>
 				SplashScreen.stage(.40, null, "Loading client");
 				File jarFile = updateCheckMode == AUTO ? PATCHED_CACHE : VANILLA_CACHE;
 				// create the classloader for the jar while we hold the lock, and eagerly load and link all classes
-				// in the jar. Otherwise the jar can change on disk and can break future classloads.
+				// in the jar. Otherwise, the jar can change on disk and can break future classloads.
 				classLoader = createJarClassLoader(jarFile);
-			}
+			}*/
 
-			SplashScreen.stage(.465, "Starting", "Starting Old School RuneScape");
+			SplashScreen.stage(0, "Starting", "Starting " + GameConstants.NAME);
 
-			Applet rs = loadClient(config, classLoader);
+			Applet rs = loadClient(/*config, classLoader*/null, null);
 
 			SplashScreen.stage(.5, null, "Starting core classes");
 
@@ -183,8 +185,7 @@ public class ClientLoader implements Supplier<Applet>
 		{
 			return e;
 		}
-		catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException
-			| VerificationException | SecurityException e)
+		catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SecurityException e)
 		{
 			log.error("Error loading RS!", e);
 
@@ -573,7 +574,7 @@ public class ClientLoader implements Supplier<Applet>
 		Class<?> clientClass = io.Client.class;
 
 		Applet rs = (Applet) clientClass.newInstance();
-		rs.setStub(new RSAppletStub(config, runtimeConfigLoader));
+		//rs.setStub(new RSAppletStub(config, runtimeConfigLoader));
 
 		if (rs instanceof Client)
 		{

@@ -45,8 +45,9 @@ final class Class20 {
 					((Class59_Sub3) Client.local_player).x, ((Class59_Sub3) Client.local_player).current_plane,
 					(byte) -107);
 			Class246_Sub17.anInt4663 = 0;
-		} catch (RuntimeException runtimeexception) {
-			throw Class193.method1272(runtimeexception, "cb.C(" + l + ',' + i + ')');
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

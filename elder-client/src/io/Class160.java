@@ -18,7 +18,7 @@ final class Class160 {
 		try {
 			anInt2272++;
 			IterableNodeHashTable.method545((byte) -109);
-			if (VarcType.anInt3103 == 30 || VarcType.anInt3103 == 25) {
+			if (Client.gameState == 30 || Client.gameState == 25) {
 				Class88.anInt1152++;
 				if (Class88.anInt1152 >= 50 || bool) {
 					if (i >= -31)

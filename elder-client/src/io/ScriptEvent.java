@@ -99,14 +99,14 @@ final class ScriptEvent extends Node {
 				if (bool)
 					Class191.method1259(i_1_ ^ 0x46);
 				else {
-					Tile.aCanvas2155.setSize(Client.client_width, Client.client_height);
-					Client.sprite_loader.method1713(Tile.aCanvas2155);
+					GameEngine.canvas.setSize(Client.client_width, Client.client_height);
+					Client.sprite_loader.method1713(GameEngine.canvas);
 					if (container == Client.frame) {
 						Insets insets = Client.frame.getInsets();
-						Tile.aCanvas2155.setLocation(insets.left + Class125.anInt1768,
+						GameEngine.canvas.setLocation(insets.left + Class125.anInt1768,
 								insets.top - -Class100_Sub1.anInt5075);
 					} else
-						Tile.aCanvas2155.setLocation(Class125.anInt1768, (Class100_Sub1.anInt5075));
+						GameEngine.canvas.setLocation(Class125.anInt1768, (Class100_Sub1.anInt5075));
 				}
 				if ((i ^ 0xffffffff) <= -3)
 					Class59_Sub5_Sub1.aBool5829 = true;
@@ -115,15 +115,15 @@ final class ScriptEvent extends Node {
 				if (Widget.root_interface != -1)
 					Class177.method1165((byte) -101, true, 634);
 				if (Class65.aClass6_864 != null
-						&& ((VarcType.anInt3103 ^ 0xffffffff) == -31 || (VarcType.anInt3103 ^ 0xffffffff) == -26))
+						&& ((Client.gameState ^ 0xffffffff) == -31 || (Client.gameState ^ 0xffffffff) == -26))
 					Class_a.method576((byte) 93);
 				int i_6_ = 0;
 				if (i_1_ != -45)
 					aClass166_4968 = null;
 				for (/**/; i_6_ < 100; i_6_++)
 					Class246_Sub39.aBoolArray5488[i_6_] = true;
-				Class246_Sub28_Sub8.aBool6060 = true;
-				if (!LoginScreen.logged_in) {
+				GameEngine.fullRedraw = true;
+				if (!LoginScreen.loggedIn) {
 					LoginScreen.draw();
 				}
 			}

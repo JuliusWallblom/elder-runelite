@@ -275,7 +275,7 @@ final class Texture extends NodeSub {
 					Class232.method1484((byte) 121);
 					UnderlayLoader.aBool1468 = false;
 					Class40_Sub6.method2182((byte) -98);
-					if (Client.frame != null && Class65.aClass6_864 != null && VarcType.anInt3103 == 25) {
+					if (Client.frame != null && Class65.aClass6_864 != null && Client.gameState == 25) {
 						Class222.anInt3068++;
 						Class243.writePacket(-117, (Class246_Sub28_Sub36.aClass201_7033));
 						Class130_Sub1.stream.writeInt(1057001181, (byte) -62);
@@ -297,10 +297,10 @@ final class Texture extends NodeSub {
 							}
 						}
 					}
-					if (VarcType.anInt3103 == 28)
-						Class99.method622((byte) 29, 10);
+					if (Client.gameState == 28)
+						Class99.updateGameState((byte) 29, 10);
 					else {
-						Class99.method622((byte) 84, 30);
+						Class99.updateGameState((byte) 84, 30);
 						if (Class65.aClass6_864 != null)
 							Class243.writePacket(i ^ ~0x16, Class_l_Sub2.REGION_DONE_LOADING_PACKET);
 					}

@@ -250,42 +250,42 @@ final class Class125 {
 						Class160.method1059(-71, true);
 						Class187_Sub1.method2109((byte) 120);
 					} else if ((Renderer.anInt571 ^ 0xffffffff) == -71) {
-						Class139.aClass198_1986 = new Class198(class260, 11, true, Tile.aCanvas2155);
+						Class139.aClass198_1986 = new Class198(class260, 11, true, GameEngine.canvas);
 						Renderer.anInt571 = 73;
 						Class160.method1059(-81, true);
 						Class187_Sub1.method2109((byte) -2);
 					} else if ((Renderer.anInt571 ^ 0xffffffff) == -74) {
-						Class208.aClass198_2934 = new Class198(class260, 12, true, Tile.aCanvas2155);
+						Class208.aClass198_2934 = new Class198(class260, 12, true, GameEngine.canvas);
 						Renderer.anInt571 = 76;
 						Class160.method1059(-111, true);
 						Class187_Sub1.method2109((byte) 111);
 					} else if (Renderer.anInt571 == 76) {
-						Class129.aClass198_1806 = new Class198(class260, 14, true, Tile.aCanvas2155);
+						Class129.aClass198_1806 = new Class198(class260, 14, true, GameEngine.canvas);
 						Renderer.anInt571 = 79;
 						Class160.method1059(-70, true);
 						Class187_Sub1.method2109((byte) 108);
 					} else if ((Renderer.anInt571 ^ 0xffffffff) == -80) {
-						Class246_Sub7_Sub1.aClass198_6080 = new Class198(class260, 17, true, Tile.aCanvas2155);
+						Class246_Sub7_Sub1.aClass198_6080 = new Class198(class260, 17, true, GameEngine.canvas);
 						Renderer.anInt571 = 82;
 						Class160.method1059(-47, true);
 						Class187_Sub1.method2109((byte) -26);
 					} else if (Renderer.anInt571 == 82) {
-						EnumLoader.aClass198_2043 = new Class198(class260, 19, true, Tile.aCanvas2155);
+						EnumLoader.aClass198_2043 = new Class198(class260, 19, true, GameEngine.canvas);
 						Renderer.anInt571 = 85;
 						Class160.method1059(-122, true);
 						Class187_Sub1.method2109((byte) -61);
 					} else if (Renderer.anInt571 == 85) {
-						Class246_Sub11.aClass198_4099 = new Class198(class260, 22, true, Tile.aCanvas2155);
+						Class246_Sub11.aClass198_4099 = new Class198(class260, 22, true, GameEngine.canvas);
 						Renderer.anInt571 = 88;
 						Class160.method1059(-91, true);
 						Class187_Sub1.method2109((byte) 16);
 					} else if (Renderer.anInt571 == 88) {
-						Class246_Sub8.aClass198_3982 = new Class198(class260, 26, true, Tile.aCanvas2155);
+						Class246_Sub8.aClass198_3982 = new Class198(class260, 26, true, GameEngine.canvas);
 						Renderer.anInt571 = 91;
 						Class160.method1059(-42, true);
 						Class187_Sub1.method2109((byte) 1);
 					} else {
-						Class246_Sub14.aClass198_4437 = new Class198(class260, 30, true, Tile.aCanvas2155);
+						Class246_Sub14.aClass198_4437 = new Class198(class260, 30, true, GameEngine.canvas);
 						Renderer.anInt571 = 100;
 						Class160.method1059(-73, true);
 						Class187_Sub1.method2109((byte) 108);

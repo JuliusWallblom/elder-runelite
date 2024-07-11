@@ -38,7 +38,7 @@ final class Class_cs extends Class246_Sub28_Sub5 {
 				aClass_lArray7146 = null;
 				if (bool == true)
 					break;
-				method2921(89, -13, 30, 99, -18, 64, -91, 8, -57, -49, null);
+				drawWidget(89, -13, 30, 99, -18, 64, -91, 8, -57, -49, null);
 			} catch (RuntimeException runtimeexception) {
 				throw Class193.method1272(runtimeexception, "cs.D(" + bool + ')');
 			}
@@ -46,8 +46,8 @@ final class Class_cs extends Class246_Sub28_Sub5 {
 		} while (false);
 	}
 
-	static final void method2921(int i, int i_7_, int i_8_, int i_9_, int i_10_, int i_11_, int i_12_, int i_13_,
-			int i_14_, int i_15_, Widget widget) {
+	static final void drawWidget(int i, int i_7_, int i_8_, int i_9_, int i_10_, int i_11_, int i_12_, int i_13_,
+								 int i_14_, int i_15_, Widget widget) {
 		try {
 			anInt7147++;
 			if (Widget.load_widget(i_9_, widget == null ? 634 : widget.revision, 7)) {

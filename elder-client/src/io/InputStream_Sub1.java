@@ -38,7 +38,7 @@ final class InputStream_Sub1 extends InputStream {
 
 	static final void method2101(int i) {
 		try {
-			if ((VarcType.anInt3103 ^ 0xffffffff) != -11 && VarcType.anInt3103 != 28) {
+			if ((Client.gameState ^ 0xffffffff) != -11 && Client.gameState != 28) {
 				int i_0_ = ((Entity) Client.local_player).f_mc[0] >> 3;
 				int i_1_ = ((Entity) Client.local_player).f_nc[0] >> 3;
 				if ((i_0_ ^ 0xffffffff) <= -1 && ((Class38_Sub1_Sub1.anInt6770 >> 3 ^ 0xffffffff) < (i_0_ ^ 0xffffffff)) && i_1_ >= 0 && (i_1_ ^ 0xffffffff) > (Class152.anInt2205 >> 3 ^ 0xffffffff))

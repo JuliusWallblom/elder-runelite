@@ -55,7 +55,7 @@ final class Varc extends NodeSub {
 			else {
 				IdentityKitLoader.aClass6_1208 = Class65.aClass6_864;
 				Class65.aClass6_864 = null;
-				Class99.method622((byte) 1, 40);
+				Class99.updateGameState((byte) 1, 40);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "ij.A(" + i + ')');

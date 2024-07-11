@@ -310,12 +310,12 @@ final class Class59_Sub1_Sub2 extends Class59_Sub1 implements Class_f {
 				Class246_Sub1_Sub15_Sub2.method2897((byte) -3, i_20_);
 				Class102.method639(1, i_20_);
 				Class59_Sub3_Sub1.method2442(i ^ i, i_20_);
-				if ((VarcType.anInt3103 ^ 0xffffffff) == -11)
-					Class99.method622((byte) -126, 28);
+				if ((Client.gameState ^ 0xffffffff) == -11)
+					Class99.updateGameState((byte) -126, 28);
 				else {
-					if (VarcType.anInt3103 != 30)
+					if (Client.gameState != 30)
 						break;
-					Class99.method622((byte) -2, 25);
+					Class99.updateGameState((byte) -2, 25);
 				}
 			} catch (RuntimeException runtimeexception) {
 				throw Class193.method1272(runtimeexception, "ft.R(" + i + ')');

@@ -47,7 +47,7 @@ final class Class128_Sub1 extends Class128 {
 			Class95.anInt1252 = 0;
 			anInt5562++;
 			Class59_Sub3_Sub2.f_bb = 0;
-			LoginScreen.login_response = i;
+			LoginScreen.loginResponse = i;
 			Class246_Sub31.anInt5034 = -3;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "wk.E(" + i + ')');

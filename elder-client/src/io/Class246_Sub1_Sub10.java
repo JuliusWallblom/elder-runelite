@@ -181,7 +181,7 @@ final class Class246_Sub1_Sub10 extends NodeSub {
 		try {
 			int i_8_ = -36 / ((-53 - i) / 56);
 			anInt6205++;
-			return Stream_Sub1.aClass110_5862.method766((byte) -53);
+			return GameEngine.clock.method766((byte) -53);
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "hp.A(" + i + ')');
 		}

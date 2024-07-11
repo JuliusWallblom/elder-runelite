@@ -4,8 +4,6 @@ package io;
  * Visit http://jode.sourceforge.net/
  */
 
-import java.awt.Canvas;
-
 final class Tile {
 	static int[] anIntArray2143;
 	static int anInt2144;
@@ -19,7 +17,6 @@ final class Tile {
 	Class59_Sub4 aClass59_Sub4_2152;
 	Class59_Sub2 aClass59_Sub2_2153;
 	byte aByte2154;
-	static Canvas aCanvas2155;
 	Class59_Sub1 floorDecorationIThink;
 	short aShort2157;
 	Class59_Sub5 aClass59_Sub5_2158;
@@ -121,7 +118,7 @@ final class Tile {
 	public static void method999(int i) {
 		try {
 			if (i == 255) {
-				aCanvas2155 = null;
+				GameEngine.canvas = null;
 				aByteArray2146 = null;
 				anIntArray2143 = null;
 			}

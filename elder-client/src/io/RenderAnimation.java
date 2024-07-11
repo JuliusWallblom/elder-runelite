@@ -118,7 +118,7 @@ final class RenderAnimation {
 		try {
 			anInt1902++;
 			LoginScreen.login_screen_state = 0;
-			LoginScreen.logged_in = false;
+			LoginScreen.loggedIn = false;
 			if (Class65.aClass6_864 != null) {
 				Class65.aClass6_864.method72(false);
 				Class65.aClass6_864 = null;
