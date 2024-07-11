@@ -36,6 +36,8 @@ import net.runelite.rs.api.*;
 @SuppressWarnings("serial")
 public final class Client extends GameEngine implements RSClient {
 
+    public static int field677;
+	public static int[] field775 = new int[20000];
 	// Unidentified OSRS variables related to OSRS CS2 opcodes.
 	static boolean field652 = false;
 	static int client_type = -1;

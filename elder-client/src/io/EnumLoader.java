@@ -28,7 +28,6 @@ final class EnumLoader {
 	
 	final EnumType list(int enum_id, int i_0_, int revision) {
 		try {
-			revision = 193;
 			anInt2041++;
 			EnumType class183;
 			if (revision < 200) {

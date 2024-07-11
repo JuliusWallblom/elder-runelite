@@ -488,12 +488,221 @@ final class CS2Script extends NodeSub {
 					var5 = int_stack[--int_stack_size] == 1; // L: 789
 					var3.model_transparency = var5; // L: 790
 					return 1; // L: 791
-				} else if (var0 == 1128) { // L: 793
-					int_stack_size -= 2; // L: 794
-					return 1; // L: 795
+				} else if (var0 == 1129) {
+					String someString = string_stack[--string_stack_size];
+					//var3.field3868 = string_stack[--string_stack_size];
+					Widget.redraw_widget(var3);
+					return 1;
+				} else if (var0 == 1130) {
+					String someString = string_stack[--string_stack_size];
+					//var3.method6872(string_stack[--string_stack_size], "", class449.field4836, class452.method8353());
+					return 1;
+				} else if (var0 == 1131) {
+					int_stack_size -= 2;
+					//var3.method6876(int_stack[int_stack_size], int_stack[int_stack_size + 1]);
+					return 1;
+				} else if (var0 == 1132) {
+					String someString = string_stack[--string_stack_size];
+					int someInt = int_stack[--int_stack_size];
+					//var3.method6981(string_stack[--string_stack_size], int_stack[--int_stack_size]);
+					return 1;
 				} else {
-					return 2; // L: 797
+					//class350 var20;
+					if (var0 == 1133) {
+						--int_stack_size;
+						/*var20 = var3.method6890();
+						if (var20 != null) {
+							var20.field3752 = int_stack[int_stack_size];
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1134) {
+						--int_stack_size;
+						/*var20 = var3.method6890();
+						if (var20 != null) {
+							var20.field3751 = int_stack[int_stack_size];
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1135) {
+						--string_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null) {
+							var3.field3895 = string_stack[string_stack_size];
+						}*/
+
+						return 1;
+					} else if (var0 == 1136) {
+						--int_stack_size;
+						/*var20 = var3.method6890();
+						if (var20 != null) {
+							var20.field3750 = int_stack[int_stack_size];
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1137) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null && var19.method6716(int_stack[int_stack_size])) {
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1138) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null && var19.method6591(int_stack[int_stack_size])) {
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1139) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null && var19.method6592(int_stack[int_stack_size])) {
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1140) {
+						boolean var14 = int_stack[--int_stack_size] == 1;
+						/*client.field740.method4349();
+						var21 = var3.method6991();
+						if (var21 != null && var21.method6763(var14)) {
+							if (var14) {
+								client.field740.method4347(var3);
+							}
+
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1141) {
+						boolean var14 = int_stack[--int_stack_size] == 1;
+						/*if (!var14 && client.field740.method4348() == var3) {
+							client.field740.method4349();
+							Widget.redraw_widget(var3);
+						}
+
+						var21 = var3.method6991();
+						if (var21 != null) {
+							var21.method6585(var14);
+						}*/
+
+						return 1;
+					} else if (var0 == 1142) {
+						int_stack_size -= 2;
+						/*var19 = var3.method6991();
+						if (var19 != null && var19.method6608(int_stack[int_stack_size], int_stack[int_stack_size + 1])) {
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1143) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null && var19.method6608(int_stack[int_stack_size], int_stack[int_stack_size])) {
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1144) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null) {
+							var19.method6597(int_stack[int_stack_size]);
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else if (var0 == 1145) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null) {
+							var19.method6749(int_stack[int_stack_size]);
+						}*/
+
+						return 1;
+					} else if (var0 == 1146) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null) {
+							var19.method6599(int_stack[int_stack_size]);
+						}*/
+
+						return 1;
+					} else if (var0 == 1147) {
+						--int_stack_size;
+						/*var19 = var3.method6991();
+						if (var19 != null) {
+							var19.method6613(int_stack[int_stack_size]);
+							Widget.redraw_widget(var3);
+						}*/
+
+						return 1;
+					} else {
+						//class27 var18;
+						if (var0 == 1148) {
+							int_stack_size -= 2;
+							/*var18 = var3.method6940();
+							if (var18 != null) {
+								var18.method392(int_stack[int_stack_size], int_stack[int_stack_size + 1]);
+							}*/
+
+							return 1;
+						} else if (var0 == 1149) {
+							int_stack_size -= 2;
+							/*var18 = var3.method6940();
+							if (var18 != null) {
+								var18.method393((char) int_stack[int_stack_size], int_stack[int_stack_size + 1]);
+							}*/
+
+							return 1;
+						} else if (var0 == 1150) {
+							String someString = string_stack[--string_stack_size];
+							//var3.method6874(string_stack[--string_stack_size], class449.field4836);
+							return 1;
+						} else if (var0 == 1151) {
+							string_stack_size -= 3;
+							String var15 = string_stack[string_stack_size];
+							String var13 = string_stack[string_stack_size + 1];
+							String var7 = string_stack[string_stack_size + 2];
+							/*long var8 = class452.method8353();
+							long var10 = class229.method4372();
+							String var12 = class446.method8275().method8931(class446.method8275().field5095);
+							if (var8 != -1L) {
+								var15 = var15.replaceAll("%userid%", Long.toString(var8));
+							}
+
+							if (-1L != var10) {
+								var15 = var15.replaceAll("%userhash%", Long.toString(var10));
+							}
+
+							if (!var12.isEmpty()) {
+								var15 = var15.replaceAll("%deviceid%", var12);
+							}
+
+							var3.method6869(var15, var13, var7, var12, Long.toString(var10), class449.field4836);*/
+							return 1;
+						} else if (var0 == 1152) {
+							/*if (var3.type != 11) {
+								throw new RuntimeException();
+							} else {
+								class213 var5 = var3.method6920();
+								boolean var6 = var5 != null && class433.method8077().method4250(var5.method4132());
+								int_stack[++int_stack_size - 1] = var6 ? 1 : 0;
+								return 1;
+							}*/
+							int_stack[++int_stack_size - 1] = false ? 1 : 0;
+						} else {
+							return 2;
+						}
+					}
 				}
+				return 2;
 			}
 		}
 	}
@@ -889,125 +1098,46 @@ final class CS2Script extends NodeSub {
 	}
 
 	static int under_7100(int var0, CS2Script var1, boolean var2) {
-		if (var0 != 7000 && var0 != 7005 && var0 != 7010 && var0 != 7015 && var0 != 7020 && var0 != 7025 && var0 != 7030
-				&& var0 != 7035) { // L: 4337
-			if (var0 != 7001 && var0 != 7002 && var0 != 7011 && var0 != 7012 && var0 != 7021 && var0 != 7022) { // L:
-																												// 4341
-				if (var0 != 7003 && var0 != 7013 && var0 != 7023) { // L: 4345
-					if (var0 != 7006 && var0 != 7007 && var0 != 7016 && var0 != 7017 && var0 != 7026 && var0 != 7027) { // L:
-																														// 4349
-						if (var0 != 7008 && var0 != 7018 && var0 != 7028) { // L: 4353
-							if (var0 != 7031 && var0 != 7032) { // L: 4357
-								if (var0 == 7033) { // L: 4362
-									--string_stack_size; // L: 4363
-									return 1; // L: 4364
-								} else if (var0 != 7036 && var0 != 7037) { // L: 4366
-									if (var0 == 7038) { // L: 4370
-										--int_stack_size; // L: 4371
-										return 1; // L: 4372
-									} else if (var0 != 7004 && var0 != 7009 && var0 != 7014 && var0 != 7019
-											&& var0 != 7024 && var0 != 7029 && var0 != 7034 && var0 != 7039) { // L:
-																												// 4374
-										return 2; // L: 4378
-									} else {
-										--int_stack_size; // L: 4375
-										return 1; // L: 4376
-									}
-								} else {
-									int_stack_size -= 2; // L: 4367
-									return 1; // L: 4368
-								}
-							} else {
-								--string_stack_size; // L: 4358
-								--int_stack_size; // L: 4359
-								return 1; // L: 4360
-							}
-						} else {
-							--int_stack_size; // L: 4354
-							return 1; // L: 4355
-						}
-					} else {
-						int_stack_size -= 2; // L: 4350
-						return 1; // L: 4351
-					}
-				} else {
-					int_stack_size -= 2; // L: 4346
-					return 1; // L: 4347
-				}
-			} else {
-				int_stack_size -= 3; // L: 4342
-				return 1; // L: 4343
-			}
-		} else {
-			int_stack_size -= 5; // L: 4338
-			return 1; // L: 4339
-		}
+		return 2;
 	}
 
 	static int under_7000(int var0, CS2Script var1, boolean var2) {
-		if (var0 == 6900) { // L: 4325
-			string_stack[++string_stack_size - 1] = ""; // L: 4326
-			return 1; // L: 4327
-		} else if (var0 == 6950) { // L: 4329
-			int_stack[++int_stack_size - 1] = -1; // L: 4330
-			return 1; // L: 4331
-		} else {
-			return 2; // L: 4333
-		}
+		return 2;
 	}
 
 	static int under_6900(int var0, CS2Script var1, boolean var2) {
-		if (var0 == 6800) { // L: 4301
-			string_stack[++string_stack_size - 1] = ""; // L: 4302
-			return 1; // L: 4303
-		} else if (var0 != 6801 && var0 != 6802) { // L: 4305
-			if (var0 == 6850) { // L: 4309
-				string_stack[++string_stack_size - 1] = ""; // L: 4310
-				return 1; // L: 4311
-			} else if (var0 != 6851 && var0 != 6852) { // L: 4313
-				if (var0 == 6853) { // L: 4317
-					int_stack[++int_stack_size - 1] = 0; // L: 4318
-					return 1; // L: 4319
-				} else {
-					return 2; // L: 4321
-				}
-			} else {
-				int_stack[++int_stack_size - 1] = -1; // L: 4314
-				return 1; // L: 4315
-			}
+		if (var0 == 6809) {
+			int var3 = int_stack[--int_stack_size];
+			//class206 var4 = class10.method99(var3);
+			string_stack[++string_stack_size - 1] = /*var4 != null ? var4.field2202 : */"diddler";
+			return 1;
 		} else {
-			int_stack[++int_stack_size - 1] = -1; // L: 4306
-			return 1; // L: 4307
+			return 2;
 		}
 	}
 
 	static int under_6800(int var0, CS2Script var1, boolean var2) {
-		if (var0 != 6700 && var0 != 6702 && var0 != 6704 && var0 != 6706 && var0 != 6708) { // L: 4274
-			if (var0 != 6701 && var0 != 6703 && var0 != 6705 && var0 != 6707 && var0 != 6709) { // L: 4279
-				if (var0 == 6750) { // L: 4283
-					string_stack[++string_stack_size - 1] = ""; // L: 4284
-					return 1; // L: 4285
-				} else if (var0 != 6751 && var0 != 6752 && var0 != 6753) { // L: 4287
-					if (var0 == 6754) { // L: 4291
-						int var3 = int_stack[--int_stack_size]; // L: 4292
-						NpcType var4 = Class179.aClass228_2518.list(var3);
-						string_stack[++string_stack_size - 1] = var4 != null ? var4.name : ""; // L: 4294
-						return 1; // L: 4295
-					} else {
-						return 2; // L: 4297
-					}
-				} else {
-					int_stack[++int_stack_size - 1] = -1; // L: 4288
-					return 1; // L: 4289
-				}
-			} else {
-				--int_stack_size; // L: 4280
-				return 1; // L: 4281
-			}
+		if (var0 == 6754) {
+			int var5 = int_stack[--int_stack_size];
+			NpcType var6 = Class179.aClass228_2518.list(var5);
+			string_stack[++string_stack_size - 1] = var6 != null ? var6.name : "";
+			return 1;
 		} else {
-			int_stack_size -= 2; // L: 4275
-			--string_stack_size; // L: 4276
-			return 1; // L: 4277
+			NpcType var3;
+			if (var0 == 6764) {
+				int_stack_size -= 2;
+				var3 = Class179.aClass228_2518.list(int_stack[int_stack_size]);
+				int var4 = int_stack[int_stack_size + 1];
+				int_stack[++int_stack_size - 1] = /*var3.method3702(var4)*/0;
+				int_stack[++int_stack_size - 1] = /*var3.method3716(var4)*/0;
+				return 1;
+			} else if (var0 == 6765) {
+				var3 = Class179.aClass228_2518.list(int_stack[--int_stack_size]);
+				int_stack[++int_stack_size - 1] = var3 != null ? /*var3.field2014*/1 : 0;
+				return 1;
+			} else {
+				return 2;
+			}
 		}
 	}
 
@@ -1795,19 +1925,11 @@ final class CS2Script extends NodeSub {
 	}
 
 	static int under_5700(int var0, CS2Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.LOGOUT) { // L: 3611
-			// Client.logoutTimer = 250; // L: 3612
-			return 1; // L: 3613
-		} else if (var0 == 5631 || var0 == 5633) {
-			string_stack_size -= 2; // L: 3616
-			return 1; // L: 3617
-		} else { // L: 3615
-			if (var0 == 5632) { // L: 3619
-				int_stack[++int_stack_size - 1] = 26; // L: 3620
-				return 1; // L: 3621
-			} else {
-				return 2; // L: 3623
-			}
+		if (var0 == 5630) {
+			// logout timer client.field623 = 250;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 
@@ -1864,19 +1986,6 @@ final class CS2Script extends NodeSub {
 				if (opcode == 5310) { // L: 3554
 					--int_stack_size; // L: 3555
 					return 1; // L: 3556
-				} else if (opcode == 5311) { // L: 3558
-					int_stack_size -= 2; // L: 3559
-					return 1; // L: 3560
-				} else if (opcode == 5312) { // L: 3562
-					--int_stack_size; // L: 3563
-					return 1; // L: 3564
-				} else if (opcode == 5350) { // L: 3566
-					string_stack_size -= 2; // L: 3567
-					--int_stack_size; // L: 3568
-					return 1; // L: 3569
-				} else if (opcode == 5351) { // L: 3571
-					--string_stack_size; // L: 3572
-					return 1; // L: 3573
 				} else {
 					return 2; // L: 3575
 				}
@@ -1893,7 +2002,6 @@ final class CS2Script extends NodeSub {
 	}
 
 	static int under_5100(int opcode, CS2Script script, boolean flag) {
-		// System.out.println("calling opcode " + opcode);
 		if (opcode == ScriptOpcodes.CHAT_GETFILTER_PUBLIC) {
 			int_stack[++int_stack_size - 1] = Client.public_chat_mode;
 			return 1;
@@ -2285,8 +2393,40 @@ final class CS2Script extends NodeSub {
 					CS2Script.int_stack[CS2Script.int_stack_size++] = Class246_Sub38.anInt5445;
 					return 1;
 				} else if (opcode != ScriptOpcodes.OC_FINDNEXT) {
+					int var3, var6;
 					if (opcode == ScriptOpcodes.OC_FINDRESET) {
 						Class22.anInt324 = 0;
+						return 1;
+					} else if (opcode == 4213) {
+						var3 = int_stack[--int_stack_size];
+						var6 = /*class164.method3457(var3).method3976()*/-1;
+						if (var6 == -1) {
+							int_stack[++int_stack_size - 1] = var6;
+						} else {
+							int_stack[++int_stack_size - 1] = var6 + 1;
+						}
+
+						return 1;
+					} else if (opcode == 4214) {
+						var3 = int_stack[--int_stack_size];
+						int_stack[++int_stack_size - 1] = /*class164.method3457(var3).field2229*/0;
+						return 1;
+					} else if (opcode == 4215) {
+						var3 = int_stack[--int_stack_size];
+						int_stack[++int_stack_size - 1] = /*class164.method3457(var3).field2223*/0;
+						return 1;
+					} else if (opcode == 4216) {
+						var3 = int_stack[--int_stack_size];
+						int_stack[++int_stack_size - 1] = /*class164.method3457(var3).field2231*/0;
+						return 1;
+					} else if (opcode == 4217) {
+						var3 = int_stack[--int_stack_size];
+						var4 = /*class164.method3457(var3)*/4;
+						int_stack[++int_stack_size - 1] = /*var4.field2258*/0;
+						return 1;
+					} else if (opcode == 4218) {
+						var3 = int_stack[--int_stack_size];
+						string_stack[++string_stack_size - 1] = /*class164.method3457(var3).field2216*/"boden did tremp";
 						return 1;
 					} else {
 						return 2;
@@ -2512,6 +2652,33 @@ final class CS2Script extends NodeSub {
 							var3 = string_stack[--string_stack_size]; // L: 3209
 							string_stack[++string_stack_size - 1] = var3.toUpperCase(); // L: 3210
 							return 1; // L: 3211
+						} else if (var0 == 4123) {
+							string_stack_size -= 3;
+							var3 = string_stack[string_stack_size];
+							var4 = string_stack[string_stack_size + 1];
+							String var5_ = string_stack[string_stack_size + 2];
+							if (/*class45.field296.field1146 == null*/false) {
+								string_stack[++string_stack_size - 1] = var5_;
+								return 1;
+							} else {
+								/*switch(class45.field296.field1146.field3783) {
+									case 0:
+										string_stack[++string_stack_size - 1] = var3;
+										break;
+									case 1:
+										string_stack[++string_stack_size - 1] = var4;
+										break;
+									case 2:
+									default:
+										string_stack[++string_stack_size - 1] = var5_;
+								}*/
+								string_stack[++string_stack_size - 1] = "bush did 711";
+
+								return 1;
+							}
+						} else if (var0 == 4124) {
+							int_stack[++int_stack_size - 1] = /*class45.field296.field1146 != null ? class45.field296.field1146.field3783 : -1*/-1;
+							return 1;
 						} else {
 							return 2; // L: 3213
 						}
@@ -2528,6 +2695,72 @@ final class CS2Script extends NodeSub {
 		var0 += var0 >>> 8; // L: 45
 		var0 += var0 >>> 16; // L: 46
 		return var0 & 255; // L: 47
+	}
+
+	public static boolean method2532(CharSequence var0) {
+		boolean var2 = false;
+		boolean var3 = false;
+		int var4 = 0;
+		int var5 = var0.length();
+		int var6 = 0;
+
+		boolean var1;
+		while(true) {
+			if (var6 >= var5) {
+				var1 = var3;
+				break;
+			}
+
+			label84: {
+				char var7 = var0.charAt(var6);
+				if (var6 == 0) {
+					if (var7 == '-') {
+						var2 = true;
+						break label84;
+					}
+
+					if (var7 == '+') {
+						break label84;
+					}
+				}
+
+				int var9;
+				if (var7 >= '0' && var7 <= '9') {
+					var9 = var7 - 48;
+				} else if (var7 >= 'A' && var7 <= 'Z') {
+					var9 = var7 - 55;
+				} else {
+					if (var7 < 'a' || var7 > 'z') {
+						var1 = false;
+						break;
+					}
+
+					var9 = var7 - 87;
+				}
+
+				if (var9 >= 10) {
+					var1 = false;
+					break;
+				}
+
+				if (var2) {
+					var9 = -var9;
+				}
+
+				int var8 = var9 + var4 * 10;
+				if (var4 != var8 / 10) {
+					var1 = false;
+					break;
+				}
+
+				var4 = var8;
+				var3 = true;
+			}
+
+			++var6;
+		}
+
+		return var1;
 	}
 
 	static int under_4100(int var0, CS2Script var1, boolean var2) {
@@ -2734,6 +2967,15 @@ final class CS2Script extends NodeSub {
 			} else if (var0 == 4035) { // L: 3048
 				int_stack[int_stack_size - 1] = Math.abs(int_stack[int_stack_size - 1]); // L: 3049
 				return 1; // L: 3050
+			} else if (var0 == 4036) {
+				String var3_ = string_stack[--string_stack_size];
+				var4 = -1;
+				if (method2532(var3_)) {
+					var4 = /*class395.method7351(var3_)*/1;
+				}
+
+				int_stack[++int_stack_size - 1] = var4;
+				return 1;
 			} else {
 				return 2; // L: 3052
 			}
@@ -2891,6 +3133,10 @@ final class CS2Script extends NodeSub {
 						var4 = /* (GrandExchangeEvent)Client.grand_exchange_events.events.get(var3) */0; // L: 2820
 						int_stack[++int_stack_size - 1] = /* var4.grandExchangeOffer.id */0; // L: 2821
 						return 1; // L: 2822
+					} else if (var0 == 3939) {
+						var3 = int_stack[--int_stack_size];
+						int_stack[++int_stack_size - 1] = /*class164.method3457(var3).field2260 ? 1 : */0;
+						return 1;
 					} else {
 						return 2; // L: 2824
 					}
@@ -2900,18 +3146,7 @@ final class CS2Script extends NodeSub {
 	}
 
 	static int under_3800(int var0, CS2Script var1, boolean var2) {
-		if (var0 == 3700 || var0 == 3701) {
-			--int_stack_size; // L: 2487
-			--string_stack_size; // L: 2488
-			return 1; // L: 2489
-		} else { // L: 2486
-			if (var0 == 3702) { // L: 2491
-				++int_stack_size; // L: 2492
-				return 1; // L: 2493
-			} else {
-				return 2; // L: 2495
-			}
-		}
+		return 2;
 	}
 
 	static int under_3900(int opcode, CS2Script script, boolean flag) {
@@ -3718,8 +3953,15 @@ final class CS2Script extends NodeSub {
 				} else if (var0 == 3327) { // L: 2051
 					int_stack[++int_stack_size - 1] = Client.field746; // L: 2052
 					return 1; // L: 2053
+				} else if (var0 == 3331) {
+					int_stack[++int_stack_size - 1] = Client.field677;
+					return 1;
+				} else if (var0 == 3332) {
+					var3 = int_stack[--int_stack_size];
+					int_stack[++int_stack_size - 1] = Client.field775[var3];
+					return 1;
 				} else {
-					return 2; // L: 2055
+					return 2;
 				}
 			}
 		}
@@ -3733,7 +3975,13 @@ final class CS2Script extends NodeSub {
 					CS2Script.int_stack[CS2Script.int_stack_size + 2]);
 			return 1; // L: 1825
 		} else if (var0 == ScriptOpcodes.SOUND_SONG) { // L: 1827
-			Client.play_song(CS2Script.int_stack[--CS2Script.int_stack_size], -97, 50, 255);
+			//Client.play_song(CS2Script.int_stack[--CS2Script.int_stack_size], -97, 50, 255);
+			int_stack_size -= 5;
+			int var3 = int_stack[int_stack_size];
+			int var4 = int_stack[int_stack_size + 1];
+			int var5 = int_stack[int_stack_size + 2];
+			int var6 = int_stack[int_stack_size + 3];
+			int var7 = int_stack[int_stack_size + 4];
 			return 1; // L: 1829
 		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) { // L: 1831
 			int_stack_size -= 2; // L: 1832
@@ -3741,78 +3989,307 @@ final class CS2Script extends NodeSub {
 					CS2Script.int_stack[CS2Script.int_stack_size]);
 			return 1; // L: 1834
 		} else {
-			int var3;
-			int var4;
-			if (var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) { // L: 1836
-				if (var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) { // L: 1872
-					return var0 == 3211 ? 1 : 2; // L: 1906 1907 1909
+			//class92 var10;
+			//class91 var11;
+			String var14;
+			if (var0 != 3212 && var0 != 3213 && var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
+				boolean var16;
+				if (var0 != 3214 && var0 != 3215 && var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
+					if (var0 == 3211) {
+						return 1;
+					} else if (var0 == 3216) {
+						int var3 = int_stack[--int_stack_size];
+						/*var4 = 0;
+						class92 var19 = (class92)class210.method4101(class6.method37(), var3);
+						if (var19 != null) {
+							var4 = var19 != class92.field1116 ? 1 : 0;
+						}*/
+
+						int_stack[++int_stack_size - 1] = /*var4*/0;
+						return 1;
+					} else if (var0 == 3218) {
+						int var3 = int_stack[--int_stack_size];
+						/*var4 = 0;
+						class91 var13 = (class91)class210.method4101(class72.method2144(), var3);
+						if (var13 != null) {
+							var4 = var13 != class91.field1102 ? 1 : 0;
+						}*/
+
+						int_stack[++int_stack_size - 1] = /*var4*/0;
+						return 1;
+					} else if (var0 != 3217 && var0 != 3219) {
+						if (var0 == 3220) {
+							int_stack_size -= 2;
+							int var3 = int_stack[int_stack_size];
+							int var4 = int_stack[int_stack_size + 1];
+							//class137.method3187(var3, var4);
+							return 1;
+						} else if (var0 == 3221) {
+							int_stack_size -= 6;
+							int var3 = int_stack[int_stack_size];
+							int var4 = int_stack[int_stack_size + 1];
+							int var5 = int_stack[int_stack_size + 2];
+							int var6 = int_stack[int_stack_size + 3];
+							int var7 = int_stack[int_stack_size + 4];
+							int var8 = int_stack[int_stack_size + 5];
+							/*ArrayList var9 = new ArrayList();
+							var9.add(var3);
+							var9.add(var4);
+							class498.method8899(var9, var5, var6, var7, var8);*/
+							return 1;
+						} else if (var0 == 3222) {
+							int_stack_size -= 4;
+							int var3 = int_stack[int_stack_size];
+							int var4 = int_stack[int_stack_size + 1];
+							int var5 = int_stack[int_stack_size + 2];
+							int var6 = int_stack[int_stack_size + 3];
+							//class108.method2812(var3, var4, var5, var6);
+							return 1;
+						} else {
+							return 2;
+						}
+					} else {
+						//var10 = class92.field1116;
+						//var11 = class91.field1102;
+						var16 = true;
+						boolean var17 = true;
+						if (var0 == 3217) {
+							int var7 = int_stack[--int_stack_size];
+							/*var10 = (class92)class210.method4101(class6.method37(), var7);
+							if (var10 == null) {
+								throw new RuntimeException(String.format("Unrecognized device option %d", var7));
+							}*/
+						}
+
+						if (var0 == 3219) {
+							int var7 = int_stack[--int_stack_size];
+							/*var11 = (class91)class210.method4101(class72.method2144(), var7);
+							if (var11 == null) {
+								throw new RuntimeException(String.format("Unrecognized game option %d", var7));
+							}*/
+						}
+
+						String var12;
+						byte var18;
+						/*if (var11 == class91.field1102) {
+							switch(var10.field1108) {
+								case 1:
+								case 2:
+								case 3:
+									var18 = 0;
+									var6 = 1;
+									break;
+								case 4:
+									var18 = 0;
+									var6 = Integer.MAX_VALUE;
+									break;
+								case 5:
+									var18 = 0;
+									var6 = 100;
+									break;
+								default:
+									var12 = String.format("Unkown device option: %s.", var10.toString());
+									throw new RuntimeException(var12);
+							}
+						} else {
+							switch(var11.field1104) {
+								case 1:
+									var18 = 0;
+									var6 = 1;
+									break;
+								case 2:
+								case 3:
+								case 4:
+									var18 = 0;
+									var6 = 100;
+									break;
+								default:
+									var12 = String.format("Unkown game option: %s.", var11.toString());
+									throw new RuntimeException(var12);
+							}
+						}*/
+
+						int_stack[++int_stack_size - 1] = /*var18*/0;
+						int_stack[++int_stack_size - 1] = /*var6*/0;
+						return 1;
+					}
 				} else {
-					var3 = 0; // L: 1873
-					var4 = 0; // L: 1874
-					if (var0 == 3210) { // L: 1875
-						var3 = int_stack[--int_stack_size]; // L: 1876
-					} else if (var0 == 3182) { // L: 1878
-						var3 = 6; // L: 1879
-					} else if (var0 == 3204) { // L: 1881
-						var3 = 7; // L: 1882
-					} else if (var0 == 3206) { // L: 1884
-						var3 = 8; // L: 1885
-					} else if (var0 == 3208) { // L: 1887
-						var3 = 9; // L: 1888
+					//var10 = class92.field1116;
+					//var11 = class91.field1102;
+					var16 = false;
+					if (var0 == 3214) {
+						int var6 = int_stack[--int_stack_size];
+						/*var10 = (class92)class210.method4101(class6.method37(), var6);
+						if (var10 == null) {
+							throw new RuntimeException(String.format("Unrecognized device option %d", var6));
+						}*/
 					}
 
-					if (var3 == 6) { // L: 1890
-						float var5 = 200.0F * ((float) Client.current_renderer.brightness - 0.5F); // L: 1891
-						var4 = 100 - Math.round(var5); // L: 1892
-					} else /*
-							 * if (var3 == 7) { // L: 1894
-							 * var4 = Math.round((float)SecureRandomFuture.clientPreferences.musicVolume /
-							 * 2.55F); // L: 1895
-							 * } else if (var3 == 8) { // L: 1897
-							 * var4 =
-							 * Math.round((float)SecureRandomFuture.clientPreferences.soundEffectsVolume /
-							 * 1.27F); // L: 1898
-							 * } else if (var3 == 9)
-							 */ { // L: 1900
-						var4 = 0;
-						// var4 =
-						// Math.round((float)SecureRandomFuture.clientPreferences.areaSoundEffectsVolume
-						// / 1.27F); // L: 1901
+					if (var0 == 3215) {
+						int var6 = int_stack[--int_stack_size];
+						/*var11 = (class91)class210.method4101(class72.method2144(), var6);
+						if (var11 == null) {
+							throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+						}*/
 					}
 
-					int_stack[++int_stack_size - 1] = var4; // L: 1903
-					return 1; // L: 1904
+					if (var0 == 3210) {
+						int var6 = int_stack[--int_stack_size];
+						/*var10 = (class92)class210.method4101(class6.method37(), var6);
+						if (var10 == null) {
+							var11 = (class91)class210.method4101(class72.method2144(), var6);
+							if (var11 == null) {
+								throw new RuntimeException(String.format("Unrecognized client option %d", var6));
+							}
+						}*/
+					} else if (var0 == 3182) {
+						//var10 = class92.field1113;
+					} else if (var0 == 3204) {
+						//var11 = class91.field1101;
+					} else if (var0 == 3206) {
+						//var11 = class91.field1099;
+					} else if (var0 == 3208) {
+						//var11 = class91.field1103;
+					}
+
+					/*if (var11 == class91.field1102) {
+						switch(var10.field1108) {
+							case 1:
+								var5 = class105.field1378.method2672() ? 1 : 0;
+								break;
+							case 2:
+								var5 = class105.field1378.method2602() ? 1 : 0;
+								break;
+							case 3:
+								var5 = class105.field1378.method2580() ? 1 : 0;
+								break;
+							case 4:
+								var5 = class105.field1378.method2581();
+								break;
+							case 5:
+								var5 = class247.method4653();
+								break;
+							default:
+								var14 = String.format("Unkown device option: %s.", var10.toString());
+								throw new RuntimeException(var14);
+						}
+					} else {
+						switch(var11.field1104) {
+							case 1:
+								var5 = class105.field1378.method2664() ? 1 : 0;
+								break;
+							case 2:
+								var6 = class105.field1378.method2654();
+								var5 = Math.round((float)(var6 * 100) / 255.0F);
+								break;
+							case 3:
+								var6 = class105.field1378.method2588();
+								var5 = Math.round((float)(var6 * 100) / 127.0F);
+								break;
+							case 4:
+								var6 = class105.field1378.method2618();
+								var5 = Math.round((float)(var6 * 100) / 127.0F);
+								break;
+							default:
+								var14 = String.format("Unkown game option: %s.", var11.toString());
+								throw new RuntimeException(var14);
+						}
+					}*/
+
+					int_stack[++int_stack_size - 1] = /*var5*/0;
+					return 1;
 				}
 			} else {
-				var3 = 0; // L: 1837
-				var4 = int_stack[--int_stack_size]; // L: 1838
-				if (var0 == 3209) { // L: 1839
-					var3 = int_stack[--int_stack_size]; // L: 1840
-				} else if (var0 == 3181) { // L: 1842
-					var3 = 6; // L: 1843
-				} else if (var0 == 3203) { // L: 1845
-					var3 = 7; // L: 1846
-				} else if (var0 == 3205) { // L: 1848
-					var3 = 8; // L: 1849
-				} else if (var0 == 3207) { // L: 1851
-					var3 = 9; // L: 1852
+				//var10 = class92.field1116;
+				//var11 = class91.field1102;
+				int var5 = int_stack[--int_stack_size];
+				if (var0 == 3212) {
+					int var6 = int_stack[--int_stack_size];
+					/*var10 = (class92)class210.method4101(class6.method37(), var6);
+					if (var10 == null) {
+						throw new RuntimeException(String.format("Unrecognized device option %d", var6));
+					}*/
 				}
 
-				if (var3 == 6) { // L: 1854
-					var4 = 100 - Math.min(Math.max(var4, 0), 100); // L: 1855
-					// WidgetParent.method2142((double)(0.5F + (float)var4 / 200.0F)); // L: 1856
-				} else if (var3 == 7) { // L: 1858
-					var4 = Math.min(Math.max(var4, 0), 100); // L: 1859
-					// Varcs.method2426(Math.round((float)var4 * 2.55F)); // L: 1860
-				} else if (var3 == 8) { // L: 1862
-					var4 = Math.min(Math.max(var4, 0), 100); // L: 1863
-					// class20.updateSoundEffectVolume(Math.round((float)var4 * 1.27F)); // L: 1864
-				} else if (var3 == 9) { // L: 1866
-					var4 = Math.min(Math.max(var4, 0), 100); // L: 1867
-					// Players.method2383(Math.round(1.27F * (float)var4)); // L: 1868
+				if (var0 == 3213) {
+					int var6 = int_stack[--int_stack_size];
+					/*var11 = (class91)class210.method4101(class72.method2144(), var6);
+					if (var11 == null) {
+						throw new RuntimeException(String.format("Unrecognized game option %d", var6));
+					}*/
 				}
 
-				return 1; // L: 1870
+				if (var0 == 3209) {
+					int var6 = int_stack[--int_stack_size];
+					/*var10 = (class92)class210.method4101(class6.method37(), var6);
+					if (var10 == null) {
+						var11 = (class91)class210.method4101(class72.method2144(), var6);
+						if (var11 == null) {
+							throw new RuntimeException(String.format("Unrecognized client option %d", var6));
+						}
+					}*/
+				} else if (var0 == 3181) {
+					//var10 = class92.field1113;
+				} else if (var0 == 3203) {
+					//var11 = class91.field1101;
+				} else if (var0 == 3205) {
+					//var11 = class91.field1099;
+				} else if (var0 == 3207) {
+					//var11 = class91.field1103;
+				}
+
+				/*if (var11 == class91.field1102) {
+					switch(var10.field1108) {
+						case 1:
+							class105.field1378.method2630(var5 == 1);
+							break;
+						case 2:
+							class105.field1378.method2576(var5 == 1);
+							break;
+						case 3:
+							class105.field1378.method2642(var5 == 1);
+							break;
+						case 4:
+							if (var5 < 0) {
+								var5 = 0;
+							}
+
+							class105.field1378.method2657(var5);
+							break;
+						case 5:
+							class166.method3476(var5);
+							break;
+						default:
+							var14 = String.format("Unkown device option: %s.", var10.toString());
+							throw new RuntimeException(var14);
+					}
+				} else {
+					switch(var11.field1104) {
+						case 1:
+							class105.field1378.method2572(var5 == 1);
+							break;
+						case 2:
+							var5 = Math.min(Math.max(var5, 0), 100);
+							var6 = Math.round((float)(var5 * 255) / 100.0F);
+							method2265(var6);
+							break;
+						case 3:
+							var5 = Math.min(Math.max(var5, 0), 100);
+							var6 = Math.round((float)(var5 * 127) / 100.0F);
+							class105.method2785(var6);
+							break;
+						case 4:
+							var5 = Math.min(Math.max(var5, 0), 100);
+							var6 = Math.round((float)(var5 * 127) / 100.0F);
+							class148.method3278(var6);
+							break;
+						default:
+							var14 = String.format("Unkown game option: %s.", var11.toString());
+							throw new RuntimeException(var14);
+					}
+				}*/
+
+				return 1;
 			}
 		}
 	}
@@ -4185,11 +4662,20 @@ final class CS2Script extends NodeSub {
 							float var3 = ((float) Client.current_renderer.brightness - 0.5F) * 200.0F; // L: 1810
 							int_stack[++int_stack_size - 1] = 100 - Math.round(var3); // L: 1811
 							return 1; // L: 1812
-						} else if (var0 != 3183 && var0 != 3184) {
-							return 2; // L: 1818
+						} else if (var0 == 3185) {
+							int var3 = int_stack[--int_stack_size];
+							//class105.field1378.method2601(var3);
+							return 1;
+						} else if (var0 == 3186) {
+							int var3 = /*class105.field1378.method2569()*/0;
+							int_stack[++int_stack_size - 1] = var3;
+							return 1;
+						} else if (var0 == 3189) {
+							int var3 = int_stack[--int_stack_size];
+							//class180.method3579(var3);
+							return 1;
 						} else {
-							--int_stack_size; // L: 1815
-							return 1; // L: 1816
+							return 2;
 						}
 					}
 				}
@@ -4256,8 +4742,20 @@ final class CS2Script extends NodeSub {
 		} else if (var0 == ScriptOpcodes.IF_GETTOP) { // L: 1380
 			int_stack[++int_stack_size - 1] = Widget.root_interface; // L: 1381
 			return 1; // L: 1382
+		} else if (var0 == 2707) {
+			var5 = Widget.get_widget(int_stack[--int_stack_size], 193);
+			int_stack[++int_stack_size - 1] = /*var5.method6949() ? 1 : */0;
+			return 1;
+		} else if (var0 == 2708) {
+			var5 = Widget.get_widget(int_stack[--int_stack_size], 193);
+			/*return class324.method6115(var5);*/
+			return 1;
+		} else if (var0 == 2709) {
+			var5 = Widget.get_widget(int_stack[--int_stack_size], 193);
+			//return class360.method7026(var5);
+			return 1;
 		} else {
-			return 2; // L: 1384
+			return 2;
 		}
 	}
 
@@ -4311,8 +4809,94 @@ final class CS2Script extends NodeSub {
 		} else if (var0 != 2615 && var0 != 2616) { // L: 1354
 			return 2; // L: 1358
 		} else {
-			++int_stack_size; // L: 1355
-			return 1; // L: 1356
+			//class350 var4;
+			if (var0 == 2617) {
+				//var4 = var3.method6890();
+				int_stack[++int_stack_size - 1] = /*var4 != null ? var4.field3752 : */0;
+			}
+
+			if (var0 == 2618) {
+				//var4 = var3.method6890();
+				int_stack[++int_stack_size - 1] = /*var4 != null ? var4.field3751 : */0;
+				return 1;
+			} else {
+				//class356 var7;
+				if (var0 == 2619) {
+					//var7 = var3.method6991();
+					string_stack[++string_stack_size - 1] = /*var7 != null ? var7.method6675().method7924() : */"bush did 914";
+					return 1;
+				} else if (var0 == 2620) {
+					//var4 = var3.method6890();
+					int_stack[++int_stack_size - 1] = /*var4 != null ? var4.field3750 : */0;
+					return 1;
+				} else if (var0 == 2621) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6643() : */0;
+					return 1;
+				} else if (var0 == 2622) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6644() : */0;
+					return 1;
+				} else if (var0 == 2623) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6645() : */0;
+					return 1;
+				} else if (var0 == 2624) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null && var7.method6635() ? 1 : */0;
+					return 1;
+				} else if (var0 != 2625) {
+					if (var0 == 2626) {
+						//var7 = var3.method6991();
+						string_stack[++string_stack_size - 1] = /*var7 != null ? var7.method6797().method8195() : */"bush did 913";
+						return 1;
+					} else if (var0 == 2627) {
+						//var7 = var3.method6991();
+						//int var5 = var7 != null ? var7.method6639() : 0;
+						//int var6 = var7 != null ? var7.method6779() : 0;
+						int_stack[++int_stack_size - 1] = Math.min(/*var5, var6*/3, 6);
+						int_stack[++int_stack_size - 1] = Math.max(/*var5, var6*/3, 6);
+						return 1;
+					} else if (var0 == 2628) {
+						//var7 = var3.method6991();
+						int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6779() : */0;
+						return 1;
+					} else if (var0 == 2629) {
+						//var7 = var3.method6991();
+						int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6647() : */0;
+						return 1;
+					} else if (var0 == 2630) {
+						//var7 = var3.method6991();
+						int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6784() : */0;
+						return 1;
+					} else if (var0 == 2631) {
+						//var7 = var3.method6991();
+						int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6648() : */0;
+						return 1;
+					} else if (var0 == 2632) {
+						//var7 = var3.method6991();
+						int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6830() : */0;
+						return 1;
+					} else {
+						//class27 var8;
+						if (var0 == 2633) {
+							//var8 = var3.method6940();
+							int_stack[int_stack_size - 1] = /*var8 != null ? var8.method404(int_stack[int_stack_size - 1]) : */0;
+							return 1;
+						} else if (var0 == 2634) {
+							//var8 = var3.method6940();
+							int_stack[int_stack_size - 1] = /*var8 != null ? var8.method395((char) int_stack[int_stack_size - 1]) : */0;
+							return 1;
+						} else {
+							return 2;
+						}
+					}
+				} else {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null && var7.method6636() ? 1 : */0;
+					return 1;
+				}
+			}
 		}
 	}
 
@@ -4425,6 +5009,29 @@ final class CS2Script extends NodeSub {
 		}
 	}
 
+	static int method6115(Widget var0) {
+		if (var0.type != 11) {
+			--CS2Script.string_stack_size;
+			CS2Script.int_stack[++CS2Script.int_stack_size - 1] = -1;
+			return 1;
+		} else {
+			String var1 = CS2Script.string_stack[--CS2Script.string_stack_size];
+			CS2Script.int_stack[++CS2Script.int_stack_size - 1] = /*var0.method6879(var1)*/912;
+			return 1;
+		}
+	}
+
+	static int method7026(Widget var0) {
+		if (var0.type != 11) {
+			CS2Script.string_stack[CS2Script.string_stack_size - 1] = "";
+			return 1;
+		} else {
+			String var1 = CS2Script.string_stack[--CS2Script.string_stack_size];
+			CS2Script.string_stack[++CS2Script.string_stack_size - 1] = /*var0.method6942(var1)*/"bush did 912";
+			return 1;
+		}
+	}
+
 	static int under_1800(int var0, CS2Script var1, boolean var2) {
 		Widget var3 = var2 ? Widget.static_active_component1 : Widget.static_active_component2; // L: 1182
 		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) { // L: 1183
@@ -4441,8 +5048,13 @@ final class CS2Script extends NodeSub {
 		} else if (var0 == ScriptOpcodes.CC_GETID) { // L: 1192
 			int_stack[++int_stack_size - 1] = var3.index; // L: 1193
 			return 1; // L: 1194
+		} else if (var0 == 1707) {
+			int_stack[++int_stack_size - 1] = /*var3.method6949() ? 1 : */0;
+			return 1;
+		} else if (var0 == 1708) {
+			return method6115(var3);
 		} else {
-			return 2; // L: 1196
+			return var0 == 1709 ? method7026(var3) : 2;
 		}
 	}
 
@@ -4493,11 +5105,92 @@ final class CS2Script extends NodeSub {
 		} else if (var0 == ScriptOpcodes.CC_GETMODELTRANSPARENT) { // L: 1170
 			int_stack[++int_stack_size - 1] = var3.model_transparency ? 1 : 0; // L: 1171
 			return 1; // L: 1172
-		} else if (var0 != 1615 && var0 != 1616) { // L: 1174
-			return 2; // L: 1178
 		} else {
-			++int_stack_size; // L: 1175
-			return 1; // L: 1176
+			//class350 var4;
+			if (var0 == 1617) {
+				//var4 = var3.method6890();
+				int_stack[++int_stack_size - 1] = /*var4 != null ? var4.field3752 : */0;
+			}
+
+			if (var0 == 1618) {
+				//var4 = var3.method6890();
+				int_stack[++int_stack_size - 1] = /*var4 != null ? var4.field3751 : */0;
+				return 1;
+			} else if (var0 == 1619) {
+				//var7 = var3.method6991();
+				string_stack[++string_stack_size - 1] = /*var7 != null ? var7.method6675().method7924() : */"";
+				return 1;
+			} else if (var0 == 1620) {
+				//var4 = var3.method6890();
+				int_stack[++int_stack_size - 1] = /*var4 != null ? var4.field3750 : */0;
+				return 1;
+			} else if (var0 == 1621) {
+				//var7 = var3.method6991();
+				int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6643() : */0;
+				return 1;
+			} else if (var0 == 1622) {
+				//var7 = var3.method6991();
+				int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6644() : */0;
+				return 1;
+			} else if (var0 == 1623) {
+				//var7 = var3.method6991();
+				int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6645() : */0;
+				return 1;
+			} else if (var0 == 1624) {
+				//var7 = var3.method6991();
+				int_stack[++int_stack_size - 1] = /*var7 != null && var7.method6635() ? 1 : */0;
+				return 1;
+			} else if (var0 != 1625) {
+				if (var0 == 1626) {
+					//var7 = var3.method6991();
+					string_stack[++string_stack_size - 1] = /*var7 != null ? var7.method6797().method8195() : */"";
+					return 1;
+				} else if (var0 == 1627) {
+					/*var7 = var3.method6991();
+					int var5 = var7 != null ? var7.method6639() : 0;
+					int var6 = var7 != null ? var7.method6779() : 0;*/
+					int_stack[++int_stack_size - 1] = Math.min(/*var5, var6*/3, 6);
+					int_stack[++int_stack_size - 1] = Math.max(/*var5, var6*/3, 6);
+					return 1;
+				} else if (var0 == 1628) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6779() : */0;
+					return 1;
+				} else if (var0 == 1629) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6647() : */0;
+					return 1;
+				} else if (var0 == 1630) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6784() : */0;
+					return 1;
+				} else if (var0 == 1631) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6648() : */0;
+					return 1;
+				} else if (var0 == 1632) {
+					//var7 = var3.method6991();
+					int_stack[++int_stack_size - 1] = /*var7 != null ? var7.method6830() : */0;
+					return 1;
+				} else {
+					//class27 var8;
+					if (var0 == 1633) {
+						//var8 = var3.method6940();
+						int_stack[int_stack_size - 1] = /*var8 != null ? var8.method404(int_stack[int_stack_size - 1]) : */0;
+						return 1;
+					} else if (var0 == 1634) {
+						//var8 = var3.method6940();
+						int_stack[int_stack_size - 1] = /*var8 != null ? var8.method395((char) int_stack[int_stack_size - 1]) : */0;
+						return 1;
+					} else {
+						return 2;
+					}
+				}
+			} else {
+				//var7 = var3.method6991();
+				int_stack[++int_stack_size - 1] = /*var7 != null && var7.method6636() ? 1 : */0;
+				return 1;
+			}
 		}
 	}
 
@@ -4795,6 +5488,39 @@ final class CS2Script extends NodeSub {
 				var3.model_type = 3; // L: 834
 				var3.model_id = Client.local_player.appearance.getChatHeadId(); // L: 835
 				return 1; // L: 836
+			} else if (var0 == 1207) {
+				boolean var7 = int_stack[--int_stack_size] == 1;
+				//class338.method6417(var3, class45.field296.field1146, var7);
+				return 1;
+			} else if (var0 == 1208) {
+				int var4 = int_stack[--int_stack_size];
+				/*if (var3.field3838 == null) {
+					throw new RuntimeException("");
+				} else {
+					class233.method4446(var3, var4);
+					return 1;
+				}*/
+				return 1;
+			} else if (var0 == 1209) {
+				int_stack_size -= 2;
+				int var4 = int_stack[int_stack_size];
+				int var5 = int_stack[int_stack_size + 1];
+				/*if (var3.field3838 == null) {
+					throw new RuntimeException("");
+				} else {
+					class95.method2467(var3, var4, var5);
+					return 1;
+				}*/
+				return 1;
+			} else if (var0 == 1210) {
+				int var4 = int_stack[--int_stack_size];
+				/*if (var3.field3838 == null) {
+					throw new RuntimeException("");
+				} else {
+					class225.method4302(var3, class45.field296.field1146.field3775, var4);
+					return 1;
+				}*/
+				return 1;
 			} else {
 				return 2; // L: 838
 			}

@@ -3097,9 +3097,15 @@ final class ScriptExecutor {
 						}
 						CS2Script.int_stack[CS2Script.int_stack_size++] = value;
 					} else if (opcode == 2) {
-						int varp_id = int_values[opcode_index];
-						int val = CS2Script.int_stack[--CS2Script.int_stack_size];
-						Varbit.aClass95_6658.setIntVarp(varp_id, val, revision);
+						if (revision != 1 && revision < 200) {
+							int var13 = int_values[opcode_index];
+							VarpType.varp_cache_osrs[var13] = CS2Script.int_stack[--CS2Script.int_stack_size];
+							Varbit.aClass95_6658.setIntVarp(var13, VarpType.varp_cache_osrs[var13], revision);
+						} else {
+							int varp_id = int_values[opcode_index];
+							int val = CS2Script.int_stack[--CS2Script.int_stack_size];
+							Varbit.aClass95_6658.setIntVarp(varp_id, val, revision);
+						}
 					} else if (opcode == 3) {
 						CS2Script.string_stack[CS2Script.string_stack_size++] = (((CS2Script) script).string_operands[opcode_index]);
 					} else if (opcode == 6) {
@@ -3301,7 +3307,7 @@ final class ScriptExecutor {
 					} else if (revision != 1 && revision < 200 && opcode == ScriptOpcodes.SET_VARC_STRING) {
 						String val = CS2Script.string_stack[--CS2Script.string_stack_size];
 						Filestore.aClass94Array1739_osrs[int_values[opcode_index]] = val;
-					} else if (opcode == 51) {
+					} else if ((revision == 1 || revision < 200) && opcode == 51) {
 						IterableNodeHashTable class85 = (((CS2Script) script).switches[int_values[opcode_index]]);
 						int var = --CS2Script.int_stack_size;
 						if (var != -1) {
@@ -3316,6 +3322,26 @@ final class ScriptExecutor {
 						if (revision != 1 && revision < 200) {
 							if (opcode == 60) {
 								int some_int = CS2Script.int_stack[--CS2Script.int_stack_size];
+							} else if (opcode == 74) {
+								/*Integer var38 = class562.field5476.method3353(int_values[opcode_index]);
+								if (var38 == null) {
+									CS2Script.int_stack[++CS2Script.int_stack_size - 1] = -1;
+								} else {
+									CS2Script.int_stack[++CS2Script.int_stack_size - 1] = var38;
+								}*/
+								CS2Script.int_stack[++CS2Script.int_stack_size - 1] = -1;
+							} else {
+								if (opcode != 76) {
+									throw new IllegalStateException();
+								}
+
+								/*Integer var38 = class96.field1171.method8796(int_values[opcode_index]);
+								if (var38 == null) {
+									CS2Script.int_stack[++CS2Script.int_stack_size - 1] = -1;
+								} else {
+									CS2Script.int_stack[++CS2Script.int_stack_size - 1] = var38;
+								}*/
+								CS2Script.int_stack[++CS2Script.int_stack_size - 1] = -1;
 							}
 						}
 					}
@@ -3357,6 +3383,7 @@ final class ScriptExecutor {
 				}
 			} catch (Exception e) {
 				System.err.println("error opcode " + opcode + ", widget: " + widget_id + ", rev: " + revision);
+				e.printStackTrace();
 			}
 		}
 		// throw new IllegalStateException("Command: " + opcode);
@@ -6021,7 +6048,7 @@ final class ScriptExecutor {
 				CS2Script.int_stack[CS2Script.int_stack_size++] = /*
 																	 * (((GamePreferences)
 																	 * Class346.preferences).anInt7720)
-																	 */0;
+																	 */1;
 				return;
 			}
 			if (revision != 634) {
