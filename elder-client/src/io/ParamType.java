@@ -126,7 +126,7 @@ final class ParamType {
 	}
 
 	public static ParamType list(int i_5_) {
-		return list(i_5_, 634);
+		return list(i_5_, 193);
 	}
 
 	public static ParamType list(int i_5_, int revision) {

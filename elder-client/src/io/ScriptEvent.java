@@ -113,7 +113,7 @@ final class ScriptEvent extends Node {
 				else
 					Class59_Sub5_Sub1.aBool5829 = false;
 				if (Widget.root_interface != -1)
-					Class177.method1165((byte) -101, true, 634);
+					Class177.method1165((byte) -101, true, 193);
 				if (Class65.aClass6_864 != null
 						&& ((Client.gameState ^ 0xffffffff) == -31 || (Client.gameState ^ 0xffffffff) == -26))
 					Class_a.method576((byte) 93);

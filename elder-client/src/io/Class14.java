@@ -46,8 +46,6 @@ final class Class14 {
 			aClass182_218 = null;
 			if (i >= 96) {
 				Widget.some_634_widgets = null;
-				Widget.some_550_widgets = null;
-				Widget.some_osrs_widgets = null;
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "bi.D(" + i + ')');

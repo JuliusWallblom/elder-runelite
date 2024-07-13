@@ -15,7 +15,7 @@ final class Filestore {
 	static int anInt2059;
 	static OutgoingPacket aClass201_2060 = new OutgoingPacket(47, 3);
 	static int anInt2061;
-	static String[] aClass94Array1739, aClass94Array1739_osrs, aClass94Array1739_550;
+	static String[] aClass94Array1739;
 	static IncomingPacket ANIMATION_ON_INTERFACE_PACKET = new IncomingPacket(86, 8);
 	static Class211 aClass211_2064;
 
@@ -48,8 +48,6 @@ final class Filestore {
 				aClass211_2064 = null;
 				ANIMATION_ON_INTERFACE_PACKET = null;
 				aClass94Array1739 = null;
-				aClass94Array1739_osrs = null;
-				aClass94Array1739_550 = null;
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "nj.E(" + i + ')');

@@ -55,7 +55,7 @@ final class EnumLoader {
 			}
 			class183 = new EnumType();
 			if (is != null)
-				class183.method1181(19207, new Buffer(is), revision);
+				class183.decode(19207, new Buffer(is), revision);
 			if (revision < 200) {
 				synchronized (enum_cache_osrs) {
 					enum_cache_osrs.method371(1, (long) enum_id, class183);
@@ -77,7 +77,7 @@ final class EnumLoader {
 	}
 
 	final EnumType list(int enum_id, int i_0_) {
-		return list(enum_id, i_0_, 634);
+		return list(enum_id, i_0_, 193);
 	}
 
 	EnumLoader(Class101 class101, int i, CacheIndex class_fs, CacheIndex class_fs2, CacheIndex class_fs3) {

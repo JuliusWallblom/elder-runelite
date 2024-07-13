@@ -2854,8 +2854,6 @@ final class Class91 {
 			}
 			Widget.root_interface = -1;
 			Widget.widget_parents = new IterableNodeHashTable(8);
-			Widget.widget_parents_550 = new IterableNodeHashTable(8);
-			Widget.widget_parents_osrs = new IterableNodeHashTable(8);
 			IncomingPacket.method144(-19181);
 			Client.meslayerContinueWidget = null;
 			for (int i_5_ = 0; (i_5_ ^ 0xffffffff) > -9; i_5_++) {

@@ -194,77 +194,49 @@ public final class Widget {
 	static CacheIndex custom_pre_eoc_550_sprite_index;
 	static CacheIndex custom_osrs_widget_data_index;
 	static CacheIndex custom_pre_eoc_550_widget_data_index;
-	static boolean[] loaded_widgets, loaded_widgets_550, loaded_widgets_osrs;
+	static boolean[] loaded_widgets;
 	static Widget[][] widgets;
-	static Widget[][] widgets_550;
-	static Widget[][] widgets_osrs;
 	static IterableNodeHashTable widget_parents = new IterableNodeHashTable(8);
-	static IterableNodeHashTable widget_parents_550 = new IterableNodeHashTable(8);
-	static IterableNodeHashTable widget_parents_osrs = new IterableNodeHashTable(8);
 	static IterableNodeHashTable widget_flags = new IterableNodeHashTable(512);
-	static IterableNodeHashTable widget_flags_550 = new IterableNodeHashTable(512);
-	static IterableNodeHashTable widget_flags_osrs = new IterableNodeHashTable(512);
 
 	public static IterableNodeHashTable get_widget_parents(int revision) {
-		return /*
-				 * revision == 1 ? widget_parents_550
-				 * : revision < 200 ? widget_parents_osrs
-				 * : revision == 550 ? widget_parents_550
-				 * :
-				 */widget_parents;
+		return widget_parents;
 	}
 
 	public static IterableNodeHashTable get_widget_flags(int revision) {
-		return /*
-				 * revision == 1 ? widget_flags_550
-				 * : revision < 200 ? widget_flags_osrs : revision == 550 ? widget_flags_550 :
-				 */widget_flags;
+		return widget_flags;
 	}
 
 	public static Widget[][] get_widget_cache(int revision) {
-		return /*
-				 * revision == 1 ? widgets_550
-				 * : revision < 200 ? widgets_osrs
-				 * : revision == 550
-				 * ? widgets_550
-				 * :
-				 */widgets;
+		return widgets;
 	}
 
 	public static boolean[] get_loaded_widgets(int revision) {
-		return /*
-				 * revision == 1 ? loaded_widgets_550
-				 * : revision < 200 ? loaded_widgets_osrs
-				 * : revision == 550 ? loaded_widgets_550
-				 * :
-				 */loaded_widgets;
+		return loaded_widgets;
 	}
 
 	public static Widget[][] get_some_widgets(int revision) {
-		return /*
-				 * revision == 1 ? some_550_widgets
-				 * : revision < 200 ? some_osrs_widgets : revision == 550 ? some_550_widgets :
-				 */some_634_widgets;
+		return some_634_widgets;
 	}
 
 	static final Widget get_widget(int widget_hash, int revision) {
-		int widget_id = widget_hash >> 16;
-		int child_id = 0xffff & widget_hash;
-		if (widget_id == -1 || child_id == -1) {
-			return null;
-		}
-		if (Widget.get_widget_cache(revision)[widget_id] == null
-				|| Widget.get_widget_cache(revision)[widget_id][child_id] == null) {
-			boolean loaded = load_widget(widget_id, revision, 1);
-			if (!loaded) {
+			int widget_id = widget_hash >> 16;
+			int child_id = 0xffff & widget_hash;
+			if (widget_id == -1 || child_id == -1) {
 				return null;
 			}
-		}
-		return Widget.get_widget_cache(revision)[widget_id][child_id];
+			if (Widget.get_widget_cache(revision)[widget_id] == null
+					|| Widget.get_widget_cache(revision)[widget_id][child_id] == null) {
+				boolean loaded = load_widget(widget_id, revision, 1);
+				if (!loaded) {
+					return null;
+				}
+			}
+			return Widget.get_widget_cache(revision)[widget_id][child_id];
 	}
 
 	static final Widget get_component(int widget_id, int i_12_) {
-		return get_component(widget_id, i_12_, 634);
+		return get_component(widget_id, i_12_, 193);
 	}
 
 	// IF1
@@ -291,10 +263,16 @@ public final class Widget {
 	public int enabled_sequence_id;
 	public String spell_name;
 	public boolean no_scroll_through;
-	public Object[] field3217;
-	public Object[] field3340;
-	public Object[] field3335;
-	public Object[] field3336;
+	public Object[] on_clan_settings_change;
+	public Object[] on_clan_transmit;
+	public Object[] on_some_change_1;
+	public Object[] on_some_change_2;
+	public Object[] on_some_change_3;
+	public Object[] on_some_change_4;
+	public Object[] on_some_change_5;
+	public Object[] on_some_change_6;
+	public Object[] on_some_change_7;
+	public Object[] on_some_change_8;
 	private boolean aBoolean784;
 	private boolean aBoolean754;
 	private int anInt787;
@@ -303,7 +281,7 @@ public final class Widget {
 	public boolean has_scroll_bar;
 	boolean prioritize_menu_entry;
 
-	static Widget[][] some_634_widgets, some_550_widgets, some_osrs_widgets;
+	static Widget[][] some_634_widgets;
 	static HashMap pre_eoc_550_sprite_cache = new HashMap(200);
 	static HashMap custom_pre_eoc_550_sprite_cache = new HashMap(200);
 	static HashMap pre_eoc_634_sprite_cache = new HashMap(200);
@@ -2118,19 +2096,6 @@ public final class Widget {
 			some_634_widgets[widget_id] = null;
 			loaded_widgets[widget_id] = false;
 		}
-		if (loaded_widgets_550.length > widget_id && loaded_widgets_550[widget_id]) {
-			pre_eoc_550_widget_index.method102(-1, widget_id);
-			widgets_550[widget_id] = null;
-			some_550_widgets[widget_id] = null;
-			loaded_widgets_550[widget_id] = false;
-		}
-		if (loaded_widgets_osrs.length > widget_id && loaded_widgets_osrs[widget_id]) {
-			osrs_widget_data_index.method102(-1, widget_id);
-			custom_osrs_widget_data_index.method102(-1, widget_id);
-			widgets_osrs[widget_id] = null;
-			some_osrs_widgets[widget_id] = null;
-			loaded_widgets_osrs[widget_id] = false;
-		}
 	}
 
 	static final void update_layer(int i, boolean bool) {
@@ -2262,7 +2227,7 @@ public final class Widget {
 		return false;
 	}
 
-	static final boolean load_widget(int widget_id, final int revision, int from) {
+	static final boolean load_widget(int widget_id, int revision, int from) {
 		if (revision == 0) {
 			// System.out.println("widget " + widget_id + " is rev 0");
 		}
@@ -2272,10 +2237,6 @@ public final class Widget {
 								: revision == 550 ? pre_eoc_550_widget_index : widget_data_index;
 		if (Widget.get_loaded_widgets(revision)[widget_id]) {
 			return true;
-		}
-		if (widget_id == 548) {
-			System.out.println("gameframe widget rev is " + revision);
-			System.out.println("for some reason, loaded: " + Widget.get_loaded_widgets(revision)[widget_id]);
 		}
 		if (!data_index.contains(widget_id)) {
 			return false;

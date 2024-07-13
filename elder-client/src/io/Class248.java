@@ -484,8 +484,6 @@ abstract class Class248 {
 											}
 										} else {
 											Filestore.aClass94Array1739[i_27_] = (((Class246_Sub1_Sub10) class246_sub1_sub10).aString6209);
-											Filestore.aClass94Array1739_osrs[i_27_] = (((Class246_Sub1_Sub10) class246_sub1_sub10).aString6209);
-											Filestore.aClass94Array1739_550[i_27_] = (((Class246_Sub1_Sub10) class246_sub1_sub10).aString6209);
 
 											Class149.anIntArray2194[(PacketsDecoder.method184(Texture.anInt6561++,
 													31))] = i_27_;

@@ -28,7 +28,7 @@ final class Canvas_Sub1 extends Canvas {
 						while (((Buffer) stream).buffer.length > ((Buffer) stream).position) {
 							int i_2_ = stream.readUnsignedShort();
 							int i_3_ = stream.readInt((byte) 77);
-							if (((i_2_ ^ 0xffffffff) > (Varc.varcs_634.length ^ 0xffffffff)) && Class59_Sub3_Sub1.varcs_loaded_634[i_2_] && (((((VarcType) Class_c.varc_loader.list(115, i_2_, 634)).aChar3108) ^ 0xffffffff) != -50 || ((i_3_ ^ 0xffffffff) <= 0 && (i_3_ ^ 0xffffffff) >= -2)))
+							if (((i_2_ ^ 0xffffffff) > (Varc.varcs_634.length ^ 0xffffffff)) && Class59_Sub3_Sub1.varcs_loaded_634[i_2_] && (((((VarcType) Class_c.varc_loader.list(115, i_2_, 193)).aChar3108) ^ 0xffffffff) != -50 || ((i_3_ ^ 0xffffffff) <= 0 && (i_3_ ^ 0xffffffff) >= -2)))
 								Varc.varcs_634[i_2_] = i_3_;
 						}
 					}

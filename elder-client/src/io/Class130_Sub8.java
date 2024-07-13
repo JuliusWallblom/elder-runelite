@@ -84,8 +84,6 @@ final class Class130_Sub8 extends Class130 {
 		try {
 			if (i == 0) {
 				Widget.loaded_widgets = null;
-				Widget.loaded_widgets_550 = null;
-				Widget.loaded_widgets_osrs = null;
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "wu.D(" + i + ')');

@@ -103,15 +103,9 @@ final class IncomingPacket {
 		do {
 			try {
 				Widget.widgets = (new Widget[Widget.widget_data_index.method87((byte) 39)][]);
-				Widget.widgets_550 = (new Widget[Widget.pre_eoc_550_widget_index.method87((byte) 39)][]);
-				Widget.widgets_osrs = (new Widget[Widget.osrs_widget_data_index.method87((byte) 39)][]);
 				anInt186++;
 				Widget.some_634_widgets = (new Widget[Widget.widget_data_index.method87((byte) 39)][]);
-				Widget.some_550_widgets = (new Widget[Widget.pre_eoc_550_widget_index.method87((byte) 39)][]);
-				Widget.some_osrs_widgets = (new Widget[Widget.osrs_widget_data_index.method87((byte) 39)][]);
 				Widget.loaded_widgets = (new boolean[Widget.widget_data_index.method87((byte) 39)]);
-				Widget.loaded_widgets_550 = (new boolean[Widget.pre_eoc_550_widget_index.method87((byte) 39)]);
-				Widget.loaded_widgets_osrs = (new boolean[Widget.osrs_widget_data_index.method87((byte) 39)]);
 				if (i == -19181)
 					break;
 				anInt185 = -1;

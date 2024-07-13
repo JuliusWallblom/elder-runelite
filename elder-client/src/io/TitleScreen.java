@@ -629,8 +629,6 @@ public class TitleScreen {
 					}
 				} else if (Client.loadingPhase == 190) {
 					Filestore.aClass94Array1739 = new String[((Class180) (Class246_Sub18.aClass180_4678)).anInt2526];
-					Filestore.aClass94Array1739_osrs = new String[680];
-					Filestore.aClass94Array1739_550 = new String[((Class180) (Class246_Sub18.aClass180_4678)).anInt2526];
 					Class59_Sub3_Sub1.varcs_loaded_634 = (new boolean[((VarcLoader) Class_c.varc_loader).varc_size_634]);
 					Class59_Sub3_Sub1.varcs_loaded_550 = (new boolean[((VarcLoader) Class_c.varc_loader).varc_size_550]);
 					Class59_Sub3_Sub1.varcs_loaded_osrs = (new boolean[((VarcLoader) Class_c.varc_loader).varc_size_osrs]);

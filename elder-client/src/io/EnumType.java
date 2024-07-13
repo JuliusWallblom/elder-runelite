@@ -56,7 +56,7 @@ final class EnumType {
 		}
 	}
 
-	final void method1181(int i, Buffer stream, int revision) {
+	final void decode(int i, Buffer stream, int revision) {
 		try {
 			for (;;) {
 				int i_1_ = stream.readUnsignedByte();

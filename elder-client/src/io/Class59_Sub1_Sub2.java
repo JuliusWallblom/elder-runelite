@@ -45,7 +45,7 @@ final class Class59_Sub1_Sub2 extends Class59_Sub1 implements Class_f {
 	static final CS2Script weird_list(int i, int i_0_, int i_1_, Class169 class169, int widget_id) {
 		try {
 			System.out.println("in weird list");
-			boolean osrs = false;
+			boolean osrs = true;
 			anInt6108++;
 			int i_2_ = ((Class169) class169).anInt2406 | i_1_ << 8;
 			CS2Script class246_sub1_sub1 = ((CS2Script) (osrs ? Class109_Sub3.cs2_cache_osrs

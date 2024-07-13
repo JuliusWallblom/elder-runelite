@@ -1,19 +1,14 @@
 package io;
 
+import io.cache.Revision;
+
 final class VarpType {
 	static int anInt1220;
 	static IncomingPacket aClass13_1221;
 	static int anInt1222;
 	int clientCode = 0;
 	static int[] varp_cache_634, varp_cache_osrs, varp_cache_550;
-	static boolean aBool1224 = false;
-	static int anInt1225;
-	static int anInt1226;
-	static int[] anIntArray1227;
-	static int anInt1228;
-	static HashMap aClass54_1229;
-
-	public static int[] get_varp_cache(int revision) {
+	static int[] getVarpCache(int revision) {
 		if (revision < 200) {
 			return varp_cache_osrs;
 		} else if (revision == 550) {
@@ -22,6 +17,12 @@ final class VarpType {
 			return varp_cache_634;
 		}
 	}
+	static boolean aBool1224 = false;
+	static int anInt1225;
+	static int anInt1226;
+	static int[] anIntArray1227;
+	static int anInt1228;
+	static HashMap aClass54_1229;
 
 	static final void method596(int i, int i_0_, int i_1_) {
 		boolean bool = (Class106.tiles[0][i_0_][i_1_] != null

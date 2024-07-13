@@ -513,7 +513,7 @@ public class LoginScreen {
 				if ((Widget.root_interface ^ 0xffffffff) != 0) {
 					Widget.reset_widget(Widget.root_interface);
 				}
-				for (WidgetParent class246_sub40 = (WidgetParent) Widget.get_widget_parents(193).first(
+				/*for (WidgetParent class246_sub40 = (WidgetParent) Widget.get_widget_parents(193).first(
 						(byte) -23); class246_sub40 != null; class246_sub40 = (WidgetParent) Widget
 								.get_widget_parents(193)
 								.next((byte) -20)) {
@@ -545,11 +545,9 @@ public class LoginScreen {
 							break;
 					}
 					Widget.close_widget(true, class246_sub40, false, -80, 634, "here4");
-				}
+				}*/
 				Widget.root_interface = -1;
 				Widget.widget_parents = new IterableNodeHashTable(8);
-				Widget.widget_parents_550 = new IterableNodeHashTable(8);
-				Widget.widget_parents_osrs = new IterableNodeHashTable(8);
 				IncomingPacket.method144(-19181);
 				/*
 				 * Widget.root_interface = 744; Class177.method1165((byte) -112, false, 550);

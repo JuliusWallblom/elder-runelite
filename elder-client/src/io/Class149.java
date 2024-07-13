@@ -68,9 +68,9 @@ final class Class149 {
 				anInt2187++;
 				MapFunction.method939((byte) -44);
 				if (bool == false) {
-					int i_1_ = (((VarpType) SubIncomingPacket.aClass209_7085.list(i, -10231, Revision.PRE_EOC_634)).clientCode);
+					int i_1_ = (((VarpType) SubIncomingPacket.aClass209_7085.list(i, -10231, Revision.OSRS)).clientCode);
 					if ((i_1_ ^ 0xffffffff) != -1) {
-						int i_2_ = (VarpType.varp_cache_634[i]);
+						int i_2_ = (VarpType.varp_cache_osrs[i]);
 						if (i_1_ == 5)
 							Class59_Sub3_Sub2.anInt5889 = i_2_;
 						if (i_1_ != 6)

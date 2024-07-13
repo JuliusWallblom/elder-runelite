@@ -18,8 +18,6 @@ final class Class113 {
 		do {
 			try {
 				Widget.widget_flags = null;
-				Widget.widget_flags_550 = null;
-				Widget.widget_flags_osrs = null;
 				ADD_FRIEND_PACKET = null;
 				if (i <= -39)
 					break;

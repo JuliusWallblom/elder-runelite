@@ -217,10 +217,10 @@ final class Class191 {
 				((ObjType) obj_type).anIntArray2772 = null;
 				((ObjType) obj_type).isTradeable = false;
 				((ObjType) obj_type).ops = aStringArray2703;
-				if (((ObjType) obj_type).aClass85_2810 != null) {
+				if (((ObjType) obj_type).objParams != null) {
 					boolean bool = false;
-					for (Node class246 = ((ObjType) obj_type).aClass85_2810
-							.first((byte) -23); class246 != null; class246 = ((ObjType) obj_type).aClass85_2810
+					for (Node class246 = ((ObjType) obj_type).objParams
+							.first((byte) -23); class246 != null; class246 = ((ObjType) obj_type).objParams
 									.next((byte) -20)) {
 						ParamType class118 = ParamType.list((int) (((Node) class246).hash));
 						if (((ParamType) class118).aBool1633)
@@ -229,7 +229,7 @@ final class Class191 {
 							bool = true;
 					}
 					if (!bool)
-						((ObjType) obj_type).aClass85_2810 = null;
+						((ObjType) obj_type).objParams = null;
 				}
 			}
 			if (revision == Revision.OSRS) {
@@ -307,10 +307,10 @@ final class Class191 {
 				((ObjType) obj_type).anIntArray2772 = null;
 				((ObjType) obj_type).isTradeable = false;
 				((ObjType) obj_type).ops = aStringArray2703;
-				if (((ObjType) obj_type).aClass85_2810 != null) {
+				if (((ObjType) obj_type).objParams != null) {
 					boolean bool = false;
-					for (Node class246 = ((ObjType) obj_type).aClass85_2810
-							.first((byte) -23); class246 != null; class246 = ((ObjType) obj_type).aClass85_2810
+					for (Node class246 = ((ObjType) obj_type).objParams
+							.first((byte) -23); class246 != null; class246 = ((ObjType) obj_type).objParams
 									.next((byte) -20)) {
 						ParamType class118 = ParamType.list((int) (((Node) class246).hash));
 						if (((ParamType) class118).aBool1633)
@@ -319,7 +319,7 @@ final class Class191 {
 							bool = true;
 					}
 					if (!bool)
-						((ObjType) obj_type).aClass85_2810 = null;
+						((ObjType) obj_type).objParams = null;
 				}
 			}
 			if (revision == Revision.OSRS) {

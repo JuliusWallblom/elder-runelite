@@ -1114,11 +1114,7 @@ final class NpcType {
 			Widget.custom_pre_eoc_550_sprite_index = custom_pre_eoc_550_sprite_index;
 
 			Widget.widgets = (new Widget[Widget.widget_data_index.method87((byte) 39)][]);
-			Widget.widgets_550 = (new Widget[Widget.pre_eoc_550_widget_index.method87((byte) 39)][]);
-			Widget.widgets_osrs = (new Widget[Widget.osrs_widget_data_index.method87((byte) 39)][]);
 			Widget.loaded_widgets = new boolean[Widget.widget_data_index.method87((byte) 39)];
-			Widget.loaded_widgets_550 = new boolean[Widget.pre_eoc_550_widget_index.method87((byte) 39)];
-			Widget.loaded_widgets_osrs = new boolean[Widget.osrs_widget_data_index.method87((byte) 39)];
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception,
 					("wh.O(" + i + ',' + (widget_index != null ? "{...}" : "null") + ','

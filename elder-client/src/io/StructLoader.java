@@ -120,7 +120,7 @@ final class StructLoader {
 				return class246_sub1_sub18;
 			byte[] is;
 			if (revision < 200) {
-				is = osrs_struct_data.get_file(i, 26);
+				is = osrs_struct_data.get_file(i, 34);
 			} else {
 				is = struct_data.get_file(i, 26);
 			}
@@ -141,10 +141,6 @@ final class StructLoader {
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "ff.C(" + i + ',' + i_4_ + ')');
 		}
-	}
-
-	final static StructType list(int i, int i_4_) {
-		return list(i, i_4_, 634);
 	}
 
 	public static void method397(boolean bool) {

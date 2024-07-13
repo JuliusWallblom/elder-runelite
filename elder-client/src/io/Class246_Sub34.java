@@ -34,8 +34,6 @@ final class Class246_Sub34 extends Node {
 				method2196((byte) 51, null);
 			aRandom5144 = null;
 			Widget.widget_parents = null;
-			Widget.widget_parents_550 = null;
-			Widget.widget_parents_osrs = null;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "qh.G(" + i + ')');
 		}

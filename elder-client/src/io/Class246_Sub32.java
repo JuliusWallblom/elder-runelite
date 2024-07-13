@@ -184,8 +184,6 @@ final class Class246_Sub32 extends Node {
 			if (i != 86)
 				method2164(114);
 			Widget.widgets = null;
-			Widget.widgets_550 = null;
-			Widget.widgets_osrs = null;
 			LoginScreen.password = null;
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "ov.A(" + i + ')');

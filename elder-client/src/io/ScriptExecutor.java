@@ -2751,10 +2751,10 @@ final class ScriptExecutor {
 						ParamType class118 = ParamType.list(i_232_, revision);
 						if (class118.is_string(115))
 							CS2Script.string_stack[CS2Script.string_stack_size++] = (Class246_Sub28_Sub25.struct_loader
-									.list(i_231_, -24).method2831(-16471, ((ParamType) class118).defaultStr, i_232_));
+									.list(i_231_, -24, revision).method2831(-16471, ((ParamType) class118).defaultStr, i_232_));
 						else {
 							CS2Script.int_stack[CS2Script.int_stack_size++] = (Class246_Sub28_Sub25.struct_loader
-									.list(i_231_, -24).method2830(((ParamType) class118).default_int, 76, i_232_));
+									.list(i_231_, -24, revision).method2830(((ParamType) class118).default_int, 76, i_232_));
 							return;
 						}
 						return;
@@ -3083,29 +3083,11 @@ final class ScriptExecutor {
 						CS2Script.int_stack[CS2Script.int_stack_size++] = int_values[opcode_index];
 					} else if (opcode == 1) {
 						int key = int_values[opcode_index];
-						int value;
-						if (revision == 0) {
-							value = VarpType.varp_cache_osrs[key];
-						} else if (revision == 1) {
-							value = VarpType.varp_cache_550[key];
-						} else if (revision < 200) {
-							value = VarpType.varp_cache_osrs[key];
-						} else if (revision == 550) {
-							value = VarpType.varp_cache_550[key];
-						} else {
-							value = VarpType.varp_cache_634[key];
-						}
-						CS2Script.int_stack[CS2Script.int_stack_size++] = value;
+						CS2Script.int_stack[CS2Script.int_stack_size++] = VarpType.getVarpCache(revision)[key];
 					} else if (opcode == 2) {
-						if (revision != 1 && revision < 200) {
-							int var13 = int_values[opcode_index];
-							VarpType.varp_cache_osrs[var13] = CS2Script.int_stack[--CS2Script.int_stack_size];
-							Varbit.aClass95_6658.setIntVarp(var13, VarpType.varp_cache_osrs[var13], revision);
-						} else {
-							int varp_id = int_values[opcode_index];
-							int val = CS2Script.int_stack[--CS2Script.int_stack_size];
-							Varbit.aClass95_6658.setIntVarp(varp_id, val, revision);
-						}
+						int varp_id = int_values[opcode_index];
+						int val = CS2Script.int_stack[--CS2Script.int_stack_size];
+						Varbit.aClass95_6658.setIntVarp(varp_id, val, revision);
 					} else if (opcode == 3) {
 						CS2Script.string_stack[CS2Script.string_stack_size++] = (((CS2Script) script).string_operands[opcode_index]);
 					} else if (opcode == 6) {
@@ -3270,44 +3252,23 @@ final class ScriptExecutor {
 							throw new RuntimeException();
 						arrays[i_271_][i_272_] = CS2Script.int_stack[CS2Script.int_stack_size + 1];
 					} else if (opcode == 47) {
-						String string = "";
-						if (revision == 0) {
-							string = Filestore.aClass94Array1739_osrs[int_values[opcode_index]];
-						} else if (revision == 1) {
-							string = Filestore.aClass94Array1739_550[int_values[opcode_index]];
-						} else if (revision < 200) {
-							string = Filestore.aClass94Array1739_osrs[int_values[opcode_index]];
-						} else if (revision == 550) {
-							string = Filestore.aClass94Array1739_550[int_values[opcode_index]];
-						} else {
-							string = Filestore.aClass94Array1739[int_values[opcode_index]];
-						}
+						String string = Filestore.aClass94Array1739[int_values[opcode_index]];
 
 						if (string == null)
 							string = "null";
 						CS2Script.string_stack[CS2Script.string_stack_size++] = string;
 					} else if (opcode == 48) {
 						int i_273_ = int_values[opcode_index];
-						if (revision == 0) {
-							Filestore.aClass94Array1739_osrs[i_273_] = CS2Script.string_stack[--CS2Script.string_stack_size];
-						} else if (revision == 1) {
-							Filestore.aClass94Array1739_550[i_273_] = CS2Script.string_stack[--CS2Script.string_stack_size];
-						} else if (revision < 200) {
-							Filestore.aClass94Array1739_osrs[i_273_] = CS2Script.string_stack[--CS2Script.string_stack_size];
-						} else if (revision == 550) {
-							Filestore.aClass94Array1739_550[i_273_] = CS2Script.string_stack[--CS2Script.string_stack_size];
-						} else {
-							Filestore.aClass94Array1739[i_273_] = CS2Script.string_stack[--CS2Script.string_stack_size];
-						}
+						Filestore.aClass94Array1739[i_273_] = CS2Script.string_stack[--CS2Script.string_stack_size];
 
 						Class130_Sub6.method2102(2, i_273_);
 					} else if (revision != 1 && revision < 200 && opcode == ScriptOpcodes.GET_VARC_STRING) {
 						CS2Script.string_stack[++CS2Script.string_stack_size
-								- 1] = Filestore.aClass94Array1739_osrs[int_values[opcode_index]];
+								- 1] = Filestore.aClass94Array1739[int_values[opcode_index]];
 					} else if (revision != 1 && revision < 200 && opcode == ScriptOpcodes.SET_VARC_STRING) {
 						String val = CS2Script.string_stack[--CS2Script.string_stack_size];
-						Filestore.aClass94Array1739_osrs[int_values[opcode_index]] = val;
-					} else if ((revision == 1 || revision < 200) && opcode == 51) {
+						Filestore.aClass94Array1739[int_values[opcode_index]] = val;
+					} else if ((revision > 200 || revision == 1) && opcode == 51) {
 						IterableNodeHashTable class85 = (((CS2Script) script).switches[int_values[opcode_index]]);
 						int var = --CS2Script.int_stack_size;
 						if (var != -1) {
@@ -3348,14 +3309,14 @@ final class ScriptExecutor {
 				} else {
 					boolean bool;
 					if (int_values[opcode_index] == 1) {
-						bool = true;
+						bool = false;
 					} else {
 						bool = false;
 					}
 
 					if (revision != 1 && revision < 200) {
-						if (widget_id == 541) {
-							System.out.println("widget 541 calls opcode " + opcode + " and script " + scriptid);
+						if (widget_id == 109) {
+							System.out.println("widget 109 calls script " + scriptid);
 						}
 						int return_code = CS2Script.decode(opcode, script, bool, revision);
 						switch (return_code) {

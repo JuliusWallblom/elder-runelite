@@ -81,7 +81,7 @@ abstract class Class21 {
 				} else
 					GameEngine.canvas.setLocation(Class125.anInt1768, Class100_Sub1.anInt5075);
 				if ((Widget.root_interface ^ 0xffffffff) != 0)
-					Class177.method1165((byte) -34, true, 634);
+					Class177.method1165((byte) -34, true, 193);
 				Class246_Sub28_Sub30.method2834((byte) 0);
 			}
 		} catch (RuntimeException runtimeexception) {

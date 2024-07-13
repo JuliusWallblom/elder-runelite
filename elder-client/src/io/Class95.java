@@ -74,7 +74,7 @@ final class Class95 implements Interface11 {
 			anInt1239++;
 			for (int i_6_ = 0; (((Class209) SubIncomingPacket.aClass209_7085).varp_size_550 ^ 0xffffffff) < (i_6_
 					^ 0xffffffff); i_6_++) {
-				VarpType class93 = SubIncomingPacket.aClass209_7085.list(i_6_, -10231, revision);
+				VarpType class93 = SubIncomingPacket.aClass209_7085.list(i_6_, -10231, Revision.PRE_EOC_550);
 				if (class93 != null && (((VarpType) class93).clientCode ^ 0xffffffff) == -1) {
 					updated_varps_550[i_6_] = 0;
 					VarpType.varp_cache_550[i_6_] = 0;
@@ -82,7 +82,7 @@ final class Class95 implements Interface11 {
 			}
 			for (int i_6_ = 0; (((Class209) SubIncomingPacket.aClass209_7085).varp_size_634 ^ 0xffffffff) < (i_6_
 					^ 0xffffffff); i_6_++) {
-				VarpType class93 = SubIncomingPacket.aClass209_7085.list(i_6_, -10231, revision);
+				VarpType class93 = SubIncomingPacket.aClass209_7085.list(i_6_, -10231, Revision.PRE_EOC_634);
 				if (class93 != null && (((VarpType) class93).clientCode ^ 0xffffffff) == -1) {
 					updated_varps_634[i_6_] = 0;
 					VarpType.varp_cache_634[i_6_] = 0;
@@ -90,7 +90,7 @@ final class Class95 implements Interface11 {
 			}
 			for (int i_6_ = 0; (((Class209) SubIncomingPacket.aClass209_7085).varp_size_osrs ^ 0xffffffff) < (i_6_
 					^ 0xffffffff); i_6_++) {
-				VarpType class93 = SubIncomingPacket.aClass209_7085.list(i_6_, -10231, revision);
+				VarpType class93 = SubIncomingPacket.aClass209_7085.list(i_6_, -10231, Revision.OSRS);
 				if (class93 != null && (((VarpType) class93).clientCode ^ 0xffffffff) == -1) {
 					updated_varps_osrs[i_6_] = 0;
 					VarpType.varp_cache_osrs[i_6_] = 0;
@@ -151,8 +151,7 @@ final class Class95 implements Interface11 {
 			int i_15_ = ((Varbit) class108).least_significant_bit;
 			int i_16_ = ((Varbit) class108).most_significant_bit;
 			int i_17_ = Class246_Sub1_Sub3.anIntArray5702[i_16_ - i_15_];
-			return (revision < 200 ? VarpType.varp_cache_osrs[i_14_]
-					: revision == 550 ? VarpType.varp_cache_550[i_14_] : VarpType.varp_cache_634[i_14_]) >> i_15_
+			return VarpType.getVarpCache(revision)[i_14_] >> i_15_
 					& i_17_;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -171,7 +170,7 @@ final class Class95 implements Interface11 {
 						^ 0xffffffffffffffffL)) {
 					if ((((Class246_Sub23) class246_sub23).aLong4822 & 0x4000000000000000L) != 0L) {
 						int index = (int) ((Node) class246_sub23).hash;
-						VarpType.varp_cache_634[index] = updated_varps_634[index];
+						VarpType.varp_cache_osrs[index] = updated_varps_osrs[index];
 						class246_sub23.remove();
 						return index;
 					}
@@ -220,8 +219,8 @@ final class Class95 implements Interface11 {
 				i_21_ = 0;
 			i_26_ <<= i_24_;
 			setIntVarp(i_23_,
-					(i_26_ & i_21_ << i_24_ | ((i_26_ ^ 0xffffffff) & (revision < 200 ? VarpType.varp_cache_osrs[i_23_]
-							: revision == 550 ? VarpType.varp_cache_550[i_23_] : VarpType.varp_cache_634[i_23_]))),
+					(i_26_ & i_21_ << i_24_ | ((i_26_ ^ 0xffffffff) & VarpType.getVarpCache((revision))[i_23_]
+							)),
 					revision);
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, ("it.D(" + i + ',' + i_20_ + ',' + i_21_ + ')'));
@@ -231,8 +230,7 @@ final class Class95 implements Interface11 {
 	public final int method35(int i, int i_27_, int revision) {
 		try {
 			anInt1247++;
-			return revision < 200 ? VarpType.varp_cache_osrs[i]
-					: revision == 550 ? VarpType.varp_cache_550[i] : VarpType.varp_cache_634[i];
+			return VarpType.getVarpCache(revision)[i];
 		} catch (RuntimeException runtimeexception) {
 			throw Class193.method1272(runtimeexception, "it.B(" + i + ',' + i_27_ + ')');
 		}

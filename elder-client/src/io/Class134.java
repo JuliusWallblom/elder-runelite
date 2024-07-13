@@ -590,7 +590,7 @@ final class Class134 implements Interface4 {
 							}
 						}
 						if (var2 == 48 || (var2 ^ 0xffffffff) == -1003) {
-							Widget.some_widget(bool, i_19_, ((Class246_Sub35) class246_sub35).aString5152, y, x, 634);
+							Widget.some_widget(bool, i_19_, ((Class246_Sub35) class246_sub35).aString5152, y, x, 193);
 						}
 						if ((var2 ^ 0xffffffff) == -3) {
 							Class7.anInt97 = i_15_;

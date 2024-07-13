@@ -91,7 +91,7 @@ public final class ObjType extends CacheType implements RSItemComposition {
 	private int maleModel1;
 	static int f_vb;
 	private int inventoryModel;
-	IterableNodeHashTable aClass85_2810;
+	IterableNodeHashTable objParams;
 	static int anInt2811;
 	private int resizeX;
 	int team;
@@ -431,7 +431,7 @@ public final class ObjType extends CacheType implements RSItemComposition {
 			aByteArray2761 = class197_39_.aByteArray2761;
 			((ObjType) this).team = ((ObjType) class197_39_).team;
 			textureReplace = class197_39_.textureReplace;
-			((ObjType) this).aClass85_2810 = ((ObjType) class197_39_).aClass85_2810;
+			((ObjType) this).objParams = ((ObjType) class197_39_).objParams;
 			((ObjType) this).members = ((ObjType) class197_39_).members;
 			((ObjType) this).yan2d = ((ObjType) class197_40_).yan2d;
 			anInt2777 = class197_39_.anInt2777;
@@ -587,9 +587,9 @@ public final class ObjType extends CacheType implements RSItemComposition {
 			placeholderTemplate = buffer.readUnsignedShort();
 		} else if (opcode == 249) {
 			int i_46_ = buffer.readUnsignedByte();
-			if (aClass85_2810 == null) {
+			if (objParams == null) {
 				int i_47_ = Class206.method1350(i_46_, 269173057);
-				aClass85_2810 = new IterableNodeHashTable(i_47_);
+				objParams = new IterableNodeHashTable(i_47_);
 			}
 			for (int i_48_ = 0; i_46_ > i_48_; i_48_++) {
 				boolean bool = buffer.readUnsignedByte() == 1;
@@ -599,7 +599,7 @@ public final class ObjType extends CacheType implements RSItemComposition {
 					class246 = new Class246_Sub4(buffer.readString());
 				else
 					class246 = new SwitchInt(buffer.readInt());
-				aClass85_2810.method547((long) i_49_, 0 ^ ~0x8fc, class246);
+				objParams.method547((long) i_49_, 0 ^ ~0x8fc, class246);
 			}
 		}
 	}
@@ -738,9 +738,9 @@ public final class ObjType extends CacheType implements RSItemComposition {
 					((ObjType) this).anIntArray2772[i_51_] = stream.readUnsignedShort();
 			} else if (opcode == 249) {
 				int i_46_ = stream.readUnsignedByte();
-				if (((ObjType) this).aClass85_2810 == null) {
+				if (((ObjType) this).objParams == null) {
 					int i_47_ = Class206.method1350(i_46_, 269173057);
-					((ObjType) this).aClass85_2810 = new IterableNodeHashTable(i_47_);
+					((ObjType) this).objParams = new IterableNodeHashTable(i_47_);
 				}
 				for (int i_48_ = 0; i_46_ > i_48_; i_48_++) {
 					boolean bool = stream.readUnsignedByte() == 1;
@@ -750,7 +750,7 @@ public final class ObjType extends CacheType implements RSItemComposition {
 						class246 = new Class246_Sub4(stream.readString((byte) -40));
 					else
 						class246 = new SwitchInt(stream.readInt((byte) 114));
-					((ObjType) this).aClass85_2810.method547((long) i_49_, 0, class246);
+					((ObjType) this).objParams.method547((long) i_49_, 0, class246);
 				}
 			}
 		} catch (Exception e) {
@@ -761,9 +761,9 @@ public final class ObjType extends CacheType implements RSItemComposition {
 	final int method1289(int i, int i_54_, int i_55_) {
 		try {
 			anInt2768++;
-			if (((ObjType) this).aClass85_2810 == null)
+			if (((ObjType) this).objParams == null)
 				return i_55_;
-			SwitchInt class246_sub33 = ((SwitchInt) ((ObjType) this).aClass85_2810.get((long) i));
+			SwitchInt class246_sub33 = ((SwitchInt) ((ObjType) this).objParams.get((long) i));
 			int i_56_ = 52 / ((i_54_ + 40) / 62);
 			if (class246_sub33 == null)
 				return i_55_;
@@ -944,9 +944,9 @@ public final class ObjType extends CacheType implements RSItemComposition {
 	final String method1297(String string, int i, int i_78_) {
 		try {
 			f_hb++;
-			if (((ObjType) this).aClass85_2810 == null)
+			if (((ObjType) this).objParams == null)
 				return string;
-			Class246_Sub4 class246_sub4 = ((Class246_Sub4) ((ObjType) this).aClass85_2810.get((long) i_78_));
+			Class246_Sub4 class246_sub4 = ((Class246_Sub4) ((ObjType) this).objParams.get((long) i_78_));
 			int i_79_ = -14 % ((52 - i) / 61);
 			if (class246_sub4 == null)
 				return string;
@@ -1023,7 +1023,7 @@ public final class ObjType extends CacheType implements RSItemComposition {
 	}
 
 	public static boolean native_osrs(int item_id) {
-		return (item_id == 21295 || item_id == 20997 || item_id == 29000);
+		return (item_id == 20829 || item_id == 21295 || item_id == 20997 || item_id == 29000);
 	}
 
 	public static boolean native_634(int item_id) {

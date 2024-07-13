@@ -1,7 +1,6 @@
 package io;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import io.cache.Cache;
@@ -1732,12 +1731,12 @@ final class CS2Script extends NodeSub {
 								string_stack[++string_stack_size - 1] = /*
 																		 * WorldMapLabelSize.getNpcDefinition(var3).
 																		 * getStringParam(var4, var5.defaultStr)
-																		 */""; // L: 3818
+																		 */"asd"; // L: 3818
 							} else {
 								int_stack[++int_stack_size - 1] = /*
 																	 * WorldMapLabelSize.getNpcDefinition(var3).
 																	 * getIntParam(var4, var5.defaultInt)
-																	 */0; // L: 3821
+																	 */123; // L: 3821
 							}
 
 							return 1; // L: 3823
@@ -1750,12 +1749,12 @@ final class CS2Script extends NodeSub {
 								string_stack[++string_stack_size - 1] = /*
 																		 * class148.getObjectDefinition(var3).
 																		 * getStringParam(var4, var5.defaultStr)
-																		 */""; // L: 3831
+																		 */"asd"; // L: 3831
 							} else {
 								int_stack[++int_stack_size - 1] = /*
 																	 * class148.getObjectDefinition(var3).getIntParam(
 																	 * var4, var5.defaultInt)
-																	 */0; // L: 3834
+																	 */123; // L: 3834
 							}
 
 							return 1; // L: 3836
@@ -1768,12 +1767,12 @@ final class CS2Script extends NodeSub {
 								string_stack[++string_stack_size - 1] = /*
 																		 * UserComparator6.ItemDefinition_get(var3).
 																		 * getStringParam(var4, var5.defaultStr)
-																		 */""; // L: 3844
+																		 */"asd"; // L: 3844
 							} else {
 								int_stack[++int_stack_size - 1] = /*
 																	 * UserComparator6.ItemDefinition_get(var3).
 																	 * getIntParam(var4, var5.defaultInt)
-																	 */0; // L: 3847
+																	 */123; // L: 3847
 							}
 
 							return 1; // L: 3849
@@ -1783,10 +1782,10 @@ final class CS2Script extends NodeSub {
 							var4 = int_stack[int_stack_size + 1];
 							ParamType param_type = ParamType.list(var4, 193);
 							if (param_type.is_string(115)) {
-								string_stack[++string_stack_size - 1] = StructLoader.list(var8, -24)
+								string_stack[++string_stack_size - 1] = StructLoader.list(var8, -24, 193)
 										.getStringParam(var8, param_type.defaultStr);
 							} else {
-								int_stack[++int_stack_size - 1] = StructLoader.list(var8, -24).getIntParam(var4,
+								int_stack[++int_stack_size - 1] = StructLoader.list(var8, -24, 193).getIntParam(var4,
 										param_type.default_int);
 							}
 							return 1; // L: 3862
@@ -2287,7 +2286,7 @@ final class CS2Script extends NodeSub {
 				} else {
 					if (Client.local_player != null
 							&& (((Player) Client.local_player).username != null)) {
-						var4 = Client.local_player.get_name(120, true);
+						var4 = Client.local_player.getName();
 					} else {
 						var4 = "";
 					}
@@ -2303,7 +2302,7 @@ final class CS2Script extends NodeSub {
 		int var4;
 		if (opcode == ScriptOpcodes.OC_NAME) {
 			var4 = int_stack[--int_stack_size];
-			string_stack[++string_stack_size - 1] = (((ObjType) MapRegion.aClass191_3663.list(22883, var4)).name);
+			string_stack[++string_stack_size - 1] = (((ObjType) MapRegion.aClass191_3663.list(22883, var4, Revision.OSRS)).name);
 			return 1;
 		} else {
 			int var5;
@@ -2311,7 +2310,7 @@ final class CS2Script extends NodeSub {
 				CS2Script.int_stack_size -= 2;
 				int i_213_ = CS2Script.int_stack[CS2Script.int_stack_size];
 				int i_214_ = CS2Script.int_stack[CS2Script.int_stack_size + 1];
-				ObjType class197 = MapRegion.aClass191_3663.list(22883, i_213_);
+				ObjType class197 = MapRegion.aClass191_3663.list(22883, i_213_, Revision.OSRS);
 				if (i_214_ >= 1 && i_214_ <= 5 && (((ObjType) class197).options[i_214_ - 1] != null))
 					CS2Script.string_stack[CS2Script.string_stack_size++] = (((ObjType) class197).options[i_214_ - 1]);
 				else {
@@ -2323,7 +2322,7 @@ final class CS2Script extends NodeSub {
 				CS2Script.int_stack_size -= 2;
 				int i_215_ = CS2Script.int_stack[CS2Script.int_stack_size];
 				int i_216_ = CS2Script.int_stack[CS2Script.int_stack_size + 1];
-				ObjType class197 = MapRegion.aClass191_3663.list(22883, i_215_);
+				ObjType class197 = MapRegion.aClass191_3663.list(22883, i_215_, Revision.OSRS);
 				if (i_216_ >= 1 && i_216_ <= 5 && (((ObjType) class197).ops[i_216_ - 1] != null))
 					CS2Script.string_stack[CS2Script.string_stack_size++] = (((ObjType) class197).ops[i_216_ - 1]);
 				else {
@@ -2334,17 +2333,17 @@ final class CS2Script extends NodeSub {
 			} else if (opcode == ScriptOpcodes.OC_COST) {
 				var4 = int_stack[--int_stack_size];
 				CS2Script.int_stack[CS2Script.int_stack_size++] = ((ObjType) MapRegion.aClass191_3663.list(22883,
-						var4)).cost;
+						var4, Revision.OSRS)).cost;
 				return 1;
 			} else if (opcode == ScriptOpcodes.OC_STACKABLE) {
 				var4 = int_stack[--int_stack_size];
 				int_stack[++int_stack_size
-						- 1] = (((ObjType) MapRegion.aClass191_3663.list(22883, var4)).stackability == 1) ? 1 : 0;
+						- 1] = (((ObjType) MapRegion.aClass191_3663.list(22883, var4, Revision.OSRS)).stackability == 1) ? 1 : 0;
 				return 1;
 			} else {
 				if (opcode == ScriptOpcodes.OC_CERT) {
 					int i_219_ = CS2Script.int_stack[--CS2Script.int_stack_size];
-					ObjType class197 = MapRegion.aClass191_3663.list(22883, i_219_);
+					ObjType class197 = MapRegion.aClass191_3663.list(22883, i_219_, Revision.OSRS);
 					if (((ObjType) class197).certTemplate == -1 && ((ObjType) class197).note >= 0)
 						CS2Script.int_stack[CS2Script.int_stack_size++] = ((ObjType) class197).note;
 					else {
@@ -2354,7 +2353,7 @@ final class CS2Script extends NodeSub {
 					return 1;
 				} else if (opcode == ScriptOpcodes.OC_UNCERT) {
 					int i_220_ = CS2Script.int_stack[--CS2Script.int_stack_size];
-					ObjType class197 = MapRegion.aClass191_3663.list(22883, i_220_);
+					ObjType class197 = MapRegion.aClass191_3663.list(22883, i_220_, Revision.OSRS);
 					if (((ObjType) class197).certTemplate >= 0 && ((ObjType) class197).note >= 0)
 						CS2Script.int_stack[CS2Script.int_stack_size++] = ((ObjType) class197).note;
 					else {
@@ -2364,13 +2363,13 @@ final class CS2Script extends NodeSub {
 					return 1;
 				} else if (opcode == ScriptOpcodes.OC_MEMBERS) {
 					var4 = int_stack[--int_stack_size];
-					int_stack[++int_stack_size - 1] = (((ObjType) MapRegion.aClass191_3663.list(22883, var4)).members)
+					int_stack[++int_stack_size - 1] = (((ObjType) MapRegion.aClass191_3663.list(22883, var4, Revision.OSRS)).members)
 							? 1
 							: 0;
 					return 1;
 				} else if (opcode == ScriptOpcodes.OC_PLACEHOLDER) {
 					int var3 = int_stack[--int_stack_size]; // L: 3270
-					ObjType var7 = ((ObjType) MapRegion.aClass191_3663.list(22883, var3)); // L: 3271
+					ObjType var7 = ((ObjType) MapRegion.aClass191_3663.list(22883, var3, Revision.OSRS)); // L: 3271
 					if (var7.placeholderTemplate == -1 && var7.placeholderLink >= 0) { // L: 3272
 						int_stack[++int_stack_size - 1] = var7.placeholderLink;
 					} else {
@@ -2379,7 +2378,7 @@ final class CS2Script extends NodeSub {
 					return 1;
 				} else if (opcode == ScriptOpcodes.OC_UNPLACEHOLDER) {
 					int var3 = int_stack[--int_stack_size]; // L: 3277
-					ObjType var7 = ((ObjType) MapRegion.aClass191_3663.list(22883, var3)); // L: 3278
+					ObjType var7 = ((ObjType) MapRegion.aClass191_3663.list(22883, var3, Revision.OSRS)); // L: 3278
 					if (var7.placeholderTemplate >= 0 && var7.placeholderLink >= 0) { // L: 3279
 						int_stack[++int_stack_size - 1] = var7.placeholderLink;
 					} else {
@@ -2895,6 +2894,18 @@ final class CS2Script extends NodeSub {
 				var4 = int_stack[int_stack_size + 1]; // L: 2971
 				int_stack[++int_stack_size - 1] = var3 | var4; // L: 2972
 				return 1; // L: 2973
+			} else if (var0 == 4016) {
+				int_stack_size -= 2;
+				int var9 = int_stack[int_stack_size];
+				var4 = int_stack[int_stack_size + 1];
+				int_stack[++int_stack_size - 1] = var9 < var4 ? var9 : var4;
+				return 1;
+			} else if (var0 == 4017) {
+				int_stack_size -= 2;
+				int var9 = int_stack[int_stack_size];
+				var4 = int_stack[int_stack_size + 1];
+				int_stack[++int_stack_size - 1] = var9 > var4 ? var9 : var4;
+				return 1;
 			} else if (var0 == ScriptOpcodes.SCALE) { // L: 2975
 				int_stack_size -= 3; // L: 2976
 				long var9 = (long) int_stack[int_stack_size]; // L: 2977
@@ -5221,117 +5232,133 @@ final class CS2Script extends NodeSub {
 
 	static int under_1500(int var0, CS2Script var1, boolean var2) {
 		Widget var3;
-		if (var0 >= 2000) { // L: 1015
-			var0 -= 1000; // L: 1016
-			var3 = Widget.get_widget(int_stack[--int_stack_size], 193); // L: 1017
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var3 = Widget.get_widget(int_stack[--int_stack_size], 193);
 		} else {
-			var3 = var2 ? Widget.static_active_component1 : Widget.static_active_component2; // L: 1019
+			var3 = var2 ? Widget.static_active_component1 : Widget.static_active_component2;
 		}
 
-		String var4 = string_stack[--string_stack_size]; // L: 1020
-		int[] triggers = null; // L: 1021
-		if (var4.length() > 0 && var4.charAt(var4.length() - 1) == 'Y') { // L: 1022
-			int var6 = int_stack[--int_stack_size]; // L: 1023
-			if (var6 > 0) { // L: 1024
-				for (triggers = new int[var6]; var6-- > 0; triggers[var6] = int_stack[--int_stack_size]) { // L: 1025
-																											// 1026
+		String var4 = string_stack[--string_stack_size];
+		int[] var5 = null;
+		if (var4.length() > 0 && var4.charAt(var4.length() - 1) == 'Y') {
+			int var6 = int_stack[--int_stack_size];
+			if (var6 > 0) {
+				for(var5 = new int[var6]; var6-- > 0; var5[var6] = int_stack[--int_stack_size]) {
 				}
 			}
 
-			var4 = var4.substring(0, var4.length() - 1); // L: 1028
+			var4 = var4.substring(0, var4.length() - 1);
 		}
 
-		Object[] listener_values = new Object[var4.length() + 1]; // L: 1030
+		Object[] listener_value = new Object[var4.length() + 1];
 
 		int var7;
-		for (var7 = listener_values.length - 1; var7 >= 1; --var7) { // L: 1031
-			if (var4.charAt(var7 - 1) == 's') { // L: 1032
-				listener_values[var7] = string_stack[--string_stack_size];
+		for(var7 = listener_value.length - 1; var7 >= 1; --var7) {
+			if (var4.charAt(var7 - 1) == 's') {
+				listener_value[var7] = string_stack[--string_stack_size];
 			} else {
-				listener_values[var7] = new Integer(int_stack[--int_stack_size]); // L: 1033
+				listener_value[var7] = new Integer(int_stack[--int_stack_size]);
 			}
 		}
 
-		var7 = int_stack[--int_stack_size]; // L: 1035
-		if (var7 != -1) { // L: 1036
-			listener_values[0] = new Integer(var7);
+		var7 = int_stack[--int_stack_size];
+		if (var7 != -1) {
+			listener_value[0] = new Integer(var7);
 		} else {
-			listener_values = null; // L: 1037
+			listener_value = null;
 		}
 
-		if (var0 == ScriptOpcodes.CC_SETONCLICK) {
-			var3.on_click_listener = listener_values; // L: 1038
-		} else if (var0 == ScriptOpcodes.CC_SETONHOLD) { // L: 1039
-			var3.on_hold_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONRELEASE) { // L: 1040
-			var3.on_release_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEOVER) { // L: 1041
-			var3.on_mouse_over_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONMOUSELEAVE) { // L: 1042
-			var3.on_mouse_leave_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONDRAG) { // L: 1043
-			var3.on_drag_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONTARGETLEAVE) { // L: 1044
-			var3.on_target_leave_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONVARTRANSMIT) { // L: 1045
-			var3.on_varp_update_listener = listener_values; // L: 1046
-			var3.varp_listener_triggers = triggers; // L: 1047
-		} else if (var0 == ScriptOpcodes.CC_SETONTIMER) { // L: 1049
-			var3.on_loop_cycle_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONOP) { // L: 1050
-			var3.on_option_click_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONDRAGCOMPLETE) { // L: 1051
-			var3.on_drag_complete_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLICKREPEAT) { // L: 1052
-			var3.on_click_repeat_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEREPEAT) { // L: 1053
-			var3.on_mouse_repeat_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONINVTRANSMIT) { // L: 1054
-			var3.on_inventory_update_listener = listener_values; // L: 1055
-			var3.inventory_listener_triggers = triggers; // L: 1056
-		} else if (var0 == ScriptOpcodes.CC_SETONSTATTRANSMIT) { // L: 1058
-			var3.skill_listener_triggers = listener_values; // L: 1059
-			var3.on_skill_update_listener = triggers; // L: 1060
-		} else if (var0 == ScriptOpcodes.CC_SETONTARGETENTER) { // L: 1062
-			var3.on_target_enter_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONSCROLLWHEEL) { // L: 1063
-			var3.on_mouse_wheel_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONCHATTRANSMIT) { // L: 1064
-			var3.on_game_message_received = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONKEY) { // L: 1065
-			var3.key_pressed_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONFRIENDTRANSMIT) { // L: 1066
-			var3.private_chat_update_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLANTRANSMIT) { // L: 1067
-			var3.on_clan_chat_update_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONMISCTRANSMIT) { // L: 1068
-			var3.misc_information_update_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONDIALOGABORT) { // L: 1069
-			var3.on_dialog_abort_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONSUBCHANGE) { // L: 1070
-			var3.on_interface_overriding_update = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONSTOCKTRANSMIT) { // L: 1071
-			var3.on_stock_update_listener = listener_values;
-		} else if (var0 == 1426) { // L: 1072
-			var3.on_camera_finish = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONRESIZE) { // L: 1073
-			var3.on_resize_listener = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLANSETTINGSTRANSMIT) { // L: 1074
-			var3.field3217 = listener_values;
-		} else if (var0 == ScriptOpcodes.CC_SETONCLANCHANNELTRANSMIT) { // L: 1075
-			var3.field3340 = listener_values;
+		if (var0 == 1400) {
+			var3.on_click_listener = listener_value;
+		} else if (var0 == 1401) {
+			var3.on_hold_listener = listener_value;
+		} else if (var0 == 1402) {
+			var3.on_release_listener = listener_value;
+		} else if (var0 == 1403) {
+			var3.on_mouse_over_listener = listener_value;
+		} else if (var0 == 1404) {
+			var3.on_mouse_leave_listener = listener_value;
+		} else if (var0 == 1405) {
+			var3.on_drag_listener = listener_value;
+		} else if (var0 == 1406) {
+			var3.on_target_leave_listener = listener_value;
+		} else if (var0 == 1407) {
+			var3.on_varp_update_listener = listener_value;
+			var3.varp_listener_triggers = var5;
+		} else if (var0 == 1408) {
+			var3.on_loop_cycle_listener = listener_value;
+		} else if (var0 == 1409) {
+			var3.on_option_click_listener = listener_value;
+		} else if (var0 == 1410) {
+			var3.on_drag_complete_listener = listener_value;
+		} else if (var0 == 1411) {
+			var3.on_click_repeat_listener = listener_value;
+		} else if (var0 == 1412) {
+			var3.on_mouse_repeat_listener = listener_value;
+		} else if (var0 == 1414) {
+			var3.on_inventory_update_listener = listener_value;
+			var3.inventory_listener_triggers = var5;
+		} else if (var0 == 1415) {
+			var3.skill_listener_triggers = listener_value;
+			var3.on_skill_update_listener = var5;
+		} else if (var0 == 1416) {
+			var3.on_target_enter_listener = listener_value;
+		} else if (var0 == 1417) {
+			var3.on_mouse_wheel_listener = listener_value;
+		} else if (var0 == 1418) {
+			var3.on_game_message_received = listener_value;
+		} else if (var0 == 1419) {
+			var3.key_pressed_listener = listener_value;
+		} else if (var0 == 1420) {
+			var3.private_chat_update_listener = listener_value;
+		} else if (var0 == 1421) {
+			var3.on_clan_chat_update_listener = listener_value;
+		} else if (var0 == 1422) {
+			var3.misc_information_update_listener = listener_value;
+		} else if (var0 == 1423) {
+			var3.on_dialog_abort_listener = listener_value;
+		} else if (var0 == 1424) {
+			var3.on_interface_overriding_update = listener_value;
+		} else if (var0 == 1425) {
+			var3.on_stock_update_listener = listener_value;
+		} else if (var0 == 1426) {
+			var3.on_camera_finish = listener_value;
+		} else if (var0 == 1427) {
+			var3.on_resize_listener = listener_value;
+		} else if (var0 == 1428) {
+			var3.on_clan_settings_change = listener_value;
+		} else if (var0 == 1429) {
+			var3.on_clan_transmit = listener_value;
 		} else if (var0 == 1430) {
-			var3.field3335 = listener_values; // L: 1076
+			var3.on_some_change_1 = listener_value;
+		} else if (var0 == 1431) {
+			var3.on_some_change_2 = listener_value;
+		} else if (var0 == 1434) {
+			var3.on_some_change_3 = listener_value;
+		} else if (var0 == 1435) {
+			var3.on_some_change_4 = listener_value;
 		} else {
-			if (var0 != 1431) { // L: 1077
-				return 2; // L: 1078
+			if (var0 < 1436 || var0 > 1439) {
+				return 2;
 			}
 
-			var3.field3336 = listener_values;
+			/*class354 var8 = var3.method6892();
+			if (var8 != null) {
+				if (var0 == 1436) {
+					var8.on_some_change_5 = listener_value;
+				} else if (var0 == 1437) {
+					var8.on_some_change_6 = listener_value;
+				} else if (var0 == 1438) {
+					var8.on_some_change_7 = listener_value;
+				} else if (var0 == 1439) {
+					var8.on_some_change_8 = listener_value;
+				}
+			}*/
 		}
 
-		var3.has_listener = true; // L: 1079
-		return 1; // L: 1080
+		var3.has_listener = true;
+		return 1;
 	}
 
 	static int under_1400(int var0, CS2Script var1, boolean var2) {
